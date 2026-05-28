@@ -18,7 +18,25 @@
     background:
       radial-gradient(circle at var(--hx, 30%) var(--hy, 25%), rgba(230, 92, 0, 0.22) 0%, transparent 48%),
       linear-gradient(135deg, #3c3c3c 0%, #1f1f1f 100%) !important;
+    min-height: 88vh;
+    padding: 140px 0 160px;
+    display: flex;
+    align-items: center;
   }
+
+  /* Hero background slider */
+  .hero-slider { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+  .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 900ms ease; }
+  .hero-slide.active { opacity: 1; }
+  .hero-slide-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(31,31,31,0.78) 0%, rgba(31,31,31,0.55) 100%); z-index: 2; }
+  .hero .container { z-index: 3; }
+  .hero .ornament-circle, .hero .ornament-para { z-index: 2; }
+
+  /* Hero dots */
+  .hero-dots { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 4; }
+  .hero-dots .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.55); background: transparent; cursor: pointer; padding: 0; transition: all 220ms ease; }
+  .hero-dots .dot:hover { border-color: #fff; }
+  .hero-dots .dot.active { background: var(--color-orange); border-color: var(--color-orange); width: 28px; border-radius: 5px; }
 
   /* Section heads — desaturate to grey tones, keep a thin orange line as accent */
   .section-head .eyebrow::before { width: 28px; }
@@ -147,20 +165,31 @@
 </header>
 
 <section class="hero">
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active" style="background-image: url('uploads/pasted-1779174116570-0.png');"></div>
+    <div class="hero-slide" style="background-image: url('uploads/pasted-1779174450215-0.png');"></div>
+    <div class="hero-slide" style="background-image: url('uploads/pasted-1779174464775-0.png');"></div>
+    <div class="hero-slide" style="background-image: url('uploads/pasted-1779174550520-0.png');"></div>
+    <div class="hero-slide" style="background-image: url('uploads/pasted-1779174710698-0.png');"></div>
+    <div class="hero-slide-overlay"></div>
+  </div>
   <div class="ornament-para"></div>
   <div class="ornament-circle"></div>
   <div class="container">
     <div>
-      <h1>Crafting<br>retail.</h1>
-      <p class="lede">POP/POS συστήματα που κερδίζουν το βλέμμα του καταναλωτή στα πρώτα 3 δευτερόλεπτα.</p>
-      <div class="actions">
-        <a href="portfolio.html" class="cta primary">Δείτε τα έργα μας →</a>
-        <a href="services.html" class="cta outline">Προϊόντα</a>
-      </div>
+      <h1>Crafting<br>Retail Conversion.</h1>
+      <p class="lede">Λύσεις που κερδίζουν το βλέμμα του καταναλωτή στα πρώτα 3 δευτερόλεπτα.</p>
     </div>
     <div class="stage">
       <img class="big-p" src="assets/logomark-dark.svg" alt="">
     </div>
+  </div>
+  <div class="hero-dots" id="heroDots">
+    <button class="dot active" data-i="0" aria-label="Slide 1"></button>
+    <button class="dot" data-i="1" aria-label="Slide 2"></button>
+    <button class="dot" data-i="2" aria-label="Slide 3"></button>
+    <button class="dot" data-i="3" aria-label="Slide 4"></button>
+    <button class="dot" data-i="4" aria-label="Slide 5"></button>
   </div>
 </section>
 
@@ -554,6 +583,29 @@
   document.addEventListener('click', function(){
     document.querySelectorAll('.lang-switch.open').forEach(function(sw){ sw.classList.remove('open'); sw.querySelector('.trigger').setAttribute('aria-expanded','false'); });
   });
+
+  (function(){
+    var slides = document.querySelectorAll('#heroSlider .hero-slide');
+    var dots = document.querySelectorAll('#heroDots .dot');
+    if (!slides.length || !dots.length) return;
+    var i = 0;
+    var timer;
+    function go(n) {
+      slides[i].classList.remove('active');
+      dots[i].classList.remove('active');
+      i = (n + slides.length) % slides.length;
+      slides[i].classList.add('active');
+      dots[i].classList.add('active');
+    }
+    function restart() {
+      clearInterval(timer);
+      timer = setInterval(function(){ go(i + 1); }, 1700);
+    }
+    dots.forEach(function(d, idx){
+      d.addEventListener('click', function(){ go(idx); restart(); });
+    });
+    restart();
+  })();
 </script>
 
   <script src="js/anim.js" defer></script>
