@@ -2,11 +2,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
+import { HeroSlider } from "@/components/HeroSlider";
 import { ServicesGrid } from "@/components/ServicesGrid";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 import "@/styles/pages/home.css";
+
+const HERO_SLIDES = [
+  "/uploads/pasted-1779174116570-0.png",
+  "/uploads/pasted-1779174450215-0.png",
+  "/uploads/pasted-1779174464775-0.png",
+  "/uploads/pasted-1779174550520-0.png",
+  "/uploads/pasted-1779174710698-0.png",
+];
 
 export async function generateMetadata({
   params,
@@ -32,6 +41,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   return (
     <>
       <section className="hero">
+        <HeroSlider images={HERO_SLIDES} intervalMs={1700} />
         <div className="ornament-para"></div>
         <div className="ornament-circle"></div>
         <div className="container">
@@ -42,14 +52,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               {t.hero.heading2}
             </h1>
             <p className="lede">{t.hero.lede}</p>
-            <div className="actions">
-              <Link href={href("/portfolio")} className="cta primary">
-                {t.hero.ctaWork}
-              </Link>
-              <Link href={href("/services")} className="cta outline">
-                {t.hero.ctaProducts}
-              </Link>
-            </div>
           </div>
           <div className="stage">
             {/* eslint-disable-next-line @next/next/no-img-element */}

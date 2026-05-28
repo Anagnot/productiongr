@@ -6,6 +6,25 @@
 .hero .meta-row .m::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--color-orange); }
 .hero .stage .note { font-size: 24px; line-height: 1.15; max-width: 220px; }
 
+/* Taller hero + background slider */
+section.hero {
+  min-height: 88vh;
+  padding: 140px 0 160px;
+  display: flex;
+  align-items: center;
+}
+.hero-slider { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+.hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 900ms ease; }
+.hero-slide.active { opacity: 1; }
+.hero-slide-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(31,31,31,0.78) 0%, rgba(31,31,31,0.55) 100%); z-index: 2; }
+.hero .container { z-index: 3; }
+.hero .ornament-circle, .hero .ornament-para { z-index: 2; }
+
+.hero-dots { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 4; }
+.hero-dots .hero-dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.55); background: transparent; cursor: pointer; padding: 0; transition: all 220ms ease; }
+.hero-dots .hero-dot:hover { border-color: #fff; }
+.hero-dots .hero-dot.active { background: var(--color-orange); border-color: var(--color-orange); width: 28px; border-radius: 5px; }
+
 /* Channels strip */
 .channels { background: var(--color-white); padding: 56px 0; border-bottom: 1px solid var(--border-subtle); }
 .channels .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; gap: 32px; }
