@@ -212,7 +212,7 @@
     },
     "services": {
       "eyebrow": "01 · Τι παράγουμε",
-      "h2": "9 τύποι κατασκευών.",
+      "h2": "Τύποι κατασκευών.",
       "meta": "Special Projects · Floor & Counter Stands · Display Systems · Gondola · Pallet · Wall Units · Shelf Trays · POS Accessories",
       "featBig": {
         "num": "00 · Premium",
@@ -679,38 +679,6 @@
           "y": "'25",
           "h6": "Brand refresh",
           "p": "Νέο positioning: «Crafting Retail Conversion» — Special Projects flagship."
-        }
-      ]
-    },
-    "personas": {
-      "eyebrow": "Audience · Για ποιους δουλεύουμε",
-      "h2": "Δύο τύποι πελάτη — μία υπόσχεση.",
-      "metaLine1": "Marketing & Procurement",
-      "metaLine2": "FMCG, Pharmacy, HORECA, Retail",
-      "items": [
-        {
-          "avatar": "ΚΛ",
-          "label": "01 · Primary persona",
-          "name": "Κατερίνα",
-          "role": "Launch / Trade Marketing Manager · FMCG, Cosmetics, Retail",
-          "painTitle": "Pain points",
-          "painP": "Φοβάται καθυστερήσεις που θα ακυρώσουν το launch. Διαχειρίζεται πολλαπλούς προμηθευτές. Ανησυχία σε περίπτωση κρίσης.",
-          "goalTitle": "Goal",
-          "goalStrong": "«Peace of mind».",
-          "goalP": "Εγγύηση OTIF και «Wow Factor» σε premium υλικά. Ένας συνεργάτης που τα χειρίζεται όλα.",
-          "secondary": false
-        },
-        {
-          "avatar": "ΜΕ",
-          "label": "02 · Secondary persona",
-          "name": "Μάρκος",
-          "role": "Procurement / Efficiency Director · Cross-industry",
-          "painTitle": "Pain points",
-          "painP": "Πίεση για μείωση κόστους + ESG στόχοι. Πρέπει να αιτιολογεί επιλογές προμηθευτών στη Διοίκηση.",
-          "goalTitle": "Goal",
-          "goalStrong": "Value Engineering.",
-          "goalP": "Μετρήσιμα δεδομένα (Nesting 92%, recyclable %) και Eco-Innovation λύσεις που στέκονται σε ESG audits.",
-          "secondary": true
         }
       ]
     },
@@ -2293,7 +2261,7 @@
     },
     "group1": {
       "title": "Catalog & flagship pages",
-      "count": "5 σελίδες",
+      "count": "3 σελίδες",
       "cards": [
         {
           "href": "/",
@@ -2321,24 +2289,6 @@
           "h4": "Floor Stands",
           "desc": "Drill-down σε 5 υλικά (Paper, Metal, Wood, Plastic, Plexi) + channel suitability fit ratings ανά κανάλι.",
           "path": "/products/floor-stands"
-        },
-        {
-          "href": "/portfolio",
-          "badge": "Type × Material × Channel filters",
-          "badgeFeat": false,
-          "num": "04 · Έργα",
-          "h4": "Portfolio listing",
-          "desc": "Sticky filter chips, 3-tile featured row, uniform 12-card grid, pagination.",
-          "path": "/portfolio"
-        },
-        {
-          "href": "/portfolio/coca-cola-summer-endcap",
-          "badge": "Coca-Cola · 240 stores · OTIF",
-          "badgeFeat": false,
-          "num": "05 · Case study",
-          "h4": "Coca-Cola summer end-cap",
-          "desc": "Hero, brief narrative, specs table, gallery, 6-week timeline, pull quote, results, next.",
-          "path": "/portfolio/[slug]"
         }
       ]
     },
@@ -2459,6 +2409,10 @@
     "emptyState": "Σύντομα θα δείτε εδώ δείγματα κατασκευών μας από αυτή την κατηγορία.",
     "relatedHeading": "Άλλες κατηγορίες",
     "ctaTitlePre": "Έτοιμοι να σχεδιάσουμε το",
-    "ctaTitleEm": "δικό σας display;"
+    "ctaTitleEm": "δικό σας display;",
+    "lightboxClose": "Κλείσιμο",
+    "lightboxPrev": "Προηγούμενη εικόνα",
+    "lightboxNext": "Επόμενη εικόνα",
+    "lightboxOpen": "Άνοιγμα εικόνας"
   }
 }

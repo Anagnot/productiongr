@@ -83,7 +83,7 @@
 .cta.primary:hover { box-shadow: 0 16px 60px -10px rgba(230,92,0,0.55); }
 
 /* ===== SERVICE CARD hover lift refinement ================== */
-.service, .product, .tile, .work-card, .featured-card, .info-card, .mvp-card, .persona, .test, .sub-type, .mat, .facility, .page-card {
+.service, .product, .tile, .work-card, .featured-card, .info-card, .mvp-card, .test, .sub-type, .mat, .facility, .page-card {
   transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
               box-shadow 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
               background 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);

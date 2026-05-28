@@ -1,6 +1,6 @@
-export const LOCALES = ["el", "en"] as const;
+export const LOCALES = ["en", "el"] as const;
 export type Locale = (typeof LOCALES)[number];
-export const DEFAULT_LOCALE: Locale = "el";
+export const DEFAULT_LOCALE: Locale = "en";
 
 export const LOCALE_LABELS: Record<Locale, { label: string; code: string }> = {
   el: { label: "Ελληνικά", code: "EL" },

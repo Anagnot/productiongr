@@ -374,9 +374,8 @@ body.no-scroll { overflow: hidden; }
   .clients-wall-grid .c:nth-child(6n) { border-right: 1px solid var(--border-subtle); }
   .clients-wall-grid .c:nth-child(3n) { border-right: 0; }
 
-  /* ABOUT — testimonials, personas, archetype (2 → 1) */
+  /* ABOUT — testimonials, archetype (2 → 1) */
   .testimonials-grid,
-  .personas-grid,
   .archetype-grid { grid-template-columns: 1fr !important; }
 
   /* ABOUT — page-hero lede-row */
@@ -688,11 +687,10 @@ body.no-scroll { overflow: hidden; }
   .milestones-grid .ms:nth-child(2n) { border-right: 0 !important; }
   .ms .y { font-size: 36px; }
 
-  /* ABOUT — archetype, personas, testimonials already 1col from 1024 */
+  /* ABOUT — archetype, testimonials already 1col from 1024 */
   .arch { padding: 28px !important; }
   .arch .glyph { font-size: 40px; }
   .arch h3 { font-size: 26px !important; }
-  .persona { padding: 28px !important; }
   .test { padding: 28px !important; }
   .test q { font-size: 18px !important; line-height: 1.4 !important; }
 

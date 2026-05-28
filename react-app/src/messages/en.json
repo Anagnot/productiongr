@@ -212,7 +212,7 @@
     },
     "services": {
       "eyebrow": "01 · What we make",
-      "h2": "9 build types.",
+      "h2": "Build types.",
       "meta": "Special Projects · Floor & Counter Stands · Display Systems · Gondola · Pallet · Wall Units · Shelf Trays · POS Accessories",
       "featBig": {
         "num": "00 · Premium",
@@ -679,38 +679,6 @@
           "y": "'25",
           "h6": "Brand refresh",
           "p": "New positioning: \"Crafting Retail Conversion\" — Special Projects flagship."
-        }
-      ]
-    },
-    "personas": {
-      "eyebrow": "Audience · Who we work for",
-      "h2": "Two client types — one promise.",
-      "metaLine1": "Marketing & Procurement",
-      "metaLine2": "FMCG, Pharmacy, HORECA, Retail",
-      "items": [
-        {
-          "avatar": "KL",
-          "label": "01 · Primary persona",
-          "name": "Katerina",
-          "role": "Launch / Trade Marketing Manager · FMCG, Cosmetics, Retail",
-          "painTitle": "Pain points",
-          "painP": "Fears delays that will derail the launch. Manages multiple suppliers. Anxious when a crisis hits.",
-          "goalTitle": "Goal",
-          "goalStrong": "\"Peace of mind.\"",
-          "goalP": "OTIF guarantee and \"Wow Factor\" on premium materials. A partner who handles everything.",
-          "secondary": false
-        },
-        {
-          "avatar": "ME",
-          "label": "02 · Secondary persona",
-          "name": "Markos",
-          "role": "Procurement / Efficiency Director · Cross-industry",
-          "painTitle": "Pain points",
-          "painP": "Pressure to cut cost + ESG targets. Must justify supplier choices to leadership.",
-          "goalTitle": "Goal",
-          "goalStrong": "Value Engineering.",
-          "goalP": "Measurable data (Nesting 92%, recyclable %) and Eco-Innovation solutions that stand up to ESG audits.",
-          "secondary": true
         }
       ]
     },
@@ -2293,7 +2261,7 @@
     },
     "group1": {
       "title": "Catalog & flagship pages",
-      "count": "5 pages",
+      "count": "3 pages",
       "cards": [
         {
           "href": "/",
@@ -2321,24 +2289,6 @@
           "h4": "Floor Stands",
           "desc": "Drill-down across 5 materials (Paper, Metal, Wood, Plastic, Plexi) + channel suitability fit ratings per channel.",
           "path": "/products/floor-stands"
-        },
-        {
-          "href": "/portfolio",
-          "badge": "Type × Material × Channel filters",
-          "badgeFeat": false,
-          "num": "04 · Work",
-          "h4": "Portfolio listing",
-          "desc": "Sticky filter chips, 3-tile featured row, uniform 12-card grid, pagination.",
-          "path": "/portfolio"
-        },
-        {
-          "href": "/portfolio/coca-cola-summer-endcap",
-          "badge": "Coca-Cola · 240 stores · OTIF",
-          "badgeFeat": false,
-          "num": "05 · Case study",
-          "h4": "Coca-Cola summer end-cap",
-          "desc": "Hero, brief narrative, specs table, gallery, 6-week timeline, pull quote, results, next.",
-          "path": "/portfolio/[slug]"
         }
       ]
     },
@@ -2459,6 +2409,10 @@
     "emptyState": "We'll be showing samples from this category here soon.",
     "relatedHeading": "Other categories",
     "ctaTitlePre": "Ready to design your",
-    "ctaTitleEm": "own display?"
+    "ctaTitleEm": "own display?",
+    "lightboxClose": "Close",
+    "lightboxPrev": "Previous image",
+    "lightboxNext": "Next image",
+    "lightboxOpen": "Open image"
   }
 }

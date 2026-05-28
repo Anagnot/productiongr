@@ -15,7 +15,6 @@ type FooterStrings = {
   company: {
     title: string;
     about: string;
-    portfolio: string;
     contact: string;
     quote: string;
   };
@@ -71,7 +70,6 @@ export function Footer({ locale, t }: Props) {
         <div>
           <h6>{t.company.title}</h6>
           <Link href={href("/about")}>{t.company.about}</Link>
-          <Link href={href("/portfolio")}>{t.company.portfolio}</Link>
           <Link href={href("/contact")}>{t.company.contact}</Link>
           <Link href={href("/quote")}>{t.company.quote}</Link>
         </div>

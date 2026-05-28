@@ -118,16 +118,6 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
               <span className="accent">{t.story.p4AccentB}</span>{" "}
               {t.story.p4Post}
             </p>
-
-            <div className="sig-block">
-              {t.story.sigs.map((s) => (
-                <div key={s.name} className="sig">
-                  <div className="role">{s.role}</div>
-                  <div className="name">{s.name}</div>
-                  <div className="desc">{s.desc}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -202,45 +192,6 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
                 <div className="y">{m.y}</div>
                 <h6>{m.h6}</h6>
                 <p>{m.p}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="personas">
-        <div className="container">
-          <div className="section-head head" style={{ marginBottom: 0 }}>
-            <div>
-              <div className="eyebrow bar">{t.personas.eyebrow}</div>
-              <h2>{t.personas.h2}</h2>
-            </div>
-            <div className="meta">
-              {t.personas.metaLine1}
-              <br />
-              {t.personas.metaLine2}
-            </div>
-          </div>
-          <div className="personas-grid">
-            {t.personas.items.map((p) => (
-              <div
-                key={p.name}
-                className={p.secondary ? "persona secondary" : "persona"}
-              >
-                <div className="avatar">{p.avatar}</div>
-                <div className="label">{p.label}</div>
-                <h3>{p.name}</h3>
-                <div className="role">{p.role}</div>
-                <div className="pain">
-                  <h6>{p.painTitle}</h6>
-                  <p>{p.painP}</p>
-                </div>
-                <div className="goal">
-                  <h6>{p.goalTitle}</h6>
-                  <p>
-                    <strong>{p.goalStrong}</strong> {p.goalP}
-                  </p>
-                </div>
               </div>
             ))}
           </div>

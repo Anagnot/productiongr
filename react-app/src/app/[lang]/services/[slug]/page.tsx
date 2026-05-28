@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
+import { GalleryLightbox } from "@/components/GalleryLightbox";
 import { PRODUCTS, getProduct } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, LOCALES, localizedHref, type Locale } from "@/lib/i18n";
@@ -80,24 +81,16 @@ export default async function ProductDetailPage({
                 {product.images.length.toString().padStart(2, "0")}
               </h5>
             </div>
-            <div className="gallery-grid">
-              {product.images.map((src, i) => (
-                <a
-                  key={src}
-                  href={src}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="gallery-item"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={src}
-                    alt={`${product.name[lang]} — ${i + 1}`}
-                    loading={i < 3 ? "eager" : "lazy"}
-                  />
-                </a>
-              ))}
-            </div>
+            <GalleryLightbox
+              images={product.images}
+              alt={product.name[lang]}
+              labels={{
+                open: t.lightboxOpen,
+                close: t.lightboxClose,
+                prev: t.lightboxPrev,
+                next: t.lightboxNext,
+              }}
+            />
           </div>
         </section>
       ) : (

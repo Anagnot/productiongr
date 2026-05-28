@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
 import { HeroSlider } from "@/components/HeroSlider";
@@ -149,50 +148,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                   <span className="l">{r.l}</span>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="work">
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow bar">{t.work.eyebrow}</div>
-              <h2>{t.work.h2}</h2>
-            </div>
-            <Link href={href("/portfolio")} className="cta outline">
-              {t.work.allLink}
-            </Link>
-          </div>
-          <div className="work-grid home-work-grid">
-            {t.work.items.map((w, i) => (
-              <Link key={i} href={href(w.href)} className="tile">
-                <div className={`bg ${w.bg}`}></div>
-                {w.withGrid ? (
-                  <div
-                    className="ph-grid"
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      backgroundImage:
-                        "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
-                      backgroundSize: "40px 40px",
-                    }}
-                  ></div>
-                ) : null}
-                {w.ornaments.includes("circle") ? (
-                  <div className="ornament circle"></div>
-                ) : null}
-                {w.ornaments.includes("para") ? (
-                  <div className="ornament para"></div>
-                ) : null}
-                {w.badge ? <div className="badge">{w.badge}</div> : null}
-                <div className={w.dark ? "meta dark" : "meta"}>
-                  <div className="eyebrow">{w.eyebrow}</div>
-                  <h4>{w.h4}</h4>
-                </div>
-              </Link>
             ))}
           </div>
         </div>

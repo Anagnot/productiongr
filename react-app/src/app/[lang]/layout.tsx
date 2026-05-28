@@ -9,7 +9,12 @@ import { BackToTop } from "@/components/BackToTop";
 import { CookieConsent } from "@/components/CookieConsent";
 import { OrganizationJsonLd } from "@/components/OrganizationJsonLd";
 import { getDictionary } from "@/lib/dictionaries";
-import { hasLocale, LOCALES, type Locale } from "@/lib/i18n";
+import {
+  hasLocale,
+  LOCALES,
+  localizedHref,
+  type Locale,
+} from "@/lib/i18n";
 import {
   DEFAULT_OG_IMAGE,
   SITE_NAME,
@@ -46,7 +51,7 @@ export async function generateMetadata({
   const { lang } = await params;
   if (!hasLocale(lang)) return {};
   const dict = await getDictionary(lang);
-  const canonical = lang === "el" ? "/" : `/${lang}`;
+  const canonical = localizedHref("/", lang);
 
   return {
     metadataBase: new URL(SITE_URL),

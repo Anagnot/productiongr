@@ -52,7 +52,6 @@ export function Header({ locale, nav }: Props) {
         label: c.name[locale],
       })),
     },
-    { href: "/portfolio", label: nav.portfolio },
     { href: "/about", label: nav.about },
     { href: "/contact", label: nav.contact },
   ];
