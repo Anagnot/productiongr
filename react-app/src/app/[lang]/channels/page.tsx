@@ -7,7 +7,6 @@ import { getAllChannels } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-import "@/styles/pages/channels.css";
 
 export async function generateMetadata({
   params,
@@ -38,7 +37,7 @@ export default async function ChannelsPage({
     .filter((src): src is string => Boolean(src));
 
   return (
-    <>
+    <div className="page-channels">
       <section className="page-hero">
         <div className="container">
           <div className="top-row">
@@ -109,6 +108,6 @@ export default async function ChannelsPage({
         }
         ctaLabel={dict.common.strategicBriefing}
       />
-    </>
+    </div>
   );
 }

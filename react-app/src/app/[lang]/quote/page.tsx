@@ -4,7 +4,6 @@ import { QuoteWizard } from "./QuoteWizard";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-import "@/styles/pages/quote.css";
 
 export async function generateMetadata({
   params,
@@ -27,5 +26,9 @@ export default async function QuotePage({
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang);
-  return <QuoteWizard t={dict.quote} />;
+  return (
+    <div className="page-quote">
+      <QuoteWizard t={dict.quote} />
+    </div>
+  );
 }

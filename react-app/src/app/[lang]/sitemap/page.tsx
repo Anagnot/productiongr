@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-import "@/styles/pages/sitemap.css";
 
 export async function generateMetadata({
   params,
@@ -30,8 +29,9 @@ export default async function SitemapPage({
   const href = (p: string) => localizedHref(p, lang);
 
   return (
-    <section className="cover">
-      <div className="container">
+    <div className="page-sitemap">
+      <section className="cover">
+        <div className="container">
         <div className="top">
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -155,5 +155,6 @@ export default async function SitemapPage({
         <div className="legal">{t.legal}</div>
       </div>
     </section>
+    </div>
   );
 }

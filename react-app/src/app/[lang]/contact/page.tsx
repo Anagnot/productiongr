@@ -5,7 +5,6 @@ import { ContactForm } from "./ContactForm";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-import "@/styles/pages/contact.css";
 
 export async function generateMetadata({
   params,
@@ -32,7 +31,7 @@ export default async function ContactPage({
   const href = (p: string) => localizedHref(p, lang);
 
   return (
-    <>
+    <div className="page-contact">
       <section className="page-hero">
         <div className="container">
           <h1>
@@ -192,6 +191,6 @@ export default async function ContactPage({
         }
         ctaLabel={t.ctaLabel}
       />
-    </>
+    </div>
   );
 }

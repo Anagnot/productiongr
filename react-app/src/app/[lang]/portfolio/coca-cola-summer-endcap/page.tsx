@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-import "@/styles/pages/case-coca-cola.css";
 
 export async function generateMetadata({
   params,
@@ -31,7 +30,7 @@ export default async function CocaColaSummerEndcapPage({
   const href = (p: string) => localizedHref(p, lang);
 
   return (
-    <>
+    <div className="page-case-coca-cola">
       <section className="case-hero">
         <div className="container">
           <h1>
@@ -265,6 +264,6 @@ export default async function CocaColaSummerEndcapPage({
           <div className="arrow">→</div>
         </div>
       </Link>
-    </>
+    </div>
   );
 }

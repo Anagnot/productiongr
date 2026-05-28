@@ -4,7 +4,6 @@ import { CTABlock } from "@/components/CTABlock";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-import "@/styles/pages/about.css";
 
 export async function generateMetadata({
   params,
@@ -28,7 +27,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
   const t = dict.about;
 
   return (
-    <>
+    <div className="page-about">
       <section className="page-hero">
         <div className="container">
           <h1 style={{ whiteSpace: "pre-line" }}>
@@ -262,6 +261,6 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         }
         ctaLabel={dict.common.strategicBriefing}
       />
-    </>
+    </div>
   );
 }

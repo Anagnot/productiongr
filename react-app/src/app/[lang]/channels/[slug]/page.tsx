@@ -7,7 +7,6 @@ import { CHANNELS, getChannel } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, LOCALES, localizedHref, type Locale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-import "@/styles/pages/channel-detail.css";
 
 export async function generateStaticParams() {
   const params: { lang: Locale; slug: string }[] = [];
@@ -49,7 +48,7 @@ export default async function ChannelDetailPage({
   const other = CHANNELS.filter((c) => c.slug !== slug).slice(0, 4);
 
   return (
-    <>
+    <div className="page-channel-detail">
       <section className="page-hero detail-hero">
         <div className="container">
           <nav className="crumbs">
@@ -143,6 +142,6 @@ export default async function ChannelDetailPage({
         }
         ctaLabel={dict.common.strategicBriefing}
       />
-    </>
+    </div>
   );
 }

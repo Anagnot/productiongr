@@ -1,43 +1,43 @@
-.page-hero { padding: 64px 0 56px; border-bottom: 0; }
-.page-hero h1 { font-size: 96px; line-height: 0.96; font-weight: 800; letter-spacing: -0.03em; margin: 0; }
-.page-hero .top-row { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: end; margin-top: 18px; }
-.page-hero .lede { font-size: 18px; line-height: 1.55; color: var(--fg-secondary); margin: 0; }
-.page-hero .hero-carousel { width: 100%; }
-.page-hero .hero-carousel-eyebrow { display: block; margin-bottom: 10px; font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
-.page-hero .hero-carousel .ch-carousel-viewport { aspect-ratio: 16/10; border-radius: var(--radius-lg); background: var(--color-white); }
-.page-hero .hero-carousel .ch-carousel-slide img { object-fit: contain; }
+.page-channels .page-hero { padding: 64px 0 56px; border-bottom: 0; }
+.page-channels .page-hero h1 { font-size: 96px; line-height: 0.96; font-weight: 800; letter-spacing: -0.03em; margin: 0; }
+.page-channels .page-hero .top-row { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: end; margin-top: 18px; }
+.page-channels .page-hero .lede { font-size: 18px; line-height: 1.55; color: var(--fg-secondary); margin: 0; }
+.page-channels .page-hero .hero-carousel { width: 100%; }
+.page-channels .page-hero .hero-carousel-eyebrow { display: block; margin-bottom: 10px; font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
+.page-channels .page-hero .hero-carousel .ch-carousel-viewport { aspect-ratio: 16/10; border-radius: var(--radius-lg); background: var(--color-white); }
+.page-channels .page-hero .hero-carousel .ch-carousel-slide img { object-fit: contain; }
 
-.channels-grid-wrap { padding: 56px 0 96px; }
-.channels-grid-wrap .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
-.channels-grid-wrap .head h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-secondary); margin: 0; }
-.channels-grid-wrap .head .total { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); letter-spacing: 0.12em; text-transform: uppercase; }
+.page-channels .channels-grid-wrap { padding: 56px 0 96px; }
+.page-channels .channels-grid-wrap .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
+.page-channels .channels-grid-wrap .head h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-secondary); margin: 0; }
+.page-channels .channels-grid-wrap .head .total { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); letter-spacing: 0.12em; text-transform: uppercase; }
 
-.channels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.page-channels .channels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 
-.channel-card { display: flex; flex-direction: column; background: var(--color-white); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease), border-color var(--duration) var(--ease); cursor: pointer; }
-.channel-card:hover { transform: translateY(-4px); box-shadow: 0 18px 60px -20px rgba(60,60,60,0.18); border-color: var(--border-default); }
+.page-channels .channel-card { display: flex; flex-direction: column; background: var(--color-white); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease), border-color var(--duration) var(--ease); cursor: pointer; }
+.page-channels .channel-card:hover { transform: translateY(-4px); box-shadow: 0 18px 60px -20px rgba(60,60,60,0.18); border-color: var(--border-default); }
 
-.channel-card-photo { position: relative; aspect-ratio: 4/3; background: var(--color-gray-1); overflow: hidden; }
-.channel-card-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--duration) var(--ease); }
-.channel-card:hover .channel-card-photo img { transform: scale(1.04); }
-.channel-card-photo .ph { position: absolute; inset: 0; background: var(--gradient-primary); }
-.channel-card-photo .ph-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 24px 24px; opacity: 0.6; }
-.channel-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%); pointer-events: none; }
+.page-channels .channel-card-photo { position: relative; aspect-ratio: 4/3; background: var(--color-gray-1); overflow: hidden; }
+.page-channels .channel-card-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--duration) var(--ease); }
+.page-channels .channel-card:hover .channel-card-photo img { transform: scale(1.04); }
+.page-channels .channel-card-photo .ph { position: absolute; inset: 0; background: var(--gradient-primary); }
+.page-channels .channel-card-photo .ph-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 24px 24px; opacity: 0.6; }
+.page-channels .channel-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%); pointer-events: none; }
 
-.channel-card-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-.channel-card-body h3 { font-size: 22px; font-weight: 800; line-height: 1.15; letter-spacing: -0.01em; margin: 0; }
-.channel-card-body p { font-size: 13.5px; line-height: 1.55; color: var(--fg-secondary); margin: 0; }
+.page-channels .channel-card-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.page-channels .channel-card-body h3 { font-size: 22px; font-weight: 800; line-height: 1.15; letter-spacing: -0.01em; margin: 0; }
+.page-channels .channel-card-body p { font-size: 13.5px; line-height: 1.55; color: var(--fg-secondary); margin: 0; }
 
-.channel-card-meta { margin-top: auto; padding-top: 14px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
-.channel-card-meta .arrow { color: var(--color-orange); font-size: 16px; transition: transform var(--duration) var(--ease); }
-.channel-card:hover .channel-card-meta .arrow { transform: translateX(4px); }
+.page-channels .channel-card-meta { margin-top: auto; padding-top: 14px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
+.page-channels .channel-card-meta .arrow { color: var(--color-orange); font-size: 16px; transition: transform var(--duration) var(--ease); }
+.page-channels .channel-card:hover .channel-card-meta .arrow { transform: translateX(4px); }
 
 @media (max-width: 900px) {
-  .channels-grid { grid-template-columns: repeat(2, 1fr); }
-  .page-hero h1 { font-size: 64px; }
-  .page-hero .top-row { grid-template-columns: 1fr; gap: 24px; align-items: stretch; }
+  .page-channels .channels-grid { grid-template-columns: repeat(2, 1fr); }
+  .page-channels .page-hero h1 { font-size: 64px; }
+  .page-channels .page-hero .top-row { grid-template-columns: 1fr; gap: 24px; align-items: stretch; }
 }
 @media (max-width: 600px) {
-  .channels-grid { grid-template-columns: 1fr; }
-  .page-hero h1 { font-size: 44px; }
+  .page-channels .channels-grid { grid-template-columns: 1fr; }
+  .page-channels .page-hero h1 { font-size: 44px; }
 }

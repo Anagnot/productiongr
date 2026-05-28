@@ -6,7 +6,6 @@ import { PortfolioFilters } from "./PortfolioFilters";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-import "@/styles/pages/portfolio.css";
 
 export async function generateMetadata({
   params,
@@ -33,7 +32,7 @@ export default async function PortfolioPage({
   const href = (p: string) => localizedHref(p, lang);
 
   return (
-    <>
+    <div className="page-portfolio">
       <section className="page-hero">
         <div className="container">
           <div className="top-row">
@@ -202,6 +201,6 @@ export default async function PortfolioPage({
         }
         ctaLabel={dict.common.strategicBriefing}
       />
-    </>
+    </div>
   );
 }

@@ -7,7 +7,6 @@ import { PRODUCTS, getProduct } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, LOCALES, localizedHref, type Locale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-import "@/styles/pages/product-detail.css";
 
 export async function generateStaticParams() {
   const params: { lang: Locale; slug: string }[] = [];
@@ -49,7 +48,7 @@ export default async function ProductDetailPage({
   const other = PRODUCTS.filter((p) => p.slug !== slug).slice(0, 4);
 
   return (
-    <>
+    <div className="page-product-detail">
       <section className="page-hero detail-hero">
         <div className="container">
           <nav className="crumbs">
@@ -122,6 +121,6 @@ export default async function ProductDetailPage({
         }
         ctaLabel={dict.common.strategicBriefing}
       />
-    </>
+    </div>
   );
 }

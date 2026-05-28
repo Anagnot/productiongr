@@ -6,7 +6,6 @@ import { getAllProducts } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-import "@/styles/pages/services.css";
 
 export async function generateMetadata({
   params,
@@ -40,7 +39,7 @@ export default async function ServicesPage({
   const products = await getAllProducts();
 
   return (
-    <>
+    <div className="page-services">
       <section className="page-hero">
         <div className="ornament-c"></div>
         <div className="container">
@@ -242,6 +241,6 @@ export default async function ServicesPage({
         }
         ctaLabel={dict.common.strategicBriefing}
       />
-    </>
+    </div>
   );
 }

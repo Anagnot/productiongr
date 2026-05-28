@@ -7,7 +7,6 @@ import { getAllChannels } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-import "@/styles/pages/home.css";
 
 const HERO_SLIDES = [
   "/uploads/products/displays/C_01.jpg",
@@ -43,7 +42,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   );
 
   return (
-    <>
+    <div className="page-home">
       <section className="hero">
         <HeroSlider images={HERO_SLIDES} intervalMs={3400} />
         <div className="ornament-para"></div>
@@ -310,6 +309,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         }
         ctaLabel={dict.common.strategicBriefing}
       />
-    </>
+    </div>
   );
 }

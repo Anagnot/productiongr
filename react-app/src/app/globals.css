@@ -5,6 +5,25 @@
 @import "../styles/site.css";
 @import "../styles/anim.css";
 
+/* Shared component styles (used by more than one page). */
+@import "../styles/components/channel-carousel.css";
+
+/* Per-page styles bundled here instead of imported per-route. Each file
+   is scoped under its own .page-* class so selectors don't collide. This
+   eliminates the App Router CSS race that left first navigations
+   unstyled until refresh. */
+@import "../styles/pages/home.css";
+@import "../styles/pages/about.css";
+@import "../styles/pages/services.css";
+@import "../styles/pages/product-detail.css";
+@import "../styles/pages/channels.css";
+@import "../styles/pages/channel-detail.css";
+@import "../styles/pages/portfolio.css";
+@import "../styles/pages/case-coca-cola.css";
+@import "../styles/pages/contact.css";
+@import "../styles/pages/quote.css";
+@import "../styles/pages/sitemap.css";
+
 /* Responsive overrides — MUST stay last so they win the cascade
    over both site.css and per-page CSS files. */
 @import "../styles/responsive.css";
