@@ -103,11 +103,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               alt=""
             />
             <div className="circle"></div>
-            <div className="signature">
-              <span className="marker" style={{ whiteSpace: "pre-line" }}>
-                {t.aboutStrip.signature}
-              </span>
-            </div>
           </div>
           <div>
             <h2>
@@ -185,11 +180,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               </div>
               <h2>{t.process.h2}</h2>
             </div>
-            <div className="meta" style={{ color: "rgba(255,255,255,0.5)" }}>
-              {t.process.metaLine1}
-              <br />
-              {t.process.metaLine2}
-            </div>
           </div>
           <div className="process-steps">
             {t.process.steps.map((s) => (
@@ -242,7 +232,29 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <div className="container">
           <div className="visual">
             <div className="para"></div>
-            <div className="circle"></div>
+            <svg
+              className="recycle"
+              viewBox="0 0 200 200"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.25"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <g transform="rotate(0 100 100)">
+                <path d="M 70 60 L 130 60" />
+                <path d="M 122 52 L 130 60 L 122 68" />
+              </g>
+              <g transform="rotate(120 100 100)">
+                <path d="M 70 60 L 130 60" />
+                <path d="M 122 52 L 130 60 L 122 68" />
+              </g>
+              <g transform="rotate(240 100 100)" className="accent">
+                <path d="M 70 60 L 130 60" />
+                <path d="M 122 52 L 130 60 L 122 68" />
+              </g>
+            </svg>
             <div className="note">
               {t.sustain.noteLine1}
               <br />
@@ -254,9 +266,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               className="section-head"
               style={{ marginBottom: 0, display: "block" }}
             >
-              <div className="eyebrow bar" style={{ marginBottom: 10 }}>
-                {t.sustain.eyebrow}
-              </div>
               <h2>{t.sustain.h2}</h2>
             </div>
             <p>{t.sustain.p}</p>

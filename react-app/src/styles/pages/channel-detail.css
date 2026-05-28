@@ -1,5 +1,6 @@
 /* Detail hero (shared shape with product-detail) */
 .detail-hero { padding: 48px 0 40px; border-bottom: 1px solid var(--border-subtle); }
+.detail-hero .container { display: block; }
 .detail-hero .crumbs { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); display: flex; gap: 10px; align-items: center; margin-bottom: 24px; }
 .detail-hero .crumbs a { color: var(--fg-secondary); }
 .detail-hero .crumbs a:hover { color: var(--color-orange); }
@@ -16,7 +17,7 @@
 .channel-content h2 { font-size: 36px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 18px; }
 .channel-content .content-body p { font-size: 17px; line-height: 1.65; color: var(--fg-secondary); margin: 0 0 16px; }
 .channel-content .content-body p:last-child { margin-bottom: 0; }
-.channel-content .highlights { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 14px; justify-self: end; width: 100%; }
+.channel-content .highlights { list-style: none; padding: 0; margin: 70px 0 0; display: grid; gap: 14px; justify-self: end; width: 100%; }
 .channel-content .highlights li { display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; font-size: 15px; line-height: 1.5; color: var(--fg-primary); }
 .channel-content .highlights li::before { content: ''; width: 18px; height: 2px; background: var(--color-orange); margin-top: 12px; }
 

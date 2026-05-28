@@ -36,14 +36,12 @@ export function ServicesGrid({
     <>
       <div className="services-grid home-services-grid">
         <Link href={featBigHref} className="service feat-big">
-          <div className="num">{featBig.num}</div>
           <div className="arrow">→</div>
           <h3>{featBig.title}</h3>
           <div className="s-desc">{featBig.desc}</div>
         </Link>
         {visible.map((s) => (
           <Link key={s.num} href={s.href} className="service">
-            <div className="num">{s.num}</div>
             <div className="arrow">→</div>
             <h3>{s.title}</h3>
             <div className="s-desc">{s.desc}</div>

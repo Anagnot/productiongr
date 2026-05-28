@@ -782,7 +782,7 @@
       "Special Projects retail"
     ],
     "hero": {
-      "h1Pre": "9 build types —",
+      "h1Pre": "Build types —",
       "h1Mid": "one ",
       "h1Em": "production floor.",
       "p1": "From bespoke Special Projects with 3+ materials, to POS accessories in thousands of units. The whole taxonomy follows the client's logic:",
@@ -828,8 +828,7 @@
         "Cosmetics",
         "HORECA",
         "+3"
-      ],
-      "countPill": "9 types · 36 combinations"
+      ]
     },
     "specialFeat": {
       "eyebrow": "00 · First category in the catalog",

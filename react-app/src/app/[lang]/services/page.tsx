@@ -89,7 +89,6 @@ export default async function ServicesPage({
               </span>
             ))}
           </div>
-          <div className="count-pill">{t.iaBar.countPill}</div>
         </div>
       </div>
 
