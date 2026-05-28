@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/* Existing design system — kept as global CSS for 1:1 design fidelity. */
+@import "../styles/tokens.css";
+@import "../styles/site.css";
+@import "../styles/anim.css";
+
+/* Responsive overrides — MUST stay last so they win the cascade
+   over both site.css and per-page CSS files. */
+@import "../styles/responsive.css";
+
+/* Bridge design tokens into Tailwind v4's theme so utilities like
+   bg-orange / text-gray-4 / font-mono / rounded-pill map to the brand system. */
+@theme inline {
+  --color-yellow: #ffc815;
+  --color-orange: #e65c00;
+  --color-gray-1: #ededed;
+  --color-gray-2: #bdbdbd;
+  --color-gray-3: #8a8a8a;
+  --color-gray-4: #3c3c3c;
+
+  --font-sans: var(--font-manrope), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-roboto-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-marker: var(--font-caveat), "Comic Sans MS", cursive;
+
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --spacing-gutter-d: 32px;
+  --spacing-gutter-m: 16px;
+  --spacing-max-content: 1280px;
+}

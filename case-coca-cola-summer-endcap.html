@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coca-Cola summer end-cap — Production LTD</title>
+<link rel="icon" href="assets/favicon-transparent.png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css?v=3">
+<link rel="stylesheet" href="css/anim.css">
+<style>
+  .case-hero { padding: 64px 0 0; }
+  .case-hero .container { max-width: 1180px; }
+  .case-hero h1 { font-size: 96px; font-weight: 800; line-height: 0.96; letter-spacing: -0.03em; max-width: 1000px; margin: 18px 0 28px; }
+  .case-hero .lede { font-size: 22px; line-height: 1.45; color: var(--fg-secondary); max-width: 720px; font-weight: 300; margin: 0 0 40px; }
+  .case-meta { display: grid; grid-template-columns: repeat(5, 1fr); padding: 22px 0; border-top: 1px solid var(--color-gray-4); border-bottom: 1px solid var(--border-default); }
+  .case-meta .m { padding: 0 24px; border-right: 1px solid var(--border-subtle); }
+  .case-meta .m:first-child { padding-left: 0; }
+  .case-meta .m:last-child { border-right: 0; }
+  .case-meta h6 { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); margin: 0 0 6px; }
+  .case-meta .v { font-family: var(--font-sans); font-weight: 700; font-size: 17px; color: var(--fg-primary); letter-spacing: -0.01em; }
+
+  .bigvisual { padding: 56px 0 0; }
+  .bigvisual .container { max-width: 1280px; }
+  .bigvisual .frame { aspect-ratio: 16/9; }
+  .bigvisual .caption { display: flex; justify-content: space-between; margin-top: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .narrative { padding: 96px 0 64px; }
+  .narrative .container { max-width: 1000px; display: grid; grid-template-columns: 180px 1fr; gap: 64px; align-items: start; }
+  .narrative h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-orange); margin: 0; padding-top: 8px; }
+  .narrative h2 { font-size: 44px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 28px; }
+  .narrative p { font-size: 18px; line-height: 1.65; color: var(--fg-primary); margin: 0 0 18px; }
+  .narrative p .accent { color: var(--color-orange); font-weight: 700; }
+
+  /* Specs strip */
+  .specs-block { padding: 64px 0; background: var(--color-gray-1); }
+  .specs-block .container { max-width: 1180px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+  .specs-block h2 { font-size: 40px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 20px; }
+  .specs-block p { font-size: 16px; line-height: 1.6; color: var(--fg-secondary); margin: 0 0 24px; }
+  .specs-table { display: grid; gap: 0; border-top: 1px solid var(--border-default); }
+  .specs-table .row { display: grid; grid-template-columns: 1fr 1.5fr; padding: 14px 0; border-bottom: 1px solid var(--border-default); align-items: baseline; }
+  .specs-table .row h6 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); margin: 0; }
+  .specs-table .row .v { font-size: 16px; color: var(--fg-primary); font-weight: 500; }
+
+  /* Gallery */
+  .gallery { padding: 64px 0 0; }
+  .gallery .container { max-width: 1280px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .gallery .img { aspect-ratio: 4/3; }
+  .gallery .img.wide { grid-column: 1 / -1; aspect-ratio: 21/9; }
+  .gallery + .gallery { padding-top: 12px; }
+
+  /* Timeline */
+  .timeline { padding: 96px 0; }
+  .timeline .container { max-width: 1180px; }
+  .timeline-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin-top: 32px; border-top: 1px solid var(--border-default); }
+  .timeline .step { padding: 24px 16px 0; border-right: 1px solid var(--border-subtle); position: relative; min-height: 180px; }
+  .timeline .step:last-child { border-right: 0; }
+  .timeline .step::before { content: ''; position: absolute; top: -1px; left: 0; width: 24px; height: 2px; background: var(--color-orange); }
+  .timeline .step .week { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; color: var(--color-orange); margin-bottom: 12px; }
+  .timeline .step h6 { font-size: 16px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .timeline .step p { font-size: 12px; line-height: 1.55; color: var(--fg-secondary); margin: 0; }
+
+  /* Pullquote */
+  .pullquote { padding: 96px 0; }
+  .pullquote .container { max-width: 1000px; text-align: center; }
+  .pullquote q { font-family: var(--font-sans); font-weight: 300; font-size: 56px; line-height: 1.15; letter-spacing: -0.02em; color: var(--fg-primary); quotes: none; }
+  .pullquote q::before, .pullquote q::after { content: ''; }
+  .pullquote q .accent { font-family: var(--font-marker); font-weight: 400; color: var(--color-orange); font-size: 0.85em; }
+  .pullquote .attr { margin-top: 32px; font-family: var(--font-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); }
+  .pullquote .attr .role { color: var(--fg-tertiary); margin-left: 10px; }
+
+  /* Results */
+  .results { padding: 88px 0; background: var(--color-gray-4); color: #fff; }
+  .results .container { max-width: 1180px; }
+  .results .head { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 40px; }
+  .results .head h2 { font-size: 56px; font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; margin: 14px 0 0; color: #fff; }
+  .results .head h2 em { font-style: normal; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .results .head p { font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.7); margin: 0; }
+  .results-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,0.18); }
+  .results-grid .r { padding: 32px 24px 0; border-right: 1px solid rgba(255,255,255,0.12); }
+  .results-grid .r:last-child { border-right: 0; }
+  .results-grid .r .v { font-size: 64px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+  .results-grid .r .v em { font-style: normal; color: var(--color-orange); font-size: 0.55em; vertical-align: 0.5em; margin-left: 4px; }
+  .results-grid .r .l { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 12px; }
+
+  /* Next */
+  .next { padding: 64px 0; background: var(--color-gray-1); }
+  .next .container { display: flex; justify-content: space-between; align-items: center; gap: 32px; }
+  .next h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); margin: 0 0 10px; }
+  .next .title { font-size: 36px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+  .next .arrow { width: 64px; height: 64px; border-radius: 50%; background: var(--color-orange); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px; flex-shrink: 0; transition: transform var(--duration) var(--ease); }
+  .next:hover .arrow { transform: translateX(4px); }
+</style>
+<link rel="stylesheet" href="css/responsive.css?v=3">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><img src="assets/logo-horizontal-black.svg" alt="Production LTD"></a>
+    <nav class="site-nav">
+      <a href="index.html">Αρχική</a>
+      <a href="services.html">Προϊόντα</a>
+      <a href="portfolio.html" class="active">Έργα</a>
+      <a href="about.html">Εταιρία</a>
+      <a href="contact.html">Επικοινωνία</a>
+      <div class="lang-switch"><button class="trigger"><span>EL</span><svg class="chev" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M1 1 L5 5 L9 1"/></svg></button></div>
+      <a href="quote.html" class="cta primary">Strategic briefing →</a>
+    </nav>
+  </div>
+</header>
+
+<section class="case-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Αρχική</a> / <a href="portfolio.html">Έργα</a> / <a href="services.html">Floor Stands</a> / <span>Coca-Cola summer end-cap</span></div>
+    <h1>Coca-Cola summer end-cap,<br>σε 240 καταστήματα.</h1>
+    <p class="lede">Vacuum-formed POS unit με integrated LED edge lighting — από το concept μέχρι την παράδοση σε έξι εβδομάδες, εξ ολοκλήρου εντός της εταιρίας μας.</p>
+    <div class="case-meta">
+      <div class="m"><h6>Client</h6><div class="v">Coca-Cola Hellas</div></div>
+      <div class="m"><h6>Year</h6><div class="v">2024</div></div>
+      <div class="m"><h6>Materials</h6><div class="v">Plexiglass · LED</div></div>
+      <div class="m"><h6>Units shipped</h6><div class="v">240</div></div>
+      <div class="m"><h6>Timeline</h6><div class="v">6 εβδομάδες</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="bigvisual">
+  <div class="container">
+    <div class="ph orange frame" style="border-radius: var(--radius-lg);">
+      <div class="ph-grid"></div>
+      <div class="ph-circle" style="width: 460px; height: 460px; right: -120px; top: -160px;"></div>
+      <div class="ph-para" style="left: 12%; top: -20%; bottom: -20%; width: 160px;"></div>
+      <div class="ph-tag">Photo · Hero installation, AB Vasilopoulos Athens</div>
+      <div class="ph-logo">P / 01.HERO</div>
+      <div class="ph-caption">free-standing,<br>illuminated</div>
+    </div>
+    <div class="caption">
+      <span>01 / Hero installation · AB Vasilopoulos Athens</span>
+      <span>Aug 2024</span>
+    </div>
+  </div>
+</section>
+
+<section class="narrative">
+  <div class="container">
+    <h5>Brief</h5>
+    <div>
+      <h2>Ένα end-cap που στέκεται μόνο του.</h2>
+      <p>Η Coca-Cola Hellas ήθελε ένα <span class="accent">free-standing display</span> για την summer campaign — αρκετά ψηλό να φαίνεται από το πέρας του διαδρόμου, αρκετά σταθερό να αντέξει τη χρήση των πελατών, και αρκετά ελαφρύ να μεταφέρεται σε 240 καταστήματα σε δύο εβδομάδες.</p>
+      <p>Το brief μας έφτασε αρχές Ιουλίου, με campaign launch το πρώτο Σάββατο του Αυγούστου — έξι εβδομάδες από brief σε εγκατάσταση. Σχεδιάσαμε σε 3D, prototype-άραμε εντός 5 ημερών, και παραδώσαμε με LED edge lighting integrated στο top shelf για να ξεχωρίζει στο φωτισμό των supermarket.</p>
+    </div>
+  </div>
+</section>
+
+<section class="specs-block">
+  <div class="container">
+    <div>
+      <div class="eyebrow bar" style="margin-bottom: 14px;">Solution · Κατασκευαστική λύση</div>
+      <h2>Vacuum-formed body, LED edge, drop-and-shop logistics.</h2>
+      <p>Επιλέξαμε vacuum forming για το κύριο σώμα — μειώνει το κόστος σε 240 μονάδες χωρίς συμβιβασμό στην ποιότητα. Το LED στρίπ είναι battery-powered και μπαίνει on-site σε 30 δευτερόλεπτα.</p>
+      <a href="services.html" class="cta outline">POP/POS services →</a>
+    </div>
+    <div class="specs-table">
+      <div class="row"><h6>Διαστάσεις</h6><div class="v">1.85m × 0.6m × 0.5m</div></div>
+      <div class="row"><h6>Βάρος (assembled)</h6><div class="v">12.4 kg</div></div>
+      <div class="row"><h6>Footprint</h6><div class="v">0.3 m² ανά μονάδα</div></div>
+      <div class="row"><h6>Κύριο υλικό</h6><div class="v">PMMA 4mm, λευκό-όπαλ</div></div>
+      <div class="row"><h6>LED</h6><div class="v">5m στρίπ, 3000K warm white</div></div>
+      <div class="row"><h6>Pack-out</h6><div class="v">Flat-pack, 6 μονάδες/παλέτα</div></div>
+      <div class="row"><h6>Συναρμολόγηση</h6><div class="v">8 λεπτά, 1 άτομο, χωρίς εργαλεία</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="container">
+    <div class="ph orange img wide" style="border-radius: var(--radius-md);">
+      <div class="ph-grid"></div>
+      <div class="ph-circle" style="width:280px; height:280px; left:-80px; bottom:-80px;"></div>
+      <div class="ph-tag">Photo · Production floor, vacuum forming</div>
+      <div class="ph-caption">forming the<br>main shell</div>
+    </div>
+  </div>
+</section>
+<section class="gallery">
+  <div class="container">
+    <div class="ph yellow img" style="border-radius: var(--radius-md);">
+      <div class="ph-grid"></div>
+      <div class="ph-tag">Photo · LED strip integration test</div>
+      <div class="ph-caption" style="color: var(--color-gray-4);">LED at 30s</div>
+    </div>
+    <div class="ph dark img" style="border-radius: var(--radius-md);">
+      <div class="ph-grid"></div>
+      <div class="ph-circle" style="width:200px; height:200px; right:-50px; top:-50px;"></div>
+      <div class="ph-tag">Photo · QA inspection</div>
+      <div class="ph-caption">structural<br>load test</div>
+    </div>
+    <div class="ph cool img" style="border-radius: var(--radius-md);">
+      <div class="ph-grid"></div>
+      <div class="ph-tag">Photo · Flat-pack ready for shipping</div>
+      <div class="ph-caption" style="color: var(--color-gray-4);">240 × ready</div>
+    </div>
+    <div class="ph gradient img" style="border-radius: var(--radius-md);">
+      <div class="ph-circle" style="width:60%; aspect-ratio:1; left:50%; top:50%; transform: translate(-50%,-50%); background: rgba(60,60,60,0.18);"></div>
+      <div class="ph-tag" style="color: var(--color-gray-4);">Photo · Installed, Skroutz HQ store</div>
+      <div class="ph-caption" style="color: var(--color-gray-4);">aisle-end<br>day 1</div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="timeline">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow bar">Process · 6 εβδομάδες</div>
+        <h2>Από brief σε εγκατάσταση.</h2>
+      </div>
+      <div class="meta">240 μονάδες · 240 καταστήματα<br>1 production team</div>
+    </div>
+    <div class="timeline-grid">
+      <div class="step"><div class="week">Εβδομάδα 1</div><h6>Brief & 3D</h6><p>Discovery call, σχεδιασμός σε CAD, 3 renders για έγκριση.</p></div>
+      <div class="step"><div class="week">Εβδομάδα 2</div><h6>Prototype</h6><p>Vacuum-form τεστ, structural validation, packaging mock-up.</p></div>
+      <div class="step"><div class="week">Εβδομάδα 3</div><h6>Sign-off</h6><p>Φυσική παρουσίαση δείγματος στο Coca-Cola HQ. Final tweaks.</p></div>
+      <div class="step"><div class="week">Εβδομάδες 4–5</div><h6>Παραγωγή</h6><p>240 μονάδες, 5 working days, full QA pass.</p></div>
+      <div class="step"><div class="week">Εβδομάδα 5</div><h6>Logistics</h6><p>40 παλέτες, διανομή σε 240 καταστήματα πανελλαδικά.</p></div>
+      <div class="step"><div class="week">Εβδομάδα 6</div><h6>Install</h6><p>Καμπάνια live, store-by-store install support.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pullquote">
+  <div class="container">
+    <q>Production took our brief and gave it back as a finished thing six weeks later. Every store had its unit <span class="accent">on time</span>.</q>
+    <div class="attr">Maria K. <span class="role">— Trade Marketing Manager, Coca-Cola Hellas</span></div>
+  </div>
+</section>
+
+<section class="results">
+  <div class="container">
+    <div class="head">
+      <div>
+        <div class="eyebrow bar" style="color: rgba(255,255,255,0.6);">Results · Αποτελέσματα</div>
+        <h2>Six weeks. Zero misses.<br><em>240 stores, on time.</em></h2>
+      </div>
+      <p>Η καμπάνια έτρεξε από Αύγουστο έως Σεπτέμβριο 2024 σε 240 σημεία της AB Vasilopoulos και Σκλαβενίτη. Όλες οι μονάδες εγκαταστάθηκαν πριν την εκκίνηση της καμπάνιας.</p>
+    </div>
+    <div class="results-grid">
+      <div class="r"><div class="v">240<em>/240</em></div><div class="l">stores live, day 1</div></div>
+      <div class="r"><div class="v">6<em>wks</em></div><div class="l">brief → install</div></div>
+      <div class="r"><div class="v">+22<em>%</em></div><div class="l">campaign sell-through</div></div>
+      <div class="r"><div class="v">0</div><div class="l">field defects reported</div></div>
+    </div>
+  </div>
+</section>
+
+<a href="#" class="next" style="display:block;">
+  <div class="container">
+    <div>
+      <h5>Next project</h5>
+      <div class="title">HORECA Athens 2024 booth →</div>
+    </div>
+    <div class="arrow">→</div>
+  </div>
+</a>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="logo"><img src="assets/logo-horizontal-white.svg" alt="" style="height: 26px; margin-bottom: 16px;"></div>
+      <p style="font-size:13px; line-height:1.6; max-width: 280px; margin: 0;">Crafting Retail Conversion. Industrialized Craft στις Αχαρνές, από το 2008.</p>
+    </div>
+    <div><h6>Catalog</h6><a href="services.html">Special Projects</a><a href="services.html">Floor &amp; Counter</a><a href="services.html">Display Systems</a><a href="services.html">POS Accessories</a></div>
+    <div><h6>Contact</h6><a href="contact.html">info@production.gr</a><a href="contact.html">+30 210 232 27 50</a><a href="contact.html">Τσαμαλή 63, Αχαρναί 13671</a></div>
+    <div><h6>Follow</h6><a href="https://www.instagram.com/production.gr" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/production-ltd/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="container">
+    <div class="legal"><span>© Production LTD 2008–2025</span><span>Privacy · Cookies</span></div>
+  </div>
+</footer>
+
+  <script src="js/anim.js" defer></script>
+  <script src="js/ui-extras.js" defer></script>
+</body>
+</html>

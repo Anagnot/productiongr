@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Floor Stands — Production LTD</title>
+<link rel="icon" href="assets/favicon-transparent.png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css?v=3">
+<link rel="stylesheet" href="css/anim.css">
+<style>
+  .page-hero { padding: 64px 0 0; border-bottom: 0; }
+  .page-hero .container { max-width: var(--max-content); }
+  .page-hero .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-top: 24px; }
+  .page-hero h1 { font-size: 100px; line-height: 0.94; margin: 0; letter-spacing: -0.035em; }
+  .page-hero .lede { font-size: 20px; line-height: 1.5; color: var(--fg-secondary); max-width: 500px; margin: 0; font-weight: 300; }
+
+  /* Spec strip */
+  .spec-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 56px; border-top: 1px solid var(--color-gray-4); border-bottom: 1px solid var(--border-default); }
+  .spec-strip .s { padding: 20px 24px; border-right: 1px solid var(--border-subtle); }
+  .spec-strip .s:last-child { border-right: 0; }
+  .spec-strip .s h6 { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); margin: 0 0 6px; }
+  .spec-strip .s .v { font-weight: 700; font-size: 17px; color: var(--color-gray-4); letter-spacing: -0.01em; }
+
+  .hero-photo { padding: 32px 0 96px; }
+  .hero-photo .frame { aspect-ratio: 21/9; }
+
+  /* Materials breakdown */
+  .materials-detail { padding: 96px 0; }
+  .materials-detail .section-head { margin-bottom: 56px; }
+  .mat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .mat { display: flex; flex-direction: column; gap: 20px; cursor: pointer; }
+  .mat .frame { aspect-ratio: 4/3; transition: transform var(--duration) var(--ease); }
+  .mat:hover .frame { transform: translateY(-4px); }
+  .mat .body { display: grid; grid-template-columns: 60px 1fr; gap: 24px; align-items: start; }
+  .mat .body .n { font-family: var(--font-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; color: var(--color-orange); padding-top: 4px; }
+  .mat h3 { font-size: 32px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 6px; }
+  .mat .en { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: 14px; }
+  .mat p { font-size: 15px; line-height: 1.6; color: var(--fg-secondary); margin: 0 0 16px; }
+  .mat .specs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .mat .mini-data { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding-top: 14px; border-top: 1px solid var(--border-default); }
+  .mat .mini-data .item .k { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: 4px; }
+  .mat .mini-data .item .v { font-size: 13px; font-weight: 700; color: var(--color-gray-4); }
+
+  /* Two-col narrative — Industrialized Craft */
+  .two-col { padding: 96px 0; background: var(--color-gray-1); }
+  .two-col .container { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .two-col .visual { aspect-ratio: 4/5; }
+  .two-col h2 { font-size: 44px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 18px; }
+  .two-col p { font-size: 17px; line-height: 1.65; color: var(--fg-primary); margin: 0 0 16px; }
+  .two-col .checklist { margin-top: 24px; display: grid; gap: 14px; }
+  .two-col .checklist .item { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; }
+  .two-col .checklist .item .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--color-orange); margin-top: 6px; }
+  .two-col .checklist .item h6 { font-size: 15px; font-weight: 700; margin: 0 0 2px; }
+  .two-col .checklist .item p { font-size: 13px; color: var(--fg-secondary); margin: 0; line-height: 1.5; }
+
+  /* Channel suitability */
+  .channels-fit { padding: 96px 0; background: var(--color-white); }
+  .channels-fit .head { margin-bottom: 40px; }
+  .channels-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border-top: 1px solid var(--color-gray-4); }
+  .channels-grid .ch { padding: 24px 16px 28px; border-right: 1px solid var(--border-default); display: flex; flex-direction: column; gap: 10px; min-height: 200px; }
+  .channels-grid .ch:last-child { border-right: 0; }
+  .channels-grid .ch .num { font-family: var(--font-mono); font-weight: 700; font-size: 10px; color: var(--fg-tertiary); letter-spacing: 0.12em; }
+  .channels-grid .ch h6 { font-size: 15px; font-weight: 800; margin: 0 0 2px; letter-spacing: -0.01em; line-height: 1.15; }
+  .channels-grid .ch p { font-size: 12px; color: var(--fg-secondary); line-height: 1.5; margin: 0 0 12px; }
+  .channels-grid .ch .fit-bar { margin-top: auto; }
+  .channels-grid .ch .fit-bar .label { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-orange); margin-bottom: 4px; }
+  .channels-grid .ch .fit-bar .track { height: 4px; border-radius: 2px; background: var(--color-gray-1); position: relative; overflow: hidden; }
+  .channels-grid .ch .fit-bar .track .fill { height: 100%; background: var(--color-orange); border-radius: 2px; }
+
+  /* Selected projects */
+  .related-work { padding: 96px 0; background: var(--color-gray-1); }
+  .related-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 320px 240px; gap: 12px; }
+  .related-grid .tile { border-radius: var(--radius-lg); overflow: hidden; position: relative; cursor: pointer; }
+  .related-grid .tile:nth-child(1) { grid-row: span 2; }
+  .related-grid .tile .meta { position: absolute; left: 22px; bottom: 22px; right: 22px; color: #fff; z-index: 3; }
+  .related-grid .tile .meta.dark { color: var(--color-gray-4); }
+  .related-grid .tile .meta .eyebrow { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+  .related-grid .tile .meta.dark .eyebrow { color: var(--fg-secondary); }
+  .related-grid .tile h4 { font-size: 22px; font-weight: 800; line-height: 1.1; margin: 6px 0 0; letter-spacing: -0.01em; }
+</style>
+<link rel="stylesheet" href="css/responsive.css?v=3">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><img src="assets/logo-horizontal-black.svg" alt="Production LTD"></a>
+    <nav class="site-nav">
+      <a href="index.html">Αρχική</a>
+      <a href="services.html" class="active">Προϊόντα</a>
+      <a href="portfolio.html">Έργα</a>
+      <a href="about.html">Εταιρία</a>
+      <a href="contact.html">Επικοινωνία</a>
+      <div class="lang-switch"><button class="trigger"><span>EL</span><svg class="chev" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M1 1 L5 5 L9 1"/></svg></button></div>
+      <a href="quote.html" class="cta primary">Strategic briefing →</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Αρχική</a> / <a href="services.html">Προϊόντα</a> / <span>Floor Stands</span></div>
+    <div class="hero-grid">
+      <div>
+        <h1>Floor<br>Stands.</h1>
+      </div>
+      <p class="lede">Σταντ εδάφους — από flat-pack seasonal pallet displays μέχρι μόνιμες βιομηχανικές κατασκευές με LED integration. 5 διαθέσιμα υλικά, ίδια Value Engineering και OTIF πειθαρχία σε κάθε build.</p>
+    </div>
+    <div class="spec-strip">
+      <div class="s"><h6>Materials</h6><div class="v">5</div></div>
+      <div class="s"><h6>Lead time (proto)</h6><div class="v">5–7 ημέρες</div></div>
+      <div class="s"><h6>Min order</h6><div class="v">50 units</div></div>
+      <div class="s"><h6>Max run</h6><div class="v">10.000+</div></div>
+      <div class="s"><h6>Channels</h6><div class="v">7 retail</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="hero-photo">
+  <div class="container">
+    <div class="ph orange frame" style="aspect-ratio: 21/9; border-radius: var(--radius-lg);">
+      <div class="ph-grid"></div>
+      <div class="ph-circle" style="width: 380px; height: 380px; right: -100px; top: -100px;"></div>
+      <div class="ph-para" style="left: 8%; top: -20%; bottom: -20%; width: 160px;"></div>
+      <div class="ph-tag">Photo · Coca-Cola summer end-cap, AB Vasilopoulos</div>
+      <div class="ph-logo">P / 01.HERO</div>
+      <div class="ph-caption">freestanding,<br>240 stores</div>
+    </div>
+  </div>
+</section>
+
+<!-- Materials drill-down (the brief's IA: Type → Material) -->
+<section class="materials-detail">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow bar">01 · Διαθέσιμα υλικά</div>
+        <h2>Πέντε υλικά —<br>πέντε διαφορετικές αξίες.</h2>
+      </div>
+      <div class="meta">Κάθε υλικό προτείνεται μέσω<br>Value Engineering ανάλογα με ποσότητα, αντοχή, budget.</div>
+    </div>
+    <div class="mat-grid">
+      <div class="mat">
+        <div class="ph warm frame">
+          <div class="ph-grid"></div>
+          <div class="ph-circle" style="width: 200px; height: 200px; right: -60px; top: -60px;"></div>
+          <div class="ph-tag">Photo · Paper / corrugated floor stand</div>
+          <div class="ph-caption">flat-pack<br>seasonal</div>
+        </div>
+        <div class="body">
+          <div class="n">01</div>
+          <div>
+            <h3>Χαρτί</h3>
+            <div class="en">Paper · Corrugated</div>
+            <p>Flat-pack, οικονομική λύση, 100% ανακυκλώσιμο. Ιδανικό για seasonal promotions και short campaigns. Quick deployment.</p>
+            <div class="specs">
+              <span class="tag-pill orange">100% recyclable</span>
+              <span class="tag-pill">Flat-pack</span>
+              <span class="tag-pill">E-flute</span>
+            </div>
+            <div class="mini-data">
+              <div class="item"><div class="k">Sweet spot</div><div class="v">200–5.000 units</div></div>
+              <div class="item"><div class="k">Lead time</div><div class="v">3–4 εβδομάδες</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mat">
+        <div class="ph dark frame">
+          <div class="ph-grid"></div>
+          <div class="ph-circle" style="width: 220px; height: 220px; left: -60px; bottom: -60px;"></div>
+          <div class="ph-para" style="right: 10%; top: 0; bottom: 0; width: 100px;"></div>
+          <div class="ph-tag">Photo · Metal freestanding unit</div>
+          <div class="ph-caption">βιομηχανική<br>αντοχή</div>
+        </div>
+        <div class="body">
+          <div class="n">02</div>
+          <div>
+            <h3>Μέταλλο</h3>
+            <div class="en">Metal · Steel · Aluminium</div>
+            <p>Μέγιστη αντοχή, μόνιμες κατασκευές μεγάλης κλίμακας. Βιομηχανική αισθητική για heavy-use περιβάλλοντα.</p>
+            <div class="specs">
+              <span class="tag-pill">Powder coated</span>
+              <span class="tag-pill">CNC bent</span>
+              <span class="tag-pill">Welded joints</span>
+            </div>
+            <div class="mini-data">
+              <div class="item"><div class="k">Sweet spot</div><div class="v">Μόνιμη εγκατάσταση</div></div>
+              <div class="item"><div class="k">Lead time</div><div class="v">5–8 εβδομάδες</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mat">
+        <div class="ph cool frame">
+          <div class="ph-grid"></div>
+          <div class="ph-circle" style="width: 180px; height: 180px; right: -40px; top: 40px; background: rgba(230,92,0,0.18);"></div>
+          <div class="ph-tag">Photo · Wood / MDF premium floor unit</div>
+          <div class="ph-caption" style="color: var(--color-gray-4);">premium<br>warmth</div>
+        </div>
+        <div class="body">
+          <div class="n">03</div>
+          <div>
+            <h3>Ξύλο / MDF</h3>
+            <div class="en">Wood &amp; MDF</div>
+            <p>Premium φινίρισμα, CNC ακρίβεια, βαφή. Warm &amp; premium αισθητική — ιδανικό για cosmetics, fashion, hospitality.</p>
+            <div class="specs">
+              <span class="tag-pill">CNC ακρίβεια</span>
+              <span class="tag-pill">Wood veneer</span>
+              <span class="tag-pill">Lacquer finish</span>
+            </div>
+            <div class="mini-data">
+              <div class="item"><div class="k">Sweet spot</div><div class="v">50–500 units</div></div>
+              <div class="item"><div class="k">Lead time</div><div class="v">6–8 εβδομάδες</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mat">
+        <div class="ph yellow frame">
+          <div class="ph-grid"></div>
+          <div class="ph-para" style="left: 20%; top: -20%; bottom: -20%; width: 120px; background: rgba(60,60,60,0.18);"></div>
+          <div class="ph-tag">Photo · Plastic PVC floor display</div>
+          <div class="ph-caption">color-true<br>at scale</div>
+        </div>
+        <div class="body">
+          <div class="n">04</div>
+          <div>
+            <h3>Πλαστικό</h3>
+            <div class="en">Plastic · PVC · Forex</div>
+            <p>Ευελιξία, ελαφρύ βάρος, άψογη απόδοση χρωμάτων. Καλή τιμή σε volume run, ιδανικό για mid-life campaigns.</p>
+            <div class="specs">
+              <span class="tag-pill">Vacuum-formed</span>
+              <span class="tag-pill">Color-matched</span>
+              <span class="tag-pill">Lightweight</span>
+            </div>
+            <div class="mini-data">
+              <div class="item"><div class="k">Sweet spot</div><div class="v">500–5.000 units</div></div>
+              <div class="item"><div class="k">Lead time</div><div class="v">4–6 εβδομάδες</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mat" style="grid-column: 1 / -1;">
+        <div class="ph gradient frame" style="aspect-ratio: 16/6;">
+          <div class="ph-grid"></div>
+          <div class="ph-circle" style="width: 320px; height: 320px; left: 50%; top: 50%; transform: translate(-50%,-50%); background: rgba(60,60,60,0.18);"></div>
+          <div class="ph-para" style="left: 0; top: -20%; bottom: -20%; width: 140px; background: rgba(60,60,60,0.22);"></div>
+          <div class="ph-tag" style="color: var(--color-gray-4);">Photo · Plexiglass premium floor display, laser-cut, LED-edge</div>
+          <div class="ph-caption" style="color: var(--color-gray-4);">the Wow Factor — laser cut, LED edge, premium translucency</div>
+        </div>
+        <div class="body">
+          <div class="n">05</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+            <div>
+              <h3>Plexiglass</h3>
+              <div class="en">PMMA · Acrylic · Premium</div>
+              <p>Διαφάνεια, laser cut, διάχυση φωτός — το ιερό υλικό για το «Wow Factor». Premium retail, cosmetics flagship, και Special Projects.</p>
+              <div class="specs">
+                <span class="tag-pill orange">Premium · Wow Factor</span>
+                <span class="tag-pill">Laser cut</span>
+                <span class="tag-pill">LED-edge</span>
+                <span class="tag-pill">Opal / Clear / Tinted</span>
+              </div>
+            </div>
+            <div class="mini-data" style="border-top: 0; padding-top: 0;">
+              <div class="item"><div class="k">Sweet spot</div><div class="v">50–500 units · Key Accounts</div></div>
+              <div class="item"><div class="k">Lead time</div><div class="v">4–6 εβδομάδες</div></div>
+              <div class="item"><div class="k">Finish</div><div class="v">Polished edge · LED-ready</div></div>
+              <div class="item"><div class="k">Combo</div><div class="v">Με Metal/MDF = Special</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Industrialized Craft narrative -->
+<section class="two-col">
+  <div class="container">
+    <div class="ph gradient visual" style="border-radius: var(--radius-lg);">
+      <div class="ph-grid"></div>
+      <div class="ph-circle" style="width: 60%; aspect-ratio: 1; left: 50%; top: 50%; transform: translate(-50%,-50%); background: rgba(60,60,60,0.18);"></div>
+      <div class="ph-para" style="left: 0; top: -10%; bottom: -10%; width: 140px; background: rgba(60,60,60,0.22);"></div>
+      <div class="ph-tag">Photo · CNC + μεταξοτυπία, παραγωγή στις Αχαρνές</div>
+      <div class="ph-caption" style="color: var(--color-gray-4);">Industrialized<br>Craft</div>
+    </div>
+    <div>
+      <div class="eyebrow bar" style="margin-bottom: 14px;">Why us · Industrialized Craft</div>
+      <h2>Conversion tools — όχι «κατασκευές».</h2>
+      <p>Κάθε floor stand που φεύγει από τις Αχαρνές είναι μελετημένο να κερδίσει το βλέμμα του καταναλωτή στα πρώτα 3 δευτερόλεπτα. Αυτή είναι η διαφορά μεταξύ «κατασκευής» και conversion tool.</p>
+      <div class="checklist">
+        <div class="item"><div class="dot"></div><div><h6>Value Engineering από day 1</h6><p>Επιλογή υλικού βάσει cost/quality, όχι έκπτωση στην ποιότητα.</p></div></div>
+        <div class="item"><div class="dot"></div><div><h6>Nesting 92%</h6><p>Έξυπνη σχεδίαση φύλλου — δραστική μείωση φύρας &amp; carbon footprint.</p></div></div>
+        <div class="item"><div class="dot"></div><div><h6>OTIF παράδοση</h6><p>Το stand στο ράφι την ημέρα του launch — μηδέν εκπλήξεις.</p></div></div>
+        <div class="item"><div class="dot"></div><div><h6>Πανελλαδική διανομή</h6><p>Logistics &amp; εγκατάσταση από εμάς, σε όλη την Ελλάδα.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Channel suitability -->
+<section class="channels-fit">
+  <div class="container">
+    <div class="section-head head">
+      <div>
+        <div class="eyebrow bar">02 · Channel suitability</div>
+        <h2>Floor stands σε κάθε retail κανάλι.</h2>
+      </div>
+      <div class="meta">Fit rating βάσει<br>volume, αντοχή &amp; αισθητική</div>
+    </div>
+    <div class="channels-grid">
+      <div class="ch">
+        <div class="num">01</div>
+        <h6>Super Markets</h6>
+        <p>Aisle-end &amp; pallet displays για mass FMCG.</p>
+        <div class="fit-bar"><div class="label">Fit · Strong</div><div class="track"><div class="fill" style="width: 95%;"></div></div></div>
+      </div>
+      <div class="ch">
+        <div class="num">02</div>
+        <h6>Retail Stores</h6>
+        <p>Premium MDF/Plexi για design-led brands.</p>
+        <div class="fit-bar"><div class="label">Fit · Strong</div><div class="track"><div class="fill" style="width: 90%;"></div></div></div>
+      </div>
+      <div class="ch">
+        <div class="num">03</div>
+        <h6>Cosmetics</h6>
+        <p>Plexi + LED — premium φινίρισμα.</p>
+        <div class="fit-bar"><div class="label">Fit · Strong</div><div class="track"><div class="fill" style="width: 92%;"></div></div></div>
+      </div>
+      <div class="ch">
+        <div class="num">04</div>
+        <h6>Pharmacy</h6>
+        <p>Καθαρή αισθητική, εργονομία.</p>
+        <div class="fit-bar"><div class="label">Fit · Good</div><div class="track"><div class="fill" style="width: 75%;"></div></div></div>
+      </div>
+      <div class="ch">
+        <div class="num">05</div>
+        <h6>HORECA</h6>
+        <p>Μόνιμα displays σε εστιατόρια &amp; bars.</p>
+        <div class="fit-bar"><div class="label">Fit · Moderate</div><div class="track"><div class="fill" style="width: 60%;"></div></div></div>
+      </div>
+      <div class="ch">
+        <div class="num">06</div>
+        <h6>Hotels</h6>
+        <p>Lobby retail displays &amp; signage.</p>
+        <div class="fit-bar"><div class="label">Fit · Moderate</div><div class="track"><div class="fill" style="width: 55%;"></div></div></div>
+      </div>
+      <div class="ch">
+        <div class="num">07</div>
+        <h6>Kiosk</h6>
+        <p>Compact units για περιορισμένο χώρο.</p>
+        <div class="fit-bar"><div class="label">Fit · Niche</div><div class="track"><div class="fill" style="width: 40%;"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Selected work -->
+<section class="related-work">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow bar">03 · Selected floor stand work</div>
+        <h2>Πρόσφατα έργα σε floor stands.</h2>
+      </div>
+      <a href="portfolio.html" class="cta outline">Όλα τα έργα →</a>
+    </div>
+    <div class="related-grid">
+      <a href="case-coca-cola-summer-endcap.html" class="tile ph orange">
+        <div class="ph-grid"></div>
+        <div class="ph-circle" style="width: 280px; height: 280px; right: -80px; bottom: -80px;"></div>
+        <div class="ph-tag">Photo · Featured</div>
+        <div class="meta">
+          <div class="eyebrow">Coca-Cola · 2024 · Plexiglass</div>
+          <h4>Summer end-cap, 240 stores · OTIF</h4>
+        </div>
+      </a>
+      <a href="portfolio.html" class="tile ph yellow">
+        <div class="ph-grid"></div>
+        <div class="ph-tag">Photo · L'Oréal pharma floor</div>
+        <div class="meta dark">
+          <div class="eyebrow">L'Oréal · 2024 · MDF + Plexi</div>
+          <h4>Vichy pharmacy floor display</h4>
+        </div>
+      </a>
+      <a href="portfolio.html" class="tile ph dark">
+        <div class="ph-grid"></div>
+        <div class="ph-tag">Photo · Heineken</div>
+        <div class="meta">
+          <div class="eyebrow">Heineken · 2024 · Paper</div>
+          <h4>Euro 2024 pallet display</h4>
+        </div>
+      </a>
+      <a href="portfolio.html" class="tile ph cool">
+        <div class="ph-tag">Photo · Nestlé</div>
+        <div class="meta dark">
+          <div class="eyebrow">Nestlé · 2023 · Paper</div>
+          <h4>Cereal seasonal floor, 350 stores</h4>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="ornament"></div>
+  <div class="container">
+    <h2>Έχετε ένα floor stand brief; <em>Let's engineer it.</em></h2>
+    <a href="quote.html" class="cta primary lg" style="background: var(--color-orange);">Strategic briefing →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="logo"><img src="assets/logo-horizontal-white.svg" alt="" style="height: 26px; margin-bottom: 16px;"></div>
+      <p style="font-size:13px; line-height:1.6; max-width: 280px; margin: 0;">Crafting Retail Conversion. Industrialized Craft στις Αχαρνές, από το 2008.</p>
+    </div>
+    <div><h6>Catalog</h6><a href="services.html">Special Projects</a><a href="services.html">Floor &amp; Counter</a><a href="services.html">Display Systems</a><a href="services.html">POS Accessories</a></div>
+    <div><h6>Contact</h6><a href="contact.html">info@production.gr</a><a href="contact.html">+30 210 232 27 50</a><a href="contact.html">Τσαμαλή 63, Αχαρναί 13671</a></div>
+    <div><h6>Follow</h6><a href="https://www.instagram.com/production.gr" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/production-ltd/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="container">
+    <div class="legal"><span>© Production LTD 2008–2025</span><span>Privacy · Cookies</span></div>
+  </div>
+</footer>
+
+  <script src="js/anim.js" defer></script>
+  <script src="js/ui-extras.js" defer></script>
+</body>
+</html>

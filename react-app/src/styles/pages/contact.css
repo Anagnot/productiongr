@@ -1,0 +1,62 @@
+  .page-hero { padding: 80px 0 56px; border-bottom: 0; }
+  .page-hero h1 { font-size: 96px; line-height: 0.94; margin: 18px 0 28px; }
+  .page-hero .lede { font-size: 22px; line-height: 1.5; color: var(--fg-secondary); max-width: 600px; font-weight: 300; margin: 0; }
+
+  .contact-grid { padding: 32px 0 96px; }
+  .contact-grid .container { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+
+  /* Left: info cards */
+  .info-stack { display: grid; gap: 12px; }
+  .info-card { padding: 28px; background: var(--color-gray-1); border-radius: var(--radius-lg); display: grid; grid-template-columns: 56px 1fr; gap: 24px; align-items: start; transition: background var(--duration) var(--ease); }
+  .info-card:hover { background: var(--color-white); border: 1px solid var(--border-default); }
+  .info-card .glyph { width: 56px; height: 56px; border-radius: 50%; background: var(--color-gray-4); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; }
+  .info-stack .info-card:first-child .glyph { font-size: 26px; letter-spacing: 0; line-height: 1; }
+  .info-card h6 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); margin: 0 0 10px; }
+  .info-card .v { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; margin: 0 0 6px; }
+  .info-card .v a:hover { color: var(--color-gray-4); }
+  .info-card .meta { font-size: 13px; color: var(--fg-secondary); line-height: 1.55; margin: 6px 0 0; }
+  .info-card .actions { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .info-card .actions a { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-gray-4); padding: 6px 10px; border-radius: var(--radius-sm); background: var(--color-white); border: 1px solid var(--border-default); }
+  .info-card .actions a:hover { border-color: var(--color-gray-4); color: var(--color-gray-4); }
+
+  /* Right: quick form */
+  .quick-form { padding: 36px; background: var(--color-gray-4); color: #fff; border-radius: var(--radius-lg); position: relative; overflow: hidden; }
+  .quick-form .ornament { position: absolute; right: -120px; top: -100px; width: 260px; height: 260px; border-radius: 50%; background: var(--color-orange); opacity: 0.16; filter: blur(60px); }
+  .quick-form > * { position: relative; z-index: 1; }
+  .quick-form h2 { font-size: 36px; font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; margin: 6px 0 10px; color: #fff; }
+  .quick-form .sub { font-size: 15px; color: rgba(255,255,255,0.7); margin: 0 0 28px; }
+  .quick-form .sub a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  .quick-form .sub a:hover { color: var(--color-orange); }
+  .quick-form .fields { display: grid; gap: 18px; }
+  .quick-form .field { min-width: 0; }
+  .quick-form .field label { color: rgba(255,255,255,0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .quick-form .field label .opt { color: rgba(255,255,255,0.35); font-weight: 400; margin-left: 4px; }
+  .quick-form .field input, .quick-form .field textarea, .quick-form .field select { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.16); color: #fff; border-radius: 10px; }
+  .quick-form .field input::placeholder, .quick-form .field textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .quick-form .field input:focus, .quick-form .field textarea:focus, .quick-form .field select:focus { border-color: var(--color-orange); background: rgba(255,255,255,0.08); box-shadow: none; }
+  .quick-form .field select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23ffffff' stroke-opacity='0.5' stroke-width='1.5'><path d='M1 1 L6 6 L11 1'/></svg>"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+  .quick-form .field textarea { min-height: 168px; resize: vertical; }
+
+  .quick-form .top-row { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .quick-form .top-row .field-message textarea { min-height: 168px; }
+  .quick-form .bottom-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+
+  .quick-form .actions { display: flex; gap: 14px; align-items: center; margin-top: 28px; flex-wrap: wrap; }
+  .quick-form .actions .cta { padding: 14px 22px; font-size: 14px; }
+  .quick-form .briefing-link { display: inline-block; margin-top: 16px; font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+  .quick-form .briefing-link:hover { color: var(--color-orange); }
+
+  /* Map */
+  .map-band { padding: 0 0 96px; }
+  .map-band .container { max-width: var(--max-content); }
+  .map-frame { aspect-ratio: 21/9; border-radius: var(--radius-lg); overflow: hidden; position: relative; background: var(--color-gray-1); }
+  .map-frame .map-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(60,60,60,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(60,60,60,0.06) 1px, transparent 1px); background-size: 32px 32px; }
+  .map-frame .map-roads { position: absolute; inset: 0; }
+  .map-frame .map-roads svg { width: 100%; height: 100%; }
+  .map-frame .pin { position: absolute; left: 52%; top: 50%; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; gap: 0; z-index: 2; }
+  .map-frame .pin .label { background: var(--color-white); padding: 10px 14px; border-radius: var(--radius-md); box-shadow: var(--shadow-md); font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-gray-4); margin-bottom: 8px; white-space: nowrap; }
+  .map-frame .pin .marker { width: 24px; height: 24px; border-radius: 50%; background: var(--color-orange); border: 3px solid #fff; box-shadow: 0 4px 12px rgba(230, 92, 0,0.4); position: relative; }
+  .map-frame .pin .marker::after { content: ''; position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid #fff; }
+  .map-frame .pin .ripple { position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 8px; height: 4px; border-radius: 50%; background: rgba(230, 92, 0,0.3); }
+  .map-frame .corner { position: absolute; bottom: 18px; left: 18px; font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .map-frame .corner.r { left: auto; right: 18px; text-align: right; }

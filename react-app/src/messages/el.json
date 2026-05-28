@@ -1,0 +1,2466 @@
+{
+  "meta": {
+    "siteTagline": "Crafting Retail Conversion",
+    "defaultDescription": "POP/POS συστήματα που κερδίζουν το βλέμμα του καταναλωτή στα πρώτα 3 δευτερόλεπτα. Industrialized Craft στις Αχαρνές, από το 2008.",
+    "ogLocale": "el_GR"
+  },
+  "nav": {
+    "home": "Αρχική",
+    "services": "Προϊόντα",
+    "portfolio": "Έργα",
+    "about": "Εταιρία",
+    "contact": "Επικοινωνία",
+    "ctaBrief": "Strategic briefing →",
+    "channels": "Κανάλια"
+  },
+  "footer": {
+    "tagline": "Crafting Retail Conversion. Industrialized Craft στις Αχαρνές, από το 2008.",
+    "catalog": {
+      "title": "Catalog",
+      "specialProjects": "Special Projects",
+      "floorCounter": "Floor & Counter Stands",
+      "displaySystems": "Display Systems",
+      "gondolaPallet": "Gondola & Pallet",
+      "posAccessories": "POS Accessories"
+    },
+    "company": {
+      "title": "Εταιρία",
+      "about": "Η εταιρία",
+      "portfolio": "Έργα",
+      "contact": "Επικοινωνία",
+      "quote": "Strategic briefing"
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "info@production.gr",
+      "phone": "+30 210 232 27 50",
+      "address": "Τσαμαλή 63, Αχαρναί 13671",
+      "sitemap": "Sitemap"
+    },
+    "follow": {
+      "title": "Follow",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
+    "legal": {
+      "copyright": "© Production LTD 2008–2025. All rights reserved.",
+      "privacy": "Πολιτική Απορρήτου",
+      "cookies": "Cookies",
+      "cookieSettings": "Ρυθμίσεις cookies"
+    }
+  },
+  "cookieConsent": {
+    "title": "Cookies & Απόρρητο",
+    "body": "Χρησιμοποιούμε απαραίτητα cookies για τη λειτουργία του site. Με τη συγκατάθεσή σας, μπορούμε επίσης να ενεργοποιήσουμε analytics για να καταλαβαίνουμε πώς χρησιμοποιείται το site και να βελτιώνουμε την εμπειρία.",
+    "learnMore": "Μάθετε περισσότερα",
+    "acceptAll": "Αποδοχή όλων",
+    "rejectAll": "Μόνο απαραίτητα",
+    "customize": "Ρυθμίσεις",
+    "save": "Αποθήκευση επιλογών",
+    "back": "Πίσω",
+    "categories": {
+      "necessary": {
+        "label": "Απαραίτητα",
+        "always": "Πάντα ενεργά",
+        "desc": "Απαιτούνται για βασικές λειτουργίες — γλώσσα, ασφάλεια, αποθήκευση των ίδιων των επιλογών cookies."
+      },
+      "analytics": {
+        "label": "Analytics",
+        "desc": "Ανώνυμες μετρήσεις χρήσης (page views, χρόνος παραμονής) ώστε να βελτιώνουμε το site. Δεν χρησιμοποιείται για εντοπισμό ταυτότητας."
+      },
+      "marketing": {
+        "label": "Marketing",
+        "desc": "Cookies από εξωτερικές πλατφόρμες για μέτρηση καμπανιών και remarketing. Προς το παρόν ανενεργά."
+      }
+    },
+    "manageLabel": "Διαχείριση cookies",
+    "managePrompt": "Μπορείτε ανά πάσα στιγμή να αλλάξετε τις επιλογές σας."
+  },
+  "privacy": {
+    "metaTitle": "Πολιτική Απορρήτου — Production LTD",
+    "metaDescription": "Πώς συλλέγουμε, χρησιμοποιούμε και προστατεύουμε τα προσωπικά σας δεδομένα στο production.gr.",
+    "h1": "Πολιτική Απορρήτου",
+    "updated": "Τελευταία ενημέρωση: 26 Μαΐου 2026",
+    "sections": [
+      {
+        "h": "1. Υπεύθυνος επεξεργασίας",
+        "p": "Production LTD, Τσαμαλή 63, Αχαρναί 13671, Ελλάδα. Email: info@production.gr · Τηλ: +30 210 232 27 50."
+      },
+      {
+        "h": "2. Δεδομένα που συλλέγουμε",
+        "p": "Συλλέγουμε μόνο όσα μας στέλνετε εσείς μέσω της φόρμας briefing (όνομα, εταιρία, email, τηλέφωνο, περιγραφή έργου) και τεχνικά δεδομένα περιήγησης (IP, browser, σελίδες) εφόσον έχετε δώσει συγκατάθεση για analytics."
+      },
+      {
+        "h": "3. Σκοπός επεξεργασίας",
+        "p": "Επικοινωνία σε σχέση με το briefing σας, προετοιμασία προσφοράς, βελτίωση του site. Δεν πουλάμε δεδομένα σε τρίτους."
+      },
+      {
+        "h": "4. Νομική βάση",
+        "p": "Συγκατάθεση (φόρμα briefing, analytics cookies) και έννομο συμφέρον για ασφαλή λειτουργία του site."
+      },
+      {
+        "h": "5. Χρόνος διατήρησης",
+        "p": "Δεδομένα briefing: έως 24 μήνες μετά την τελευταία επικοινωνία. Analytics: σύμφωνα με τις ρυθμίσεις του παρόχου (συνήθως 14 μήνες)."
+      },
+      {
+        "h": "6. Δικαιώματά σας",
+        "p": "Έχετε δικαίωμα πρόσβασης, διόρθωσης, διαγραφής, περιορισμού, φορητότητας και εναντίωσης. Στείλτε αίτημα στο info@production.gr και απαντάμε εντός 30 ημερών."
+      },
+      {
+        "h": "7. Cookies",
+        "p": "Δείτε αναλυτικά στη σελίδα Cookies."
+      },
+      {
+        "h": "8. Παράπονα",
+        "p": "Μπορείτε να υποβάλετε καταγγελία στην Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (www.dpa.gr)."
+      }
+    ]
+  },
+  "cookies": {
+    "metaTitle": "Πολιτική Cookies — Production LTD",
+    "metaDescription": "Ποια cookies χρησιμοποιεί το production.gr και πώς μπορείτε να τα διαχειριστείτε.",
+    "h1": "Πολιτική Cookies",
+    "updated": "Τελευταία ενημέρωση: 26 Μαΐου 2026",
+    "intro": "Τα cookies είναι μικρά αρχεία που αποθηκεύονται στη συσκευή σας. Τα χρησιμοποιούμε για τη βασική λειτουργία και — με τη συγκατάθεσή σας — για στατιστικά χρήσης.",
+    "tableHeads": ["Κατηγορία", "Περιγραφή", "Διάρκεια"],
+    "rows": [
+      {
+        "cat": "Απαραίτητα",
+        "desc": "Αποθηκεύουν τις επιλογές σας για cookies και τη γλώσσα που επιλέξατε.",
+        "dur": "12 μήνες"
+      },
+      {
+        "cat": "Analytics (opt-in)",
+        "desc": "Ανώνυμη μέτρηση επισκέψεων και συμπεριφοράς. Ενεργοποιούνται μόνο με τη συγκατάθεσή σας.",
+        "dur": "έως 14 μήνες"
+      },
+      {
+        "cat": "Marketing",
+        "desc": "Δεν χρησιμοποιούμε προς το παρόν marketing cookies.",
+        "dur": "—"
+      }
+    ],
+    "manageTitle": "Διαχείριση των επιλογών σας",
+    "manageText": "Μπορείτε ανά πάσα στιγμή να αλλάξετε τις επιλογές σας από το παρακάτω κουμπί ή να διαγράψετε όλα τα cookies από τις ρυθμίσεις του browser σας.",
+    "manageButton": "Άνοιγμα ρυθμίσεων cookies"
+  },
+  "common": {
+    "strategicBriefing": "Strategic briefing →",
+    "ctaBlockTitlePre": "Ας δώσουμε μορφή",
+    "ctaBlockTitleAccent": "στο επόμενο project σας."
+  },
+  "home": {
+    "metaTitle": "Production LTD — POP/POS συστήματα από το 2008",
+    "metaDescription": "Crafting Retail Conversion. POP/POS συστήματα που μετατρέπουν το ράφι σε επιλογή — από Industrialized Craft μονάδα στις Αχαρνές.",
+    "hero": {
+      "heading1": "Crafting",
+      "heading2": "retail.",
+      "lede": "POP/POS συστήματα που κερδίζουν το βλέμμα του καταναλωτή στα πρώτα 3 δευτερόλεπτα.",
+      "ctaWork": "Δείτε τα έργα μας →",
+      "ctaProducts": "Προϊόντα"
+    },
+    "channels": {
+      "eyebrow": "Channels · Αγορές που εξυπηρετούμε",
+      "right": "7 retail κανάλια",
+      "items": [
+        [
+          "01",
+          "Super Markets",
+          "Heavy-use POS"
+        ],
+        [
+          "02",
+          "Retail Stores",
+          "Design-led displays"
+        ],
+        [
+          "03",
+          "Cosmetics",
+          "Premium φινίρισμα"
+        ],
+        [
+          "04",
+          "Pharmacy",
+          "Trust & ergonomics"
+        ],
+        [
+          "05",
+          "HORECA",
+          "Restaurants, café, bar"
+        ],
+        [
+          "06",
+          "Hotels",
+          "Hospitality signage"
+        ],
+        [
+          "07",
+          "Kiosk & Convenience",
+          "Compact, impulse"
+        ]
+      ]
+    },
+    "aboutStrip": {
+      "signature": "silk legacy,\nindustrialized.",
+      "eyebrow": "Η εταιρία · Industrialized Craft",
+      "h2Pre": "Όχι απλή αποτύπωση μελανιού —",
+      "h2Em": "conversion tools.",
+      "p1Pre": "Η Production LTD ιδρύθηκε το 2008, με αφετηρία την τέχνη της μεταξοτυπίας. Σήμερα είμαστε μια",
+      "p1Accent": "καθετοποιημένη μονάδα παραγωγής",
+      "p1Post": "ολοκληρωμένων συστημάτων POP — υπό τη στρατηγική καθοδήγηση της οικογένειας Δημαρά.",
+      "p2Pre": "Σχεδιάζουμε και κατασκευάζουμε συστήματα προβολής που μετατρέπουν την πρώτη ύλη σε εμπειρία brand. Πιστεύουμε στο",
+      "p2Accent": "Industrialized Craft",
+      "p2Post": "— τη συνύπαρξη της ιστορικής μας ταυτότητας (Silk) με τεχνολογίες αιχμής, όπως η ψηφιακή εκτύπωση και η κατεργασία CNC."
+    },
+    "services": {
+      "eyebrow": "01 · Τι παράγουμε",
+      "h2": "9 τύποι κατασκευών.",
+      "meta": "Special Projects · Floor & Counter Stands · Display Systems · Gondola · Pallet · Wall Units · Shelf Trays · POS Accessories",
+      "featBig": {
+        "num": "00 · Premium",
+        "title": "Special Projects",
+        "desc": "Bespoke λύσεις με συνδυασμό υλικών (Metal+Wood, Plexi+MDF, Mix 3+) — για flagship campaigns και Key Accounts. «Πες μας τι θέλεις, εμείς θα σου πούμε σε τι υλικό και γιατί.»"
+      },
+      "items": [
+        {
+          "num": "01 / 09",
+          "title": "Floor Stands",
+          "desc": "Σταντ εδάφους — Χαρτί, Μέταλλο, Ξύλο, Πλαστικό, Plexiglass.",
+          "href": "/services/floor-stands"
+        },
+        {
+          "num": "02 / 09",
+          "title": "Counter Stands",
+          "desc": "Επιτραπέζια — premium φινίρισμα ή mass-production volume.",
+          "href": "/services"
+        },
+        {
+          "num": "03 / 09",
+          "title": "Display Systems",
+          "desc": "Ολοκληρωμένα συστήματα προβολής — modular & επεκτάσιμα.",
+          "href": "/services"
+        },
+        {
+          "num": "04 / 09",
+          "title": "Gondola & Ράφια",
+          "desc": "Gondola ends, shelving systems — μέταλλο, ξύλο, mix.",
+          "href": "/services"
+        },
+        {
+          "num": "05 / 09",
+          "title": "Pallet & Half-Pallet",
+          "desc": "Μεγάλης κλίμακας — χαρτί, μέταλλο, mix για seasonal pushes.",
+          "href": "/services"
+        },
+        {
+          "num": "06 / 09",
+          "title": "Wall Units",
+          "desc": "Επίτοιχα συστήματα — Ξύλο/MDF, Μέταλλο.",
+          "href": "/services"
+        },
+        {
+          "num": "07 / 09",
+          "title": "Shelf Trays & Vacuum",
+          "desc": "Σκαφάκια & vacuum-formed σε PS, PETG.",
+          "href": "/services"
+        },
+        {
+          "num": "08 / 09",
+          "title": "POS Accessories",
+          "desc": "Wobblers, clip strips, hanging displays, table tents, packaging.",
+          "href": "/services"
+        }
+      ],
+      "allLink": "Δείτε όλους τους τύπους κατασκευών"
+    },
+    "reasons": {
+      "eyebrow": "02 · Γιατί εμάς",
+      "h2": "5 strategic reasons — όχι «πάθος για αριστεία».",
+      "items": [
+        {
+          "num": "01 / Sage",
+          "title": "Value Engineering",
+          "p": "Μείωση κόστους παραγωγής και φύρας μέσω έξυπνης σχεδίασης από το πρώτο λεπτό — προστατεύοντας το margin σας.",
+          "v": "92%",
+          "l": "Nesting efficiency"
+        },
+        {
+          "num": "02 / Creator",
+          "title": "Rapid Response",
+          "p": "Από concept σε φυσικό prototype στον μισό χρόνο. Καθετοποιημένη μονάδα — όλη η ομάδα κάτω από την ίδια στέγη.",
+          "v": "½×",
+          "l": "Industry avg. lead time"
+        },
+        {
+          "num": "03 / Sage",
+          "title": "Zero-Risk Reliability",
+          "p": "OTIF — On Time In Full. Δεσμευόμαστε για μηδενικές εκπλήξεις στον χρόνο, στο κόστος ή στην ποιότητα.",
+          "v": "OTIF",
+          "l": "100% on-time pledge"
+        },
+        {
+          "num": "04 / Creator",
+          "title": "B2B2C Expertise",
+          "p": "«Σιωπηλοί πωλητές» — conversion tools που κερδίζουν το βλέμμα του καταναλωτή στα πρώτα 3 δευτερόλεπτα.",
+          "v": "3″",
+          "l": "Attention threshold"
+        },
+        {
+          "num": "05 / Sage",
+          "title": "Eco-Innovation",
+          "p": "40–50% της παραγωγής σε ανακυκλώσιμα υλικά (PS, χαρτί, PET, plexiglass). Flat-pack σε χάρτινες κατασκευές.",
+          "v": "40–50%",
+          "l": "Recyclable materials"
+        }
+      ]
+    },
+    "work": {
+      "eyebrow": "03 · Selected works",
+      "h2": "Conversion tools που έγιναν launches — όχι ενδείξεις σε αγορά.",
+      "allLink": "All works →",
+      "items": [
+        {
+          "badge": "Featured · 2024",
+          "eyebrow": "Floor Stand · Coca-Cola",
+          "h4": "Coca-Cola summer end-cap, σε 240 καταστήματα",
+          "href": "/portfolio/coca-cola-summer-endcap",
+          "bg": "t1",
+          "dark": false,
+          "withGrid": true,
+          "ornaments": [
+            "circle",
+            "para"
+          ]
+        },
+        {
+          "eyebrow": "Special Project · Diageo",
+          "h4": "Johnnie Walker House, Athens",
+          "href": "/portfolio",
+          "bg": "t2",
+          "dark": true,
+          "ornaments": [
+            "circle"
+          ]
+        },
+        {
+          "eyebrow": "Wall Unit · L'Oréal",
+          "h4": "Vichy pharmacy wall",
+          "href": "/portfolio",
+          "bg": "t3",
+          "dark": true,
+          "ornaments": []
+        },
+        {
+          "eyebrow": "Pallet · Heineken",
+          "h4": "Euro 2024 floor display",
+          "href": "/portfolio",
+          "bg": "t4",
+          "dark": false,
+          "ornaments": [
+            "circle"
+          ]
+        },
+        {
+          "eyebrow": "Counter · Lidl",
+          "h4": "Lidl bakery shelf-edge",
+          "href": "/portfolio",
+          "bg": "t5",
+          "dark": false,
+          "ornaments": [
+            "para"
+          ]
+        }
+      ]
+    },
+    "process": {
+      "eyebrow": "04 · Από το brief στο ράφι",
+      "h2": "Τέσσερα στάδια. Μια ομάδα. Μηδέν εκπλήξεις.",
+      "metaLine1": "Engineering → Prototype → Production → OTIF",
+      "metaLine2": "μέσος όρος 4–6 εβδομάδες",
+      "steps": [
+        {
+          "n": "Stage 01",
+          "title": "Strategic Analysis & Engineering",
+          "en": "Discovery + Value Engineering",
+          "p": "Ανάλυση brief, επιλογή ιδανικών υλικών για μέγιστη αντοχή στο χαμηλότερο κόστος.",
+          "bullets": [
+            "Value Engineering · cost optimization",
+            "Sustainability check · Nesting 92%",
+            "Material selection & rationale"
+          ]
+        },
+        {
+          "n": "Stage 02",
+          "title": "Rapid Prototyping",
+          "en": "Digital + Physical",
+          "p": "3D mockup στο retail περιβάλλον και φυσικό sample σε χρόνο ρεκόρ — για έλεγχο εργονομίας και «Wow Factor».",
+          "bullets": [
+            "Digital mockup σε CAD",
+            "Physical sample 1:1",
+            "Client sign-off"
+          ]
+        },
+        {
+          "n": "Stage 03",
+          "title": "Industrialized Production",
+          "en": "Industrial + Craft",
+          "p": "CNC + ψηφιακή εκτύπωση με ακρίβεια χιλιοστού, μαζί με μεταξοτυπία και χειρωνακτική συναρμολόγηση.",
+          "bullets": [
+            "Precision manufacturing",
+            "Μεταξοτυπία & finishing",
+            "Assembly & per-unit QA"
+          ]
+        },
+        {
+          "n": "Stage 04",
+          "title": "Logistics & OTIF Delivery",
+          "en": "On Time In Full",
+          "p": "Έλεγχος ποιότητας πριν συσκευασία και παράδοση αυστηρά στον συμφωνημένο χρόνο, σε όλη την Ελλάδα.",
+          "bullets": [
+            "Final QA per unit",
+            "Flat-pack / palletized",
+            "OTIF · zero misses"
+          ]
+        }
+      ]
+    },
+    "materials": {
+      "title": "Materials · Επίπεδο 1 · Τα υλικά μας",
+      "items": [
+        "Paper & Cardboard",
+        "Metal",
+        "Plastic (PVC/Forex)",
+        "Wood / MDF",
+        "Plexiglass",
+        "Premium / Mix"
+      ]
+    },
+    "stats": [
+      {
+        "value": "<em>17</em>yrs",
+        "label": "από το 2008"
+      },
+      {
+        "value": "92<em>%</em>",
+        "label": "Nesting efficiency"
+      },
+      {
+        "value": "OTIF",
+        "label": "on-time delivery"
+      },
+      {
+        "value": "40–50<em>%</em>",
+        "label": "Recyclable"
+      }
+    ],
+    "sustain": {
+      "noteLine1": "eco-innovation,",
+      "noteLine2": "by engineering — not slogans",
+      "eyebrow": "05 · Eco-Innovation",
+      "h2": "Βιωσιμότητα — μετρήσιμη, όχι διακηρυκτική.",
+      "p": "40–50% της παραγωγής σε ανακυκλώσιμα υλικά. Nesting 92% μειώνει δραματικά τη φύρα και το αποτύπωμα άνθρακα. Flat-pack λύσεις αποκλειστικά σε χάρτινες κατασκευές για ελαχιστοποίηση μεταφοράς.",
+      "pillars": [
+        {
+          "n": "01",
+          "h6": "Recyclable materials",
+          "p": "PS, χαρτί, PET, plexiglass — 40–50% της παραγωγής."
+        },
+        {
+          "n": "02",
+          "h6": "Nesting 92%",
+          "p": "Έξυπνη σχεδίαση φύλλων — δραστική μείωση φύρας."
+        },
+        {
+          "n": "03",
+          "h6": "Flat-pack logistics",
+          "p": "Χάρτινες κατασκευές — μειωμένο carbon footprint μεταφοράς."
+        }
+      ]
+    },
+    "clients": {
+      "title": "Strategic partners · Επιλεγμένοι πελάτες",
+      "items": [
+        {
+          "name": "Coca-Cola",
+          "style": "serif"
+        },
+        {
+          "name": "LIDL",
+          "style": "allcaps"
+        },
+        {
+          "name": "Nestlé",
+          "style": ""
+        },
+        {
+          "name": "Diageo",
+          "style": "serif"
+        },
+        {
+          "name": "L'ORÉAL",
+          "style": "allcaps"
+        },
+        {
+          "name": "AB Vasilopoulos",
+          "style": ""
+        },
+        {
+          "name": "SKLAVENITIS",
+          "style": "allcaps"
+        },
+        {
+          "name": "Pharmacy Networks",
+          "style": "serif"
+        }
+      ]
+    }
+  },
+  "about": {
+    "metaTitle": "Η Εταιρία",
+    "metaDescription": "Production LTD — Industrialized Craft στις Αχαρνές από το 2008. Καθετοποιημένη μονάδα παραγωγής POP/POS με τη στρατηγική καθοδήγηση της οικογένειας Δημαρά.",
+    "metaKeywords": [
+      "Production LTD ιστορία",
+      "εταιρία POP/POS",
+      "Industrialized Craft",
+      "μεταξοτυπία Αχαρνές",
+      "οικογένεια Δημαρά"
+    ],
+    "hero": {
+      "h1Pre": "Industrialized\nCraft — ",
+      "h1Em": "since 2008.",
+      "lede1": "Η Production LTD είναι μια καθετοποιημένη μονάδα βιομηχανικής υπεροχής, παραγωγής και λύσεων POP Materials στις Αχαρνές Αττικής.",
+      "lede2": "Από την τέχνη της μεταξοτυπίας του 2008, σε ένα πρότυπο εργοστάσιο που σχεδιάζει conversion tools για τα κορυφαία brands της Ευρώπης.",
+      "stats": [
+        {
+          "v": "<em>17</em> yrs",
+          "l": "από το 2008"
+        },
+        {
+          "v": "90<em>%</em>",
+          "l": "in-house"
+        },
+        {
+          "v": "92<em>%</em>",
+          "l": "Nesting efficiency"
+        },
+        {
+          "v": "OTIF",
+          "l": "on-time pledge"
+        },
+        {
+          "v": "3",
+          "l": "γενιά Δημαρά"
+        }
+      ]
+    },
+    "facility": {
+      "phTag": "Photo · Production floor, Αχαρνές",
+      "phLogo": "P / FACILITY 01",
+      "phCaptionLine1": "Industrialized",
+      "phCaptionLine2": "Craft"
+    },
+    "story": {
+      "h5": "Our story",
+      "h2Pre": "Από την τέχνη της μεταξοτυπίας —",
+      "h2Em": "στην καθετοποιημένη μονάδα.",
+      "p1Pre": "Η Print Silk Production ιδρύθηκε το 2008, με αφετηρία την τέχνη της",
+      "p1Accent": "μεταξοτυπίας",
+      "p1Post": ". Σήμερα, η εταιρεία έχει εξελιχθεί σε μια πρότυπη, καθετοποιημένη μονάδα βιομηχανικής υπεροχής, παραγωγής και λύσεων POP Materials, διατηρώντας την προσωπική δέσμευση της οικογένειας Δημαρά.",
+      "p2Pre": "Υπό τη στρατηγική καθοδήγηση του",
+      "p2AccentA": "Γιάννη",
+      "p2Mid": "(Sales & Marketing) και του",
+      "p2AccentB": "Βαγγέλη",
+      "p2Post": "(Operations & Production), η επιχείρηση συνδυάζει την εμπειρία δεκαετιών με τη δυναμική της νέας γενιάς.",
+      "p3Pre": "Δεν περιοριζόμαστε στην απλή αποτύπωση μελανιού. Σχεδιάζουμε και κατασκευάζουμε ολοκληρωμένα συστήματα προβολής που μετατρέπουν την πρώτη ύλη σε εμπειρία brand. Πιστεύουμε στο",
+      "p3Accent": "Industrialized Craft",
+      "p3Post": ": τη συνύπαρξη της ιστορικής μας ταυτότητας (Silk) με τεχνολογίες αιχμής, όπως η ψηφιακή εκτύπωση και η κατεργασία CNC.",
+      "pull": "«Κάθε λύση μας είναι ένα Conversion Tool, μελετημένο για να κυριαρχεί στην προσοχή του καταναλωτή.»",
+      "p4Pre": "Η",
+      "p4AccentA": "ταχύτητα",
+      "p4Mid": "και η",
+      "p4AccentB": "συνέπεια",
+      "p4Post": "είναι η υπογραφή μας. Στις εγκαταστάσεις μας στις Αχαρνές, η παραγωγή ελέγχεται σε κάθε στάδιο, διασφαλίζοντας την ταχύτερη ανταπόκριση της αγοράς και την υλοποίηση έργων αυστηρά στον συμφωνημένο χρόνο. Προσφέρουμε στους συνεργάτες μας την ασφάλεια και την καινοτομία που απαιτεί το σύγχρονο, περιβαλλοντικά υπεύθυνο retail περιβάλλον.",
+      "sigs": [
+        {
+          "role": "Sales & Marketing",
+          "name": "Γιάννης Δημαράς",
+          "desc": "Στρατηγική, brand partnerships, key accounts."
+        },
+        {
+          "role": "Operations & Production",
+          "name": "Βαγγέλης Δημαράς",
+          "desc": "Καθετοποιημένη παραγωγή, Value Engineering, OTIF."
+        },
+        {
+          "role": "Operations",
+          "name": "Κωνσταντίνος Δημαράς",
+          "desc": "Production floor, quality control, logistics."
+        }
+      ]
+    },
+    "mvp": {
+      "eyebrow": "Brand core · Ο πυρήνας του brand",
+      "h2": "Mission, Vision & Promise.",
+      "metaLine1": "3 σταθερά σημεία αναφοράς για",
+      "metaLine2": "κάθε σχεδιαστική απόφαση.",
+      "cards": [
+        {
+          "label": "01 · Mission · Αποστολή",
+          "h3": "Να δίνουμε μορφή στην καινοτομία.",
+          "p": "Προσφέροντας λύσεις που αυξάνουν την αξία των brands στο σημείο πώλησης."
+        },
+        {
+          "label": "02 · Vision · Όραμα",
+          "h3": "Πρώτη επιλογή στην Ευρώπη.",
+          "p": "Για τη μετατροπή της κατασκευαστικής πολυπλοκότητας σε καινοτόμα συστήματα προβολής."
+        },
+        {
+          "label": "03 · Promise · Υπόσχεση",
+          "h3": "Η Υπόσχεση της Σιγουριάς.",
+          "p": "Δεσμευόμαστε για μηδενικές εκπλήξεις στον χρόνο, στο κόστος ή στην ποιότητα.",
+          "quote": "«peace of mind»",
+          "feat": true
+        }
+      ]
+    },
+    "values": {
+      "eyebrow": "Values · Το DNA",
+      "h2": "Τέσσερις αξίες — ορατές σε όλο το site.",
+      "metaLine1": "όχι buzzwords —",
+      "metaLine2": "αρχές παραγωγής",
+      "items": [
+        {
+          "num": "01",
+          "h4": "Value Engineering",
+          "p": "Μείωση κόστους παραγωγής και φύρας (Nesting 92%) μέσω έξυπνης σχεδίασης. Προστατεύουμε το margin του πελάτη."
+        },
+        {
+          "num": "02",
+          "h4": "Zero-Risk Reliability",
+          "p": "Απόλυτη συνέπεια στην παράδοση (OTIF). Το brand έτοιμο για το launch χωρίς εξαιρέσεις."
+        },
+        {
+          "num": "03",
+          "h4": "Industrialized Craft",
+          "p": "Η σπάνια συνύπαρξη της ανθρώπινης εμπειρίας δεκαετιών με τη βιομηχανική ακρίβεια χιλιοστού."
+        },
+        {
+          "num": "04",
+          "h4": "Eco-Innovation",
+          "p": "40–50% ανακυκλώσιμα. Flat-pack σε χάρτινες κατασκευές. Nesting 92% για μειωμένο carbon footprint."
+        }
+      ]
+    },
+    "milestones": {
+      "eyebrow": "Milestones · Σταθμοί",
+      "h2": "17 χρόνια — από μεταξοτυπία σε καθετοποιημένη μονάδα.",
+      "metaLine1": "Έντονη επένδυση",
+      "metaLine2": "σε τεχνολογίες αιχμής",
+      "items": [
+        {
+          "y": "'08",
+          "h6": "Ίδρυση",
+          "p": "Print Silk Production — ξεκινάμε με μεταξοτυπία. Οικογένεια Δημαρά, Αχαρνές."
+        },
+        {
+          "y": "'14",
+          "h6": "Vacuum forming",
+          "p": "Επέκταση σε vacuum-formed POP — πρώτη volume runs για FMCG πελάτες."
+        },
+        {
+          "y": "'18",
+          "h6": "Καθετοποίηση",
+          "p": "3D design + CNC + ψηφιακή εκτύπωση — όλα στις Αχαρνές."
+        },
+        {
+          "y": "'22",
+          "h6": "Eco-Innovation",
+          "p": "40–50% recyclable materials · Nesting 92% pipeline για waste reduction."
+        },
+        {
+          "y": "'25",
+          "h6": "Brand refresh",
+          "p": "Νέο positioning: «Crafting Retail Conversion» — Special Projects flagship."
+        }
+      ]
+    },
+    "personas": {
+      "eyebrow": "Audience · Για ποιους δουλεύουμε",
+      "h2": "Δύο τύποι πελάτη — μία υπόσχεση.",
+      "metaLine1": "Marketing & Procurement",
+      "metaLine2": "FMCG, Pharmacy, HORECA, Retail",
+      "items": [
+        {
+          "avatar": "ΚΛ",
+          "label": "01 · Primary persona",
+          "name": "Κατερίνα",
+          "role": "Launch / Trade Marketing Manager · FMCG, Cosmetics, Retail",
+          "painTitle": "Pain points",
+          "painP": "Φοβάται καθυστερήσεις που θα ακυρώσουν το launch. Διαχειρίζεται πολλαπλούς προμηθευτές. Ανησυχία σε περίπτωση κρίσης.",
+          "goalTitle": "Goal",
+          "goalStrong": "«Peace of mind».",
+          "goalP": "Εγγύηση OTIF και «Wow Factor» σε premium υλικά. Ένας συνεργάτης που τα χειρίζεται όλα.",
+          "secondary": false
+        },
+        {
+          "avatar": "ΜΕ",
+          "label": "02 · Secondary persona",
+          "name": "Μάρκος",
+          "role": "Procurement / Efficiency Director · Cross-industry",
+          "painTitle": "Pain points",
+          "painP": "Πίεση για μείωση κόστους + ESG στόχοι. Πρέπει να αιτιολογεί επιλογές προμηθευτών στη Διοίκηση.",
+          "goalTitle": "Goal",
+          "goalStrong": "Value Engineering.",
+          "goalP": "Μετρήσιμα δεδομένα (Nesting 92%, recyclable %) και Eco-Innovation λύσεις που στέκονται σε ESG audits.",
+          "secondary": true
+        }
+      ]
+    },
+    "clientsWall": {
+      "eyebrow": "Strategic partners · Πελάτες",
+      "h2": "Brands που μας εμπιστεύονται για OTIF launches.",
+      "metaLine1": "📌 Λίστα προς επιβεβαίωση",
+      "metaLine2": "ανά πελάτη",
+      "items": [
+        {
+          "name": "Coca-Cola",
+          "style": "serif"
+        },
+        {
+          "name": "Nestlé",
+          "style": ""
+        },
+        {
+          "name": "Diageo",
+          "style": "serif"
+        },
+        {
+          "name": "LIDL",
+          "style": "allcaps"
+        },
+        {
+          "name": "AB Vasilopoulos",
+          "style": ""
+        },
+        {
+          "name": "SKLAVENITIS",
+          "style": "allcaps"
+        },
+        {
+          "name": "L'ORÉAL",
+          "style": "allcaps"
+        },
+        {
+          "name": "Pharmacy Networks",
+          "style": "serif"
+        },
+        {
+          "name": "P&G",
+          "style": "thin"
+        },
+        {
+          "name": "Heineken",
+          "style": ""
+        },
+        {
+          "name": "VICHY",
+          "style": "allcaps"
+        },
+        {
+          "name": "Unilever",
+          "style": "thin"
+        }
+      ]
+    },
+    "testimonials": {
+      "eyebrow": "Testimonials · Μαρτυρίες",
+      "h2": "«Τους εμπιστευόμαστε γιατί…»",
+      "metaLine1": "📌 Placeholders προς αντικατάσταση",
+      "metaLine2": "με attributed testimonials",
+      "items": [
+        {
+          "quote": "Επιλέγουμε την Production LTD γιατί μετατρέπουν ένα απαιτητικό brief σε οικονομικά βιώσιμη λύση, χωρίς να θυσιάζουν την αισθητική του brand μας.",
+          "whoTitle": "Marketing Manager",
+          "whoRole": "Retail Sector",
+          "pendingLabel": "Pending name"
+        },
+        {
+          "quote": "Σε ένα περιβάλλον όπου τα launches δεν παίρνουν αναβολή, η σιγουριά ότι τα υλικά θα είναι στο ράφι την ημέρα που συμφωνήσαμε είναι ο λόγος που τους εμπιστευόμαστε.",
+          "whoTitle": "Procurement Director",
+          "whoRole": "FMCG Brand",
+          "pendingLabel": "Pending name"
+        }
+      ]
+    }
+  },
+  "services": {
+    "metaTitle": "Προϊόντα",
+    "metaDescription": "9 τύποι κατασκευών POP/POS: Special Projects, Floor & Counter Stands, Display Systems, Gondola, Pallet, Wall Units, Shelf Trays και POS Accessories — από χαρτί, μέταλλο, ξύλο, plexi και mix.",
+    "metaKeywords": [
+      "POP displays",
+      "floor stands",
+      "counter stands",
+      "display systems",
+      "gondola",
+      "pallet displays",
+      "wall units",
+      "shelf trays",
+      "POS accessories",
+      "Special Projects retail"
+    ],
+    "hero": {
+      "h1Pre": "9 τύποι κατασκευών —",
+      "h1Mid": "ένας ",
+      "h1Em": "χώρος παραγωγής.",
+      "p1": "Από bespoke Special Projects με 3+ υλικά, μέχρι POS accessories σε χιλιάδες μονάδες. Όλη η ταξινόμηση ακολουθεί τη λογική του πελάτη:",
+      "p1Strong": "τι χρειάζεστε → σε ποιο υλικό → για ποιο κανάλι",
+      "p1Post": ".",
+      "stats": [
+        {
+          "v": "9",
+          "l": "Product types"
+        },
+        {
+          "v": "6",
+          "l": "Materials"
+        },
+        {
+          "v": "7",
+          "l": "Channels"
+        }
+      ]
+    },
+    "iaBar": {
+      "typeTitle": "Τύπος",
+      "materialTitle": "Υλικό",
+      "channelTitle": "Κανάλι",
+      "all": "Όλα",
+      "typeChips": [
+        "Special Projects",
+        "Floor",
+        "Counter",
+        "Display Systems",
+        "+5"
+      ],
+      "materialChips": [
+        "Paper",
+        "Metal",
+        "Wood",
+        "Plexi",
+        "Premium"
+      ],
+      "channelChips": [
+        "SM",
+        "Pharmacy",
+        "Cosmetics",
+        "HORECA",
+        "+3"
+      ],
+      "countPill": "9 τύποι · 36 συνδυασμοί"
+    },
+    "specialFeat": {
+      "eyebrow": "00 · Πρώτη κατηγορία στον κατάλογο",
+      "h2Line1": "Special Projects.",
+      "h2Em": "Strategic advisor.",
+      "p": "Bespoke λύσεις με συνδυασμό 3+ υλικών — για Key Accounts, flagship campaigns και installations που πρέπει να λειτουργήσουν ως conversion tools από την πρώτη μέρα.",
+      "tags": [
+        "Metal + Wood",
+        "Melamine + Plexi",
+        "Metal + Alu Cladding",
+        "Mix 3+ υλικών",
+        "Premium φινίρισμα"
+      ],
+      "tagLine1": "where the brief",
+      "tagLine2": "becomes a brand"
+    },
+    "products": {
+      "eyebrow": "01 · Catalog",
+      "h2": "Οι 8 standard κατηγορίες — και όλα τα υλικά τους.",
+      "metaLine1": "Κάθε κατηγορία έχει",
+      "metaLine2": "cross-filtering ανά υλικό & κανάλι.",
+      "items": [
+        {
+          "num": "01 / 08 · Featured",
+          "visual": "warm",
+          "title": "Floor Stands",
+          "en": "Σταντ Εδάφους",
+          "desc": "Aisle-end & freestanding units. Χαρτί, Μέταλλο, Ξύλο, Πλαστικό, Plexiglass — από flat-pack seasonal σε μόνιμες βιομηχανικές κατασκευές."
+        },
+        {
+          "num": "02 / 08",
+          "visual": "cool",
+          "title": "Counter Stands",
+          "en": "Επιτραπέζια",
+          "desc": "Compact displays σε ταμεία, βιτρίνες, vitrines. Premium MDF & Plexi για cosmetics/pharmacy ή mass-production volume για SM impulse."
+        },
+        {
+          "num": "03 / 08",
+          "visual": "gradient",
+          "title": "Display Systems",
+          "en": "Συστήματα Προβολής",
+          "desc": "Ολοκληρωμένα modular συστήματα — επεκτάσιμα, επαναλαμβανόμενα σε rollouts καταστημάτων με συνεπή brand presence."
+        },
+        {
+          "num": "04 / 08",
+          "visual": "dark",
+          "title": "Gondola & Ράφια",
+          "en": "Gondola Ends & Shelving",
+          "desc": "Συστήματα ραφιών και gondola ends — βιομηχανική αντοχή για supermarkets, premium φινίρισμα για cosmetics & pharmacy."
+        },
+        {
+          "num": "05 / 08",
+          "visual": "orange",
+          "title": "Pallet & Half-Pallet",
+          "en": "Pallet Displays",
+          "desc": "Drop-and-shop μονάδες πάνω σε Euro pallet — ιδανικά για seasonal pushes και hypermarket κάμπιγκν με υψηλή ορατότητα."
+        },
+        {
+          "num": "06 / 08",
+          "visual": "yellow",
+          "title": "Wall Units",
+          "en": "Επίτοιχα Συστήματα",
+          "desc": "Συστήματα τοίχου — premium MDF για pharmacy/beauty, ή βιομηχανικό μέταλλο για heavy-use περιβάλλοντα."
+        },
+        {
+          "num": "07 / 08",
+          "visual": "cool",
+          "title": "Shelf Trays & Vacuum",
+          "en": "Σκαφάκια & Vacuum-formed",
+          "desc": "Vacuum-formed σκαφάκια σε PS και PETG. Lightweight & volume-friendly — ιδανικά για supermarket shelf-organization."
+        },
+        {
+          "num": "08 / 08",
+          "visual": "warm",
+          "title": "POS Accessories",
+          "en": "Wobblers, Clips, Tents, Packaging",
+          "desc": "Rulers, wobblers, danglers, clip strips, hanging displays, table tents, custom συσκευασία. Όλα τα add-ons που συμπληρώνουν το ecosystem."
+        }
+      ]
+    },
+    "matrix": {
+      "eyebrow": "02 · Cross-reference",
+      "h2": "Material × Product type matrix.",
+      "pPre": "Όχι κάθε υλικό ταιριάζει σε κάθε προϊόν. Αυτός ο πίνακας δείχνει σε ποιους συνδυασμούς δουλεύουμε καλύτερα. Για συνδυασμούς που δεν εμφανίζονται εδώ, βλέπε",
+      "pStrong": "Special Projects",
+      "pPost": ".",
+      "th": [
+        "Product type",
+        "Paper",
+        "Metal",
+        "Plastic",
+        "Wood / MDF",
+        "Plexi",
+        "Premium / Mix"
+      ],
+      "rows": [
+        {
+          "name": "Floor Stands",
+          "cells": [
+            "yes",
+            "yes",
+            "yes",
+            "yes",
+            "yes",
+            "yes"
+          ]
+        },
+        {
+          "name": "Counter Stands",
+          "cells": [
+            "yes",
+            "yes",
+            "yes",
+            "yes",
+            "yes",
+            "weak"
+          ]
+        },
+        {
+          "name": "Display Systems",
+          "cells": [
+            "no",
+            "weak",
+            "yes",
+            "yes",
+            "yes",
+            "yes"
+          ]
+        },
+        {
+          "name": "Gondola & Ράφια",
+          "cells": [
+            "no",
+            "yes",
+            "no",
+            "yes",
+            "no",
+            "yes"
+          ]
+        },
+        {
+          "name": "Pallet & Half-Pallet",
+          "cells": [
+            "yes",
+            "yes",
+            "no",
+            "no",
+            "no",
+            "yes"
+          ]
+        },
+        {
+          "name": "Wall Units",
+          "cells": [
+            "no",
+            "yes",
+            "no",
+            "yes",
+            "weak",
+            "weak"
+          ]
+        },
+        {
+          "name": "Shelf Trays & Vacuum",
+          "cells": [
+            "no",
+            "no",
+            "yes",
+            "no",
+            "no",
+            "no"
+          ]
+        },
+        {
+          "name": "POS Accessories",
+          "cells": [
+            "yes",
+            "yes",
+            "yes",
+            "no",
+            "yes",
+            "weak"
+          ]
+        }
+      ],
+      "legend": [
+        {
+          "cls": "dot",
+          "label": "Standard offering"
+        },
+        {
+          "cls": "dot weak",
+          "label": "On request / Special"
+        },
+        {
+          "cls": "dot no",
+          "label": "Not typical"
+        }
+      ]
+    },
+    "cap": {
+      "eyebrow": "03 · Capabilities",
+      "h2": "Industrialized Craft — όλη η παραγωγή στις Αχαρνές.",
+      "p": "Είμαστε καθετοποιημένη μονάδα: 3D σχεδιασμός, ψηφιακή εκτύπωση, μεταξοτυπία (Silk legacy), CNC, vacuum forming, συναρμολόγηση και logistics — όλα κάτω από την ίδια στέγη.",
+      "ctaAbout": "Η εταιρία →",
+      "items": [
+        {
+          "n": "01",
+          "h4": "3D Industrial Design",
+          "p": "CAD modeling, photoreal renders, παραγωγικά αρχεία."
+        },
+        {
+          "n": "02",
+          "h4": "Μεταξοτυπία (Silk)",
+          "p": "Η αφετηρία μας — διατηρείται για premium finishing & ειδικές εφαρμογές."
+        },
+        {
+          "n": "03",
+          "h4": "Ψηφιακή εκτύπωση",
+          "p": "UV flatbed & latex — άκαμπτα & εύκαμπτα υλικά."
+        },
+        {
+          "n": "04",
+          "h4": "CNC & Vacuum forming",
+          "p": "Router, laser, plasma · vacuum forming για volume."
+        },
+        {
+          "n": "05",
+          "h4": "Nesting 92%",
+          "p": "Έξυπνη σχεδίαση φύλλων — δραστική μείωση φύρας."
+        },
+        {
+          "n": "06",
+          "h4": "Assembly & QA",
+          "p": "Χειρωνακτική συναρμολόγηση & per-unit quality control."
+        }
+      ]
+    },
+    "ctaTitlePre": "Έχετε ένα brief;",
+    "ctaTitleEm": "Let's engineer it."
+  },
+  "floorStands": {
+    "metaTitle": "Floor Stands",
+    "metaDescription": "Σταντ εδάφους από χαρτί, μέταλλο, ξύλο, πλαστικό και plexiglass — value-engineered POP displays για super markets, pharmacies, HORECA και retail.",
+    "metaKeywords": [
+      "σταντ εδάφους",
+      "floor display",
+      "χάρτινα σταντ",
+      "μεταλλικά σταντ",
+      "POP floor stand",
+      "endcap"
+    ],
+    "hero": {
+      "h1Line1": "Floor",
+      "h1Line2": "Stands.",
+      "lede": "Σταντ εδάφους — από flat-pack seasonal pallet displays μέχρι μόνιμες βιομηχανικές κατασκευές με LED integration. 5 διαθέσιμα υλικά, ίδια Value Engineering και OTIF πειθαρχία σε κάθε build.",
+      "spec": [
+        {
+          "h6": "Materials",
+          "v": "5"
+        },
+        {
+          "h6": "Lead time (proto)",
+          "v": "5–7 ημέρες"
+        },
+        {
+          "h6": "Min order",
+          "v": "50 units"
+        },
+        {
+          "h6": "Max run",
+          "v": "10.000+"
+        },
+        {
+          "h6": "Channels",
+          "v": "7 retail"
+        }
+      ]
+    },
+    "heroPhoto": {
+      "phTag": "Photo · Coca-Cola summer end-cap, AB Vasilopoulos",
+      "phLogo": "P / 01.HERO",
+      "phCaptionLine1": "freestanding,",
+      "phCaptionLine2": "240 stores"
+    },
+    "materials": {
+      "eyebrow": "01 · Διαθέσιμα υλικά",
+      "h2Line1": "Πέντε υλικά —",
+      "h2Line2": "πέντε διαφορετικές αξίες.",
+      "metaLine1": "Κάθε υλικό προτείνεται μέσω",
+      "metaLine2": "Value Engineering ανάλογα με ποσότητα, αντοχή, budget.",
+      "items": [
+        {
+          "n": "01",
+          "h3": "Χαρτί",
+          "en": "Paper · Corrugated",
+          "phTag": "Photo · Paper / corrugated floor stand",
+          "phCaptionLine1": "flat-pack",
+          "phCaptionLine2": "seasonal",
+          "p": "Flat-pack, οικονομική λύση, 100% ανακυκλώσιμο. Ιδανικό για seasonal promotions και short campaigns. Quick deployment.",
+          "tags": [
+            "100% recyclable",
+            "Flat-pack",
+            "E-flute"
+          ],
+          "data": [
+            {
+              "k": "Sweet spot",
+              "v": "200–5.000 units"
+            },
+            {
+              "k": "Lead time",
+              "v": "3–4 εβδομάδες"
+            }
+          ]
+        },
+        {
+          "n": "02",
+          "h3": "Μέταλλο",
+          "en": "Metal · Steel · Aluminium",
+          "phTag": "Photo · Metal freestanding unit",
+          "phCaptionLine1": "βιομηχανική",
+          "phCaptionLine2": "αντοχή",
+          "p": "Μέγιστη αντοχή, μόνιμες κατασκευές μεγάλης κλίμακας. Βιομηχανική αισθητική για heavy-use περιβάλλοντα.",
+          "tags": [
+            "Powder coated",
+            "CNC bent",
+            "Welded joints"
+          ],
+          "data": [
+            {
+              "k": "Sweet spot",
+              "v": "Μόνιμη εγκατάσταση"
+            },
+            {
+              "k": "Lead time",
+              "v": "5–8 εβδομάδες"
+            }
+          ]
+        },
+        {
+          "n": "03",
+          "h3": "Ξύλο / MDF",
+          "en": "Wood & MDF",
+          "phTag": "Photo · Wood / MDF premium floor unit",
+          "phCaptionLine1": "premium",
+          "phCaptionLine2": "warmth",
+          "p": "Premium φινίρισμα, CNC ακρίβεια, βαφή. Warm & premium αισθητική — ιδανικό για cosmetics, fashion, hospitality.",
+          "tags": [
+            "CNC ακρίβεια",
+            "Wood veneer",
+            "Lacquer finish"
+          ],
+          "data": [
+            {
+              "k": "Sweet spot",
+              "v": "50–500 units"
+            },
+            {
+              "k": "Lead time",
+              "v": "6–8 εβδομάδες"
+            }
+          ]
+        },
+        {
+          "n": "04",
+          "h3": "Πλαστικό",
+          "en": "Plastic · PVC · Forex",
+          "phTag": "Photo · Plastic PVC floor display",
+          "phCaptionLine1": "color-true",
+          "phCaptionLine2": "at scale",
+          "p": "Ευελιξία, ελαφρύ βάρος, άψογη απόδοση χρωμάτων. Καλή τιμή σε volume run, ιδανικό για mid-life campaigns.",
+          "tags": [
+            "Vacuum-formed",
+            "Color-matched",
+            "Lightweight"
+          ],
+          "data": [
+            {
+              "k": "Sweet spot",
+              "v": "500–5.000 units"
+            },
+            {
+              "k": "Lead time",
+              "v": "4–6 εβδομάδες"
+            }
+          ]
+        }
+      ],
+      "plexi": {
+        "n": "05",
+        "h3": "Plexiglass",
+        "en": "PMMA · Acrylic · Premium",
+        "phTag": "Photo · Plexiglass premium floor display, laser-cut, LED-edge",
+        "phCaption": "the Wow Factor — laser cut, LED edge, premium translucency",
+        "p": "Διαφάνεια, laser cut, διάχυση φωτός — το ιερό υλικό για το «Wow Factor». Premium retail, cosmetics flagship, και Special Projects.",
+        "tags": [
+          "Premium · Wow Factor",
+          "Laser cut",
+          "LED-edge",
+          "Opal / Clear / Tinted"
+        ],
+        "data": [
+          {
+            "k": "Sweet spot",
+            "v": "50–500 units · Key Accounts"
+          },
+          {
+            "k": "Lead time",
+            "v": "4–6 εβδομάδες"
+          },
+          {
+            "k": "Finish",
+            "v": "Polished edge · LED-ready"
+          },
+          {
+            "k": "Combo",
+            "v": "Με Metal/MDF = Special"
+          }
+        ]
+      }
+    },
+    "twoCol": {
+      "phTag": "Photo · CNC + μεταξοτυπία, παραγωγή στις Αχαρνές",
+      "phCaptionLine1": "Industrialized",
+      "phCaptionLine2": "Craft",
+      "eyebrow": "Why us · Industrialized Craft",
+      "h2": "Conversion tools — όχι «κατασκευές».",
+      "p": "Κάθε floor stand που φεύγει από τις Αχαρνές είναι μελετημένο να κερδίσει το βλέμμα του καταναλωτή στα πρώτα 3 δευτερόλεπτα. Αυτή είναι η διαφορά μεταξύ «κατασκευής» και conversion tool.",
+      "checklist": [
+        {
+          "h6": "Value Engineering από day 1",
+          "p": "Επιλογή υλικού βάσει cost/quality, όχι έκπτωση στην ποιότητα."
+        },
+        {
+          "h6": "Nesting 92%",
+          "p": "Έξυπνη σχεδίαση φύλλου — δραστική μείωση φύρας & carbon footprint."
+        },
+        {
+          "h6": "OTIF παράδοση",
+          "p": "Το stand στο ράφι την ημέρα του launch — μηδέν εκπλήξεις."
+        },
+        {
+          "h6": "Πανελλαδική διανομή",
+          "p": "Logistics & εγκατάσταση από εμάς, σε όλη την Ελλάδα."
+        }
+      ]
+    },
+    "channelsFit": {
+      "eyebrow": "02 · Channel suitability",
+      "h2": "Floor stands σε κάθε retail κανάλι.",
+      "metaLine1": "Fit rating βάσει",
+      "metaLine2": "volume, αντοχή & αισθητική",
+      "items": [
+        {
+          "n": "01",
+          "title": "Super Markets",
+          "p": "Aisle-end & pallet displays για mass FMCG.",
+          "label": "Fit · Strong",
+          "w": 95
+        },
+        {
+          "n": "02",
+          "title": "Retail Stores",
+          "p": "Premium MDF/Plexi για design-led brands.",
+          "label": "Fit · Strong",
+          "w": 90
+        },
+        {
+          "n": "03",
+          "title": "Cosmetics",
+          "p": "Plexi + LED — premium φινίρισμα.",
+          "label": "Fit · Strong",
+          "w": 92
+        },
+        {
+          "n": "04",
+          "title": "Pharmacy",
+          "p": "Καθαρή αισθητική, εργονομία.",
+          "label": "Fit · Good",
+          "w": 75
+        },
+        {
+          "n": "05",
+          "title": "HORECA",
+          "p": "Μόνιμα displays σε εστιατόρια & bars.",
+          "label": "Fit · Moderate",
+          "w": 60
+        },
+        {
+          "n": "06",
+          "title": "Hotels",
+          "p": "Lobby retail displays & signage.",
+          "label": "Fit · Moderate",
+          "w": 55
+        },
+        {
+          "n": "07",
+          "title": "Kiosk",
+          "p": "Compact units για περιορισμένο χώρο.",
+          "label": "Fit · Niche",
+          "w": 40
+        }
+      ]
+    },
+    "relatedWork": {
+      "eyebrow": "03 · Selected floor stand work",
+      "h2": "Πρόσφατα έργα σε floor stands.",
+      "allLink": "Όλα τα έργα →",
+      "items": [
+        {
+          "href": "/portfolio/coca-cola-summer-endcap",
+          "cls": "tile ph orange",
+          "phTag": "Photo · Featured",
+          "dark": false,
+          "eyebrow": "Coca-Cola · 2024 · Plexiglass",
+          "h4": "Summer end-cap, 240 stores · OTIF",
+          "withCircle": true
+        },
+        {
+          "href": "/portfolio",
+          "cls": "tile ph yellow",
+          "phTag": "Photo · L'Oréal pharma floor",
+          "dark": true,
+          "eyebrow": "L'Oréal · 2024 · MDF + Plexi",
+          "h4": "Vichy pharmacy floor display",
+          "withCircle": false
+        },
+        {
+          "href": "/portfolio",
+          "cls": "tile ph dark",
+          "phTag": "Photo · Heineken",
+          "dark": false,
+          "eyebrow": "Heineken · 2024 · Paper",
+          "h4": "Euro 2024 pallet display",
+          "withCircle": false
+        },
+        {
+          "href": "/portfolio",
+          "cls": "tile ph cool",
+          "phTag": "Photo · Nestlé",
+          "dark": true,
+          "eyebrow": "Nestlé · 2023 · Paper",
+          "h4": "Cereal seasonal floor, 350 stores",
+          "withCircle": false
+        }
+      ]
+    },
+    "ctaTitlePre": "Έχετε ένα floor stand brief;",
+    "ctaTitleEm": "Let's engineer it."
+  },
+  "portfolio": {
+    "metaTitle": "Έργα",
+    "metaDescription": "Επιλεγμένα έργα POP/POS της Production LTD — από Coca-Cola summer end-cap σε 240 καταστήματα μέχρι Johnnie Walker House και Vichy pharmacy walls.",
+    "metaKeywords": [
+      "case studies POP",
+      "portfolio retail displays",
+      "Coca-Cola endcap",
+      "Diageo POP",
+      "L'Oréal pharmacy wall",
+      "Heineken pallet display"
+    ],
+    "hero": {
+      "h1Pre": "Conversion tools",
+      "h1Em": "στο ράφι.",
+      "lede": "Επιλεγμένα έργα — POP/POS, special projects, gondola, pallet, wall units. Φιλτράρετε ανά τύπο, υλικό, ή κανάλι. Όλα παραδομένα OTIF."
+    },
+    "filters": {
+      "typeTitle": "Τύπος",
+      "materialTitle": "Υλικό",
+      "channelTitle": "Κανάλι",
+      "typeChips": [
+        {
+          "label": "Όλα",
+          "count": "· 24"
+        },
+        {
+          "label": "Special",
+          "count": "· 5"
+        },
+        {
+          "label": "Floor",
+          "count": "· 8"
+        },
+        {
+          "label": "Counter",
+          "count": "· 4"
+        },
+        {
+          "label": "Pallet",
+          "count": "· 3"
+        },
+        {
+          "label": "Wall",
+          "count": "· 2"
+        },
+        {
+          "label": "POS",
+          "count": "· 2"
+        }
+      ],
+      "materialChips": [
+        {
+          "label": "Paper"
+        },
+        {
+          "label": "Metal"
+        },
+        {
+          "label": "Wood"
+        },
+        {
+          "label": "Plexi"
+        },
+        {
+          "label": "Premium"
+        }
+      ],
+      "channelChips": [
+        {
+          "label": "SM"
+        },
+        {
+          "label": "Pharmacy"
+        },
+        {
+          "label": "Cosmetics"
+        },
+        {
+          "label": "HORECA"
+        },
+        {
+          "label": "+3"
+        }
+      ],
+      "countPill": "24 έργα · OTIF · 2018–2025"
+    },
+    "featured": {
+      "big": {
+        "href": "/portfolio/coca-cola-summer-endcap",
+        "badge": "Featured",
+        "phTag": "Photo · Coca-Cola end-cap, Athens",
+        "eyebrow": "POP Display · Coca-Cola · 2024",
+        "h4": "Summer end-cap, σε 240 καταστήματα"
+      },
+      "sideA": {
+        "href": "/portfolio",
+        "phTag": "Photo · HORECA booth",
+        "eyebrow": "Εκθεσιακό · 2024",
+        "h4": "HORECA Athens"
+      },
+      "sideB": {
+        "href": "/portfolio",
+        "phTag": "Photo · Diageo flagship",
+        "eyebrow": "Interior · Diageo",
+        "h4": "Johnnie Walker House, Athens"
+      }
+    },
+    "grid": {
+      "head": "Όλα τα έργα · 21 ακόμα",
+      "sort": "Sort: Νεότερα πρώτα ↓",
+      "items": [
+        {
+          "href": "/portfolio/coca-cola-summer-endcap",
+          "ph": "warm",
+          "phTag": "Photo · Lidl bakery shelf-edge",
+          "yr": "2025 · POS",
+          "h4": "Lidl bakery shelf-edge",
+          "client": "Lidl Hellas",
+          "tag": "FMCG",
+          "tagOrange": true
+        },
+        {
+          "href": "/portfolio",
+          "ph": "dark",
+          "phTag": "Photo · Cosmote retail",
+          "yr": "2025 · Interior",
+          "h4": "Cosmote flagship, Σύνταγμα",
+          "client": "OTE Group",
+          "tag": "Telecom",
+          "tagOrange": false
+        },
+        {
+          "href": "/portfolio",
+          "ph": "cool",
+          "phTag": "Photo · L'Oréal pharma",
+          "yr": "2024 · POP",
+          "h4": "L'Oréal Active pharma display",
+          "client": "L'Oréal Hellas",
+          "tag": "Καλλυντικά",
+          "tagOrange": false
+        },
+        {
+          "href": "/portfolio",
+          "ph": "yellow",
+          "phTag": "Photo · Coca-Cola end-cap, hero",
+          "yr": "2024 · POP",
+          "h4": "Coca-Cola summer end-cap",
+          "client": "Coca-Cola Hellas",
+          "tag": "FMCG",
+          "tagOrange": true
+        },
+        {
+          "href": "/portfolio",
+          "ph": "orange",
+          "phTag": "Photo · Heineken Euro 2024",
+          "yr": "2024 · POP",
+          "h4": "Heineken Euro 2024 floor display",
+          "client": "Heineken Greece",
+          "tag": "Ποτά",
+          "tagOrange": false
+        },
+        {
+          "href": "/portfolio",
+          "ph": "cool",
+          "phTag": "Photo · Materia café interior",
+          "yr": "2024 · Interior",
+          "h4": "Café Materia, Παγκράτι",
+          "client": "Materia Group",
+          "tag": "HORECA",
+          "tagOrange": false
+        },
+        {
+          "href": "/portfolio",
+          "ph": "dark",
+          "phTag": "Photo · Athens Marathon banners",
+          "yr": "2024 · Print",
+          "h4": "Athens Marathon banners",
+          "client": "SEGAS",
+          "tag": "Event",
+          "tagOrange": false
+        },
+        {
+          "href": "/portfolio",
+          "ph": "warm",
+          "phTag": "Photo · Nestlé cereal pallet",
+          "yr": "2023 · POP",
+          "h4": "Nestlé cereal pallet, 350 stores",
+          "client": "Nestlé Hellas",
+          "tag": "FMCG",
+          "tagOrange": true
+        },
+        {
+          "href": "/portfolio",
+          "ph": "gradient",
+          "phTag": "Photo · Diageo flagship",
+          "yr": "2023 · Interior",
+          "h4": "Johnnie Walker House",
+          "client": "Diageo",
+          "tag": "Ποτά",
+          "tagOrange": false
+        },
+        {
+          "href": "/portfolio",
+          "ph": "cool",
+          "phTag": "Photo · Pharmacy vitrine",
+          "yr": "2023 · POS",
+          "h4": "Vichy vitrine system",
+          "client": "Vichy / L'Oréal",
+          "tag": "Φαρμακείο",
+          "tagOrange": false
+        },
+        {
+          "href": "/portfolio",
+          "ph": "dark",
+          "phTag": "Photo · Papastratos booth",
+          "yr": "2023 · Εκθεσιακό",
+          "h4": "Papastratos at Re-event",
+          "client": "Papastratos",
+          "tag": "Καπνός",
+          "tagOrange": false
+        },
+        {
+          "href": "/portfolio",
+          "ph": "yellow",
+          "phTag": "Photo · Skroutz HQ signage",
+          "yr": "2022 · Print",
+          "h4": "Skroutz HQ wayfinding",
+          "client": "Skroutz",
+          "tag": "Office",
+          "tagOrange": false
+        }
+      ],
+      "pagerTotal": "Σελίδα 1 από 2 · 24 έργα"
+    },
+    "ctaTitlePre": "Σας ταιριάζει κάτι από αυτά;",
+    "ctaTitleEm": "Let's engineer yours."
+  },
+  "cocaCola": {
+    "metaTitle": "Coca-Cola summer end-cap, 240 stores",
+    "metaDescription": "Case study: floor stand και summer end-cap για Coca-Cola — deployed σε 240 καταστήματα της ελληνικής αγοράς, με μετρήσιμο conversion uplift.",
+    "metaKeywords": [
+      "Coca-Cola endcap case study",
+      "summer floor stand",
+      "Production LTD Coca-Cola",
+      "retail rollout 240 stores"
+    ],
+    "hero": {
+      "h1Line1": "Coca-Cola summer end-cap,",
+      "h1Line2": "σε 240 καταστήματα.",
+      "lede": "Vacuum-formed POS unit με integrated LED edge lighting — από το concept μέχρι την παράδοση σε έξι εβδομάδες, εξ ολοκλήρου εντός της εταιρίας μας.",
+      "meta": [
+        {
+          "h6": "Client",
+          "v": "Coca-Cola Hellas"
+        },
+        {
+          "h6": "Year",
+          "v": "2024"
+        },
+        {
+          "h6": "Materials",
+          "v": "Plexiglass · LED"
+        },
+        {
+          "h6": "Units shipped",
+          "v": "240"
+        },
+        {
+          "h6": "Timeline",
+          "v": "6 εβδομάδες"
+        }
+      ]
+    },
+    "bigvisual": {
+      "phTag": "Photo · Hero installation, AB Vasilopoulos Athens",
+      "phLogo": "P / 01.HERO",
+      "phCaptionLine1": "free-standing,",
+      "phCaptionLine2": "illuminated",
+      "captionLeft": "01 / Hero installation · AB Vasilopoulos Athens",
+      "captionRight": "Aug 2024"
+    },
+    "narrative": {
+      "h5": "Brief",
+      "h2": "Ένα end-cap που στέκεται μόνο του.",
+      "p1Pre": "Η Coca-Cola Hellas ήθελε ένα",
+      "p1Accent": "free-standing display",
+      "p1Post": "για την summer campaign — αρκετά ψηλό να φαίνεται από το πέρας του διαδρόμου, αρκετά σταθερό να αντέξει τη χρήση των πελατών, και αρκετά ελαφρύ να μεταφέρεται σε 240 καταστήματα σε δύο εβδομάδες.",
+      "p2": "Το brief μας έφτασε αρχές Ιουλίου, με campaign launch το πρώτο Σάββατο του Αυγούστου — έξι εβδομάδες από brief σε εγκατάσταση. Σχεδιάσαμε σε 3D, prototype-άραμε εντός 5 ημερών, και παραδώσαμε με LED edge lighting integrated στο top shelf για να ξεχωρίζει στο φωτισμό των supermarket."
+    },
+    "specs": {
+      "eyebrow": "Solution · Κατασκευαστική λύση",
+      "h2": "Vacuum-formed body, LED edge, drop-and-shop logistics.",
+      "p": "Επιλέξαμε vacuum forming για το κύριο σώμα — μειώνει το κόστος σε 240 μονάδες χωρίς συμβιβασμό στην ποιότητα. Το LED στρίπ είναι battery-powered και μπαίνει on-site σε 30 δευτερόλεπτα.",
+      "ctaLabel": "POP/POS services →",
+      "rows": [
+        {
+          "h6": "Διαστάσεις",
+          "v": "1.85m × 0.6m × 0.5m"
+        },
+        {
+          "h6": "Βάρος (assembled)",
+          "v": "12.4 kg"
+        },
+        {
+          "h6": "Footprint",
+          "v": "0.3 m² ανά μονάδα"
+        },
+        {
+          "h6": "Κύριο υλικό",
+          "v": "PMMA 4mm, λευκό-όπαλ"
+        },
+        {
+          "h6": "LED",
+          "v": "5m στρίπ, 3000K warm white"
+        },
+        {
+          "h6": "Pack-out",
+          "v": "Flat-pack, 6 μονάδες/παλέτα"
+        },
+        {
+          "h6": "Συναρμολόγηση",
+          "v": "8 λεπτά, 1 άτομο, χωρίς εργαλεία"
+        }
+      ]
+    },
+    "gallery": {
+      "hero": {
+        "phTag": "Photo · Production floor, vacuum forming",
+        "phCaptionLine1": "forming the",
+        "phCaptionLine2": "main shell"
+      },
+      "items": [
+        {
+          "ph": "yellow",
+          "phTag": "Photo · LED strip integration test",
+          "captionLine1": "LED at 30s",
+          "captionLine2": "",
+          "captionDark": true
+        },
+        {
+          "ph": "dark",
+          "phTag": "Photo · QA inspection",
+          "captionLine1": "structural",
+          "captionLine2": "load test",
+          "captionDark": false
+        },
+        {
+          "ph": "cool",
+          "phTag": "Photo · Flat-pack ready for shipping",
+          "captionLine1": "240 × ready",
+          "captionLine2": "",
+          "captionDark": true
+        },
+        {
+          "ph": "gradient",
+          "phTag": "Photo · Installed, Skroutz HQ store",
+          "captionLine1": "aisle-end",
+          "captionLine2": "day 1",
+          "captionDark": true
+        }
+      ]
+    },
+    "timeline": {
+      "eyebrow": "Process · 6 εβδομάδες",
+      "h2": "Από brief σε εγκατάσταση.",
+      "metaLine1": "240 μονάδες · 240 καταστήματα",
+      "metaLine2": "1 production team",
+      "steps": [
+        {
+          "week": "Εβδομάδα 1",
+          "h6": "Brief & 3D",
+          "p": "Discovery call, σχεδιασμός σε CAD, 3 renders για έγκριση."
+        },
+        {
+          "week": "Εβδομάδα 2",
+          "h6": "Prototype",
+          "p": "Vacuum-form τεστ, structural validation, packaging mock-up."
+        },
+        {
+          "week": "Εβδομάδα 3",
+          "h6": "Sign-off",
+          "p": "Φυσική παρουσίαση δείγματος στο Coca-Cola HQ. Final tweaks."
+        },
+        {
+          "week": "Εβδομάδες 4–5",
+          "h6": "Παραγωγή",
+          "p": "240 μονάδες, 5 working days, full QA pass."
+        },
+        {
+          "week": "Εβδομάδα 5",
+          "h6": "Logistics",
+          "p": "40 παλέτες, διανομή σε 240 καταστήματα πανελλαδικά."
+        },
+        {
+          "week": "Εβδομάδα 6",
+          "h6": "Install",
+          "p": "Καμπάνια live, store-by-store install support."
+        }
+      ]
+    },
+    "pullquote": {
+      "qPre": "Production took our brief and gave it back as a finished thing six weeks later. Every store had its unit",
+      "qAccent": "on time",
+      "qPost": ".",
+      "attrName": "Maria K.",
+      "attrRole": "— Trade Marketing Manager, Coca-Cola Hellas"
+    },
+    "results": {
+      "eyebrow": "Results · Αποτελέσματα",
+      "h2Line1": "Six weeks. Zero misses.",
+      "h2Em": "240 stores, on time.",
+      "p": "Η καμπάνια έτρεξε από Αύγουστο έως Σεπτέμβριο 2024 σε 240 σημεία της AB Vasilopoulos και Σκλαβενίτη. Όλες οι μονάδες εγκαταστάθηκαν πριν την εκκίνηση της καμπάνιας.",
+      "items": [
+        {
+          "v": "240<em>/240</em>",
+          "l": "stores live, day 1"
+        },
+        {
+          "v": "6<em>wks</em>",
+          "l": "brief → install"
+        },
+        {
+          "v": "+22<em>%</em>",
+          "l": "campaign sell-through"
+        },
+        {
+          "v": "0",
+          "l": "field defects reported"
+        }
+      ]
+    },
+    "next": {
+      "h5": "Next project",
+      "title": "HORECA Athens 2024 booth →"
+    }
+  },
+  "contact": {
+    "metaTitle": "Επικοινωνία",
+    "metaDescription": "Επικοινωνήστε με την Production LTD — info@production.gr, +30 210 232 27 50, Τσαμαλή 63, Αχαρναί 13671. Strategic briefing και τιμολόγηση μέσα σε 48 ώρες.",
+    "metaKeywords": [
+      "Production LTD επικοινωνία",
+      "POP/POS Αθήνα",
+      "retail displays Greece contact",
+      "Αχαρνές POP κατασκευές"
+    ],
+    "hero": {
+      "h1Line1": "Πείτε μας τι θέλετε.",
+      "h1Em": "The engineering team will take it from here.",
+      "lede": "Email, τηλέφωνο, ή χρησιμοποιήστε το Strategic Briefing Form για δομημένη ανάλυση. Συνήθως απαντάμε εντός 24 ωρών — η ομάδα του Engineering ξεκινάει Value Engineering ανάλυση από το πρώτο μήνυμα."
+    },
+    "info": {
+      "email": {
+        "glyph": "@",
+        "h6": "Email",
+        "meta": "Γενικές ερωτήσεις, briefs, partnership requests. Απάντηση εντός 24 ωρών (Δευτ–Παρ).",
+        "actions": [
+          {
+            "href": "mailto:yiannis@production.gr",
+            "label": "γιάννης@ · Sales"
+          },
+          {
+            "href": "mailto:vangelis@production.gr",
+            "label": "βαγγέλης@ · Operations"
+          },
+          {
+            "href": "mailto:careers@production.gr",
+            "label": "careers@"
+          }
+        ]
+      },
+      "phone": {
+        "glyph": "TEL",
+        "h6": "Τηλέφωνο",
+        "value": "210.232.27.50",
+        "meta": "Reception · Δευτέρα έως Παρασκευή, 09:00–19:00. Για urgent productions, ζητήστε τον production manager."
+      },
+      "address": {
+        "glyph": "GR",
+        "h6": "Διεύθυνση",
+        "line1": "Τσαμαλή 63",
+        "line2": "13671 Αχαρναί, Αττική",
+        "meta": "Καθετοποιημένη μονάδα — μεταξοτυπία, CNC, ψηφιακή εκτύπωση, vacuum forming, assembly. Επισκέψεις πελατών κατόπιν ραντεβού.",
+        "actions": [
+          {
+            "label": "Get directions →"
+          },
+          {
+            "label": "Book a facility tour →"
+          }
+        ]
+      },
+      "hours": {
+        "glyph": "HRS",
+        "h6": "Ωράριο",
+        "value": "Δευτέρα — Παρασκευή · 09:00–19:00",
+        "meta": "Γραφεία 09:00–19:00 · κλειστά Σαββατοκύριακα. Για urgent productions, ζητήστε τον Operations team."
+      }
+    },
+    "map": {
+      "pinLabel": "Production LTD · Αχαρνές",
+      "corner1": "38°05′N · 23°44′E",
+      "corner2": "Map · Αχαρνές, Αττική"
+    },
+    "ctaTitlePre": "Έτοιμοι για το επόμενο βήμα;",
+    "ctaTitleEm": "Strategic briefing.",
+    "ctaLabel": "Strategic briefing form →",
+    "form": {
+      "eyebrow": "Quick message",
+      "h2": "Στείλτε ένα μήνυμα.",
+      "subPre": "Για σύνθετα briefs χρησιμοποιήστε το",
+      "subLink": "Strategic Briefing Form →",
+      "name": "Όνομα",
+      "namePh": "Πλήρες όνομα",
+      "company": "Εταιρία",
+      "companyPh": "Όνομα εταιρίας",
+      "email": "Email",
+      "emailPh": "you@company.com",
+      "phone": "Τηλέφωνο (προαιρ.)",
+      "phonePh": "+30 …",
+      "projectType": "Είδος έργου",
+      "projectTypePh": "Διαλέξτε…",
+      "projectOptions": [
+        "Special Project (Premium / Mix)",
+        "Floor Stand",
+        "Counter Stand",
+        "Display System",
+        "Gondola / Ράφια",
+        "Pallet",
+        "Wall Unit",
+        "Shelf Tray / Vacuum",
+        "POS Accessory"
+      ],
+      "message": "Μήνυμα",
+      "messagePh": "Πείτε μας λίγα λόγια για το brief, τις ποσότητες και το χρονοδιάγραμμα…",
+      "submit": "Αποστολή μηνύματος →",
+      "altLink": "ή ξεκινήστε Strategic Briefing →",
+      "successAlert": "Ευχαριστούμε! Θα επικοινωνήσουμε σύντομα."
+    }
+  },
+  "quote": {
+    "metaTitle": "Strategic Briefing",
+    "metaDescription": "Strategic briefing για το επόμενο POP/POS project σας — 5-step wizard που μετατρέπει το brief σε προσφορά. Channel, στόχοι, υλικά, χρονοδιάγραμμα και αρχεία.",
+    "metaKeywords": [
+      "POP quote",
+      "POS προσφορά",
+      "retail displays briefing",
+      "strategic brief Production LTD",
+      "RFQ POP κατασκευές"
+    ],
+    "dateLocale": "el-GR",
+    "h1Line1": "Ας δώσουμε μορφή",
+    "h1Line2": "στο επόμενο project σας.",
+    "ledePre": "Συμπληρώστε τα στοιχεία σας και η ομάδα του Engineering θα επικοινωνήσει μαζί σας για μια πρώτη",
+    "ledeStrong": "στρατηγική ανάλυση",
+    "ledePost": ". 5 βήματα, ~4 λεπτά — Value Engineering ξεκινάει από το πρώτο μήνυμα.",
+    "saveState": "Auto-saved · ~2 min ago",
+    "stepNames": [
+      "Ταυτότητα",
+      "Κανάλι & Στόχος",
+      "Υλικά",
+      "Χρόνος OTIF",
+      "Upload Brief"
+    ],
+    "stepNow": "Τώρα",
+    "stepLabelPrefix": "Step",
+    "channels": [
+      {
+        "code": "SM",
+        "name": "Super Markets",
+        "desc": "Heavy-use, mass FMCG."
+      },
+      {
+        "code": "RT",
+        "name": "Retail Stores",
+        "desc": "Design-led brands."
+      },
+      {
+        "code": "PH",
+        "name": "Pharmacy",
+        "desc": "Trust & ergonomics."
+      },
+      {
+        "code": "CO",
+        "name": "Cosmetics",
+        "desc": "Premium φινίρισμα."
+      },
+      {
+        "code": "HR",
+        "name": "HORECA",
+        "desc": "Restaurants, café, bar."
+      },
+      {
+        "code": "HT",
+        "name": "Hotels",
+        "desc": "Hospitality & signage."
+      },
+      {
+        "code": "KS",
+        "name": "Kiosk",
+        "desc": "Compact, impulse."
+      },
+      {
+        "code": "CV",
+        "name": "Convenience",
+        "desc": "Small-format retail."
+      }
+    ],
+    "goals": [
+      {
+        "code": "NEW",
+        "title": "New product launch",
+        "en": "Κυκλοφορία νέου",
+        "desc": "Μέγιστη ορατότητα στο shelf την ημέρα του launch — OTIF κρίσιμο."
+      },
+      {
+        "code": "SSN",
+        "title": "Seasonal promotion",
+        "en": "Εποχικό campaign",
+        "desc": "Limited-life campaign — flat-pack & χαρτί συνήθως ιδανικά."
+      },
+      {
+        "code": "PRM",
+        "title": "Permanent presence",
+        "en": "Μόνιμη παρουσία",
+        "desc": "Long-life retail — premium υλικά (μέταλλο, MDF, plexi)."
+      }
+    ],
+    "materials": [
+      {
+        "code": "M01",
+        "name": "Paper & Cardboard",
+        "desc": "Οικονομία, ταχύτητα, 100% ανακυκλώσιμο.",
+        "feat": false
+      },
+      {
+        "code": "M02",
+        "name": "Metal",
+        "desc": "Βιομηχανική αντοχή, μόνιμες κατασκευές.",
+        "feat": false
+      },
+      {
+        "code": "M03",
+        "name": "Plastic (PVC/Forex)",
+        "desc": "Ευελιξία, ελαφρύ, color-true.",
+        "feat": false
+      },
+      {
+        "code": "M04",
+        "name": "Wood / MDF",
+        "desc": "Ζεστασιά, κύρος, CNC ακρίβεια.",
+        "feat": false
+      },
+      {
+        "code": "M05",
+        "name": "Plexiglass",
+        "desc": "Premium διαφάνεια — Wow Factor.",
+        "feat": false
+      },
+      {
+        "code": "M06",
+        "name": "Premium / Mix υλικών",
+        "desc": "Special Projects — strategic advisor approach.",
+        "feat": true
+      }
+    ],
+    "premiumLabel": "Premium",
+    "step1": {
+      "eye": "01 / 05 · Ταυτοποίηση συνεργάτη",
+      "h2": "Πείτε μας ποιοι είστε.",
+      "p": "Όνομα, εταιρεία, ρόλος, επικοινωνία. Όλα τα δεδομένα κρατούνται encrypted και χρησιμοποιούνται μόνο για αυτό το brief.",
+      "name": "Όνομα *",
+      "namePh": "Πλήρες όνομα",
+      "role": "Ρόλος",
+      "rolePh": "Trade Marketing Manager",
+      "company": "Εταιρεία *",
+      "companyPh": "Όνομα εταιρίας",
+      "industry": "Κλάδος",
+      "industryOptions": [
+        "FMCG",
+        "Cosmetics",
+        "Pharmacy",
+        "HORECA",
+        "Hotels",
+        "Retail",
+        "Tobacco",
+        "Beverages",
+        "Άλλο"
+      ],
+      "email": "Email *",
+      "emailPh": "you@company.com",
+      "phone": "Τηλέφωνο",
+      "phonePh": "+30 …"
+    },
+    "step2": {
+      "eye": "02 / 05 · Κανάλι & Στόχος",
+      "h2": "Σε ποιο κανάλι; Για ποιο launch;",
+      "pPre": "Αυτά τα δύο πεδία ενεργοποιούν τη",
+      "pStrong": "Value Engineering",
+      "pPost": "ανάλυση — μας λένε σε ποιο περιβάλλον θα ζήσει το stand και τι κύκλο ζωής έχει η καμπάνια σας.",
+      "channelLabel": "Κανάλι εφαρμογής (Application channel)",
+      "goalLabel": "Στόχος έργου (Project goal)",
+      "productTypeLabel": "Τύπος προϊόντος",
+      "productOptions": [
+        "Special Project (Mix)",
+        "Floor Stand",
+        "Counter Stand",
+        "Display System",
+        "Gondola / Ράφια",
+        "Pallet",
+        "Wall Unit",
+        "Shelf Tray / Vacuum",
+        "POS Accessory"
+      ],
+      "quantityLabel": "Εκτιμώμενη ποσότητα",
+      "quantityOptions": [
+        "200–500 units",
+        "50–200 units",
+        "500–2.000 units",
+        "2.000–10.000 units",
+        "10.000+ units"
+      ]
+    },
+    "step3": {
+      "eye": "03 / 05 · Προτιμώμενο υλικό",
+      "h2": "Έχετε προτίμηση σε υλικά;",
+      "p": "Διαλέξτε αν ξέρετε — μπορείτε και πολλαπλά. Αν όχι, το Engineering team θα προτείνει βάσει Value Engineering μετά το briefing.",
+      "sustainabilityLabel": "Sustainability constraints (προαιρ.)",
+      "sustainabilityPh": "Π.χ. preference για 100% recyclable, αποφυγή PVC, ζητούμενα ESG πιστοποιητικά για Procurement audit…"
+    },
+    "step4": {
+      "eye": "04 / 05 · Εκτιμώμενος χρόνος",
+      "h2": "Πότε θέλετε το stand στο ράφι;",
+      "pPre": "Αυτή η ημερομηνία ενεργοποιεί την υπόσχεση",
+      "pStrong": "OTIF",
+      "pPost": " — On Time In Full. Από αυτό το σημείο, η ομάδα μας δουλεύει backwards.",
+      "dateLabel": "Επιθυμητή ημερομηνία on-shelf",
+      "urgencyLabel": "Lead time check:",
+      "urgencyIndicator": "17 εβδομάδες · στόχος εφικτός · OTIF active",
+      "deliveryLabel": "Παράδοση",
+      "deliveryOptions": [
+        "Παράδοση στο warehouse μας",
+        "Παράδοση κατευθείαν στα καταστήματα",
+        "Mixed — βλέπε notes"
+      ],
+      "installationLabel": "Εγκατάσταση",
+      "installationOptions": [
+        "Yes — εγκατάσταση από εμάς",
+        "No — μόνο παράδοση",
+        "Συζητούμε"
+      ]
+    },
+    "step5": {
+      "eye": "05 / 05 · Upload brief",
+      "h2": "Άμεση λήψη δεδομένων για στρατηγική ανάλυση.",
+      "p": "Ανεβάστε ό,τι έχετε: brand guidelines, references, υπάρχοντα σχέδια, market research. Όσα περισσότερα δεδομένα, τόσο ακριβέστερη η αρχική Value Engineering ανάλυση.",
+      "dropzoneH6": "Σύρετε αρχεία εδώ",
+      "dropzoneP": "ή κάντε browse από τον υπολογιστή σας",
+      "browse": "Browse files",
+      "formats": "PDF · AI · PSD · JPG · PNG · DWG · ZIP · έως 50MB ανά αρχείο",
+      "uploadedSuffix": "· μόλις ανέβηκε",
+      "notesLabel": "Σημειώσεις για το brief (προαιρ.)",
+      "notesPh": "Πείτε μας ποιο είναι το main brief και ποια είναι απλά references. Είναι κάτι κρίσιμο που πρέπει να ξέρει πρώτα η ομάδα Engineering;",
+      "consentPre": "Συμφωνώ με την",
+      "consentLink": "πολιτική απορρήτου",
+      "consentPost": "και επιτρέπω την επικοινωνία της Production LTD για αυτό το strategic briefing."
+    },
+    "footer": {
+      "stepRemainingPre": "Step",
+      "stepRemainingMid": "/ 5 · ~",
+      "stepRemainingPost": "min remaining",
+      "back": "← Πίσω",
+      "next": "Συνέχεια →",
+      "submit": "Αποστολή Briefing →"
+    },
+    "submitAlert": "Ευχαριστούμε! Το brief σας στάλθηκε.",
+    "summary": {
+      "h5": "Your brief · summary",
+      "items": [
+        {
+          "k": "Εταιρεία",
+          "field": "company"
+        },
+        {
+          "k": "Ρόλος",
+          "field": "role"
+        },
+        {
+          "k": "Κανάλι",
+          "field": "channel"
+        },
+        {
+          "k": "Στόχος",
+          "field": "goal"
+        },
+        {
+          "k": "Τύπος",
+          "field": "productType"
+        },
+        {
+          "k": "Ποσότητα",
+          "field": "quantity"
+        },
+        {
+          "k": "Υλικά",
+          "field": "materials"
+        },
+        {
+          "k": "On-shelf date",
+          "field": "onShelfDate"
+        },
+        {
+          "k": "Brief files",
+          "field": "files"
+        }
+      ],
+      "pending": "— pending —",
+      "filesCountSuffix": "αρχεία",
+      "filesSingle": "αρχείο",
+      "otifEye": "OTIF analysis",
+      "otifV": "~ 17 εβδομάδες · στόχος εφικτός",
+      "otifHint": "Initial lead-time ανάλυση. Τελική προσφορά µετά από review του brief από την ομάδα Engineering.",
+      "marker": "«peace of mind — από το πρώτο μήνυμα»"
+    },
+    "defaults": {
+      "name": "Κατερίνα Παπαδημητρίου",
+      "role": "Trade Marketing Manager",
+      "company": "Brand Hellas SA",
+      "industry": "FMCG",
+      "email": "katerina@brandhellas.gr",
+      "phone": "+30 210 555 0123",
+      "productType": "Special Project (Mix)",
+      "quantity": "200–500 units",
+      "onShelfDate": "2026-09-15",
+      "delivery": "Παράδοση στο warehouse μας",
+      "installation": "Yes — εγκατάσταση από εμάς",
+      "files": [
+        {
+          "name": "brand-launch-brief-Q3.pdf",
+          "size": "2.4 MB · μόλις ανέβηκε",
+          "tag": "brief",
+          "kind": "pdf"
+        },
+        {
+          "name": "competitor-display-reference.png",
+          "size": "876 KB · ~ 1 λεπτό",
+          "tag": "reference",
+          "kind": "img"
+        },
+        {
+          "name": "brand-guidelines-2026.zip",
+          "size": "14 MB · ~ 1 λεπτό",
+          "tag": "brand",
+          "kind": "zip"
+        }
+      ]
+    }
+  },
+  "sitemap": {
+    "metaTitle": "Sitemap",
+    "metaDescription": "Site map της production.gr — γρήγορη πρόσβαση σε όλες τις σελίδες (Αρχική, Προϊόντα, Έργα, Εταιρία, Επικοινωνία, Strategic Briefing).",
+    "top": {
+      "h1Pre": "production.gr",
+      "h1Em": "v2 · brief-aligned",
+      "ledePre": "Hi-fi static mocks για το νέο production.gr — version 2, ευθυγραμμισμένο με το brief v2.2.",
+      "ledeStrong": "Crafting Retail Conversion",
+      "ledePost": "tagline, νέα taxonomy (9 product types · 6 materials · 7 channels), 5 Strategic Reasons, 4-stage process, Industrialized Craft positioning, οικογένεια Δημαρά, Αχαρνές.",
+      "summary": [
+        {
+          "v": "8",
+          "l": "σελίδες"
+        },
+        {
+          "v": "5",
+          "l": "templates"
+        },
+        {
+          "vHtml": "<em>EL</em>",
+          "l": "primary lang"
+        },
+        {
+          "v": "v2",
+          "l": "brief-aligned"
+        }
+      ]
+    },
+    "group1": {
+      "title": "Catalog & flagship pages",
+      "count": "5 σελίδες",
+      "cards": [
+        {
+          "href": "/",
+          "badge": "Hero · Crafting Retail Conversion",
+          "badgeFeat": true,
+          "num": "01 · Αρχική",
+          "h4": "Home",
+          "desc": "Crafting Retail Conversion hero, channels strip, Industrialized Craft excerpt, 9-type product grid, 5 strategic reasons, 4-stage process, materials, OTIF stats, eco-innovation.",
+          "path": "/"
+        },
+        {
+          "href": "/services",
+          "badge": "9 types · 6 materials · 7 channels",
+          "badgeFeat": false,
+          "num": "02 · Προϊόντα",
+          "h4": "Product catalog",
+          "desc": "Special Projects flagship + 8 standard κατηγορίες + Material × Product matrix + Capabilities.",
+          "path": "/products"
+        },
+        {
+          "href": "/services/floor-stands",
+          "badge": "Template · product detail",
+          "badgeFeat": false,
+          "num": "03 · Product detail",
+          "h4": "Floor Stands",
+          "desc": "Drill-down σε 5 υλικά (Paper, Metal, Wood, Plastic, Plexi) + channel suitability fit ratings ανά κανάλι.",
+          "path": "/products/floor-stands"
+        },
+        {
+          "href": "/portfolio",
+          "badge": "Type × Material × Channel filters",
+          "badgeFeat": false,
+          "num": "04 · Έργα",
+          "h4": "Portfolio listing",
+          "desc": "Sticky filter chips, 3-tile featured row, uniform 12-card grid, pagination.",
+          "path": "/portfolio"
+        },
+        {
+          "href": "/portfolio/coca-cola-summer-endcap",
+          "badge": "Coca-Cola · 240 stores · OTIF",
+          "badgeFeat": false,
+          "num": "05 · Case study",
+          "h4": "Coca-Cola summer end-cap",
+          "desc": "Hero, brief narrative, specs table, gallery, 6-week timeline, pull quote, results, next.",
+          "path": "/portfolio/[slug]"
+        }
+      ]
+    },
+    "group2": {
+      "title": "Brand & conversion funnel",
+      "count": "3 σελίδες",
+      "cards": [
+        {
+          "href": "/about",
+          "badge": "Approved story + Δημαράς family",
+          "badgeFeat": false,
+          "num": "06 · Εταιρία",
+          "h4": "About",
+          "desc": "Verbatim approved story, Δημαράς family signature (3 generations), Mission/Vision/Promise, 4 values, Sage+Creator archetype, personas (Κατερίνα/Μάρκος), milestones, clients, testimonials.",
+          "path": "/about"
+        },
+        {
+          "href": "/contact",
+          "badge": "Info cards · quick form · map",
+          "badgeFeat": false,
+          "num": "07 · Επικοινωνία",
+          "h4": "Contact",
+          "desc": "4 info cards (email/τηλ/Αχαρνές/ωράριο), quick form, abstract map με pin στις Αχαρνές. Γιάννης/Βαγγέλης direct emails.",
+          "path": "/contact"
+        },
+        {
+          "href": "/quote",
+          "badge": "Primary CTA · Strategic Briefing",
+          "badgeFeat": true,
+          "num": "08 · Strategic Briefing",
+          "h4": "Strategic Briefing Form — 5 steps",
+          "desc": "Ταυτότητα → Κανάλι & Στόχος → Υλικά → Χρόνος OTIF (date picker με lead-time check) → Upload Brief. Live OTIF analysis sidebar. Brief fields όπως ζητήθηκαν: Channel · Material · Goal · Date · Upload Brief.",
+          "path": "/briefing",
+          "wide": true
+        }
+      ]
+    },
+    "notes": {
+      "eye": "Design notes · for review",
+      "h3": "Πώς να διαβάσετε το concept.",
+      "items": [
+        {
+          "h6": "Brand color updated → #E65C00",
+          "p": "Επιβεβαιωμένο πορτοκαλί από το brief. Όλα τα tokens, gradients & shadows ενημερωμένα."
+        },
+        {
+          "h6": "Νέο tagline · Crafting Retail Conversion",
+          "p": "Παντού στο site — από hero, σε footer, σε meta tags. Το «The Retail Stand Company» αφαιρέθηκε."
+        },
+        {
+          "h6": "Δημαράς family · Αχαρνές",
+          "p": "Γιάννης (Sales/Marketing), Βαγγέλης (Operations/Production), Κωνσταντίνος (Operations). Map & address ενημερωμένα στις Αχαρνές."
+        },
+        {
+          "h6": "Νέα taxonomy · 9 × 6 × 7",
+          "p": "9 product types (Special Projects flagship) · 6 materials · 7 retail channels — με Material × Product matrix για cross-filtering."
+        },
+        {
+          "h6": "5 Strategic Reasons · 4-stage process",
+          "p": "Value Engineering, Rapid Response, Zero-Risk OTIF, B2B2C, Eco-Innovation. Process: Strategic Analysis → Rapid Prototyping → Industrialized Production → OTIF Delivery."
+        },
+        {
+          "h6": "Strategic Briefing Form",
+          "p": "5-step wizard ευθυγραμμισμένο με το brief: Ταυτότητα → Κανάλι & Στόχος → Υλικά → Χρόνος (OTIF date picker) → Upload Brief."
+        },
+        {
+          "h6": "Approved verbatim copy",
+          "p": "Το εγκεκριμένο 'About Us' κείμενο χρησιμοποιείται autoύσιο στο About. Sage + Creator archetype, Mission/Vision/Promise, personas Κατερίνα & Μάρκος."
+        },
+        {
+          "h6": "Next: αισθητική Κατεύθυνση B (editorial)",
+          "p": "Το brief ζητά να αξιολογηθούν δύο αισθητικές κατευθύνσεις. Τρέχουσα έκδοση = Direction A (Energetic/Industrial). Direction B (Minimal/Editorial à la Apple/Diageo) — επόμενη iteration."
+        }
+      ]
+    },
+    "legal": "PRODUCTION LTD · brand refresh v2 · brief alignment v2.2 · 8 pages · Direction A (Energetic/Industrial)"
+  },
+  "channels": {
+    "metaTitle": "Κανάλια — POP/POS λύσεις ανά retail κανάλι",
+    "metaDescription": "Custom POP & POS displays για super market, pharma, beauty, kiosk, HoReCa, toy stores, hairdressers και convenience stores.",
+    "metaKeywords": [
+      "κανάλια retail",
+      "POP κανάλια",
+      "super market displays",
+      "pharma displays",
+      "horeca",
+      "kiosk"
+    ],
+    "metaTitleSuffix": "Κανάλια",
+    "hero": {
+      "h1Pre": "Κάθε κανάλι έχει τη",
+      "h1Em": "δική του γλώσσα.",
+      "lede": "Από super market endcap μέχρι vitrine κομμωτηρίου — εξειδικευμένα displays που μιλούν τη γλώσσα του κάθε retail σημείου."
+    },
+    "gridHeading": "Όλα τα κανάλια",
+    "totalLabel": "κανάλια",
+    "imagesLabel": "εικόνες",
+    "crumbBack": "← Πίσω στα κανάλια",
+    "detailEyebrow": "Channel",
+    "galleryHeading": "Έργα στο κανάλι",
+    "emptyState": "Σύντομα θα δείτε εδώ τα πιο πρόσφατα έργα μας σε αυτό το κανάλι.",
+    "relatedHeading": "Άλλα κανάλια",
+    "ctaTitlePre": "Ψάχνεις λύση για το",
+    "ctaTitleEm": "δικό σου κανάλι;",
+    "contentEyebrow": "Channel insights",
+    "contentHeading": "Γιατί αυτό το κανάλι",
+    "highlightsHeading": "Highlights",
+    "carouselPrev": "Προηγούμενη εικόνα",
+    "carouselNext": "Επόμενη εικόνα",
+    "prevLabel": "Προηγούμενο",
+    "nextLabel": "Επόμενο"
+  },
+  "productDetail": {
+    "metaTitleSuffix": "Προϊόντα",
+    "crumbBack": "← Πίσω στα προϊόντα",
+    "detailEyebrow": "Product Category",
+    "galleryHeading": "Δείγματα κατηγορίας",
+    "emptyState": "Σύντομα θα δείτε εδώ δείγματα κατασκευών μας από αυτή την κατηγορία.",
+    "relatedHeading": "Άλλες κατηγορίες",
+    "ctaTitlePre": "Έτοιμοι να σχεδιάσουμε το",
+    "ctaTitleEm": "δικό σας display;"
+  }
+}

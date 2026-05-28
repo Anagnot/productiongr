@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Production LTD — Crafting Retail Conversion</title>
+<link rel="icon" href="assets/favicon-transparent.png">
+
+<template id="__bundler_thumbnail" data-bg-color="#E65C00">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="bg" cx="35%" cy="30%" r="80%">
+        <stop offset="0%" stop-color="#ffc815"/>
+        <stop offset="100%" stop-color="#E65C00"/>
+      </radialGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#bg)"/>
+    <!-- Production "P" logomark — parallelogram + semicircle -->
+    <polygon points="460,180 600,180 540,620 400,620" fill="#3c3c3c"/>
+    <path d="M 600 180 A 140 140 0 0 1 600 460 L 600 180 Z" fill="#3c3c3c"/>
+    <circle cx="900" cy="500" r="120" fill="#3c3c3c" opacity="0.85"/>
+  </svg>
+</template>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css?v=3">
+<link rel="stylesheet" href="css/anim.css">
+<style>
+  /* HOME — additions / overrides */
+  .hero h1 { font-size: 84px; letter-spacing: -0.035em; }
+  .hero h1 em { color: var(--color-orange); }
+  .hero .meta-row { display: flex; gap: 22px; margin-top: 26px; flex-wrap: wrap; }
+  .hero .meta-row .m { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.95); display: flex; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-pill); }
+  .hero .meta-row .m::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--color-orange); }
+  .hero .stage .note { font-size: 24px; line-height: 1.15; max-width: 220px; }
+
+  /* Channels strip */
+  .channels { background: var(--color-white); padding: 56px 0; border-bottom: 1px solid var(--border-subtle); }
+  .channels .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; gap: 32px; }
+  .channels .head h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); margin: 0; }
+  .channels .head .right { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); letter-spacing: 0.12em; text-transform: uppercase; }
+  .channels-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+  .channels-grid .ch { padding: 24px 14px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 8px; text-align: left; cursor: pointer; transition: background var(--duration) var(--ease); }
+  .channels-grid .ch:last-child { border-right: 0; }
+  .channels-grid .ch:hover { background: var(--color-gray-1); }
+  .channels-grid .ch .num { font-family: var(--font-mono); font-weight: 700; font-size: 10px; color: var(--fg-tertiary); letter-spacing: 0.12em; }
+  .channels-grid .ch .name { font-weight: 700; font-size: 14px; line-height: 1.2; }
+  .channels-grid .ch .en { font-family: var(--font-mono); font-size: 10px; color: var(--fg-tertiary); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* About excerpt strip */
+  .about-strip { background: var(--color-gray-1); padding: 96px 0; }
+  .about-strip .container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+  .about-strip .visual { aspect-ratio: 4/5; border-radius: var(--radius-lg); position: relative; overflow: hidden; background: var(--color-gray-4); }
+  .about-strip .visual .ph-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 32px 32px; }
+  .about-strip .visual .para { position: absolute; left: -30px; top: -30px; bottom: -30px; width: 120px; background: rgba(255,255,255,0.06); transform: skewX(-12deg); }
+  .about-strip .visual .circle { position: absolute; right: -80px; bottom: 20%; width: 280px; height: 280px; border-radius: 50%; background: rgba(230, 92, 0, 0.18); filter: blur(2px); }
+  .about-strip .visual .signature { position: absolute; left: 28px; bottom: 26px; right: 28px; color: #fff; z-index: 2; }
+  .about-strip .visual .signature .marker { font-family: var(--font-marker); font-size: 28px; line-height: 1.1; max-width: 240px; transform: rotate(-2deg); display: inline-block; }
+  .about-strip .visual .signature .line { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 14px; }
+  .about-strip h2 { font-size: 52px; line-height: 1.02; font-weight: 800; letter-spacing: -0.02em; margin: 16px 0 28px; }
+  .about-strip h2 em { font-style: normal; font-family: var(--font-marker); font-weight: 400; color: var(--color-orange); font-size: 0.85em; }
+  .about-strip p { font-size: 18px; line-height: 1.65; color: var(--fg-primary); margin: 0 0 18px; max-width: 560px; }
+  .about-strip p .accent { color: var(--color-orange); font-weight: 700; }
+  .about-strip .signature-line { display: flex; gap: 12px; align-items: center; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border-default); font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); flex-wrap: wrap; }
+  .about-strip .signature-line .sep { color: var(--fg-tertiary); }
+  .about-strip .signature-line .name { color: var(--fg-primary); }
+
+  /* Product catalog (services grid) — 9 types but featuring 5 + special */
+  .services-grid { grid-template-columns: 1.5fr 1fr 1fr; grid-auto-rows: 240px; gap: 12px; }
+  .services-grid .service.feat-big { grid-row: span 2; min-height: 0; background: var(--color-gray-4); color: #fff; padding: 36px; }
+  .services-grid .service.feat-big h3 { font-size: 36px; line-height: 1.05; }
+  .services-grid .service.feat-big .num { color: var(--color-orange); }
+  .services-grid .service.feat-big .s-desc { color: rgba(255,255,255,0.75); font-size: 15px; }
+  .services-grid .service.feat-big .arrow { background: var(--color-orange); color: #fff; width: 44px; height: 44px; }
+  .services-grid .service.feat-big:hover { background: #1f1f1f; color: #fff; }
+  .services-grid .service.feat-big:hover .s-desc, .services-grid .service.feat-big:hover .num { color: rgba(255,255,255,0.85); }
+  .services-grid .service.feat-big:hover .arrow { background: var(--color-orange); color: #fff; }
+  .services-more { display: flex; justify-content: center; margin-top: 28px; }
+
+  /* 5 Strategic reasons */
+  .reasons { background: var(--color-white); padding: 96px 0; }
+  .reasons .section-head { margin-bottom: 56px; }
+  .reasons-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border-top: 1px solid var(--color-gray-4); }
+  .reasons-grid .r { padding: 32px 22px 28px; border-right: 1px solid var(--border-default); position: relative; min-height: 280px; display: flex; flex-direction: column; }
+  .reasons-grid .r:last-child { border-right: 0; }
+  .reasons-grid .r::before { content: ''; position: absolute; top: -1px; left: 0; width: 40px; height: 2px; background: var(--color-orange); }
+  .reasons-grid .r .num { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: var(--color-orange); margin-bottom: 18px; }
+  .reasons-grid .r h4 { font-size: 22px; font-weight: 800; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 12px; }
+  .reasons-grid .r p { font-size: 13px; line-height: 1.6; color: var(--fg-secondary); margin: 0 0 16px; }
+  .reasons-grid .r .metric { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border-subtle); display: flex; align-items: baseline; gap: 8px; }
+  .reasons-grid .r .metric .v { font-family: var(--font-sans); font-weight: 800; font-size: 28px; letter-spacing: -0.02em; color: var(--color-gray-4); line-height: 1; }
+  .reasons-grid .r .metric .l { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-tertiary); }
+
+  /* 4-stage process */
+  .process { background: var(--color-gray-4); color: #fff; padding: 96px 0; position: relative; overflow: hidden; }
+  .process .ornament { position: absolute; left: -120px; top: -120px; width: 380px; height: 380px; border-radius: 50%; background: var(--color-orange); opacity: 0.18; filter: blur(60px); pointer-events: none; }
+  .process .container { position: relative; z-index: 2; }
+  .process .section-head h2 { color: #fff; }
+  .process .section-head .eyebrow { color: rgba(255,255,255,0.6); }
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,0.18); margin-top: 16px; }
+  .process-step { padding: 36px 26px 32px; border-right: 1px solid rgba(255,255,255,0.12); position: relative; min-height: 260px; }
+  .process-step:last-child { border-right: 0; }
+  .process-step .n { font-family: var(--font-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; color: var(--color-orange); margin-bottom: 18px; }
+  .process-step h6 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 6px; }
+  .process-step .en { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .process-step p { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.75); margin: 0 0 12px; }
+  .process-step .bullets { list-style: none; padding: 0; margin: 14px 0 0; font-size: 12px; color: rgba(255,255,255,0.85); }
+  .process-step .bullets li { padding: 5px 0 5px 14px; position: relative; line-height: 1.4; }
+  .process-step .bullets li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 1px; background: var(--color-orange); }
+  .process-step::before { content: ''; position: absolute; top: -1px; left: 0; width: 24%; height: 2px; background: var(--color-orange); }
+
+  /* Clients strip */
+  .clients { background: var(--color-white); padding: 72px 0; border-bottom: 1px solid var(--border-subtle); }
+  .clients h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); margin: 0 0 28px; }
+  .clients-row { display: grid; grid-template-columns: repeat(8, 1fr); gap: 32px; align-items: center; }
+  .clients-row .c { height: 36px; display: flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-weight: 800; font-size: 18px; letter-spacing: -0.01em; color: var(--color-gray-3); opacity: 0.85; }
+  .clients-row .c.serif { font-family: Georgia, serif; font-style: italic; }
+  .clients-row .c.allcaps { font-family: var(--font-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.18em; }
+  .clients-row .c.script { font-family: var(--font-marker); font-size: 22px; }
+
+  /* Work grid refined */
+  .work-grid { grid-template-rows: 360px 280px; }
+
+  /* CTA refined */
+  .cta-block .container { padding-top: 96px; padding-bottom: 96px; }
+  .cta-block h2 em { font-size: 0.85em; }
+</style>
+<link rel="stylesheet" href="css/responsive.css?v=3">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><img src="assets/logo-horizontal-black.svg" alt="Production LTD"></a>
+    <nav class="site-nav">
+      <a href="index.html" class="active">Αρχική</a>
+      <a href="services.html">Προϊόντα</a>
+      <a href="portfolio.html">Έργα</a>
+      <a href="about.html">Εταιρία</a>
+      <a href="contact.html">Επικοινωνία</a>
+      <div class="lang-switch" id="langSwitch">
+        <button class="trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          <span>EL</span>
+          <svg class="chev" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M1 1 L5 5 L9 1"/></svg>
+        </button>
+        <div class="menu" role="menu">
+          <a href="#" class="active" role="menuitem"><span class="flag el"></span>Ελληνικά<span class="label">EL</span></a>
+          <a href="#" role="menuitem"><span class="flag en"></span>English<span class="label">EN</span></a>
+        </div>
+      </div>
+      <a href="quote.html" class="cta primary">Strategic briefing →</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="ornament-para"></div>
+  <div class="ornament-circle"></div>
+  <div class="container">
+    <div>
+      <h1>Crafting<br>retail.</h1>
+      <p class="lede">POP/POS συστήματα που κερδίζουν το βλέμμα του καταναλωτή στα πρώτα 3 δευτερόλεπτα.</p>
+      <div class="actions">
+        <a href="portfolio.html" class="cta primary">Δείτε τα έργα μας →</a>
+        <a href="services.html" class="cta outline">Προϊόντα</a>
+      </div>
+    </div>
+    <div class="stage">
+      <img class="big-p" src="assets/logomark-dark.svg" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- Channels strip — Markets we serve -->
+<section class="channels">
+  <div class="container">
+    <div class="head">
+      <h5>Channels · Αγορές που εξυπηρετούμε</h5>
+      <div class="right">7 retail κανάλια</div>
+    </div>
+    <div class="channels-grid">
+      <div class="ch"><div class="num">01</div><div class="name">Super Markets</div><div class="en">Heavy-use POS</div></div>
+      <div class="ch"><div class="num">02</div><div class="name">Retail Stores</div><div class="en">Design-led displays</div></div>
+      <div class="ch"><div class="num">03</div><div class="name">Cosmetics</div><div class="en">Premium φινίρισμα</div></div>
+      <div class="ch"><div class="num">04</div><div class="name">Pharmacy</div><div class="en">Trust &amp; ergonomics</div></div>
+      <div class="ch"><div class="num">05</div><div class="name">HORECA</div><div class="en">Restaurants, café, bar</div></div>
+      <div class="ch"><div class="num">06</div><div class="name">Hotels</div><div class="en">Hospitality signage</div></div>
+      <div class="ch"><div class="num">07</div><div class="name">Kiosk &amp; Convenience</div><div class="en">Compact, impulse</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- About excerpt — Industrialized Craft positioning -->
+<section class="about-strip">
+  <div class="container">
+    <div class="visual">
+      <div class="para"></div>
+      <div class="ph-grid"></div>
+      <div class="circle"></div>
+      <div class="signature">
+        <span class="marker">silk legacy,<br>industrialized.</span>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow bar" style="margin-bottom: 18px;">Η εταιρία · Industrialized Craft</div>
+      <h2>Όχι απλή αποτύπωση μελανιού —<br><em>conversion tools.</em></h2>
+      <p>Η Production LTD ιδρύθηκε το 2008, με αφετηρία την τέχνη της μεταξοτυπίας. Σήμερα είμαστε μια <span class="accent">καθετοποιημένη μονάδα παραγωγής</span> ολοκληρωμένων συστημάτων POP — υπό τη στρατηγική καθοδήγηση της οικογένειας Δημαρά.</p>
+      <p>Σχεδιάζουμε και κατασκευάζουμε συστήματα προβολής που μετατρέπουν την πρώτη ύλη σε εμπειρία brand. Πιστεύουμε στο <span class="accent">Industrialized Craft</span> — τη συνύπαρξη της ιστορικής μας ταυτότητας (Silk) με τεχνολογίες αιχμής, όπως η ψηφιακή εκτύπωση και η κατεργασία CNC.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Product catalog (services) — 9 types from brief -->
+<section class="services">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow bar">01 · Τι παράγουμε</div>
+        <h2>9 τύποι κατασκευών.</h2>
+      </div>
+      <div class="meta">Special Projects · Floor &amp; Counter Stands · Display Systems · Gondola · Pallet · Wall Units · Shelf Trays · POS Accessories</div>
+    </div>
+    <div class="services-grid">
+      <a href="services.html" class="service feat-big">
+        <div class="num">00 · Premium</div>
+        <div class="arrow">→</div>
+        <h3>Special Projects</h3>
+        <div class="s-desc">Bespoke λύσεις με συνδυασμό υλικών (Metal+Wood, Plexi+MDF, Mix 3+) — για flagship campaigns και Key Accounts. «Πες μας τι θέλεις, εμείς θα σου πούμε σε τι υλικό και γιατί.»</div>
+      </a>
+      <a href="service-pop-displays.html" class="service">
+        <div class="num">01 / 09</div>
+        <div class="arrow">→</div>
+        <h3>Floor Stands</h3>
+        <div class="s-desc">Σταντ εδάφους — Χαρτί, Μέταλλο, Ξύλο, Πλαστικό, Plexiglass.</div>
+      </a>
+      <a href="services.html" class="service">
+        <div class="num">02 / 09</div>
+        <div class="arrow">→</div>
+        <h3>Counter Stands</h3>
+        <div class="s-desc">Επιτραπέζια — premium φινίρισμα ή mass-production volume.</div>
+      </a>
+      <a href="services.html" class="service">
+        <div class="num">03 / 09</div>
+        <div class="arrow">→</div>
+        <h3>Display Systems</h3>
+        <div class="s-desc">Ολοκληρωμένα συστήματα προβολής — modular &amp; επεκτάσιμα.</div>
+      </a>
+      <a href="services.html" class="service">
+        <div class="num">04 / 09</div>
+        <div class="arrow">→</div>
+        <h3>Gondola &amp; Ράφια</h3>
+        <div class="s-desc">Gondola ends, shelving systems — μέταλλο, ξύλο, mix.</div>
+      </a>
+    </div>
+    <div class="services-more">
+      <a href="services.html" class="cta outline">
+        <span>Δείτε όλους τους τύπους κατασκευών</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 5 Strategic Reasons -->
+<section class="reasons">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow bar">02 · Γιατί εμάς</div>
+        <h2>5 strategic reasons — όχι «πάθος για αριστεία».</h2>
+      </div>
+      <div class="meta">Νούμερα &amp; μετρήσιμα ορόσημα<br>όχι κλισέ-μάρκετινγκ</div>
+    </div>
+    <div class="reasons-grid">
+      <div class="r">
+        <div class="num">01 / Sage</div>
+        <h4>Value Engineering</h4>
+        <p>Μείωση κόστους παραγωγής και φύρας μέσω έξυπνης σχεδίασης από το πρώτο λεπτό — προστατεύοντας το margin σας.</p>
+        <div class="metric"><span class="v">92%</span><span class="l">Nesting efficiency</span></div>
+      </div>
+      <div class="r">
+        <div class="num">02 / Creator</div>
+        <h4>Rapid Response</h4>
+        <p>Από concept σε φυσικό prototype στον μισό χρόνο. Καθετοποιημένη μονάδα — όλη η ομάδα κάτω από την ίδια στέγη.</p>
+        <div class="metric"><span class="v">½×</span><span class="l">Industry avg. lead time</span></div>
+      </div>
+      <div class="r">
+        <div class="num">03 / Sage</div>
+        <h4>Zero-Risk Reliability</h4>
+        <p>OTIF — On Time In Full. Δεσμευόμαστε για μηδενικές εκπλήξεις στον χρόνο, στο κόστος ή στην ποιότητα.</p>
+        <div class="metric"><span class="v">OTIF</span><span class="l">100% on-time pledge</span></div>
+      </div>
+      <div class="r">
+        <div class="num">04 / Creator</div>
+        <h4>B2B2C Expertise</h4>
+        <p>«Σιωπηλοί πωλητές» — conversion tools που κερδίζουν το βλέμμα του καταναλωτή στα πρώτα 3 δευτερόλεπτα.</p>
+        <div class="metric"><span class="v">3″</span><span class="l">Attention threshold</span></div>
+      </div>
+      <div class="r">
+        <div class="num">05 / Sage</div>
+        <h4>Eco-Innovation</h4>
+        <p>40–50% της παραγωγής σε ανακυκλώσιμα υλικά (PS, χαρτί, PET, plexiglass). Flat-pack σε χάρτινες κατασκευές.</p>
+        <div class="metric"><span class="v">40–50%</span><span class="l">Recyclable materials</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Work / case studies -->
+<section class="work">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow bar">03 · Selected works</div>
+        <h2>Conversion tools που έγιναν launches — όχι ενδείξεις σε αγορά.</h2>
+      </div>
+      <a href="portfolio.html" class="cta outline">All works →</a>
+    </div>
+    <div class="work-grid">
+      <a href="case-coca-cola-summer-endcap.html" class="tile">
+        <div class="bg t1"></div>
+        <div class="ph-grid" style="position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 40px 40px;"></div>
+        <div class="ornament circle"></div>
+        <div class="ornament para"></div>
+        <div class="badge">Featured · 2024</div>
+        <div class="meta">
+          <div class="eyebrow">Floor Stand · Coca-Cola</div>
+          <h4>Coca-Cola summer end-cap, σε 240 καταστήματα</h4>
+        </div>
+      </a>
+      <a href="portfolio.html" class="tile">
+        <div class="bg t2"></div>
+        <div class="ornament circle"></div>
+        <div class="meta dark">
+          <div class="eyebrow">Special Project · Diageo</div>
+          <h4>Johnnie Walker House, Athens</h4>
+        </div>
+      </a>
+      <a href="portfolio.html" class="tile">
+        <div class="bg t3"></div>
+        <div class="meta dark">
+          <div class="eyebrow">Wall Unit · L'Oréal</div>
+          <h4>Vichy pharmacy wall</h4>
+        </div>
+      </a>
+      <a href="portfolio.html" class="tile">
+        <div class="bg t4"></div>
+        <div class="ornament circle"></div>
+        <div class="meta">
+          <div class="eyebrow">Pallet · Heineken</div>
+          <h4>Euro 2024 floor display</h4>
+        </div>
+      </a>
+      <a href="portfolio.html" class="tile">
+        <div class="bg t5"></div>
+        <div class="ornament para"></div>
+        <div class="meta">
+          <div class="eyebrow">Counter · Lidl</div>
+          <h4>Lidl bakery shelf-edge</h4>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 4-stage process -->
+<section class="process">
+  <div class="ornament"></div>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow bar" style="color: rgba(255,255,255,0.6);">04 · Από το brief στο ράφι</div>
+        <h2>Τέσσερα στάδια. Μια ομάδα. Μηδέν εκπλήξεις.</h2>
+      </div>
+      <div class="meta" style="color: rgba(255,255,255,0.5);">Engineering → Prototype → Production → OTIF<br>μέσος όρος 4–6 εβδομάδες</div>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="n">Stage 01</div>
+        <h6>Strategic Analysis &amp; Engineering</h6>
+        <div class="en">Discovery + Value Engineering</div>
+        <p>Ανάλυση brief, επιλογή ιδανικών υλικών για μέγιστη αντοχή στο χαμηλότερο κόστος.</p>
+        <ul class="bullets">
+          <li>Value Engineering · cost optimization</li>
+          <li>Sustainability check · Nesting 92%</li>
+          <li>Material selection &amp; rationale</li>
+        </ul>
+      </div>
+      <div class="process-step">
+        <div class="n">Stage 02</div>
+        <h6>Rapid Prototyping</h6>
+        <div class="en">Digital + Physical</div>
+        <p>3D mockup στο retail περιβάλλον και φυσικό sample σε χρόνο ρεκόρ — για έλεγχο εργονομίας και «Wow Factor».</p>
+        <ul class="bullets">
+          <li>Digital mockup σε CAD</li>
+          <li>Physical sample 1:1</li>
+          <li>Client sign-off</li>
+        </ul>
+      </div>
+      <div class="process-step">
+        <div class="n">Stage 03</div>
+        <h6>Industrialized Production</h6>
+        <div class="en">Industrial + Craft</div>
+        <p>CNC + ψηφιακή εκτύπωση με ακρίβεια χιλιοστού, μαζί με μεταξοτυπία και χειρωνακτική συναρμολόγηση.</p>
+        <ul class="bullets">
+          <li>Precision manufacturing</li>
+          <li>Μεταξοτυπία &amp; finishing</li>
+          <li>Assembly &amp; per-unit QA</li>
+        </ul>
+      </div>
+      <div class="process-step">
+        <div class="n">Stage 04</div>
+        <h6>Logistics &amp; OTIF Delivery</h6>
+        <div class="en">On Time In Full</div>
+        <p>Έλεγχος ποιότητας πριν συσκευασία και παράδοση αυστηρά στον συμφωνημένο χρόνο, σε όλη την Ελλάδα.</p>
+        <ul class="bullets">
+          <li>Final QA per unit</li>
+          <li>Flat-pack / palletized</li>
+          <li>OTIF · zero misses</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Materials strip — Level 1 of the IA -->
+<section class="materials">
+  <div class="container">
+    <h5>Materials · Επίπεδο 1 · Τα υλικά μας</h5>
+    <div class="materials-list">
+      <span class="m">Paper &amp; Cardboard</span>
+      <span class="m">Metal</span>
+      <span class="m">Plastic (PVC/Forex)</span>
+      <span class="m">Wood / MDF</span>
+      <span class="m">Plexiglass</span>
+      <span class="m">Premium / Mix</span>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat"><div class="num"><em>17</em>yrs</div><div class="label">από το 2008</div></div>
+      <div class="stat"><div class="num">92<em>%</em></div><div class="label">Nesting efficiency</div></div>
+      <div class="stat"><div class="num">OTIF</div><div class="label">on-time delivery</div></div>
+      <div class="stat"><div class="num">40–50<em>%</em></div><div class="label">Recyclable</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sustain">
+  <div class="container">
+    <div class="visual">
+      <div class="para"></div>
+      <div class="circle"></div>
+      <div class="note">eco-innovation,<br>by engineering — not slogans</div>
+    </div>
+    <div>
+      <div class="section-head" style="margin-bottom: 0; display: block;">
+        <div class="eyebrow bar" style="margin-bottom:10px;">05 · Eco-Innovation</div>
+        <h2>Βιωσιμότητα — μετρήσιμη, όχι διακηρυκτική.</h2>
+      </div>
+      <p>40–50% της παραγωγής σε ανακυκλώσιμα υλικά. Nesting 92% μειώνει δραματικά τη φύρα και το αποτύπωμα άνθρακα. Flat-pack λύσεις αποκλειστικά σε χάρτινες κατασκευές για ελαχιστοποίηση μεταφοράς.</p>
+      <div class="pillars">
+        <div class="pillar"><div class="n">01</div><div><h6>Recyclable materials</h6><p>PS, χαρτί, PET, plexiglass — 40–50% της παραγωγής.</p></div></div>
+        <div class="pillar"><div class="n">02</div><div><h6>Nesting 92%</h6><p>Έξυπνη σχεδίαση φύλλων — δραστική μείωση φύρας.</p></div></div>
+        <div class="pillar"><div class="n">03</div><div><h6>Flat-pack logistics</h6><p>Χάρτινες κατασκευές — μειωμένο carbon footprint μεταφοράς.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Clients strip -->
+<section class="clients">
+  <div class="container">
+    <h5>Strategic partners · Επιλεγμένοι πελάτες</h5>
+    <div class="clients-row">
+      <div class="c serif">Coca-Cola</div>
+      <div class="c allcaps">LIDL</div>
+      <div class="c">Nestlé</div>
+      <div class="c serif">Diageo</div>
+      <div class="c allcaps">L'ORÉAL</div>
+      <div class="c">AB Vasilopoulos</div>
+      <div class="c allcaps">SKLAVENITIS</div>
+      <div class="c serif">Pharmacy Networks</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="ornament"></div>
+  <div class="container">
+    <h2>Ας δώσουμε μορφή <em>στο επόμενο project σας.</em></h2>
+    <a href="quote.html" class="cta primary lg" style="background: var(--color-orange);">Strategic briefing →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="logo"><img src="assets/logo-horizontal-white.svg" alt="" style="height: 26px; margin-bottom: 16px;"></div>
+      <p style="font-size:13px; line-height:1.6; max-width: 280px; margin: 0;">Crafting Retail Conversion. Industrialized Craft στις Αχαρνές, από το 2008.</p>
+    </div>
+    <div>
+      <h6>Catalog</h6>
+      <a href="services.html">Special Projects</a>
+      <a href="services.html">Floor &amp; Counter Stands</a>
+      <a href="services.html">Display Systems</a>
+      <a href="services.html">Gondola &amp; Pallet</a>
+      <a href="services.html">POS Accessories</a>
+    </div>
+    <div>
+      <h6>Εταιρία</h6>
+      <a href="about.html">Η εταιρία</a>
+      <a href="portfolio.html">Έργα</a>
+      <a href="contact.html">Επικοινωνία</a>
+      <a href="quote.html">Strategic briefing</a>
+    </div>
+    <div>
+      <h6>Contact</h6>
+      <a href="contact.html">info@production.gr</a>
+      <a href="contact.html">+30 210 232 27 50</a>
+      <a href="contact.html">Τσαμαλή 63, Αχαρναί 13671</a>
+      <a href="sitemap.html">Sitemap</a>
+    </div>
+    <div>
+      <h6>Follow</h6>
+      <a href="https://www.instagram.com/production.gr" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.linkedin.com/company/production-ltd/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legal">
+      <span>© Production LTD 2008–2025. All rights reserved.</span>
+      <span>Privacy · Cookies · Imprint</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.lang-switch').forEach(function(sw){
+    var btn = sw.querySelector('.trigger');
+    var lbl = btn.querySelector('span');
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = sw.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    sw.querySelectorAll('.menu a').forEach(function(a){
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        sw.querySelectorAll('.menu a').forEach(function(x){ x.classList.remove('active'); });
+        a.classList.add('active');
+        lbl.textContent = a.querySelector('.label').textContent;
+        sw.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      });
+    });
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.lang-switch.open').forEach(function(sw){ sw.classList.remove('open'); sw.querySelector('.trigger').setAttribute('aria-expanded','false'); });
+  });
+</script>
+
+  <script src="js/anim.js" defer></script>
+  <script src="js/ui-extras.js" defer></script>
+</body>
+</html>

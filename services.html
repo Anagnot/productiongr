@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Προϊόντα — Production LTD</title>
+<link rel="icon" href="assets/favicon-transparent.png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css?v=3">
+<link rel="stylesheet" href="css/anim.css">
+<style>
+  .page-hero { padding: 80px 0 56px; }
+  .page-hero .container { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: end; }
+  .page-hero h1 { font-size: 84px; line-height: 0.96; }
+  .page-hero h1 em { font-size: 0.78em; }
+  .page-hero .right { font-size: 16px; line-height: 1.6; color: var(--fg-secondary); }
+  .page-hero .stats-line { display: flex; gap: 28px; margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--border-default); }
+  .page-hero .stats-line .s { font-family: var(--font-mono); }
+  .page-hero .stats-line .s .v { font-family: var(--font-sans); font-weight: 800; font-size: 28px; color: var(--color-gray-4); line-height: 1; letter-spacing: -0.02em; }
+  .page-hero .stats-line .s .l { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); margin-top: 6px; }
+
+  /* Filter bar */
+  .ia-bar { padding: 22px 0; border-top: 1px solid var(--color-gray-4); border-bottom: 1px solid var(--border-default); background: var(--color-white); }
+  .ia-bar .container { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .ia-bar .group { display: flex; align-items: center; gap: 8px; }
+  .ia-bar .group h6 { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin: 0 4px 0 0; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: var(--radius-pill); border: 1px solid var(--border-default); font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-primary); background: var(--color-white); cursor: pointer; transition: border-color var(--duration) var(--ease), background var(--duration) var(--ease), color var(--duration) var(--ease); }
+  .chip:hover { border-color: var(--color-orange); color: var(--color-orange); }
+  .chip.active { background: var(--color-gray-4); border-color: var(--color-gray-4); color: #fff; }
+  .ia-bar .count-pill { margin-left: auto; font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); }
+
+  /* Special Projects feature */
+  .special-feat { padding: 80px 0; background: var(--color-gray-4); color: #fff; position: relative; overflow: hidden; }
+  .special-feat .ornament { position: absolute; right: -140px; top: -120px; width: 380px; height: 380px; border-radius: 50%; background: var(--color-orange); opacity: 0.18; filter: blur(60px); pointer-events: none; }
+  .special-feat .ornament2 { position: absolute; left: 30%; bottom: -200px; width: 280px; height: 280px; border-radius: 50%; background: var(--color-orange); opacity: 0.12; filter: blur(70px); pointer-events: none; }
+  .special-feat .container { position: relative; z-index: 2; display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+  .special-feat .eyebrow { color: var(--color-orange); font-family: var(--font-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
+  .special-feat h2 { font-size: 56px; font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; margin: 16px 0 18px; color: #fff; }
+  .special-feat h2 em { font-style: normal; font-family: var(--font-marker); font-weight: 400; color: var(--color-orange); font-size: 0.78em; }
+  .special-feat p { font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.85); margin: 0 0 28px; max-width: 540px; }
+  .special-feat .pull { font-family: var(--font-marker); font-size: 28px; line-height: 1.15; color: var(--color-orange); margin: 28px 0; padding: 22px 0; border-top: 2px solid var(--color-orange); border-bottom: 1px solid rgba(255,255,255,0.15); max-width: 560px; transform: rotate(-1deg); }
+  .special-feat .visual { aspect-ratio: 4/5; border-radius: var(--radius-lg); position: relative; overflow: hidden; background: var(--gradient-dark); }
+  .special-feat .visual .ph-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 32px 32px; }
+  .special-feat .visual .circle { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 60%; aspect-ratio: 1; border-radius: 50%; background: rgba(230, 92, 0, 0.16); filter: blur(2px); }
+  .special-feat .visual .para { position: absolute; left: -30px; top: -30px; bottom: -30px; width: 100px; background: rgba(255,255,255,0.06); transform: skewX(-12deg); }
+  .special-feat .visual .tag { position: absolute; right: 24px; bottom: 24px; font-family: var(--font-marker); font-size: 28px; color: #fff; transform: rotate(-2deg); }
+  .special-feat .tag-line { display: flex; flex-wrap: wrap; gap: 6px; }
+  .special-feat .tag-line .tag-pill { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.9); }
+
+  /* Products grid */
+  .products { padding: 96px 0; background: var(--color-white); }
+  .products .section-head { margin-bottom: 48px; }
+  .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .product { background: var(--color-gray-1); border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; transition: background var(--duration) var(--ease), transform var(--duration) var(--ease); display: grid; grid-template-columns: 200px 1fr; min-height: 240px; }
+  .product:hover { background: var(--color-white); transform: translateY(-2px); border: 1px solid var(--color-gray-4); }
+  .product .product-visual { position: relative; overflow: hidden; }
+  .product .product-visual .ph-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 24px 24px; opacity: 0.6; }
+  .product .product-visual .circle { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 60%; aspect-ratio: 1; border-radius: 50%; background: rgba(255,255,255,0.18); }
+  .product .product-visual.warm { background: linear-gradient(160deg, #2a2a2a 0%, #1f1f1f 55%, #E65C00 130%); }
+  .product .product-visual.warm .circle { background: rgba(255,255,255,0.12); }
+  .product .product-visual.dark { background: linear-gradient(135deg, #3c3c3c 0%, #1f1f1f 100%); }
+  .product .product-visual.orange { background: linear-gradient(135deg, #E65C00 0%, #c24500 100%); }
+  .product .product-visual.cool { background: linear-gradient(135deg, #ededed 0%, #bdbdbd 100%); }
+  .product .product-visual.cool .circle { background: rgba(230,92,0,0.2); }
+  .product .product-visual.yellow { background: linear-gradient(135deg, #ffd84a 0%, #ffc815 100%); }
+  .product .product-visual.yellow .circle { background: rgba(60,60,60,0.18); }
+  .product .product-visual.gradient { background: var(--gradient-dark); }
+  .product .product-visual.gradient .circle { background: rgba(230, 92, 0, 0.18); }
+  .product .product-body { padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .product .product-body .num { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: var(--color-orange); }
+  .product .product-body h3 { font-size: 26px; font-weight: 800; line-height: 1.1; letter-spacing: -0.01em; margin: 0; }
+  .product .product-body .en { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .product .product-body p { font-size: 14px; line-height: 1.55; color: var(--fg-secondary); margin: 4px 0 0; }
+  .product .product-body .materials { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border-default); display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* Materials matrix */
+  .matrix-band { padding: 96px 0; background: var(--color-gray-1); }
+  .matrix-band .container { max-width: var(--max-content); }
+  .matrix-band .head { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-bottom: 48px; align-items: end; }
+  .matrix-band h2 { font-size: 44px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin: 14px 0 0; }
+  .matrix-band p { font-size: 16px; line-height: 1.6; color: var(--fg-secondary); margin: 0; }
+  .matrix { background: var(--color-white); border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-default); }
+  .matrix table { width: 100%; border-collapse: collapse; font-family: var(--font-sans); }
+  .matrix th, .matrix td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--border-subtle); border-right: 1px solid var(--border-subtle); font-size: 13px; }
+  .matrix th { background: var(--color-gray-4); color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .matrix th:first-child { background: var(--color-gray-4); color: #fff; border-top: 2px solid var(--color-orange); }
+  .matrix td:first-child { font-weight: 700; font-size: 14px; color: var(--color-gray-4); background: var(--color-gray-1); }
+  .matrix tr:last-child td { border-bottom: 0; }
+  .matrix td:last-child, .matrix th:last-child { border-right: 0; }
+  .matrix .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--color-orange); }
+  .matrix .dot.weak { background: var(--color-yellow); }
+  .matrix .dot.no { background: var(--color-gray-2); opacity: 0.5; }
+  .matrix-legend { display: flex; gap: 18px; margin-top: 18px; font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); flex-wrap: wrap; }
+  .matrix-legend .item { display: flex; align-items: center; gap: 8px; }
+
+  /* Capabilities */
+  .cap-band { background: var(--color-white); padding: 96px 0; }
+  .cap-band .container { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+  .cap-band h2 { font-size: 48px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 18px; }
+  .cap-band p { font-size: 17px; line-height: 1.6; color: var(--fg-secondary); margin: 0 0 28px; max-width: 480px; }
+  .cap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cap-grid .c { background: var(--color-gray-1); padding: 22px; border-radius: var(--radius-md); }
+  .cap-grid .c h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-orange); margin: 0 0 8px; }
+  .cap-grid .c h4 { font-size: 18px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .cap-grid .c p { font-size: 13px; line-height: 1.5; color: var(--fg-secondary); margin: 0; max-width: none; }
+</style>
+<link rel="stylesheet" href="css/responsive.css?v=3">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><img src="assets/logo-horizontal-black.svg" alt="Production LTD"></a>
+    <nav class="site-nav">
+      <a href="index.html">Αρχική</a>
+      <a href="services.html" class="active">Προϊόντα</a>
+      <a href="portfolio.html">Έργα</a>
+      <a href="about.html">Εταιρία</a>
+      <a href="contact.html">Επικοινωνία</a>
+      <div class="lang-switch"><button class="trigger"><span>EL</span><svg class="chev" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M1 1 L5 5 L9 1"/></svg></button></div>
+      <a href="quote.html" class="cta primary">Strategic briefing →</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="ornament-c"></div>
+  <div class="container">
+    <div>
+      <div class="crumbs"><a href="index.html">Αρχική</a> / <span>Προϊόντα</span></div>
+      <h1>9 τύποι κατασκευών —<br>ένας <em>χώρος παραγωγής.</em></h1>
+    </div>
+    <div class="right">
+      <p>Από bespoke Special Projects με 3+ υλικά, μέχρι POS accessories σε χιλιάδες μονάδες. Όλη η ταξινόμηση ακολουθεί τη λογική του πελάτη: <strong>τι χρειάζεστε → σε ποιο υλικό → για ποιο κανάλι</strong>.</p>
+      <div class="stats-line">
+        <div class="s"><div class="v">9</div><div class="l">Product types</div></div>
+        <div class="s"><div class="v">6</div><div class="l">Materials</div></div>
+        <div class="s"><div class="v">7</div><div class="l">Channels</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IA filter bar -->
+<div class="ia-bar">
+  <div class="container">
+    <div class="group">
+      <h6>Τύπος</h6>
+      <span class="chip active">Όλα</span>
+      <span class="chip">Special Projects</span>
+      <span class="chip">Floor</span>
+      <span class="chip">Counter</span>
+      <span class="chip">Display Systems</span>
+      <span class="chip">+5</span>
+    </div>
+    <div class="group">
+      <h6>Υλικό</h6>
+      <span class="chip">Paper</span>
+      <span class="chip">Metal</span>
+      <span class="chip">Wood</span>
+      <span class="chip">Plexi</span>
+      <span class="chip">Premium</span>
+    </div>
+    <div class="group">
+      <h6>Κανάλι</h6>
+      <span class="chip">SM</span>
+      <span class="chip">Pharmacy</span>
+      <span class="chip">Cosmetics</span>
+      <span class="chip">HORECA</span>
+      <span class="chip">+3</span>
+    </div>
+    <div class="count-pill">9 τύποι · 36 συνδυασμοί</div>
+  </div>
+</div>
+
+<!-- Special Projects feature (first in catalog per brief) -->
+<section class="special-feat">
+  <div class="ornament"></div>
+  <div class="ornament2"></div>
+  <div class="container">
+    <div>
+      <div class="eyebrow">00 · Πρώτη κατηγορία στον κατάλογο</div>
+      <h2>Special Projects.<br><em>Strategic advisor.</em></h2>
+      <p>Bespoke λύσεις με συνδυασμό 3+ υλικών — για Key Accounts, flagship campaigns και installations που πρέπει να λειτουργήσουν ως conversion tools από την πρώτη μέρα.</p>
+      <div class="tag-line">
+        <span class="tag-pill">Metal + Wood</span>
+        <span class="tag-pill">Melamine + Plexi</span>
+        <span class="tag-pill">Metal + Alu Cladding</span>
+        <span class="tag-pill">Mix 3+ υλικών</span>
+        <span class="tag-pill">Premium φινίρισμα</span>
+      </div>
+    </div>
+    <div class="visual">
+      <div class="para"></div>
+      <div class="ph-grid"></div>
+      <div class="circle"></div>
+      <div class="tag">where the brief<br>becomes a brand</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 other product types -->
+<section class="products">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow bar">01 · Catalog</div>
+        <h2>Οι 8 standard κατηγορίες — και όλα τα υλικά τους.</h2>
+      </div>
+      <div class="meta">Κάθε κατηγορία έχει<br>cross-filtering ανά υλικό &amp; κανάλι.</div>
+    </div>
+    <div class="product-grid">
+      <a href="service-pop-displays.html" class="product">
+        <div class="product-visual warm">
+          <div class="ph-grid"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="product-body">
+          <div class="num">01 / 08 · Featured</div>
+          <h3>Floor Stands</h3>
+          <div class="en">Σταντ Εδάφους</div>
+          <p>Aisle-end &amp; freestanding units. Χαρτί, Μέταλλο, Ξύλο, Πλαστικό, Plexiglass — από flat-pack seasonal σε μόνιμες βιομηχανικές κατασκευές.</p>
+        </div>
+      </a>
+      <a href="service-pop-displays.html" class="product">
+        <div class="product-visual cool">
+          <div class="ph-grid"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="product-body">
+          <div class="num">02 / 08</div>
+          <h3>Counter Stands</h3>
+          <div class="en">Επιτραπέζια</div>
+          <p>Compact displays σε ταμεία, βιτρίνες, vitrines. Premium MDF &amp; Plexi για cosmetics/pharmacy ή mass-production volume για SM impulse.</p>
+        </div>
+      </a>
+      <a href="service-pop-displays.html" class="product">
+        <div class="product-visual gradient">
+          <div class="ph-grid"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="product-body">
+          <div class="num">03 / 08</div>
+          <h3>Display Systems</h3>
+          <div class="en">Συστήματα Προβολής</div>
+          <p>Ολοκληρωμένα modular συστήματα — επεκτάσιμα, επαναλαμβανόμενα σε rollouts καταστημάτων με συνεπή brand presence.</p>
+        </div>
+      </a>
+      <a href="service-pop-displays.html" class="product">
+        <div class="product-visual dark">
+          <div class="ph-grid"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="product-body">
+          <div class="num">04 / 08</div>
+          <h3>Gondola &amp; Ράφια</h3>
+          <div class="en">Gondola Ends &amp; Shelving</div>
+          <p>Συστήματα ραφιών και gondola ends — βιομηχανική αντοχή για supermarkets, premium φινίρισμα για cosmetics &amp; pharmacy.</p>
+        </div>
+      </a>
+      <a href="service-pop-displays.html" class="product">
+        <div class="product-visual orange">
+          <div class="ph-grid"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="product-body">
+          <div class="num">05 / 08</div>
+          <h3>Pallet &amp; Half-Pallet</h3>
+          <div class="en">Pallet Displays</div>
+          <p>Drop-and-shop μονάδες πάνω σε Euro pallet — ιδανικά για seasonal pushes και hypermarket κάμπιγκν με υψηλή ορατότητα.</p>
+        </div>
+      </a>
+      <a href="service-pop-displays.html" class="product">
+        <div class="product-visual yellow">
+          <div class="ph-grid"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="product-body">
+          <div class="num">06 / 08</div>
+          <h3>Wall Units</h3>
+          <div class="en">Επίτοιχα Συστήματα</div>
+          <p>Συστήματα τοίχου — premium MDF για pharmacy/beauty, ή βιομηχανικό μέταλλο για heavy-use περιβάλλοντα.</p>
+        </div>
+      </a>
+      <a href="service-pop-displays.html" class="product">
+        <div class="product-visual cool">
+          <div class="ph-grid"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="product-body">
+          <div class="num">07 / 08</div>
+          <h3>Shelf Trays &amp; Vacuum</h3>
+          <div class="en">Σκαφάκια &amp; Vacuum-formed</div>
+          <p>Vacuum-formed σκαφάκια σε PS και PETG. Lightweight &amp; volume-friendly — ιδανικά για supermarket shelf-organization.</p>
+        </div>
+      </a>
+      <a href="service-pop-displays.html" class="product">
+        <div class="product-visual warm">
+          <div class="ph-grid"></div>
+          <div class="circle"></div>
+        </div>
+        <div class="product-body">
+          <div class="num">08 / 08</div>
+          <h3>POS Accessories</h3>
+          <div class="en">Wobblers, Clips, Tents, Packaging</div>
+          <p>Rulers, wobblers, danglers, clip strips, hanging displays, table tents, custom συσκευασία. Όλα τα add-ons που συμπληρώνουν το ecosystem.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Material × Product type matrix -->
+<section class="matrix-band">
+  <div class="container">
+    <div class="head">
+      <div>
+        <div class="eyebrow bar">02 · Cross-reference</div>
+        <h2>Material × Product type matrix.</h2>
+      </div>
+      <p>Όχι κάθε υλικό ταιριάζει σε κάθε προϊόν. Αυτός ο πίνακας δείχνει σε ποιους συνδυασμούς δουλεύουμε καλύτερα. Για συνδυασμούς που δεν εμφανίζονται εδώ, βλέπε <strong>Special Projects</strong>.</p>
+    </div>
+    <div class="matrix">
+      <table>
+        <thead>
+          <tr>
+            <th>Product type</th>
+            <th>Paper</th>
+            <th>Metal</th>
+            <th>Plastic</th>
+            <th>Wood / MDF</th>
+            <th>Plexi</th>
+            <th>Premium / Mix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Floor Stands</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td></tr>
+          <tr><td>Counter Stands</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot weak"></span></td></tr>
+          <tr><td>Display Systems</td><td><span class="dot no"></span></td><td><span class="dot weak"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td></tr>
+          <tr><td>Gondola &amp; Ράφια</td><td><span class="dot no"></span></td><td><span class="dot"></span></td><td><span class="dot no"></span></td><td><span class="dot"></span></td><td><span class="dot no"></span></td><td><span class="dot"></span></td></tr>
+          <tr><td>Pallet &amp; Half-Pallet</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot no"></span></td><td><span class="dot no"></span></td><td><span class="dot no"></span></td><td><span class="dot"></span></td></tr>
+          <tr><td>Wall Units</td><td><span class="dot no"></span></td><td><span class="dot"></span></td><td><span class="dot no"></span></td><td><span class="dot"></span></td><td><span class="dot weak"></span></td><td><span class="dot weak"></span></td></tr>
+          <tr><td>Shelf Trays &amp; Vacuum</td><td><span class="dot no"></span></td><td><span class="dot no"></span></td><td><span class="dot"></span></td><td><span class="dot no"></span></td><td><span class="dot no"></span></td><td><span class="dot no"></span></td></tr>
+          <tr><td>POS Accessories</td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot no"></span></td><td><span class="dot"></span></td><td><span class="dot weak"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="matrix-legend">
+      <div class="item"><span class="dot"></span> Standard offering</div>
+      <div class="item"><span class="dot weak"></span> On request / Special</div>
+      <div class="item"><span class="dot no"></span> Not typical</div>
+    </div>
+  </div>
+</section>
+
+<!-- Capabilities -->
+<section class="cap-band">
+  <div class="container">
+    <div>
+      <div class="eyebrow bar" style="margin-bottom: 14px;">03 · Capabilities</div>
+      <h2>Industrialized Craft — όλη η παραγωγή στις Αχαρνές.</h2>
+      <p>Είμαστε καθετοποιημένη μονάδα: 3D σχεδιασμός, ψηφιακή εκτύπωση, μεταξοτυπία (Silk legacy), CNC, vacuum forming, συναρμολόγηση και logistics — όλα κάτω από την ίδια στέγη.</p>
+      <a href="about.html" class="cta primary">Η εταιρία →</a>
+    </div>
+    <div class="cap-grid">
+      <div class="c"><h5>01</h5><h4>3D Industrial Design</h4><p>CAD modeling, photoreal renders, παραγωγικά αρχεία.</p></div>
+      <div class="c"><h5>02</h5><h4>Μεταξοτυπία (Silk)</h4><p>Η αφετηρία μας — διατηρείται για premium finishing &amp; ειδικές εφαρμογές.</p></div>
+      <div class="c"><h5>03</h5><h4>Ψηφιακή εκτύπωση</h4><p>UV flatbed &amp; latex — άκαμπτα &amp; εύκαμπτα υλικά.</p></div>
+      <div class="c"><h5>04</h5><h4>CNC &amp; Vacuum forming</h4><p>Router, laser, plasma · vacuum forming για volume.</p></div>
+      <div class="c"><h5>05</h5><h4>Nesting 92%</h4><p>Έξυπνη σχεδίαση φύλλων — δραστική μείωση φύρας.</p></div>
+      <div class="c"><h5>06</h5><h4>Assembly &amp; QA</h4><p>Χειρωνακτική συναρμολόγηση &amp; per-unit quality control.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="ornament"></div>
+  <div class="container">
+    <h2>Έχετε ένα brief; <em>Let's engineer it.</em></h2>
+    <a href="quote.html" class="cta primary lg" style="background: var(--color-orange);">Strategic briefing →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="logo"><img src="assets/logo-horizontal-white.svg" alt="" style="height: 26px; margin-bottom: 16px;"></div>
+      <p style="font-size:13px; line-height:1.6; max-width: 280px; margin: 0;">Crafting Retail Conversion. Industrialized Craft στις Αχαρνές, από το 2008.</p>
+    </div>
+    <div><h6>Catalog</h6><a href="services.html">Special Projects</a><a href="services.html">Floor &amp; Counter</a><a href="services.html">Display Systems</a><a href="services.html">POS Accessories</a></div>
+    <div><h6>Contact</h6><a href="contact.html">info@production.gr</a><a href="contact.html">+30 210 232 27 50</a><a href="contact.html">Τσαμαλή 63, Αχαρναί 13671</a></div>
+    <div><h6>Follow</h6><a href="https://www.instagram.com/production.gr" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/production-ltd/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="container">
+    <div class="legal"><span>© Production LTD 2008–2025</span><span>Privacy · Cookies</span></div>
+  </div>
+</footer>
+
+  <script src="js/anim.js" defer></script>
+  <script src="js/ui-extras.js" defer></script>
+</body>
+</html>

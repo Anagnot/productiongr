@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strategic Briefing — Production LTD</title>
+<link rel="icon" href="assets/favicon-transparent.png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css?v=3">
+<link rel="stylesheet" href="css/anim.css">
+<style>
+  body { background: var(--color-gray-1); }
+
+  /* Wizard shell */
+  .wizard-shell { padding: 56px 0 96px; }
+  .wizard-shell .container { max-width: 1280px; }
+  .wizard-shell .top { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; margin-bottom: 40px; }
+  .wizard-shell h1 { font-size: 80px; line-height: 0.94; font-weight: 800; letter-spacing: -0.035em; margin: 18px 0 16px; max-width: 800px; }
+  .wizard-shell h1 em { font-style: italic; font-weight: 300; font-size: 0.85em; color: var(--color-gray-3); }
+  .wizard-shell .lede { font-size: 16px; line-height: 1.6; color: var(--fg-secondary); max-width: 620px; margin: 0; }
+  .wizard-shell .save-state { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-secondary); padding: 8px 12px; border: 1px solid var(--border-default); border-radius: var(--radius-pill); background: var(--color-white); display: inline-flex; align-items: center; gap: 8px; }
+  .wizard-shell .save-state::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #19a974; }
+
+  /* Progress strip */
+  .progress-strip { background: var(--color-white); border-radius: var(--radius-lg); padding: 22px 28px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; border: 1px solid var(--border-subtle); }
+  .step-pill { padding: 4px 22px; border-right: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 14px; cursor: pointer; transition: opacity var(--duration) var(--ease); }
+  .step-pill:first-child { padding-left: 0; }
+  .step-pill:last-child { border-right: 0; padding-right: 0; }
+  .step-pill .num-circle { width: 36px; height: 36px; border-radius: 50%; background: var(--color-gray-1); color: var(--fg-tertiary); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.05em; flex-shrink: 0; transition: background var(--duration) var(--ease), color var(--duration) var(--ease); }
+  .step-pill.done .num-circle { background: var(--color-gray-4); color: #fff; }
+  .step-pill.active .num-circle { background: var(--color-orange); color: #fff; box-shadow: 0 8px 24px -8px rgba(230,92,0,0.5); }
+  .step-pill .label { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: 4px; }
+  .step-pill.done .label { color: var(--fg-secondary); }
+  .step-pill.active .label { color: var(--color-orange); }
+  .step-pill .name { font-size: 14px; font-weight: 700; color: var(--fg-primary); letter-spacing: -0.01em; }
+  .step-pill:not(.active):not(.done) .name { color: var(--fg-tertiary); }
+
+  /* Main wizard body */
+  .wizard-body { margin-top: 16px; display: grid; grid-template-columns: 1fr 360px; gap: 16px; align-items: start; }
+
+  .form-card { background: var(--color-white); border-radius: var(--radius-lg); padding: 40px; border: 1px solid var(--border-subtle); min-height: 600px; }
+  .form-card .step-head { padding-bottom: 24px; border-bottom: 1px solid var(--border-default); margin-bottom: 32px; }
+  .form-card .step-head .eye { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-orange); margin-bottom: 12px; }
+  .form-card .step-head h2 { font-size: 36px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 8px; }
+  .form-card .step-head p { font-size: 14px; line-height: 1.55; color: var(--fg-secondary); margin: 0; max-width: 580px; }
+
+  .step-content { display: none; }
+  .step-content.active { display: block; }
+
+  .fg { margin-bottom: 28px; }
+  .fg .fg-label { display: block; font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); margin-bottom: 12px; }
+
+  .opt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .opt-grid.col-2 { grid-template-columns: repeat(2, 1fr); }
+  .opt-grid.col-4 { grid-template-columns: repeat(4, 1fr); }
+  .opt-grid.col-5 { grid-template-columns: repeat(5, 1fr); }
+  .opt { padding: 18px; background: var(--color-white); border: 1.5px solid var(--border-default); border-radius: var(--radius-md); cursor: pointer; transition: border-color var(--duration) var(--ease), background var(--duration) var(--ease); display: flex; flex-direction: column; gap: 8px; min-height: 100px; position: relative; }
+  .opt:hover { border-color: var(--color-orange); }
+  .opt.selected { border-color: var(--color-orange); background: rgba(230,92,0,0.06); }
+  .opt.selected::after { content: '✓'; position: absolute; top: 10px; right: 12px; width: 22px; height: 22px; border-radius: 50%; background: var(--color-orange); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+  .opt .opt-glyph { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; color: var(--fg-tertiary); }
+  .opt.selected .opt-glyph { color: var(--color-orange); }
+  .opt h5 { font-size: 16px; font-weight: 800; line-height: 1.15; margin: 4px 0 0; letter-spacing: -0.01em; }
+  .opt p { font-size: 12px; line-height: 1.5; color: var(--fg-secondary); margin: 4px 0 0; }
+  .opt.feat { background: var(--color-gray-4); color: #fff; border-color: var(--color-gray-4); }
+  .opt.feat .opt-glyph { color: var(--color-orange); }
+  .opt.feat p { color: rgba(255,255,255,0.7); }
+
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* Date picker styled */
+  .date-pick { background: var(--color-gray-1); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 18px; }
+  .date-pick .label-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .date-pick .selected-date { font-size: 20px; font-weight: 800; color: var(--color-orange); letter-spacing: -0.01em; }
+  .date-pick .month-nav { display: flex; gap: 12px; align-items: center; font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); }
+  .date-pick .month-nav .arrow { width: 28px; height: 28px; border-radius: 50%; background: var(--color-white); border: 1px solid var(--border-default); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .date-pick .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; background: var(--color-white); border-radius: var(--radius-sm); padding: 8px; }
+  .date-pick .cal .dh { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.1em; color: var(--fg-tertiary); text-align: center; padding: 4px 0; text-transform: uppercase; }
+  .date-pick .cal .d { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: var(--fg-primary); border-radius: var(--radius-sm); cursor: pointer; }
+  .date-pick .cal .d:hover { background: var(--color-gray-1); }
+  .date-pick .cal .d.muted { color: var(--fg-tertiary); }
+  .date-pick .cal .d.today { font-weight: 700; }
+  .date-pick .cal .d.selected { background: var(--color-orange); color: #fff; font-weight: 700; }
+  .date-pick .cal .d.range { background: rgba(230,92,0,0.12); color: var(--color-orange); }
+  .date-pick .urgency-bar { margin-top: 14px; display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .date-pick .urgency-bar .label { color: var(--fg-tertiary); }
+  .date-pick .urgency-bar .indicator { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--radius-sm); background: var(--color-yellow); color: var(--color-gray-4); }
+
+  /* Files dropzone */
+  .dropzone { border: 1.5px dashed var(--border-default); border-radius: var(--radius-lg); padding: 48px 32px; text-align: center; background: var(--color-gray-1); cursor: pointer; }
+  .dropzone:hover { border-color: var(--color-orange); background: rgba(230,92,0,0.04); }
+  .dropzone .glyph-box { width: 72px; height: 72px; border-radius: var(--radius-lg); background: var(--color-white); margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); position: relative; }
+  .dropzone .glyph-box::before, .dropzone .glyph-box::after { content: ''; position: absolute; background: var(--color-orange); border-radius: 2px; }
+  .dropzone .glyph-box::before { width: 4px; height: 26px; }
+  .dropzone .glyph-box::after { width: 26px; height: 4px; }
+  .dropzone h6 { font-size: 18px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .dropzone p { font-size: 13px; color: var(--fg-secondary); margin: 0 0 16px; }
+  .dropzone .browse { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 18px; background: var(--color-gray-4); color: #fff; border-radius: var(--radius-md); display: inline-block; }
+  .dropzone .formats { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--fg-tertiary); margin-top: 14px; text-transform: uppercase; }
+
+  .files-list { margin-top: 16px; display: grid; gap: 8px; }
+  .file-row { display: grid; grid-template-columns: 40px 1fr auto auto; gap: 14px; align-items: center; padding: 12px 14px; background: var(--color-gray-1); border-radius: var(--radius-md); }
+  .file-row .icon { width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--color-gray-4); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.05em; }
+  .file-row .icon.pdf { background: var(--color-orange); }
+  .file-row .icon.img { background: var(--color-yellow); color: var(--color-gray-4); }
+  .file-row .icon.zip { background: var(--color-gray-3); }
+  .file-row .name { font-size: 14px; font-weight: 700; }
+  .file-row .meta-text { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); letter-spacing: 0.05em; }
+  .file-row .remove { width: 24px; height: 24px; border-radius: 50%; background: var(--color-white); border: 1px solid var(--border-default); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--fg-tertiary); }
+
+  /* Wizard footer */
+  .wizard-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; margin-top: 40px; border-top: 1px solid var(--border-default); }
+  .wizard-footer .step-meta { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .wizard-footer .actions { display: flex; gap: 10px; }
+
+  /* Summary sidebar */
+  .summary { background: var(--color-white); border-radius: var(--radius-lg); padding: 28px; border: 1px solid var(--border-subtle); position: sticky; top: calc(var(--header-h-d) + 24px); }
+  .summary h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-secondary); margin: 0 0 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border-subtle); }
+  .summary .item { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--border-subtle); align-items: baseline; }
+  .summary .item:last-of-type { border-bottom: 0; }
+  .summary .item .k { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .summary .item .v { font-size: 14px; font-weight: 700; text-align: right; color: var(--fg-primary); }
+  .summary .item .v.pending { color: var(--fg-tertiary); font-weight: 400; }
+  .summary .otif { margin-top: 18px; padding: 18px; background: var(--color-gray-4); color: #fff; border-radius: var(--radius-md); }
+  .summary .otif .eye { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-orange); }
+  .summary .otif .v { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; margin: 8px 0 4px; color: #fff; }
+  .summary .otif .hint { font-size: 11px; color: rgba(255,255,255,0.6); line-height: 1.45; }
+  .summary .marker-note { font-family: var(--font-marker); font-size: 18px; color: var(--color-gray-4); line-height: 1.2; margin-top: 20px; transform: rotate(-1deg); }
+
+  .site-header { background: var(--color-white); }
+
+  /* Goal accent strip */
+  .goal-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .goal-card { padding: 22px; background: var(--color-white); border: 1.5px solid var(--border-default); border-radius: var(--radius-md); cursor: pointer; display: flex; flex-direction: column; gap: 10px; transition: border-color var(--duration) var(--ease), background var(--duration) var(--ease); }
+  .goal-card:hover { border-color: var(--color-orange); }
+  .goal-card.selected { border-color: var(--color-orange); background: rgba(230,92,0,0.06); }
+  .goal-card .icon-glyph { width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-gray-1); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 12px; color: var(--color-orange); margin-bottom: 6px; }
+  .goal-card.selected .icon-glyph { background: var(--color-orange); color: #fff; }
+  .goal-card h5 { font-size: 17px; font-weight: 800; margin: 0; letter-spacing: -0.01em; }
+  .goal-card .en { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .goal-card p { font-size: 12px; line-height: 1.5; color: var(--fg-secondary); margin: 6px 0 0; }
+</style>
+<link rel="stylesheet" href="css/responsive.css?v=3">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><img src="assets/logo-horizontal-black.svg" alt="Production LTD"></a>
+    <nav class="site-nav">
+      <a href="index.html">Αρχική</a>
+      <a href="services.html">Προϊόντα</a>
+      <a href="portfolio.html">Έργα</a>
+      <a href="about.html">Εταιρία</a>
+      <a href="contact.html">Επικοινωνία</a>
+      <div class="lang-switch"><button class="trigger"><span>EL</span><svg class="chev" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M1 1 L5 5 L9 1"/></svg></button></div>
+      <a href="quote.html" class="cta primary">Strategic briefing →</a>
+    </nav>
+  </div>
+</header>
+
+<section class="wizard-shell">
+  <div class="container">
+    <div class="top">
+      <div>
+        <div class="crumbs"><a href="index.html">Αρχική</a> / <span>Strategic Briefing</span></div>
+        <h1>Ας δώσουμε μορφή<br>στο επόμενο project σας.</h1>
+        <p class="lede">Συμπληρώστε τα στοιχεία σας και η ομάδα του Engineering θα επικοινωνήσει μαζί σας για μια πρώτη <strong>στρατηγική ανάλυση</strong>. 5 βήματα, ~4 λεπτά — Value Engineering ξεκινάει από το πρώτο μήνυμα.</p>
+      </div>
+      <span class="save-state">Auto-saved · ~2 min ago</span>
+    </div>
+
+    <div class="progress-strip">
+      <div class="step-pill done" data-step="1"><div class="num-circle">✓</div><div><div class="label">Step 01</div><div class="name">Ταυτότητα</div></div></div>
+      <div class="step-pill active" data-step="2"><div class="num-circle">02</div><div><div class="label">Step 02 · Τώρα</div><div class="name">Κανάλι &amp; Στόχος</div></div></div>
+      <div class="step-pill" data-step="3"><div class="num-circle">03</div><div><div class="label">Step 03</div><div class="name">Υλικά</div></div></div>
+      <div class="step-pill" data-step="4"><div class="num-circle">04</div><div><div class="label">Step 04</div><div class="name">Χρόνος OTIF</div></div></div>
+      <div class="step-pill" data-step="5"><div class="num-circle">05</div><div><div class="label">Step 05</div><div class="name">Upload Brief</div></div></div>
+    </div>
+
+    <div class="wizard-body">
+
+      <div class="form-card">
+
+        <!-- Step 1: Όνομα & Εταιρεία -->
+        <div class="step-content" data-step="1">
+          <div class="step-head">
+            <div class="eye">01 / 05 · Ταυτοποίηση συνεργάτη</div>
+            <h2>Πείτε μας ποιοι είστε.</h2>
+            <p>Όνομα, εταιρεία, ρόλος, επικοινωνία. Όλα τα δεδομένα κρατούνται encrypted και χρησιμοποιούνται μόνο για αυτό το brief.</p>
+          </div>
+          <div class="row-2 fg">
+            <div class="field"><label>Όνομα *</label><input type="text" placeholder="Πλήρες όνομα" value="Κατερίνα Παπαδημητρίου"></div>
+            <div class="field"><label>Ρόλος</label><input type="text" placeholder="Trade Marketing Manager" value="Trade Marketing Manager"></div>
+          </div>
+          <div class="row-2 fg">
+            <div class="field"><label>Εταιρεία *</label><input type="text" placeholder="Όνομα εταιρίας" value="Brand Hellas SA"></div>
+            <div class="field"><label>Κλάδος</label>
+              <select><option>FMCG</option><option>Cosmetics</option><option>Pharmacy</option><option>HORECA</option><option>Hotels</option><option>Retail</option><option>Tobacco</option><option>Beverages</option><option>Άλλο</option></select>
+            </div>
+          </div>
+          <div class="row-2 fg">
+            <div class="field"><label>Email *</label><input type="email" placeholder="you@company.com" value="katerina@brandhellas.gr"></div>
+            <div class="field"><label>Τηλέφωνο</label><input type="tel" placeholder="+30 …" value="+30 210 555 0123"></div>
+          </div>
+        </div>
+
+        <!-- Step 2: Κανάλι Εφαρμογής + Στόχος Έργου (active) -->
+        <div class="step-content active" data-step="2">
+          <div class="step-head">
+            <div class="eye">02 / 05 · Κανάλι &amp; Στόχος</div>
+            <h2>Σε ποιο κανάλι; Για ποιο launch;</h2>
+            <p>Αυτά τα δύο πεδία ενεργοποιούν τη <strong>Value Engineering</strong> ανάλυση — μας λένε σε ποιο περιβάλλον θα ζήσει το stand και τι κύκλο ζωής έχει η καμπάνια σας.</p>
+          </div>
+
+          <div class="fg">
+            <div class="fg-label">Κανάλι εφαρμογής (Application channel)</div>
+            <div class="opt-grid col-4">
+              <div class="opt selected"><div class="opt-glyph">SM</div><h5>Super Markets</h5><p>Heavy-use, mass FMCG.</p></div>
+              <div class="opt"><div class="opt-glyph">RT</div><h5>Retail Stores</h5><p>Design-led brands.</p></div>
+              <div class="opt"><div class="opt-glyph">PH</div><h5>Pharmacy</h5><p>Trust &amp; ergonomics.</p></div>
+              <div class="opt"><div class="opt-glyph">CO</div><h5>Cosmetics</h5><p>Premium φινίρισμα.</p></div>
+              <div class="opt"><div class="opt-glyph">HR</div><h5>HORECA</h5><p>Restaurants, café, bar.</p></div>
+              <div class="opt"><div class="opt-glyph">HT</div><h5>Hotels</h5><p>Hospitality &amp; signage.</p></div>
+              <div class="opt"><div class="opt-glyph">KS</div><h5>Kiosk</h5><p>Compact, impulse.</p></div>
+              <div class="opt"><div class="opt-glyph">CV</div><h5>Convenience</h5><p>Small-format retail.</p></div>
+            </div>
+          </div>
+
+          <div class="fg">
+            <div class="fg-label">Στόχος έργου (Project goal)</div>
+            <div class="goal-strip">
+              <div class="goal-card selected">
+                <div class="icon-glyph">NEW</div>
+                <h5>New product launch</h5>
+                <div class="en">Κυκλοφορία νέου</div>
+                <p>Μέγιστη ορατότητα στο shelf την ημέρα του launch — OTIF κρίσιμο.</p>
+              </div>
+              <div class="goal-card">
+                <div class="icon-glyph">SSN</div>
+                <h5>Seasonal promotion</h5>
+                <div class="en">Εποχικό campaign</div>
+                <p>Limited-life campaign — flat-pack &amp; χαρτί συνήθως ιδανικά.</p>
+              </div>
+              <div class="goal-card">
+                <div class="icon-glyph">PRM</div>
+                <h5>Permanent presence</h5>
+                <div class="en">Μόνιμη παρουσία</div>
+                <p>Long-life retail — premium υλικά (μέταλλο, MDF, plexi).</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row-2 fg">
+            <div>
+              <div class="fg-label">Τύπος προϊόντος</div>
+              <div class="field">
+                <select>
+                  <option>Special Project (Mix)</option>
+                  <option>Floor Stand</option>
+                  <option>Counter Stand</option>
+                  <option>Display System</option>
+                  <option>Gondola / Ράφια</option>
+                  <option>Pallet</option>
+                  <option>Wall Unit</option>
+                  <option>Shelf Tray / Vacuum</option>
+                  <option>POS Accessory</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="fg-label">Εκτιμώμενη ποσότητα</div>
+              <div class="field"><select><option>200–500 units</option><option>50–200 units</option><option>500–2.000 units</option><option>2.000–10.000 units</option><option>10.000+ units</option></select></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Materials -->
+        <div class="step-content" data-step="3">
+          <div class="step-head">
+            <div class="eye">03 / 05 · Προτιμώμενο υλικό</div>
+            <h2>Έχετε προτίμηση σε υλικά;</h2>
+            <p>Διαλέξτε αν ξέρετε — μπορείτε και πολλαπλά. Αν όχι, το Engineering team θα προτείνει βάσει Value Engineering μετά το briefing.</p>
+          </div>
+          <div class="opt-grid col-3">
+            <div class="opt selected"><div class="opt-glyph">M01</div><h5>Paper &amp; Cardboard</h5><p>Οικονομία, ταχύτητα, 100% ανακυκλώσιμο.</p></div>
+            <div class="opt"><div class="opt-glyph">M02</div><h5>Metal</h5><p>Βιομηχανική αντοχή, μόνιμες κατασκευές.</p></div>
+            <div class="opt"><div class="opt-glyph">M03</div><h5>Plastic (PVC/Forex)</h5><p>Ευελιξία, ελαφρύ, color-true.</p></div>
+            <div class="opt selected"><div class="opt-glyph">M04</div><h5>Wood / MDF</h5><p>Ζεστασιά, κύρος, CNC ακρίβεια.</p></div>
+            <div class="opt"><div class="opt-glyph">M05</div><h5>Plexiglass</h5><p>Premium διαφάνεια — Wow Factor.</p></div>
+            <div class="opt feat"><div class="opt-glyph">M06 · Premium</div><h5>Premium / Mix υλικών</h5><p>Special Projects — strategic advisor approach.</p></div>
+          </div>
+          <div class="fg" style="margin-top: 28px;">
+            <div class="field">
+              <label>Sustainability constraints (προαιρ.)</label>
+              <textarea placeholder="Π.χ. preference για 100% recyclable, αποφυγή PVC, ζητούμενα ESG πιστοποιητικά για Procurement audit…"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Εκτιμώμενος Χρόνος — OTIF activation -->
+        <div class="step-content" data-step="4">
+          <div class="step-head">
+            <div class="eye">04 / 05 · Εκτιμώμενος χρόνος</div>
+            <h2>Πότε θέλετε το stand στο ράφι;</h2>
+            <p>Αυτή η ημερομηνία ενεργοποιεί την υπόσχεση <strong>OTIF</strong> — On Time In Full. Από αυτό το σημείο, η ομάδα μας δουλεύει backwards.</p>
+          </div>
+          <div class="date-pick">
+            <div class="label-row">
+              <div>
+                <div style="font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); margin-bottom: 4px;">Επιθυμητή ημερομηνία on-shelf</div>
+                <div class="selected-date">15 Σεπτεμβρίου 2026</div>
+              </div>
+              <div class="month-nav">
+                <span class="arrow">‹</span>
+                <span>Σεπτέμβριος 2026</span>
+                <span class="arrow">›</span>
+              </div>
+            </div>
+            <div class="cal">
+              <div class="dh">Δευ</div><div class="dh">Τρι</div><div class="dh">Τετ</div><div class="dh">Πεμ</div><div class="dh">Παρ</div><div class="dh">Σαβ</div><div class="dh">Κυρ</div>
+              <div class="d muted">31</div><div class="d">1</div><div class="d">2</div><div class="d">3</div><div class="d">4</div><div class="d">5</div><div class="d">6</div>
+              <div class="d">7</div><div class="d">8</div><div class="d range">9</div><div class="d range">10</div><div class="d range">11</div><div class="d range">12</div><div class="d range">13</div>
+              <div class="d range">14</div><div class="d selected">15</div><div class="d">16</div><div class="d">17</div><div class="d">18</div><div class="d">19</div><div class="d">20</div>
+              <div class="d">21</div><div class="d">22</div><div class="d">23</div><div class="d">24</div><div class="d">25</div><div class="d">26</div><div class="d">27</div>
+              <div class="d">28</div><div class="d">29</div><div class="d">30</div><div class="d muted">1</div><div class="d muted">2</div><div class="d muted">3</div><div class="d muted">4</div>
+            </div>
+            <div class="urgency-bar">
+              <span class="label">Lead time check:</span>
+              <span class="indicator">17 εβδομάδες · στόχος εφικτός · OTIF active</span>
+            </div>
+          </div>
+          <div class="row-2 fg" style="margin-top: 28px;">
+            <div>
+              <div class="fg-label">Παράδοση</div>
+              <div class="field">
+                <select><option>Παράδοση στο warehouse μας</option><option>Παράδοση κατευθείαν στα καταστήματα</option><option>Mixed — βλέπε notes</option></select>
+              </div>
+            </div>
+            <div>
+              <div class="fg-label">Εγκατάσταση</div>
+              <div class="field">
+                <select><option>Yes — εγκατάσταση από εμάς</option><option>No — μόνο παράδοση</option><option>Συζητούμε</option></select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5: Upload Brief -->
+        <div class="step-content" data-step="5">
+          <div class="step-head">
+            <div class="eye">05 / 05 · Upload brief</div>
+            <h2>Άμεση λήψη δεδομένων για στρατηγική ανάλυση.</h2>
+            <p>Ανεβάστε ό,τι έχετε: brand guidelines, references, υπάρχοντα σχέδια, market research. Όσα περισσότερα δεδομένα, τόσο ακριβέστερη η αρχική Value Engineering ανάλυση.</p>
+          </div>
+          <div class="dropzone">
+            <div class="glyph-box"></div>
+            <h6>Σύρετε αρχεία εδώ</h6>
+            <p>ή κάντε browse από τον υπολογιστή σας</p>
+            <span class="browse">Browse files</span>
+            <div class="formats">PDF · AI · PSD · JPG · PNG · DWG · ZIP · έως 50MB ανά αρχείο</div>
+          </div>
+          <div class="files-list">
+            <div class="file-row">
+              <div class="icon pdf">PDF</div>
+              <div><div class="name">brand-launch-brief-Q3.pdf</div><div class="meta-text">2.4 MB · μόλις ανέβηκε</div></div>
+              <div class="meta-text">brief</div>
+              <div class="remove">×</div>
+            </div>
+            <div class="file-row">
+              <div class="icon img">PNG</div>
+              <div><div class="name">competitor-display-reference.png</div><div class="meta-text">876 KB · ~ 1 λεπτό</div></div>
+              <div class="meta-text">reference</div>
+              <div class="remove">×</div>
+            </div>
+            <div class="file-row">
+              <div class="icon zip">ZIP</div>
+              <div><div class="name">brand-guidelines-2026.zip</div><div class="meta-text">14 MB · ~ 1 λεπτό</div></div>
+              <div class="meta-text">brand</div>
+              <div class="remove">×</div>
+            </div>
+          </div>
+          <div class="fg" style="margin-top: 28px;">
+            <div class="field">
+              <label>Σημειώσεις για το brief (προαιρ.)</label>
+              <textarea placeholder="Πείτε μας ποιο είναι το main brief και ποια είναι απλά references. Είναι κάτι κρίσιμο που πρέπει να ξέρει πρώτα η ομάδα Engineering;"></textarea>
+            </div>
+          </div>
+          <div class="fg" style="padding: 18px; background: var(--color-gray-1); border-radius: var(--radius-md); margin-bottom: 0;">
+            <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer;">
+              <span style="width: 20px; height: 20px; border-radius: 4px; background: var(--color-orange); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 13px;">✓</span>
+              <span style="font-size: 13px; line-height: 1.5; color: var(--fg-primary);">Συμφωνώ με την <a href="#" style="color: var(--color-orange); font-weight: 700;">πολιτική απορρήτου</a> και επιτρέπω την επικοινωνία της Production LTD για αυτό το strategic briefing.</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Wizard footer -->
+        <div class="wizard-footer">
+          <div class="step-meta" id="stepMeta">Step 2 / 5 · ~ 2 min remaining</div>
+          <div class="actions">
+            <button class="cta outline" id="backBtn">← Πίσω</button>
+            <button class="cta primary" id="nextBtn">Συνέχεια →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary sidebar -->
+      <aside class="summary">
+        <h5>Your brief · summary</h5>
+        <div class="item"><span class="k">Εταιρεία</span><span class="v">Brand Hellas SA</span></div>
+        <div class="item"><span class="k">Ρόλος</span><span class="v">Trade Marketing</span></div>
+        <div class="item"><span class="k">Κανάλι</span><span class="v">Super Markets</span></div>
+        <div class="item"><span class="k">Στόχος</span><span class="v">New product launch</span></div>
+        <div class="item"><span class="k">Τύπος</span><span class="v">Special Project</span></div>
+        <div class="item"><span class="k">Ποσότητα</span><span class="v">200–500 units</span></div>
+        <div class="item"><span class="k">Υλικά</span><span class="v pending">— pending —</span></div>
+        <div class="item"><span class="k">On-shelf date</span><span class="v pending">— pending —</span></div>
+        <div class="item"><span class="k">Brief files</span><span class="v pending">— pending —</span></div>
+
+        <div class="otif">
+          <div class="eye">OTIF analysis</div>
+          <div class="v">~ 17 εβδομάδες · στόχος εφικτός</div>
+          <div class="hint">Initial lead-time ανάλυση. Τελική προσφορά µετά από review του brief από την ομάδα Engineering.</div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="logo"><img src="assets/logo-horizontal-white.svg" alt="" style="height: 26px; margin-bottom: 16px;"></div>
+      <p style="font-size:13px; line-height:1.6; max-width: 280px; margin: 0;">Crafting Retail Conversion. Industrialized Craft στις Αχαρνές, από το 2008.</p>
+    </div>
+    <div><h6>Catalog</h6><a href="services.html">Special Projects</a><a href="services.html">Floor &amp; Counter</a><a href="services.html">Display Systems</a><a href="services.html">POS Accessories</a></div>
+    <div><h6>Contact</h6><a href="contact.html">info@production.gr</a><a href="contact.html">+30 210 232 27 50</a><a href="contact.html">Τσαμαλή 63, Αχαρναί 13671</a></div>
+    <div><h6>Follow</h6><a href="https://www.instagram.com/production.gr" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/production-ltd/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="container">
+    <div class="legal"><span>© Production LTD 2008–2025</span><span>Privacy · Cookies</span></div>
+  </div>
+</footer>
+
+<script>
+  var pills = document.querySelectorAll('.step-pill');
+  var contents = document.querySelectorAll('.step-content');
+  var stepMeta = document.getElementById('stepMeta');
+  var backBtn = document.getElementById('backBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var stepNames = ['Ταυτότητα', 'Κανάλι & Στόχος', 'Υλικά', 'Χρόνος OTIF', 'Upload Brief'];
+  var stepEstMins = [4, 2, 2, 1, 1];
+
+  function setStep(n) {
+    pills.forEach(function(p, i) {
+      p.classList.remove('active', 'done');
+      if (i + 1 < n) p.classList.add('done');
+      if (i + 1 === n) p.classList.add('active');
+      var nc = p.querySelector('.num-circle');
+      if (i + 1 < n) nc.textContent = '✓';
+      else nc.textContent = String(i + 1).padStart(2, '0');
+      var lbl = p.querySelector('.label');
+      if (i + 1 === n) lbl.textContent = 'Step ' + String(n).padStart(2,'0') + ' · Τώρα';
+      else lbl.textContent = 'Step ' + String(i+1).padStart(2,'0');
+    });
+    contents.forEach(function(c, i) {
+      c.classList.toggle('active', String(i + 1) === String(n));
+    });
+    stepMeta.textContent = 'Step ' + n + ' / 5 · ~ ' + stepEstMins[n-1] + ' min remaining';
+    backBtn.style.visibility = n === 1 ? 'hidden' : 'visible';
+    nextBtn.textContent = n === 5 ? 'Αποστολή Briefing →' : 'Συνέχεια →';
+    if (n === 5) {
+      nextBtn.classList.add('lg');
+      nextBtn.style.background = 'var(--color-orange)';
+    } else {
+      nextBtn.classList.remove('lg');
+      nextBtn.style.background = '';
+    }
+  }
+
+  pills.forEach(function(p) {
+    p.addEventListener('click', function(){
+      setStep(Number(p.getAttribute('data-step')));
+    });
+  });
+  backBtn.addEventListener('click', function(){
+    var active = document.querySelector('.step-pill.active');
+    var n = Number(active.getAttribute('data-step'));
+    if (n > 1) setStep(n - 1);
+  });
+  nextBtn.addEventListener('click', function(){
+    var active = document.querySelector('.step-pill.active');
+    var n = Number(active.getAttribute('data-step'));
+    if (n < 5) setStep(n + 1);
+  });
+</script>
+
+  <script src="js/anim.js" defer></script>
+  <script src="js/ui-extras.js" defer></script>
+</body>
+</html>

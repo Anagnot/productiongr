@@ -1,0 +1,154 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ChannelCarousel } from "@/components/ChannelCarousel";
+import { CTABlock } from "@/components/CTABlock";
+import { CHANNELS, getChannel } from "@/lib/catalog";
+import { getDictionary } from "@/lib/dictionaries";
+import { hasLocale, LOCALES, localizedHref, type Locale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
+import "@/styles/pages/channel-detail.css";
+
+export async function generateStaticParams() {
+  const params: { lang: Locale; slug: string }[] = [];
+  for (const lang of LOCALES as readonly Locale[]) {
+    for (const c of CHANNELS) {
+      params.push({ lang, slug: c.slug });
+    }
+  }
+  return params;
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps<"/[lang]/channels/[slug]">): Promise<Metadata> {
+  const { lang, slug } = await params;
+  if (!hasLocale(lang)) return {};
+  const channel = await getChannel(slug);
+  if (!channel) return {};
+  const dict = await getDictionary(lang);
+  return pageMetadata({
+    locale: lang,
+    title: `${channel.name[lang]} — ${dict.channels.metaTitleSuffix}`,
+    description: channel.blurb[lang],
+    path: `/channels/${slug}`,
+  });
+}
+
+export default async function ChannelDetailPage({
+  params,
+}: PageProps<"/[lang]/channels/[slug]">) {
+  const { lang, slug } = await params;
+  if (!hasLocale(lang)) notFound();
+  const channel = await getChannel(slug);
+  if (!channel) notFound();
+  const dict = await getDictionary(lang);
+  const t = dict.channels;
+  const href = (p: string) => localizedHref(p, lang);
+
+  const other = CHANNELS.filter((c) => c.slug !== slug).slice(0, 4);
+
+  return (
+    <>
+      <section className="page-hero detail-hero">
+        <div className="container">
+          <nav className="crumbs">
+            <Link href={href("/channels")}>{t.crumbBack}</Link>
+            <span className="sep">/</span>
+            <span>{channel.name[lang]}</span>
+          </nav>
+          <div className="hero-grid">
+            <div>
+              <div className="eyebrow">{t.detailEyebrow}</div>
+              <h1>{channel.name[lang]}</h1>
+            </div>
+            <p className="lede">{channel.blurb[lang]}</p>
+          </div>
+        </div>
+      </section>
+
+      {channel.details && (
+        <section className="channel-content">
+          <div className="container">
+            <div className="content-grid">
+              <div>
+                <div className="content-eyebrow">{t.contentEyebrow}</div>
+                <h2>{t.contentHeading}</h2>
+                <div className="content-body">
+                  {channel.details.intro[lang].map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
+              </div>
+              {channel.details.highlights[lang].length > 0 && (
+                <div>
+                  <div className="content-eyebrow">{t.highlightsHeading}</div>
+                  <ul className="highlights">
+                    {channel.details.highlights[lang].map((h, i) => (
+                      <li key={i}>{h}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {channel.images.length > 0 ? (
+        <section className="gallery">
+          <div className="container">
+            <div className="head">
+              <h5>
+                {t.galleryHeading} ·{" "}
+                {channel.images.length.toString().padStart(2, "0")}
+              </h5>
+            </div>
+            <ChannelCarousel
+              images={channel.images}
+              alt={channel.name[lang]}
+              prevLabel={t.carouselPrev}
+              nextLabel={t.carouselNext}
+            />
+          </div>
+        </section>
+      ) : (
+        <section className="empty-state">
+          <div className="container">
+            <p>{t.emptyState}</p>
+          </div>
+        </section>
+      )}
+
+      <section className="related">
+        <div className="container">
+          <div className="head">
+            <h5>{t.relatedHeading}</h5>
+          </div>
+          <div className="related-grid">
+            {other.map((c) => (
+              <Link
+                key={c.slug}
+                href={href(`/channels/${c.slug}`)}
+                className="related-card"
+              >
+                <h4>{c.name[lang]}</h4>
+                <span className="arrow">→</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTABlock
+        locale={lang}
+        title={
+          <>
+            {t.ctaTitlePre} <em>{t.ctaTitleEm}</em>
+          </>
+        }
+        ctaLabel={dict.common.strategicBriefing}
+      />
+    </>
+  );
+}

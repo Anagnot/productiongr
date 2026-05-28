@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>production.gr — site map &amp; review</title>
+<link rel="icon" href="assets/favicon-transparent.png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css?v=3">
+<link rel="stylesheet" href="css/anim.css">
+<style>
+  body { background: var(--color-gray-1); }
+  .cover { padding: 64px 0 96px; }
+  .cover .container { max-width: 1280px; }
+  .cover .top { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: end; margin-bottom: 56px; }
+  .cover h1 { font-size: 88px; line-height: 0.94; font-weight: 800; letter-spacing: -0.03em; margin: 18px 0 0; }
+  .cover h1 em { font-style: italic; font-weight: 300; font-size: 0.78em; color: var(--color-gray-3); }
+  .cover .lede { font-size: 17px; line-height: 1.6; color: var(--fg-secondary); margin: 0; }
+  .cover .summary { display: flex; gap: 32px; padding-top: 24px; border-top: 1px solid var(--color-gray-4); margin-top: 32px; }
+  .cover .summary .s .v { font-family: var(--font-sans); font-weight: 800; font-size: 32px; line-height: 1; letter-spacing: -0.02em; }
+  .cover .summary .s .v em { font-style: normal; color: var(--color-orange); }
+  .cover .summary .s .l { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); margin-top: 6px; }
+
+  .group-head { display: flex; justify-content: space-between; align-items: baseline; margin: 56px 0 20px; }
+  .group-head h3 { font-family: var(--font-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-secondary); margin: 0; display: flex; align-items: center; gap: 12px; }
+  .group-head h3::after { content: ''; width: 60px; height: 2px; background: var(--color-orange); }
+  .group-head .count { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
+
+  .page-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .page-grid .row-2 { grid-column: span 2; }
+
+  .page-card { background: var(--color-white); border-radius: var(--radius-lg); overflow: hidden; transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease); border: 1px solid var(--border-subtle); display: flex; flex-direction: column; cursor: pointer; }
+  .page-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--color-gray-3); }
+  .page-card .preview { aspect-ratio: 4/3; position: relative; overflow: hidden; border-bottom: 1px solid var(--border-subtle); background: var(--color-gray-1); }
+  .page-card .preview iframe { position: absolute; top: 0; left: 0; width: 1280px; height: 960px; transform: scale(0.39); transform-origin: 0 0; pointer-events: none; border: 0; background: #fff; }
+  .page-card .preview .overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.08) 100%); pointer-events: none; }
+  .page-card .preview .badge { position: absolute; top: 12px; left: 12px; font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; background: var(--color-white); padding: 4px 8px; border-radius: var(--radius-sm); color: var(--fg-secondary); box-shadow: var(--shadow-sm); }
+  .page-card .preview .badge.feat { background: var(--color-orange); color: #fff; }
+  .page-card .info { padding: 18px 20px 20px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; }
+  .page-card .info .left .num { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-orange); margin-bottom: 6px; }
+  .page-card .info h4 { font-size: 18px; font-weight: 800; line-height: 1.2; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .page-card .info .desc { font-size: 12px; color: var(--fg-secondary); line-height: 1.5; margin: 0; }
+  .page-card .info .right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+  .page-card .info .right .path { font-family: var(--font-mono); font-size: 10px; color: var(--fg-tertiary); letter-spacing: 0.05em; }
+  .page-card .info .right .arrow { width: 28px; height: 28px; border-radius: 50%; background: var(--color-gray-1); display: flex; align-items: center; justify-content: center; color: var(--fg-secondary); transition: background var(--duration) var(--ease), color var(--duration) var(--ease); }
+  .page-card:hover .info .right .arrow { background: var(--color-orange); color: #fff; }
+
+  /* Row-2 cards bigger preview */
+  .page-card.row-2 .preview iframe { transform: scale(0.5); }
+  .page-card.row-2 .info h4 { font-size: 22px; }
+
+  /* Notes */
+  .notes-card { background: var(--color-gray-4); color: #fff; border-radius: var(--radius-lg); padding: 32px; margin-top: 48px; }
+  .notes-card .eye { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-orange); margin-bottom: 14px; }
+  .notes-card h3 { font-size: 28px; font-weight: 800; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 24px; color: #fff; }
+  .notes-card ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .notes-card li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; }
+  .notes-card li .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-orange); margin-top: 7px; }
+  .notes-card li h6 { font-size: 14px; font-weight: 800; margin: 0 0 4px; color: #fff; }
+  .notes-card li p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.55; margin: 0; }
+
+  .legal { margin-top: 56px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); letter-spacing: 0.08em; }
+</style>
+<link rel="stylesheet" href="css/responsive.css?v=3">
+</head>
+<body>
+
+<section class="cover">
+  <div class="container">
+    <div class="top">
+      <div>
+        <img src="assets/logo-horizontal-black.svg" alt="Production LTD" style="height: 26px;">
+        <h1>production.gr<br><em>v2 · brief-aligned</em></h1>
+      </div>
+      <div>
+        <p class="lede">Hi-fi static mocks για το νέο production.gr — version 2, ευθυγραμμισμένο με το brief v2.2. <strong>Crafting Retail Conversion</strong> tagline, νέα taxonomy (9 product types · 6 materials · 7 channels), 5 Strategic Reasons, 4-stage process, Industrialized Craft positioning, οικογένεια Δημαρά, Αχαρνές.</p>
+        <div class="summary">
+          <div class="s"><div class="v">8</div><div class="l">σελίδες</div></div>
+          <div class="s"><div class="v">5</div><div class="l">templates</div></div>
+          <div class="s"><div class="v"><em>EL</em></div><div class="l">primary lang</div></div>
+          <div class="s"><div class="v">v2</div><div class="l">brief-aligned</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-head">
+      <h3>Catalog &amp; flagship pages</h3>
+      <span class="count">5 σελίδες</span>
+    </div>
+    <div class="page-grid">
+      <a href="index.html" class="page-card row-2">
+        <div class="preview">
+          <iframe src="index.html" scrolling="no"></iframe>
+          <div class="overlay"></div>
+          <div class="badge feat">Hero · Crafting Retail Conversion</div>
+        </div>
+        <div class="info">
+          <div class="left">
+            <div class="num">01 · Αρχική</div>
+            <h4>Home</h4>
+            <p class="desc">Crafting Retail Conversion hero, channels strip, Industrialized Craft excerpt, 9-type product grid, 5 strategic reasons, 4-stage process, materials, OTIF stats, eco-innovation.</p>
+          </div>
+          <div class="right">
+            <div class="path">/</div>
+            <div class="arrow">→</div>
+          </div>
+        </div>
+      </a>
+      <a href="services.html" class="page-card row-2">
+        <div class="preview">
+          <iframe src="services.html" scrolling="no"></iframe>
+          <div class="overlay"></div>
+          <div class="badge">9 types · 6 materials · 7 channels</div>
+        </div>
+        <div class="info">
+          <div class="left">
+            <div class="num">02 · Προϊόντα</div>
+            <h4>Product catalog</h4>
+            <p class="desc">Special Projects flagship + 8 standard κατηγορίες + Material × Product matrix + Capabilities.</p>
+          </div>
+          <div class="right">
+            <div class="path">/products</div>
+            <div class="arrow">→</div>
+          </div>
+        </div>
+      </a>
+      <a href="service-pop-displays.html" class="page-card row-2">
+        <div class="preview">
+          <iframe src="service-pop-displays.html" scrolling="no"></iframe>
+          <div class="overlay"></div>
+          <div class="badge">Template · product detail</div>
+        </div>
+        <div class="info">
+          <div class="left">
+            <div class="num">03 · Product detail</div>
+            <h4>Floor Stands</h4>
+            <p class="desc">Drill-down σε 5 υλικά (Paper, Metal, Wood, Plastic, Plexi) + channel suitability fit ratings ανά κανάλι.</p>
+          </div>
+          <div class="right">
+            <div class="path">/products/floor-stands</div>
+            <div class="arrow">→</div>
+          </div>
+        </div>
+      </a>
+      <a href="portfolio.html" class="page-card row-2">
+        <div class="preview">
+          <iframe src="portfolio.html" scrolling="no"></iframe>
+          <div class="overlay"></div>
+          <div class="badge">Type × Material × Channel filters</div>
+        </div>
+        <div class="info">
+          <div class="left">
+            <div class="num">04 · Έργα</div>
+            <h4>Portfolio listing</h4>
+            <p class="desc">Sticky filter chips, 3-tile featured row, uniform 12-card grid, pagination.</p>
+          </div>
+          <div class="right">
+            <div class="path">/portfolio</div>
+            <div class="arrow">→</div>
+          </div>
+        </div>
+      </a>
+      <a href="case-coca-cola-summer-endcap.html" class="page-card row-2">
+        <div class="preview">
+          <iframe src="case-coca-cola-summer-endcap.html" scrolling="no"></iframe>
+          <div class="overlay"></div>
+          <div class="badge">Coca-Cola · 240 stores · OTIF</div>
+        </div>
+        <div class="info">
+          <div class="left">
+            <div class="num">05 · Case study</div>
+            <h4>Coca-Cola summer end-cap</h4>
+            <p class="desc">Hero, brief narrative, specs table, gallery, 6-week timeline, pull quote, results, next.</p>
+          </div>
+          <div class="right">
+            <div class="path">/portfolio/[slug]</div>
+            <div class="arrow">→</div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="group-head">
+      <h3>Brand &amp; conversion funnel</h3>
+      <span class="count">3 σελίδες</span>
+    </div>
+    <div class="page-grid">
+      <a href="about.html" class="page-card row-2">
+        <div class="preview">
+          <iframe src="about.html" scrolling="no"></iframe>
+          <div class="overlay"></div>
+          <div class="badge">Approved story + Δημαράς family</div>
+        </div>
+        <div class="info">
+          <div class="left">
+            <div class="num">06 · Εταιρία</div>
+            <h4>About</h4>
+            <p class="desc">Verbatim approved story, Δημαράς family signature (3 generations), Mission/Vision/Promise, 4 values, Sage+Creator archetype, personas (Κατερίνα/Μάρκος), milestones, clients, testimonials.</p>
+          </div>
+          <div class="right">
+            <div class="path">/about</div>
+            <div class="arrow">→</div>
+          </div>
+        </div>
+      </a>
+      <a href="contact.html" class="page-card row-2">
+        <div class="preview">
+          <iframe src="contact.html" scrolling="no"></iframe>
+          <div class="overlay"></div>
+          <div class="badge">Info cards · quick form · map</div>
+        </div>
+        <div class="info">
+          <div class="left">
+            <div class="num">07 · Επικοινωνία</div>
+            <h4>Contact</h4>
+            <p class="desc">4 info cards (email/τηλ/Αχαρνές/ωράριο), quick form, abstract map με pin στις Αχαρνές. Γιάννης/Βαγγέλης direct emails.</p>
+          </div>
+          <div class="right">
+            <div class="path">/contact</div>
+            <div class="arrow">→</div>
+          </div>
+        </div>
+      </a>
+      <a href="quote.html" class="page-card row-2" style="grid-column: span 4;">
+        <div class="preview" style="aspect-ratio: 21/9;">
+          <iframe src="quote.html" scrolling="no"></iframe>
+          <div class="overlay"></div>
+          <div class="badge feat">Primary CTA · Strategic Briefing</div>
+        </div>
+        <div class="info">
+          <div class="left">
+            <div class="num">08 · Strategic Briefing</div>
+            <h4>Strategic Briefing Form — 5 steps</h4>
+            <p class="desc">Ταυτότητα → Κανάλι &amp; Στόχος → Υλικά → Χρόνος OTIF (date picker με lead-time check) → Upload Brief. Live OTIF analysis sidebar. Brief fields όπως ζητήθηκαν: Channel · Material · Goal · Date · Upload Brief.</p>
+          </div>
+          <div class="right">
+            <div class="path">/briefing</div>
+            <div class="arrow">→</div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="notes-card">
+      <div class="eye">Design notes · for review</div>
+      <h3>Πώς να διαβάσετε το concept.</h3>
+      <ul>
+        <li><div class="dot"></div><div><h6>Brand color updated → #E65C00</h6><p>Επιβεβαιωμένο πορτοκαλί από το brief. Όλα τα tokens, gradients &amp; shadows ενημερωμένα.</p></div></li>
+        <li><div class="dot"></div><div><h6>Νέο tagline · Crafting Retail Conversion</h6><p>Παντού στο site — από hero, σε footer, σε meta tags. Το «The Retail Stand Company» αφαιρέθηκε.</p></div></li>
+        <li><div class="dot"></div><div><h6>Δημαράς family · Αχαρνές</h6><p>Γιάννης (Sales/Marketing), Βαγγέλης (Operations/Production), Κωνσταντίνος (Operations). Map &amp; address ενημερωμένα στις Αχαρνές.</p></div></li>
+        <li><div class="dot"></div><div><h6>Νέα taxonomy · 9 × 6 × 7</h6><p>9 product types (Special Projects flagship) · 6 materials · 7 retail channels — με Material × Product matrix για cross-filtering.</p></div></li>
+        <li><div class="dot"></div><div><h6>5 Strategic Reasons · 4-stage process</h6><p>Value Engineering, Rapid Response, Zero-Risk OTIF, B2B2C, Eco-Innovation. Process: Strategic Analysis → Rapid Prototyping → Industrialized Production → OTIF Delivery.</p></div></li>
+        <li><div class="dot"></div><div><h6>Strategic Briefing Form</h6><p>5-step wizard ευθυγραμμισμένο με το brief: Ταυτότητα → Κανάλι &amp; Στόχος → Υλικά → Χρόνος (OTIF date picker) → Upload Brief.</p></div></li>
+        <li><div class="dot"></div><div><h6>Approved verbatim copy</h6><p>Το εγκεκριμένο "About Us" κείμενο χρησιμοποιείται autoύσιο στο About. Sage + Creator archetype, Mission/Vision/Promise, personas Κατερίνα &amp; Μάρκος.</p></div></li>
+        <li><div class="dot"></div><div><h6>Next: αισθητική Κατεύθυνση B (editorial)</h6><p>Το brief ζητά να αξιολογηθούν δύο αισθητικές κατευθύνσεις. Τρέχουσα έκδοση = Direction A (Energetic/Industrial). Direction B (Minimal/Editorial à la Apple/Diageo) — επόμενη iteration.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="legal">PRODUCTION LTD · brand refresh v2 · brief alignment v2.2 · 8 pages · Direction A (Energetic/Industrial)</div>
+  </div>
+</section>
+
+  <script src="js/anim.js" defer></script>
+  <script src="js/ui-extras.js" defer></script>
+</body>
+</html>

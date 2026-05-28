@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Η Εταιρία — Production LTD</title>
+<link rel="icon" href="assets/favicon-transparent.png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css?v=3">
+<link rel="stylesheet" href="css/anim.css">
+<style>
+  .page-hero { padding: 80px 0 64px; border-bottom: 0; }
+  .page-hero h1 { font-size: 100px; line-height: 0.94; margin: 18px 0 32px; max-width: 1080px; letter-spacing: -0.035em; }
+  .page-hero h1 em { font-size: 0.78em; }
+  .page-hero .container { display: block; }
+  .page-hero .lede-row { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; }
+  .page-hero .lede { font-size: 22px; line-height: 1.5; color: var(--fg-secondary); margin: 0; max-width: 540px; font-weight: 300; }
+  .page-hero .stats-line { display: flex; gap: 36px; padding-top: 22px; border-top: 1px solid var(--color-gray-4); margin-top: 36px; flex-wrap: wrap; }
+  .page-hero .stats-line .s .v { font-family: var(--font-sans); font-weight: 800; font-size: 40px; line-height: 1; letter-spacing: -0.02em; }
+  .page-hero .stats-line .s .v em { font-style: normal; color: var(--color-orange); }
+  .page-hero .stats-line .s .l { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); margin-top: 8px; }
+
+  .facility-hero { padding: 32px 0 96px; }
+  .facility-hero .frame { aspect-ratio: 21/9; }
+
+  /* Approved verbatim story */
+  .story { padding: 96px 0; border-top: 1px solid var(--border-default); background: var(--color-gray-1); }
+  .story .container { max-width: 1100px; display: grid; grid-template-columns: 200px 1fr; gap: 64px; align-items: start; }
+  .story h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-orange); margin: 0; padding-top: 8px; position: sticky; top: 96px; }
+  .story h2 { font-size: 44px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 28px; }
+  .story h2 em { font-style: normal; font-family: var(--font-marker); font-weight: 400; color: var(--color-orange); font-size: 0.85em; }
+  .story p { font-size: 17px; line-height: 1.7; color: var(--fg-primary); margin: 0 0 20px; }
+  .story p .accent { color: var(--color-orange); font-weight: 700; }
+  .story .pull { font-family: var(--font-marker); font-size: 32px; line-height: 1.15; color: var(--color-gray-4); padding: 24px 0; margin: 24px 0; border-top: 2px solid var(--color-orange); border-bottom: 1px solid var(--border-default); max-width: 600px; transform: rotate(-0.5deg); }
+  .story .sig-block { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-default); display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .story .sig-block .sig .role { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-orange); margin-bottom: 6px; }
+  .story .sig-block .sig .name { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
+  .story .sig-block .sig .desc { font-size: 12px; color: var(--fg-secondary); margin-top: 4px; line-height: 1.45; }
+
+  /* Mission Vision Promise */
+  .mvp { padding: 96px 0; background: var(--color-white); }
+  .mvp .container { max-width: var(--max-content); }
+  .mvp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+  .mvp-card { padding: 32px; background: var(--color-gray-1); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 14px; min-height: 280px; }
+  .mvp-card.feat { background: var(--color-gray-4); color: #fff; position: relative; overflow: hidden; }
+  .mvp-card.feat::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--color-orange); }
+  .mvp-card .label { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-orange); }
+  .mvp-card.feat .label { color: var(--color-orange); }
+  .mvp-card h3 { font-size: 26px; font-weight: 800; line-height: 1.1; letter-spacing: -0.01em; margin: 0; }
+  .mvp-card p { font-size: 15px; line-height: 1.6; color: var(--fg-primary); margin: 0; }
+  .mvp-card.feat p { color: rgba(255,255,255,0.78); }
+  .mvp-card .quote { font-family: var(--font-marker); font-size: 22px; line-height: 1.2; color: var(--color-gray-4); margin-top: auto; }
+  .mvp-card.feat .quote { color: rgba(255,255,255,0.92); }
+
+  /* Values grid */
+  .values { padding: 96px 0; background: var(--color-gray-1); }
+  .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--color-gray-4); margin-top: 32px; }
+  .values-grid .v { padding: 32px 22px 28px; border-right: 1px solid var(--border-default); position: relative; min-height: 260px; display: flex; flex-direction: column; }
+  .values-grid .v:last-child { border-right: 0; }
+  .values-grid .v::before { content: ''; position: absolute; top: -1px; left: 0; width: 40px; height: 2px; background: var(--color-orange); }
+  .values-grid .v .num { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: var(--color-orange); margin-bottom: 16px; }
+  .values-grid .v h4 { font-size: 22px; font-weight: 800; line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 12px; }
+  .values-grid .v p { font-size: 14px; line-height: 1.6; color: var(--fg-secondary); margin: 0; }
+
+  /* Brand Archetype */
+  .archetype { padding: 96px 0; background: var(--color-gray-4); color: #fff; }
+  .archetype .container { max-width: 1100px; }
+  .archetype .head h2 { color: #fff; font-size: 44px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin: 14px 0 0; }
+  .archetype .head .eyebrow { color: rgba(255,255,255,0.6); }
+  .archetype-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+  .arch { padding: 36px; background: rgba(255,255,255,0.04); border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.08); }
+  .arch .glyph { font-family: var(--font-marker); font-size: 64px; line-height: 1; color: var(--color-orange); margin-bottom: 14px; }
+  .arch .label { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-orange); }
+  .arch h3 { font-size: 32px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin: 8px 0 12px; color: #fff; }
+  .arch p { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.75); margin: 0 0 14px; }
+  .arch .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .arch .tags .tag-pill { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85); }
+
+  /* Milestones */
+  .milestones { padding: 96px 0; background: var(--color-white); }
+  .milestones .container { max-width: 1180px; }
+  .milestones .head { margin-bottom: 40px; }
+  .milestones-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border-top: 1px solid var(--color-gray-4); }
+  .ms { padding: 24px 16px 0; border-right: 1px solid var(--border-default); position: relative; min-height: 220px; }
+  .ms:last-child { border-right: 0; }
+  .ms::before { content: ''; position: absolute; top: -1px; left: 0; width: 32px; height: 2px; background: var(--color-orange); }
+  .ms .y { font-family: var(--font-sans); font-weight: 800; font-size: 48px; line-height: 1; letter-spacing: -0.03em; color: var(--color-gray-4); margin-bottom: 14px; }
+  .ms h6 { font-size: 16px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .ms p { font-size: 13px; line-height: 1.55; color: var(--fg-secondary); margin: 0; }
+
+  /* Personas */
+  .personas { padding: 96px 0; background: var(--color-gray-1); }
+  .personas .container { max-width: 1180px; }
+  .personas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+  .persona { padding: 36px; background: var(--color-white); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); }
+  .persona .avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--color-gray-1); border: 2px solid var(--color-orange); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 13px; color: var(--color-orange); margin-bottom: 18px; }
+  .persona.secondary .avatar { background: var(--color-gray-4); color: #fff; }
+  .persona .label { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-orange); margin-bottom: 6px; }
+  .persona h3 { font-size: 28px; font-weight: 800; line-height: 1.05; letter-spacing: -0.01em; margin: 0 0 6px; }
+  .persona .role { font-size: 14px; color: var(--fg-secondary); margin-bottom: 24px; }
+  .persona .pain, .persona .goal { padding-top: 18px; border-top: 1px solid var(--border-default); margin-top: 18px; }
+  .persona h6 { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin: 0 0 8px; }
+  .persona p { font-size: 14px; line-height: 1.55; color: var(--fg-primary); margin: 0; }
+
+  /* Clients wall */
+  .clients-wall { padding: 96px 0; background: var(--color-white); }
+  .clients-wall .head { margin-bottom: 40px; }
+  .clients-wall-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border-top: 1px solid var(--border-default); border-bottom: 1px solid var(--border-default); }
+  .clients-wall-grid .c { padding: 32px 16px; border-right: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; min-height: 100px; font-family: var(--font-sans); font-weight: 800; font-size: 20px; color: var(--color-gray-3); letter-spacing: -0.01em; text-align: center; }
+  .clients-wall-grid .c:nth-child(6n) { border-right: 0; }
+  .clients-wall-grid .c.serif { font-family: Georgia, serif; font-style: italic; }
+  .clients-wall-grid .c.allcaps { font-family: var(--font-mono); font-weight: 700; font-size: 15px; letter-spacing: 0.18em; }
+  .clients-wall-grid .c.script { font-family: var(--font-marker); font-size: 26px; }
+  .clients-wall-grid .c.thin { font-weight: 300; font-size: 22px; }
+
+  /* Testimonials */
+  .testimonials { padding: 96px 0; background: var(--color-gray-1); }
+  .testimonials .container { max-width: 1100px; }
+  .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+  .test { padding: 36px; background: var(--color-white); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 20px; }
+  .test .quote-mark { font-family: var(--font-marker); font-size: 64px; color: var(--color-orange); line-height: 0.5; height: 30px; }
+  .test q { font-family: var(--font-sans); font-weight: 300; font-size: 22px; line-height: 1.3; letter-spacing: -0.01em; color: var(--fg-primary); quotes: none; }
+  .test q::before, .test q::after { content: ''; }
+  .test .attr { padding-top: 18px; border-top: 1px solid var(--border-default); display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
+  .test .attr .who h6 { font-size: 14px; font-weight: 800; margin: 0 0 2px; letter-spacing: -0.01em; }
+  .test .attr .who .role { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .test .attr .pending { font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 8px; background: var(--color-yellow); color: var(--color-gray-4); border-radius: var(--radius-sm); }
+</style>
+<link rel="stylesheet" href="css/responsive.css?v=3">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo"><img src="assets/logo-horizontal-black.svg" alt="Production LTD"></a>
+    <nav class="site-nav">
+      <a href="index.html">Αρχική</a>
+      <a href="services.html">Προϊόντα</a>
+      <a href="portfolio.html">Έργα</a>
+      <a href="about.html" class="active">Εταιρία</a>
+      <a href="contact.html">Επικοινωνία</a>
+      <div class="lang-switch"><button class="trigger"><span>EL</span><svg class="chev" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M1 1 L5 5 L9 1"/></svg></button></div>
+      <a href="quote.html" class="cta primary">Strategic briefing →</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="crumbs"><a href="index.html">Αρχική</a> / <span>Η εταιρία</span></div>
+    <h1>Industrialized<br>Craft — <em>since 2008.</em></h1>
+    <div class="lede-row">
+      <p class="lede">Η Production LTD είναι μια καθετοποιημένη μονάδα βιομηχανικής υπεροχής, παραγωγής και λύσεων POP Materials στις Αχαρνές Αττικής.</p>
+      <p class="lede">Από την τέχνη της μεταξοτυπίας του 2008, σε ένα πρότυπο εργοστάσιο που σχεδιάζει conversion tools για τα κορυφαία brands της Ευρώπης.</p>
+    </div>
+    <div class="stats-line">
+      <div class="s"><div class="v"><em>17</em> yrs</div><div class="l">από το 2008</div></div>
+      <div class="s"><div class="v">90<em>%</em></div><div class="l">in-house</div></div>
+      <div class="s"><div class="v">92<em>%</em></div><div class="l">Nesting efficiency</div></div>
+      <div class="s"><div class="v">OTIF</div><div class="l">on-time pledge</div></div>
+      <div class="s"><div class="v">3</div><div class="l">γενιά Δημαρά</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="facility-hero">
+  <div class="container">
+    <div class="ph orange frame" style="border-radius: var(--radius-lg);">
+      <div class="ph-grid"></div>
+      <div class="ph-circle" style="width: 480px; height: 480px; right: -120px; top: -140px;"></div>
+      <div class="ph-para" style="left: 8%; top: -20%; bottom: -20%; width: 160px;"></div>
+      <div class="ph-tag">Photo · Production floor, Αχαρνές</div>
+      <div class="ph-logo">P / FACILITY 01</div>
+      <div class="ph-caption">Industrialized<br>Craft</div>
+    </div>
+  </div>
+</section>
+
+<!-- Approved verbatim story -->
+<section class="story">
+  <div class="container">
+    <h5>Our story</h5>
+    <div>
+      <h2>Από την τέχνη της μεταξοτυπίας —<br><em>στην καθετοποιημένη μονάδα.</em></h2>
+      <p>Η Print Silk Production ιδρύθηκε το 2008, με αφετηρία την τέχνη της <span class="accent">μεταξοτυπίας</span>. Σήμερα, η εταιρεία έχει εξελιχθεί σε μια πρότυπη, καθετοποιημένη μονάδα βιομηχανικής υπεροχής, παραγωγής και λύσεων POP Materials, διατηρώντας την προσωπική δέσμευση της οικογένειας Δημαρά.</p>
+      <p>Υπό τη στρατηγική καθοδήγηση του <span class="accent">Γιάννη</span> (Sales &amp; Marketing) και του <span class="accent">Βαγγέλη</span> (Operations &amp; Production), η επιχείρηση συνδυάζει την εμπειρία δεκαετιών με τη δυναμική της νέας γενιάς.</p>
+      <p>Δεν περιοριζόμαστε στην απλή αποτύπωση μελανιού. Σχεδιάζουμε και κατασκευάζουμε ολοκληρωμένα συστήματα προβολής που μετατρέπουν την πρώτη ύλη σε εμπειρία brand. Πιστεύουμε στο <span class="accent">Industrialized Craft</span>: τη συνύπαρξη της ιστορικής μας ταυτότητας (Silk) με τεχνολογίες αιχμής, όπως η ψηφιακή εκτύπωση και η κατεργασία CNC.</p>
+      <div class="pull">«Κάθε λύση μας είναι ένα Conversion Tool, μελετημένο για να κυριαρχεί στην προσοχή του καταναλωτή.»</div>
+      <p>Η <span class="accent">ταχύτητα</span> και η <span class="accent">συνέπεια</span> είναι η υπογραφή μας. Στις εγκαταστάσεις μας στις Αχαρνές, η παραγωγή ελέγχεται σε κάθε στάδιο, διασφαλίζοντας την ταχύτερη ανταπόκριση της αγοράς και την υλοποίηση έργων αυστηρά στον συμφωνημένο χρόνο. Προσφέρουμε στους συνεργάτες μας την ασφάλεια και την καινοτομία που απαιτεί το σύγχρονο, περιβαλλοντικά υπεύθυνο retail περιβάλλον.</p>
+
+      <div class="sig-block">
+        <div class="sig"><div class="role">Sales &amp; Marketing</div><div class="name">Γιάννης Δημαράς</div><div class="desc">Στρατηγική, brand partnerships, key accounts.</div></div>
+        <div class="sig"><div class="role">Operations &amp; Production</div><div class="name">Βαγγέλης Δημαράς</div><div class="desc">Καθετοποιημένη παραγωγή, Value Engineering, OTIF.</div></div>
+        <div class="sig"><div class="role">Operations</div><div class="name">Κωνσταντίνος Δημαράς</div><div class="desc">Production floor, quality control, logistics.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission / Vision / Promise -->
+<section class="mvp">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow bar">Brand core · Ο πυρήνας του brand</div>
+        <h2>Mission, Vision &amp; Promise.</h2>
+      </div>
+      <div class="meta">3 σταθερά σημεία αναφοράς για<br>κάθε σχεδιαστική απόφαση.</div>
+    </div>
+    <div class="mvp-grid">
+      <div class="mvp-card">
+        <div class="label">01 · Mission · Αποστολή</div>
+        <h3>Να δίνουμε μορφή στην καινοτομία.</h3>
+        <p>Προσφέροντας λύσεις που αυξάνουν την αξία των brands στο σημείο πώλησης.</p>
+      </div>
+      <div class="mvp-card">
+        <div class="label">02 · Vision · Όραμα</div>
+        <h3>Πρώτη επιλογή στην Ευρώπη.</h3>
+        <p>Για τη μετατροπή της κατασκευαστικής πολυπλοκότητας σε καινοτόμα συστήματα προβολής.</p>
+      </div>
+      <div class="mvp-card feat">
+        <div class="label">03 · Promise · Υπόσχεση</div>
+        <h3>Η Υπόσχεση της Σιγουριάς.</h3>
+        <p>Δεσμευόμαστε για μηδενικές εκπλήξεις στον χρόνο, στο κόστος ή στην ποιότητα.</p>
+        <div class="quote">«peace of mind»</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values (DNA) -->
+<section class="values">
+  <div class="container">
+    <div class="section-head head">
+      <div>
+        <div class="eyebrow bar">Values · Το DNA</div>
+        <h2>Τέσσερις αξίες — ορατές σε όλο το site.</h2>
+      </div>
+      <div class="meta">όχι buzzwords —<br>αρχές παραγωγής</div>
+    </div>
+    <div class="values-grid">
+      <div class="v">
+        <div class="num">01</div>
+        <h4>Value Engineering</h4>
+        <p>Μείωση κόστους παραγωγής και φύρας (Nesting 92%) μέσω έξυπνης σχεδίασης. Προστατεύουμε το margin του πελάτη.</p>
+      </div>
+      <div class="v">
+        <div class="num">02</div>
+        <h4>Zero-Risk Reliability</h4>
+        <p>Απόλυτη συνέπεια στην παράδοση (OTIF). Το brand έτοιμο για το launch χωρίς εξαιρέσεις.</p>
+      </div>
+      <div class="v">
+        <div class="num">03</div>
+        <h4>Industrialized Craft</h4>
+        <p>Η σπάνια συνύπαρξη της ανθρώπινης εμπειρίας δεκαετιών με τη βιομηχανική ακρίβεια χιλιοστού.</p>
+      </div>
+      <div class="v">
+        <div class="num">04</div>
+        <h4>Eco-Innovation</h4>
+        <p>40–50% ανακυκλώσιμα. Flat-pack σε χάρτινες κατασκευές. Nesting 92% για μειωμένο carbon footprint.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Milestones -->
+<section class="milestones">
+  <div class="container">
+    <div class="section-head head" style="margin-bottom: 0;">
+      <div>
+        <div class="eyebrow bar">Milestones · Σταθμοί</div>
+        <h2>17 χρόνια — από μεταξοτυπία σε καθετοποιημένη μονάδα.</h2>
+      </div>
+      <div class="meta">Έντονη επένδυση<br>σε τεχνολογίες αιχμής</div>
+    </div>
+    <div class="milestones-grid">
+      <div class="ms"><div class="y">'08</div><h6>Ίδρυση</h6><p>Print Silk Production — ξεκινάμε με μεταξοτυπία. Οικογένεια Δημαρά, Αχαρνές.</p></div>
+      <div class="ms"><div class="y">'14</div><h6>Vacuum forming</h6><p>Επέκταση σε vacuum-formed POP — πρώτη volume runs για FMCG πελάτες.</p></div>
+      <div class="ms"><div class="y">'18</div><h6>Καθετοποίηση</h6><p>3D design + CNC + ψηφιακή εκτύπωση — όλα στις Αχαρνές.</p></div>
+      <div class="ms"><div class="y">'22</div><h6>Eco-Innovation</h6><p>40–50% recyclable materials · Nesting 92% pipeline για waste reduction.</p></div>
+      <div class="ms"><div class="y">'25</div><h6>Brand refresh</h6><p>Νέο positioning: «Crafting Retail Conversion» — Special Projects flagship.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Personas -->
+<section class="personas">
+  <div class="container">
+    <div class="section-head head" style="margin-bottom: 0;">
+      <div>
+        <div class="eyebrow bar">Audience · Για ποιους δουλεύουμε</div>
+        <h2>Δύο τύποι πελάτη — μία υπόσχεση.</h2>
+      </div>
+      <div class="meta">Marketing &amp; Procurement<br>FMCG, Pharmacy, HORECA, Retail</div>
+    </div>
+    <div class="personas-grid">
+      <div class="persona">
+        <div class="avatar">ΚΛ</div>
+        <div class="label">01 · Primary persona</div>
+        <h3>Κατερίνα</h3>
+        <div class="role">Launch / Trade Marketing Manager · FMCG, Cosmetics, Retail</div>
+        <div class="pain">
+          <h6>Pain points</h6>
+          <p>Φοβάται καθυστερήσεις που θα ακυρώσουν το launch. Διαχειρίζεται πολλαπλούς προμηθευτές. Ανησυχία σε περίπτωση κρίσης.</p>
+        </div>
+        <div class="goal">
+          <h6>Goal</h6>
+          <p><strong>«Peace of mind».</strong> Εγγύηση OTIF και «Wow Factor» σε premium υλικά. Ένας συνεργάτης που τα χειρίζεται όλα.</p>
+        </div>
+      </div>
+      <div class="persona secondary">
+        <div class="avatar">ΜΕ</div>
+        <div class="label">02 · Secondary persona</div>
+        <h3>Μάρκος</h3>
+        <div class="role">Procurement / Efficiency Director · Cross-industry</div>
+        <div class="pain">
+          <h6>Pain points</h6>
+          <p>Πίεση για μείωση κόστους + ESG στόχοι. Πρέπει να αιτιολογεί επιλογές προμηθευτών στη Διοίκηση.</p>
+        </div>
+        <div class="goal">
+          <h6>Goal</h6>
+          <p><strong>Value Engineering.</strong> Μετρήσιμα δεδομένα (Nesting 92%, recyclable %) και Eco-Innovation λύσεις που στέκονται σε ESG audits.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Clients wall -->
+<section class="clients-wall">
+  <div class="container">
+    <div class="section-head head" style="margin-bottom: 32px;">
+      <div>
+        <div class="eyebrow bar">Strategic partners · Πελάτες</div>
+        <h2>Brands που μας εμπιστεύονται για OTIF launches.</h2>
+      </div>
+      <div class="meta">📌 Λίστα προς επιβεβαίωση<br>ανά πελάτη</div>
+    </div>
+    <div class="clients-wall-grid">
+      <div class="c serif">Coca-Cola</div>
+      <div class="c">Nestlé</div>
+      <div class="c serif">Diageo</div>
+      <div class="c allcaps">LIDL</div>
+      <div class="c">AB Vasilopoulos</div>
+      <div class="c allcaps">SKLAVENITIS</div>
+      <div class="c allcaps">L'ORÉAL</div>
+      <div class="c serif">Pharmacy Networks</div>
+      <div class="c thin">P&amp;G</div>
+      <div class="c">Heineken</div>
+      <div class="c allcaps">VICHY</div>
+      <div class="c thin">Unilever</div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head head" style="margin-bottom: 0;">
+      <div>
+        <div class="eyebrow bar">Testimonials · Μαρτυρίες</div>
+        <h2>«Τους εμπιστευόμαστε γιατί…»</h2>
+      </div>
+      <div class="meta">📌 Placeholders προς αντικατάσταση<br>με attributed testimonials</div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="test">
+        <div class="quote-mark">"</div>
+        <q>Επιλέγουμε την Production LTD γιατί μετατρέπουν ένα απαιτητικό brief σε οικονομικά βιώσιμη λύση, χωρίς να θυσιάζουν την αισθητική του brand μας.</q>
+        <div class="attr">
+          <div class="who">
+            <h6>Marketing Manager</h6>
+            <div class="role">Retail Sector</div>
+          </div>
+          <span class="pending">Pending name</span>
+        </div>
+      </div>
+      <div class="test">
+        <div class="quote-mark">"</div>
+        <q>Σε ένα περιβάλλον όπου τα launches δεν παίρνουν αναβολή, η σιγουριά ότι τα υλικά θα είναι στο ράφι την ημέρα που συμφωνήσαμε είναι ο λόγος που τους εμπιστευόμαστε.</q>
+        <div class="attr">
+          <div class="who">
+            <h6>Procurement Director</h6>
+            <div class="role">FMCG Brand</div>
+          </div>
+          <span class="pending">Pending name</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="ornament"></div>
+  <div class="container">
+    <h2>Ας δώσουμε μορφή <em>στο επόμενο project σας.</em></h2>
+    <a href="quote.html" class="cta primary lg" style="background: var(--color-orange);">Strategic briefing →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="logo"><img src="assets/logo-horizontal-white.svg" alt="" style="height: 26px; margin-bottom: 16px;"></div>
+      <p style="font-size:13px; line-height:1.6; max-width: 280px; margin: 0;">Crafting Retail Conversion. Industrialized Craft στις Αχαρνές, από το 2008.</p>
+    </div>
+    <div><h6>Catalog</h6><a href="services.html">Special Projects</a><a href="services.html">Floor &amp; Counter</a><a href="services.html">Display Systems</a><a href="services.html">POS Accessories</a></div>
+    <div><h6>Contact</h6><a href="contact.html">info@production.gr</a><a href="contact.html">+30 210 232 27 50</a><a href="contact.html">Τσαμαλή 63, Αχαρναί 13671</a></div>
+    <div><h6>Follow</h6><a href="https://www.instagram.com/production.gr" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/company/production-ltd/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="sitemap.html">Sitemap</a></div>
+  </div>
+  <div class="container">
+    <div class="legal"><span>© Production LTD 2008–2025</span><span>Privacy · Cookies</span></div>
+  </div>
+</footer>
+
+  <script src="js/anim.js" defer></script>
+  <script src="js/ui-extras.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+/* ============================================================
+   PRODUCTION.GR — DESIGN TOKENS
+   ============================================================ */
+
+/* Fonts are loaded via next/font in app/layout.tsx
+   (Manrope, Roboto Mono, Caveat — exposed as --font-sans / --font-mono / --font-marker). */
+
+:root {
+  /* ---------- COLORS ---------- */
+
+  /* Primary brand */
+  --color-yellow: #ffc815;
+  --color-orange: #E65C00;
+  --gradient-primary: radial-gradient(circle at 30% 25%, #ffc815 0%, #E65C00 100%);
+  --gradient-primary-soft: radial-gradient(circle at 30% 25%, #ffc815 0%, #E65C00 120%);
+  --gradient-primary-flat: linear-gradient(135deg, #ffc815 0%, #E65C00 100%);
+
+  /* Neutral surface gradients — for hero and large blocks where orange should
+     recede and act as a small accent instead of dominating the surface. */
+  --gradient-dark:     linear-gradient(135deg, #3c3c3c 0%, #1f1f1f 100%);
+  --gradient-cool:     linear-gradient(135deg, #ededed 0%, #bdbdbd 100%);
+  --gradient-warm-tint: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 55%, #4a2a14 100%);
+
+  /* Accent tints — for hover backgrounds, selected pills, faint ornaments. */
+  --accent-tint-08: rgba(230, 92, 0, 0.08);
+  --accent-tint-12: rgba(230, 92, 0, 0.12);
+  --accent-tint-20: rgba(230, 92, 0, 0.20);
+
+  /* Neutral scale (cool grays) */
+  --color-gray-1: #ededed;
+  --color-gray-2: #bdbdbd;
+  --color-gray-3: #8a8a8a;
+  --color-gray-4: #3c3c3c;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Semantic — surfaces & text */
+  --bg-canvas:        var(--color-white);
+  --bg-subtle:        var(--color-gray-1);
+  --bg-inverse:       var(--color-gray-4);
+  --bg-hero:          var(--gradient-primary);
+
+  --fg-primary:       var(--color-gray-4);
+  --fg-secondary:     var(--color-gray-3);
+  --fg-tertiary:      var(--color-gray-2);
+  --fg-on-inverse:    var(--color-white);
+  --fg-on-primary:    var(--color-gray-4);   /* dark text on yellow/orange */
+  --fg-link:          var(--color-orange);
+
+  --border-subtle:    var(--color-gray-1);
+  --border-default:   var(--color-gray-2);
+  --border-strong:    var(--color-gray-4);
+
+  --accent:           var(--color-orange);
+  --accent-soft:      var(--color-yellow);
+
+  /* Focus */
+  --focus-ring:       var(--color-orange);
+
+  /* ---------- TYPOGRAPHY ----------
+     The actual font families are bound via next/font CSS variables in app/layout.tsx.
+     The fallback chains below activate only if those variables are missing. */
+  --font-sans:   var(--font-manrope), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:   var(--font-roboto-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-marker: var(--font-caveat), "Comic Sans MS", cursive;
+
+  /* Desktop type scale (size / line-height) */
+  --h1-size: 54px;  --h1-lh: 62px;
+  --h2-size: 42px;  --h2-lh: 50px;
+  --h3-size: 32px;  --h3-lh: 42px;
+  --h4-size: 26px;  --h4-lh: 33px;
+  --h5-size: 21px;  --h5-lh: 28px;
+  --h6-size: 18px;  --h6-lh: 24px;
+  --p-size:  16px;  --p-lh:  25px;
+  --small-size: 14px; --small-lh: 22px;
+  --tiny-size:  12px; --tiny-lh: 18px;
+
+  /* Mobile overrides */
+  --h1-size-m: 36px; --h1-lh-m: 44px;
+  --h2-size-m: 30px; --h2-lh-m: 38px;
+  --h3-size-m: 24px; --h3-lh-m: 32px;
+  --h4-size-m: 20px; --h4-lh-m: 28px;
+  --h5-size-m: 18px; --h5-lh-m: 26px;
+  --h6-size-m: 16px; --h6-lh-m: 24px;
+  --p-size-m:  15px; --p-lh-m:  24px;
+
+  /* Tracking */
+  --track-tight:  -0.02em;
+  --track-normal: 0;
+  --track-label:  0.08em;
+  --track-mono:   0.04em;
+
+  /* ---------- SPACING (8-pt + 4-pt sub) ---------- */
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* ---------- RADII ---------- */
+  --radius-sm:   4px;
+  --radius-md:   12px;
+  --radius-lg:   24px;
+  --radius-pill: 999px;
+
+  /* ---------- SHADOWS ---------- */
+  --shadow-sm:   0 1px 2px rgba(60, 60, 60, 0.06), 0 1px 1px rgba(60, 60, 60, 0.04);
+  --shadow-md:   0 6px 24px rgba(60, 60, 60, 0.10), 0 2px 6px rgba(60, 60, 60, 0.06);
+  --shadow-lg:   0 24px 60px -12px rgba(60, 60, 60, 0.18);
+  --shadow-glow: 0 12px 60px -10px rgba(230, 92, 0, 0.45);
+
+  /* ---------- LAYOUT ---------- */
+  --max-content: 1280px;
+  --gutter-d:    32px;
+  --gutter-m:    16px;
+  --header-h-d:  84px;
+  --header-h-m:  68px;
+
+  /* ---------- MOTION ---------- */
+  --ease:     cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration: 180ms;
+  --duration-slow: 320ms;
+}
+
+/* ============================================================
+   SEMANTIC TYPE — HEADINGS & TEXT
+   ============================================================ */
+
+html { color: var(--fg-primary); background: var(--bg-canvas); }
+body { font-family: var(--font-sans); font-size: var(--p-size); line-height: var(--p-lh); font-weight: 400; }
+
+h1, .h1 { font-family: var(--font-sans); font-weight: 700; font-size: var(--h1-size); line-height: var(--h1-lh); letter-spacing: var(--track-tight); margin: 0; }
+h2, .h2 { font-family: var(--font-sans); font-weight: 400; font-size: var(--h2-size); line-height: var(--h2-lh); letter-spacing: var(--track-tight); margin: 0; }
+h3, .h3 { font-family: var(--font-sans); font-weight: 800; font-size: var(--h3-size); line-height: var(--h3-lh); letter-spacing: var(--track-tight); margin: 0; }
+h4, .h4 { font-family: var(--font-sans); font-weight: 800; font-size: var(--h4-size); line-height: var(--h4-lh); margin: 0; }
+h5, .h5 { font-family: var(--font-mono); font-weight: 700; font-size: var(--h5-size); line-height: var(--h5-lh); letter-spacing: var(--track-label); text-transform: uppercase; margin: 0; }
+h6, .h6 { font-family: var(--font-sans); font-weight: 700; font-size: var(--h6-size); line-height: var(--h6-lh); margin: 0; }
+
+p, .p     { font-family: var(--font-sans); font-weight: 400; font-size: var(--p-size); line-height: var(--p-lh); margin: 0; }
+.subtitle { font-family: var(--font-sans); font-weight: 300; font-size: var(--h4-size); line-height: var(--h4-lh); color: var(--fg-secondary); }
+.label    { font-family: var(--font-mono); font-weight: 700; font-size: var(--small-size); line-height: var(--small-lh); letter-spacing: var(--track-label); text-transform: uppercase; }
+.eyebrow  { font-family: var(--font-mono); font-weight: 700; font-size: var(--tiny-size); line-height: var(--tiny-lh); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--fg-secondary); }
+.note     { font-family: var(--font-sans); font-weight: 500; font-style: italic; font-size: 16px; line-height: 1.35; color: var(--fg-secondary); }
+.small    { font-size: var(--small-size); line-height: var(--small-lh); }
+code, .mono { font-family: var(--font-mono); font-size: 0.92em; letter-spacing: var(--track-mono); }
+
+@media (max-width: 768px) {
+  h1, .h1 { font-size: var(--h1-size-m); line-height: var(--h1-lh-m); }
+  h2, .h2 { font-size: var(--h2-size-m); line-height: var(--h2-lh-m); }
+  h3, .h3 { font-size: var(--h3-size-m); line-height: var(--h3-lh-m); }
+  h4, .h4 { font-size: var(--h4-size-m); line-height: var(--h4-lh-m); }
+  h5, .h5 { font-size: var(--h5-size-m); line-height: var(--h5-lh-m); }
+  h6, .h6 { font-size: var(--h6-size-m); line-height: var(--h6-lh-m); }
+  p, .p   { font-size: var(--p-size-m);  line-height: var(--p-lh-m); }
+}
+
+/* ============================================================
+   PRIMITIVES
+   ============================================================ */
+
+a { color: var(--fg-link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+*:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; border-radius: 2px; }
+
+::selection { background: var(--color-yellow); color: var(--color-gray-4); }

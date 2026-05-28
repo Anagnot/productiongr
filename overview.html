@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<title>Production GR — Templates Overview</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root {
+    --bg: #1a1a1a;
+    --panel: #222;
+    --panel-2: #2a2a2a;
+    --border: #333;
+    --border-2: #444;
+    --text: #f5f5f5;
+    --muted: #999;
+    --accent: #ff6a00;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+  .toolbar {
+    position: fixed; top: 0; left: 0; right: 0; height: 52px;
+    background: var(--panel); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; padding: 0 16px; gap: 8px; z-index: 1000;
+  }
+  .toolbar .title { font-weight: 700; font-size: 14px; letter-spacing: 0.5px; }
+  .toolbar .subtitle { color: var(--muted); font-size: 12px; margin-left: 8px; }
+  .toolbar .spacer { flex: 1; }
+  .toolbar button {
+    background: var(--panel-2); color: var(--text); border: 1px solid var(--border-2);
+    padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 500;
+    min-width: 36px;
+  }
+  .toolbar button:hover { background: #353535; border-color: #555; }
+  .toolbar button:active { background: #2a2a2a; }
+  .toolbar .zoom-level {
+    padding: 6px 10px; background: #111; border: 1px solid var(--border);
+    border-radius: 6px; font-size: 12px; min-width: 60px; text-align: center; font-variant-numeric: tabular-nums;
+  }
+  .toolbar .group { display: flex; gap: 6px; align-items: center; }
+  .toolbar .divider { width: 1px; height: 24px; background: var(--border-2); margin: 0 4px; }
+  .toolbar button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .toolbar button.primary:hover { background: #ff7e1f; border-color: #ff7e1f; }
+
+  .export-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000;
+    display: none; align-items: center; justify-content: center; flex-direction: column; gap: 16px;
+    color: #fff; font-size: 14px;
+  }
+  .export-overlay.active { display: flex; }
+  .export-overlay .bar { width: 320px; height: 8px; background: #333; border-radius: 4px; overflow: hidden; }
+  .export-overlay .bar > div { height: 100%; background: var(--accent); width: 0; transition: width 0.2s; }
+  .export-overlay .msg { color: var(--muted); font-size: 12px; }
+
+  .canvas {
+    position: fixed; top: 52px; left: 0; right: 0; bottom: 0;
+    overflow: hidden; cursor: grab; background: #141414;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .canvas.panning { cursor: grabbing; }
+
+  .canvas-content {
+    position: absolute; top: 0; left: 0;
+    transform-origin: 0 0;
+    will-change: transform;
+  }
+
+  .frames {
+    display: grid;
+    grid-template-columns: repeat(5, 1440px);
+    gap: 120px 80px;
+    padding: 80px;
+  }
+
+  .frame { display: flex; flex-direction: column; }
+  .frame-label {
+    font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 18px;
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  .frame-label .name { color: #fff; }
+  .frame-label .file { color: var(--muted); font-size: 18px; font-weight: 500; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+
+  .frame-iframe-wrap {
+    width: 1440px; height: 3200px; background: #fff;
+    border: 2px solid #2f2f2f; border-radius: 6px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  .frame iframe {
+    width: 1440px; height: 100%; border: 0; display: block;
+    /* Prevent iframe from capturing pan/zoom gestures */
+    pointer-events: none;
+  }
+  /* Interactive mode toggle */
+  body.interactive .frame iframe { pointer-events: auto; }
+  body.interactive .canvas { cursor: default; }
+
+  .hint {
+    position: fixed; bottom: 16px; left: 16px; z-index: 1000;
+    background: rgba(0,0,0,0.6); border: 1px solid var(--border);
+    padding: 10px 14px; border-radius: 8px; font-size: 12px; color: var(--muted);
+    line-height: 1.5;
+  }
+  .hint kbd {
+    background: var(--panel-2); border: 1px solid var(--border-2); border-bottom-width: 2px;
+    border-radius: 4px; padding: 1px 6px; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 11px; color: var(--text);
+  }
+</style>
+<link rel="stylesheet" href="css/responsive.css?v=3">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="title">PRODUCTION GR</div>
+  <div class="subtitle">Templates Overview</div>
+  <div class="spacer"></div>
+  <div class="group">
+    <button id="zoomOut" title="Zoom out (-)">−</button>
+    <div class="zoom-level" id="zoomLevel">25%</div>
+    <button id="zoomIn" title="Zoom in (+)">+</button>
+  </div>
+  <div class="divider"></div>
+  <div class="group">
+    <button id="fit" title="Fit to screen (0)">Fit</button>
+    <button id="actual" title="100% (1)">100%</button>
+    <button id="reset" title="Reset position">Reset</button>
+  </div>
+  <div class="divider"></div>
+  <div class="group">
+    <button id="refreshAll" title="Reload all iframes (R)">↻ Refresh</button>
+    <button id="autoReloadToggle" title="Auto-reload on file changes">Auto-reload: On</button>
+  </div>
+  <div class="divider"></div>
+  <button id="interactiveToggle" title="Toggle iframe interaction">Interactive: Off</button>
+  <div class="divider"></div>
+  <div class="group">
+    <button id="exportPng" class="primary" title="Export as PNG">⬇ PNG</button>
+    <button id="exportJpg" class="primary" title="Export as JPEG">⬇ JPG</button>
+  </div>
+</div>
+
+<div class="export-overlay" id="exportOverlay">
+  <div id="exportStatus">Preparing export…</div>
+  <div class="bar"><div id="exportBar"></div></div>
+  <div class="msg">This can take a few seconds for large layouts. Please don't switch tabs.</div>
+</div>
+
+<div class="canvas" id="canvas">
+  <div class="canvas-content" id="canvasContent">
+    <div class="frames" id="frames">
+      <!-- Frames are injected by JS so the page list stays in one place -->
+    </div>
+  </div>
+</div>
+
+<div class="hint">
+  <strong>Pan:</strong> Drag &nbsp;·&nbsp;
+  <strong>Zoom:</strong> Scroll / <kbd>Ctrl</kbd>+Scroll &nbsp;·&nbsp;
+  <strong>Fit:</strong> <kbd>0</kbd> &nbsp;·&nbsp;
+  <strong>100%:</strong> <kbd>1</kbd> &nbsp;·&nbsp;
+  <strong>Zoom:</strong> <kbd>+</kbd> / <kbd>−</kbd>
+</div>
+
+<script>
+  // ---------- Page list (single source of truth) ----------
+  const PAGES = [
+    { file: 'index.html',                          name: 'Αρχική' },
+    { file: 'about.html',                          name: 'Σχετικά με εμάς' },
+    { file: 'services.html',                       name: 'Υπηρεσίες' },
+    { file: 'service-pop-displays.html',           name: 'Υπηρεσία — POP Displays' },
+    { file: 'portfolio.html',                      name: 'Portfolio' },
+    { file: 'case-coca-cola-summer-endcap.html',   name: 'Case Study — Coca-Cola' },
+    { file: 'quote.html',                          name: 'Προσφορά' },
+    { file: 'contact.html',                        name: 'Επικοινωνία' },
+    { file: 'sitemap.html',                        name: 'Sitemap' },
+    { file: 'index-bundle.html',                   name: 'Index (bundle)' },
+  ];
+
+  // ---------- Build frames ----------
+  const framesEl = document.getElementById('frames');
+  const CACHE_BUST = Date.now();
+  PAGES.forEach(p => {
+    const frame = document.createElement('div');
+    frame.className = 'frame';
+    frame.innerHTML = `
+      <div class="frame-label">
+        <span class="name">${p.name}</span>
+        <span class="file">${p.file}</span>
+      </div>
+      <div class="frame-iframe-wrap">
+        <iframe src="${p.file}?_t=${CACHE_BUST}" data-base-src="${p.file}" loading="eager"></iframe>
+      </div>
+    `;
+    framesEl.appendChild(frame);
+  });
+
+  // ---------- Iframe load handling: disable animations + auto-resize ----------
+  const ANIM_KILL_CSS = `
+    *, *::before, *::after {
+      animation-duration: 0s !important;
+      animation-delay: 0s !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0s !important;
+      transition-delay: 0s !important;
+      scroll-behavior: auto !important;
+    }
+    html, body { scroll-behavior: auto !important; }
+    /* Force reveal-on-scroll elements to visible */
+    [data-reveal], .reveal, .fade-in, .slide-in, .animate, .animated {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+  `;
+
+  let userInteracted = false;
+  let initialFitDone = false;
+
+  const allIframes = Array.from(document.querySelectorAll('iframe'));
+  let iframesReady = 0;
+
+  allIframes.forEach(iframe => {
+    iframe.addEventListener('load', () => {
+      try {
+        const doc = iframe.contentDocument;
+        if (!doc) return;
+        const style = doc.createElement('style');
+        style.textContent = ANIM_KILL_CSS;
+        doc.head.appendChild(style);
+        const resize = () => {
+          const h = Math.max(
+            doc.body ? doc.body.scrollHeight : 0,
+            doc.documentElement ? doc.documentElement.scrollHeight : 0,
+            800
+          );
+          iframe.style.height = h + 'px';
+          iframe.parentElement.style.height = h + 'px';
+        };
+        resize();
+        setTimeout(resize, 300);
+        setTimeout(resize, 1200);
+        setTimeout(() => {
+          resize();
+          // Only auto-fit the very first time, and only if the user hasn't
+          // touched zoom/pan yet — otherwise we'd yank the view back while they're using it.
+          if (!initialFitDone && !userInteracted) {
+            iframesReady++;
+            if (iframesReady >= allIframes.length) {
+              initialFitDone = true;
+              fitToView();
+            }
+          }
+        }, 2500);
+      } catch (e) {
+        console.warn('Could not access iframe:', iframe.src, e);
+      }
+    });
+  });
+
+  // ---------- Pan & Zoom ----------
+  const canvas = document.getElementById('canvas');
+  const content = document.getElementById('canvasContent');
+  const zoomLabel = document.getElementById('zoomLevel');
+
+  const state = { scale: 0.2, tx: 0, ty: 0 };
+  const MIN = 0.05;
+  const MAX = 3;
+
+  function apply() {
+    content.style.transform = `translate(${state.tx}px, ${state.ty}px) scale(${state.scale})`;
+    zoomLabel.textContent = Math.round(state.scale * 100) + '%';
+  }
+
+  function zoomAt(clientX, clientY, newScale) {
+    newScale = Math.max(MIN, Math.min(MAX, newScale));
+    const rect = canvas.getBoundingClientRect();
+    const cx = clientX - rect.left;
+    const cy = clientY - rect.top;
+    // Keep the point under the cursor fixed
+    state.tx = cx - (cx - state.tx) * (newScale / state.scale);
+    state.ty = cy - (cy - state.ty) * (newScale / state.scale);
+    state.scale = newScale;
+    apply();
+  }
+
+  function fitToView() {
+    const rect = canvas.getBoundingClientRect();
+    // Measure content unscaled
+    const prevTransform = content.style.transform;
+    content.style.transform = 'translate(0,0) scale(1)';
+    const cw = content.scrollWidth;
+    const ch = content.scrollHeight;
+    content.style.transform = prevTransform;
+
+    const padding = 40;
+    const scale = Math.min(
+      (rect.width - padding * 2) / cw,
+      (rect.height - padding * 2) / ch
+    );
+    state.scale = Math.max(MIN, Math.min(MAX, scale));
+    state.tx = (rect.width - cw * state.scale) / 2;
+    state.ty = (rect.height - ch * state.scale) / 2;
+    apply();
+  }
+
+  function actualSize() {
+    const rect = canvas.getBoundingClientRect();
+    state.scale = 1;
+    state.tx = rect.width / 2 - content.scrollWidth / 2;
+    state.ty = 40;
+    apply();
+  }
+
+  // Wheel: scroll = pan, ctrl/meta + scroll = zoom, plain scroll on a trackpad with ctrl-zoom convention
+  // Zoom events are batched via rAF so heavy iframe re-rasterization doesn't stall the input loop.
+  let pendingZoom = null;
+  let zoomQueued = false;
+  function flushZoom() {
+    zoomQueued = false;
+    if (!pendingZoom) return;
+    const { dy, x, y } = pendingZoom;
+    pendingZoom = null;
+    // exp(-dy * 0.006): one mousewheel notch (~100) ≈ 0.55× zoom; a small pinch (~5) ≈ 0.97×
+    const factor = Math.exp(-dy * 0.006);
+    zoomAt(x, y, state.scale * factor);
+  }
+  canvas.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    userInteracted = true;
+    if (e.ctrlKey || e.metaKey) {
+      if (!pendingZoom) pendingZoom = { dy: 0, x: e.clientX, y: e.clientY };
+      pendingZoom.dy += e.deltaY;
+      pendingZoom.x = e.clientX;
+      pendingZoom.y = e.clientY;
+      if (!zoomQueued) { zoomQueued = true; requestAnimationFrame(flushZoom); }
+    } else {
+      state.tx -= e.deltaX;
+      state.ty -= e.deltaY;
+      apply();
+    }
+  }, { passive: false });
+
+  // Drag-to-pan
+  let dragging = false, lastX = 0, lastY = 0;
+  canvas.addEventListener('mousedown', (e) => {
+    if (document.body.classList.contains('interactive')) return;
+    dragging = true; lastX = e.clientX; lastY = e.clientY;
+    userInteracted = true;
+    canvas.classList.add('panning');
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    state.tx += e.clientX - lastX;
+    state.ty += e.clientY - lastY;
+    lastX = e.clientX; lastY = e.clientY;
+    apply();
+  });
+  window.addEventListener('mouseup', () => {
+    dragging = false;
+    canvas.classList.remove('panning');
+  });
+
+  // Buttons
+  const ZOOM_STEP = 1.5;
+  document.getElementById('zoomIn').addEventListener('click', () => {
+    userInteracted = true;
+    const r = canvas.getBoundingClientRect();
+    zoomAt(r.left + r.width / 2, r.top + r.height / 2, state.scale * ZOOM_STEP);
+  });
+  document.getElementById('zoomOut').addEventListener('click', () => {
+    userInteracted = true;
+    const r = canvas.getBoundingClientRect();
+    zoomAt(r.left + r.width / 2, r.top + r.height / 2, state.scale / ZOOM_STEP);
+  });
+  document.getElementById('fit').addEventListener('click', () => { userInteracted = true; fitToView(); });
+  document.getElementById('actual').addEventListener('click', () => { userInteracted = true; actualSize(); });
+  document.getElementById('reset').addEventListener('click', () => { userInteracted = true; fitToView(); });
+
+  // Interactive mode (so the client can click around inside a frame if asked)
+  const intBtn = document.getElementById('interactiveToggle');
+  intBtn.addEventListener('click', () => {
+    document.body.classList.toggle('interactive');
+    intBtn.textContent = 'Interactive: ' + (document.body.classList.contains('interactive') ? 'On' : 'Off');
+  });
+
+  // Keyboard
+  window.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === '0') { fitToView(); }
+    else if (e.key === '1') { actualSize(); }
+    else if (e.key === '+' || e.key === '=') {
+      const r = canvas.getBoundingClientRect();
+      zoomAt(r.left + r.width / 2, r.top + r.height / 2, state.scale * ZOOM_STEP);
+    }
+    else if (e.key === '-' || e.key === '_') {
+      const r = canvas.getBoundingClientRect();
+      zoomAt(r.left + r.width / 2, r.top + r.height / 2, state.scale / ZOOM_STEP);
+    }
+    else if (e.key === 'r' || e.key === 'R') {
+      reloadAllIframes();
+    }
+  });
+
+  // Initial fit (after layout settles). Won't fire again later — see iframe load handler.
+  window.addEventListener('resize', () => { /* keep current pan/zoom on resize */ });
+  requestAnimationFrame(() => requestAnimationFrame(fitToView));
+
+  // ---------- Export to PNG / JPEG ----------
+  const exportOverlay = document.getElementById('exportOverlay');
+  const exportStatus  = document.getElementById('exportStatus');
+  const exportBar     = document.getElementById('exportBar');
+
+  function setProgress(pct, msg) {
+    exportBar.style.width = Math.round(pct * 100) + '%';
+    if (msg) exportStatus.textContent = msg;
+  }
+
+  async function exportCanvas(format) {
+    if (typeof html2canvas === 'undefined') {
+      alert('Export library (html2canvas) failed to load. Check your internet connection and reload.');
+      return;
+    }
+    exportOverlay.classList.add('active');
+    setProgress(0, 'Capturing pages…');
+
+    const FRAME_WIDTH = 1440;
+    const PADDING     = 80;
+    const COL_GAP     = 80;
+    const ROW_GAP     = 120;
+    const LABEL_HEIGHT = 60;
+    const COLS = 5;
+
+    const frameEls = Array.from(document.querySelectorAll('.frame'));
+    const captures = [];
+
+    try {
+      for (let i = 0; i < frameEls.length; i++) {
+        const f = frameEls[i];
+        const iframe = f.querySelector('iframe');
+        const labelName = f.querySelector('.frame-label .name').textContent.trim();
+        const labelFile = f.querySelector('.frame-label .file').textContent.trim();
+
+        setProgress(i / frameEls.length, `Capturing ${i + 1}/${frameEls.length}: ${labelFile}`);
+
+        let captured;
+        try {
+          const doc = iframe.contentDocument;
+          if (!doc || !doc.body) throw new Error('iframe not accessible');
+          const h = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight, 800);
+          captured = await html2canvas(doc.body, {
+            width: FRAME_WIDTH,
+            height: h,
+            windowWidth: FRAME_WIDTH,
+            windowHeight: h,
+            backgroundColor: '#ffffff',
+            scale: 1,
+            useCORS: true,
+            allowTaint: true,
+            logging: false,
+          });
+        } catch (e) {
+          // Fallback: a placeholder rectangle if the iframe can't be captured
+          const ph = document.createElement('canvas');
+          ph.width = FRAME_WIDTH; ph.height = 800;
+          const pctx = ph.getContext('2d');
+          pctx.fillStyle = '#eee'; pctx.fillRect(0, 0, ph.width, ph.height);
+          pctx.fillStyle = '#999'; pctx.font = '32px sans-serif';
+          pctx.fillText('Could not capture: ' + labelFile, 40, 80);
+          captured = ph;
+        }
+
+        captures.push({ canvas: captured, name: labelName, file: labelFile, height: captured.height });
+      }
+
+      setProgress(0.95, 'Compositing image…');
+
+      // Compute row heights
+      const rows = Math.ceil(captures.length / COLS);
+      const rowHeights = [];
+      for (let r = 0; r < rows; r++) {
+        let maxH = 0;
+        for (let c = 0; c < COLS; c++) {
+          const i = r * COLS + c;
+          if (i < captures.length) maxH = Math.max(maxH, captures[i].height);
+        }
+        rowHeights.push(maxH);
+      }
+
+      const totalWidth  = PADDING * 2 + COLS * FRAME_WIDTH + (COLS - 1) * COL_GAP;
+      const totalHeight = PADDING * 2 +
+                          rowHeights.reduce((a, b) => a + b + LABEL_HEIGHT, 0) +
+                          (rows - 1) * ROW_GAP;
+
+      const big = document.createElement('canvas');
+      big.width  = totalWidth;
+      big.height = totalHeight;
+      const ctx = big.getContext('2d');
+
+      // Background (matches canvas dark grid)
+      ctx.fillStyle = format === 'jpeg' ? '#141414' : '#141414';
+      ctx.fillRect(0, 0, totalWidth, totalHeight);
+
+      // Draw each frame + label
+      let y = PADDING;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < COLS; c++) {
+          const i = r * COLS + c;
+          if (i >= captures.length) break;
+          const x = PADDING + c * (FRAME_WIDTH + COL_GAP);
+
+          // Label
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '600 28px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+          ctx.textBaseline = 'top';
+          ctx.fillText(captures[i].name, x, y);
+          ctx.fillStyle = '#888888';
+          ctx.font = '500 18px ui-monospace, "SF Mono", Menlo, monospace';
+          const nameWidth = ctx.measureText(captures[i].name).width;
+          ctx.fillText(captures[i].file, x + nameWidth + 14, y + 6);
+
+          // Frame border + image
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(x - 2, y + LABEL_HEIGHT - 2, FRAME_WIDTH + 4, captures[i].height + 4);
+          ctx.strokeStyle = '#2f2f2f';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(x - 2, y + LABEL_HEIGHT - 2, FRAME_WIDTH + 4, captures[i].height + 4);
+          ctx.drawImage(captures[i].canvas, x, y + LABEL_HEIGHT);
+        }
+        y += LABEL_HEIGHT + rowHeights[r] + ROW_GAP;
+      }
+
+      setProgress(1, 'Saving…');
+
+      const mime = format === 'jpeg' ? 'image/jpeg' : 'image/png';
+      const ext  = format === 'jpeg' ? 'jpg' : 'png';
+      const quality = format === 'jpeg' ? 0.9 : undefined;
+
+      // Use Blob + objectURL for large files (data URLs may exceed limits)
+      await new Promise((resolve) => {
+        big.toBlob((blob) => {
+          if (!blob) {
+            alert('Could not generate image — canvas may be too large.');
+            resolve();
+            return;
+          }
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 16);
+          a.href = url;
+          a.download = `production-gr-overview-${ts}.${ext}`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(url), 5000);
+          resolve();
+        }, mime, quality);
+      });
+
+    } catch (err) {
+      console.error(err);
+      alert('Export failed: ' + (err.message || err));
+    } finally {
+      setTimeout(() => { exportOverlay.classList.remove('active'); setProgress(0, ''); }, 400);
+    }
+  }
+
+  document.getElementById('exportPng').addEventListener('click', () => exportCanvas('png'));
+  document.getElementById('exportJpg').addEventListener('click', () => exportCanvas('jpeg'));
+
+  // ---------- Auto-reload on file changes ----------
+  // Polls each page's Last-Modified / ETag via HEAD every 2s. Reloads only the
+  // iframes whose source has actually changed, so pan/zoom state is preserved.
+  // Works when served via http (e.g. `python3 -m http.server`). Silent no-op on file://.
+  let autoReload = true;
+  const POLL_INTERVAL_MS = 2000;
+
+  function baseUrlOf(iframe) {
+    return iframe.dataset.baseSrc || iframe.src.split('?')[0];
+  }
+
+  async function pollOne(iframe) {
+    const url = baseUrlOf(iframe);
+    try {
+      const resp = await fetch(url, { method: 'HEAD', cache: 'no-store' });
+      if (!resp.ok) return;
+      const stamp = resp.headers.get('Last-Modified') ||
+                    resp.headers.get('ETag') ||
+                    resp.headers.get('Content-Length');
+      if (!stamp) return;
+      if (iframe.dataset.stamp && iframe.dataset.stamp !== stamp) {
+        // Changed — reload with cache bust, preserving the iframe element so layout doesn't jump
+        iframe.dataset.stamp = stamp;
+        iframe.src = url + '?_t=' + Date.now();
+      } else if (!iframe.dataset.stamp) {
+        iframe.dataset.stamp = stamp;
+      }
+    } catch (e) { /* file:// or offline — ignore */ }
+  }
+
+  async function pollAll() {
+    if (!autoReload) return;
+    await Promise.all(allIframes.map(pollOne));
+  }
+  // Stagger first poll so iframes finish initial load first
+  setTimeout(() => {
+    pollAll();
+    setInterval(pollAll, POLL_INTERVAL_MS);
+  }, 3000);
+
+  function reloadAllIframes() {
+    allIframes.forEach(iframe => {
+      const url = baseUrlOf(iframe);
+      iframe.dataset.baseSrc = url;
+      iframe.src = url + '?_t=' + Date.now();
+    });
+  }
+
+  document.getElementById('refreshAll').addEventListener('click', reloadAllIframes);
+  const autoBtn = document.getElementById('autoReloadToggle');
+  autoBtn.addEventListener('click', () => {
+    autoReload = !autoReload;
+    autoBtn.textContent = 'Auto-reload: ' + (autoReload ? 'On' : 'Off');
+  });
+</script>
+
+</body>
+</html>
