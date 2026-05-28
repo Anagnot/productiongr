@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ChannelCarousel } from "@/components/ChannelCarousel";
 import { CTABlock } from "@/components/CTABlock";
 import { getAllChannels } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
@@ -32,6 +33,9 @@ export default async function ChannelsPage({
   const t = dict.channels;
   const href = (p: string) => localizedHref(p, lang);
   const channels = await getAllChannels();
+  const heroCarouselImages = channels
+    .map((c) => c.cover)
+    .filter((src): src is string => Boolean(src));
 
   return (
     <>
@@ -41,7 +45,14 @@ export default async function ChannelsPage({
             <h1>
               {t.hero.h1Pre} <em>{t.hero.h1Em}</em>
             </h1>
-            <p className="lede">{t.hero.lede}</p>
+            <div className="hero-carousel">
+              <ChannelCarousel
+                images={heroCarouselImages}
+                alt={t.gridHeading}
+                prevLabel={t.carouselPrev}
+                nextLabel={t.carouselNext}
+              />
+            </div>
           </div>
         </div>
       </section>

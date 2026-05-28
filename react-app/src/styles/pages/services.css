@@ -3,10 +3,6 @@
 .page-hero h1 { font-size: 84px; line-height: 0.96; }
 .page-hero h1 em { font-size: 0.78em; }
 .page-hero .right { font-size: 16px; line-height: 1.6; color: var(--fg-secondary); }
-.page-hero .stats-line { display: flex; gap: 28px; margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--border-default); }
-.page-hero .stats-line .s { font-family: var(--font-mono); }
-.page-hero .stats-line .s .v { font-family: var(--font-sans); font-weight: 800; font-size: 28px; color: var(--color-gray-4); line-height: 1; letter-spacing: -0.02em; }
-.page-hero .stats-line .s .l { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); margin-top: 6px; }
 
 /* Filter bar */
 .ia-bar { padding: 22px 0; border-top: 1px solid var(--color-gray-4); border-bottom: 1px solid var(--border-default); background: var(--color-white); }

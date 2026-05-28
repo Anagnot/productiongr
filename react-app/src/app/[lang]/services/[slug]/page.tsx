@@ -9,15 +9,10 @@ import { hasLocale, LOCALES, localizedHref, type Locale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 import "@/styles/pages/product-detail.css";
 
-// floor-stands has its own hand-crafted page at /services/floor-stands —
-// Next.js prefers the static route over this dynamic one, but we still
-// exclude it from prerender to avoid build conflicts.
-const DYNAMIC_SLUGS = PRODUCTS.filter((p) => p.slug !== "floor-stands");
-
 export async function generateStaticParams() {
   const params: { lang: Locale; slug: string }[] = [];
   for (const lang of LOCALES as readonly Locale[]) {
-    for (const p of DYNAMIC_SLUGS) {
+    for (const p of PRODUCTS) {
       params.push({ lang, slug: p.slug });
     }
   }
@@ -62,11 +57,8 @@ export default async function ProductDetailPage({
             <span className="sep">/</span>
             <span>{product.name[lang]}</span>
           </nav>
-          <div className="hero-grid">
-            <div>
-              <div className="eyebrow">{t.detailEyebrow}</div>
-              <h1>{product.name[lang]}</h1>
-            </div>
+          <div className="hero-stack">
+            <h1>{product.name[lang]}</h1>
             <p className="lede">{product.blurb[lang]}</p>
           </div>
         </div>

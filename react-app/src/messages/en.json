@@ -164,37 +164,44 @@
         [
           "01",
           "Super Markets",
-          "Heavy-use POS"
+          "Heavy-use POS",
+          "super-market"
         ],
         [
           "02",
           "Retail Stores",
-          "Design-led displays"
+          "Design-led displays",
+          "hairdresser"
         ],
         [
           "03",
           "Cosmetics",
-          "Premium finish"
+          "Premium finish",
+          "beauty-shop"
         ],
         [
           "04",
           "Pharmacy",
-          "Trust & ergonomics"
+          "Trust & ergonomics",
+          "pharma"
         ],
         [
           "05",
           "HORECA",
-          "Restaurants, café, bar"
+          "Restaurants, café, bar",
+          "horeca"
         ],
         [
           "06",
           "Hotels",
-          "Hospitality signage"
+          "Hospitality signage",
+          "convenience-stores"
         ],
         [
           "07",
           "Kiosk & Convenience",
-          "Compact, impulse"
+          "Compact, impulse",
+          "kiosk"
         ]
       ]
     },
@@ -841,7 +848,7 @@
     },
     "products": {
       "eyebrow": "01 · Catalog",
-      "h2": "The 8 standard categories — and all their materials.",
+      "h2": "The standard categories — and all their materials.",
       "metaLine1": "Every category has",
       "metaLine2": "cross-filtering by material & channel.",
       "items": [
@@ -2132,8 +2139,11 @@
       "dropzoneH6": "Drag files here",
       "dropzoneP": "or browse from your computer",
       "browse": "Browse files",
-      "formats": "PDF · AI · PSD · JPG · PNG · DWG · ZIP · up to 50MB per file",
+      "formats": "PDF · DOC · DOCX · up to 10MB per file",
       "uploadedSuffix": "· just uploaded",
+      "rejectIntro": "Some files were not added:",
+      "rejectType": "unsupported type (PDF, DOC, DOCX only)",
+      "rejectSize": "exceeds 10MB",
       "notesLabel": "Notes about the brief (optional)",
       "notesPh": "Tell us which is the main brief and which are just references. Is there something critical the Engineering team should know first?",
       "consentPre": "I agree to the",
@@ -2209,26 +2219,7 @@
       "onShelfDate": "2026-09-15",
       "delivery": "Delivery to our warehouse",
       "installation": "Yes — install by us",
-      "files": [
-        {
-          "name": "brand-launch-brief-Q3.pdf",
-          "size": "2.4 MB · just uploaded",
-          "tag": "brief",
-          "kind": "pdf"
-        },
-        {
-          "name": "competitor-display-reference.png",
-          "size": "876 KB · ~ 1 min ago",
-          "tag": "reference",
-          "kind": "img"
-        },
-        {
-          "name": "brand-guidelines-2026.zip",
-          "size": "14 MB · ~ 1 min ago",
-          "tag": "brand",
-          "kind": "zip"
-        }
-      ]
+      "files": []
     }
   },
   "sitemap": {

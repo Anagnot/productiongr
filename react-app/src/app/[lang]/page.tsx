@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
 import { HeroSlider } from "@/components/HeroSlider";
 import { ServicesGrid } from "@/components/ServicesGrid";
+import { getAllChannels } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
@@ -36,6 +37,10 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const dict = await getDictionary(lang);
   const t = dict.home;
   const href = (p: string) => localizedHref(p, lang);
+  const channels = await getAllChannels();
+  const channelCoverBySlug = new Map(
+    channels.map((c) => [c.slug, c.cover] as const),
+  );
 
   return (
     <>
@@ -66,13 +71,24 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
             <div className="right">{t.channels.right}</div>
           </div>
           <div className="channels-grid">
-            {t.channels.items.map(([num, name, en]) => (
-              <div key={num} className="ch">
-                <div className="num">{num}</div>
-                <div className="name">{name}</div>
-                <div className="en">{en}</div>
-              </div>
-            ))}
+            {t.channels.items.map(([num, name, en, slug]) => {
+              const cover = channelCoverBySlug.get(slug);
+              return (
+                <div
+                  key={num}
+                  className="ch"
+                  style={
+                    cover
+                      ? { backgroundImage: `url(${cover})` }
+                      : undefined
+                  }
+                >
+                  <div className="num">{num}</div>
+                  <div className="name">{name}</div>
+                  <div className="en">{en}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -80,8 +96,12 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <section className="about-strip">
         <div className="container">
           <div className="visual">
-            <div className="para"></div>
-            <div className="ph-grid"></div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="photo"
+              src="/uploads/home/about-laser.jpg"
+              alt=""
+            />
             <div className="circle"></div>
             <div className="signature">
               <span className="marker" style={{ whiteSpace: "pre-line" }}>

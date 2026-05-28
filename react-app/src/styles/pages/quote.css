@@ -12,8 +12,9 @@
 
   /* Progress strip */
   .progress-strip { background: var(--color-white); border-radius: var(--radius-lg); padding: 22px 28px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; border: 1px solid var(--border-subtle); }
-  .step-pill { padding: 4px 18px 4px 0; border-right: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 14px; cursor: pointer; transition: opacity var(--duration) var(--ease); }
-  .step-pill:last-child { border-right: 0; }
+  .step-pill { padding: 4px 18px; border-right: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 14px; cursor: pointer; transition: opacity var(--duration) var(--ease); }
+  .step-pill:first-child { padding-left: 0; }
+  .step-pill:last-child { padding-right: 0; border-right: 0; }
   .step-pill .num-circle { width: 36px; height: 36px; border-radius: 50%; background: var(--color-gray-1); color: var(--fg-tertiary); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.05em; flex-shrink: 0; transition: background var(--duration) var(--ease), color var(--duration) var(--ease); }
   .step-pill.done .num-circle { background: var(--color-gray-4); color: #fff; }
   .step-pill.active .num-circle { background: var(--color-orange); color: #fff; box-shadow: 0 8px 24px -8px rgba(230,92,0,0.5); }
@@ -91,8 +92,7 @@
   .file-row { display: grid; grid-template-columns: 40px 1fr auto auto; gap: 14px; align-items: center; padding: 12px 14px; background: var(--color-gray-1); border-radius: var(--radius-md); }
   .file-row .icon { width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--color-gray-4); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.05em; }
   .file-row .icon.pdf { background: var(--color-gray-4); }
-  .file-row .icon.img { background: var(--color-yellow); color: var(--color-gray-4); }
-  .file-row .icon.zip { background: var(--color-gray-3); }
+  .file-row .icon.doc { background: var(--color-yellow); color: var(--color-gray-4); }
   .file-row .name { font-size: 14px; font-weight: 700; }
   .file-row .meta-text { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); letter-spacing: 0.05em; }
   .file-row .remove { width: 24px; height: 24px; border-radius: 50%; background: var(--color-white); border: 1px solid var(--border-default); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--fg-tertiary); }

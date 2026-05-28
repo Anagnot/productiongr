@@ -58,14 +58,6 @@ export default async function ServicesPage({
               <strong>{t.hero.p1Strong}</strong>
               {t.hero.p1Post}
             </p>
-            <div className="stats-line">
-              {t.hero.stats.map((s, i) => (
-                <div key={i} className="s">
-                  <div className="v">{s.v}</div>
-                  <div className="l">{s.l}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -101,50 +93,12 @@ export default async function ServicesPage({
         </div>
       </div>
 
-      <section className="special-feat">
-        <div className="ornament"></div>
-        <div className="ornament2"></div>
-        <div className="container">
-          <div>
-            <div className="eyebrow">{t.specialFeat.eyebrow}</div>
-            <h2>
-              {t.specialFeat.h2Line1}
-              <br />
-              <em>{t.specialFeat.h2Em}</em>
-            </h2>
-            <p>{t.specialFeat.p}</p>
-            <div className="tag-line">
-              {t.specialFeat.tags.map((tag) => (
-                <span key={tag} className="tag-pill">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="visual">
-            <div className="para"></div>
-            <div className="ph-grid"></div>
-            <div className="circle"></div>
-            <div className="tag">
-              {t.specialFeat.tagLine1}
-              <br />
-              {t.specialFeat.tagLine2}
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="products">
         <div className="container">
           <div className="section-head">
             <div>
               <div className="eyebrow bar">{t.products.eyebrow}</div>
               <h2>{t.products.h2}</h2>
-            </div>
-            <div className="meta">
-              {t.products.metaLine1}
-              <br />
-              {t.products.metaLine2}
             </div>
           </div>
           <div className="product-grid">
@@ -174,6 +128,39 @@ export default async function ServicesPage({
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="special-feat">
+        <div className="ornament"></div>
+        <div className="ornament2"></div>
+        <div className="container">
+          <div>
+            <div className="eyebrow">{t.specialFeat.eyebrow}</div>
+            <h2>
+              {t.specialFeat.h2Line1}
+              <br />
+              <em>{t.specialFeat.h2Em}</em>
+            </h2>
+            <p>{t.specialFeat.p}</p>
+            <div className="tag-line">
+              {t.specialFeat.tags.map((tag) => (
+                <span key={tag} className="tag-pill">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="visual">
+            <div className="para"></div>
+            <div className="ph-grid"></div>
+            <div className="circle"></div>
+            <div className="tag">
+              {t.specialFeat.tagLine1}
+              <br />
+              {t.specialFeat.tagLine2}
+            </div>
           </div>
         </div>
       </section>

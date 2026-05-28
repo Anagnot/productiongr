@@ -2,7 +2,17 @@
 
 import { useMemo, useState } from "react";
 
-type FileKind = "pdf" | "img" | "zip";
+type FileKind = "pdf" | "doc";
+
+const MAX_FILE_BYTES = 10 * 1024 * 1024;
+const ACCEPTED_EXTENSIONS = [".pdf", ".doc", ".docx"];
+
+function fileKindFor(name: string): FileKind | null {
+  const lower = name.toLowerCase();
+  if (lower.endsWith(".pdf")) return "pdf";
+  if (lower.endsWith(".doc") || lower.endsWith(".docx")) return "doc";
+  return null;
+}
 
 type FileEntry = {
   name: string;
@@ -118,6 +128,9 @@ type QuoteStrings = {
     browse: string;
     formats: string;
     uploadedSuffix: string;
+    rejectIntro: string;
+    rejectType: string;
+    rejectSize: string;
     notesLabel: string;
     notesPh: string;
     consentPre: string;
@@ -184,10 +197,12 @@ export function QuoteWizard({ t }: Props) {
     onShelfDate: t.defaults.onShelfDate,
     delivery: t.defaults.delivery,
     installation: t.defaults.installation,
-    files: t.defaults.files.map((f) => ({
-      ...f,
-      kind: (f.kind === "pdf" || f.kind === "zip" ? f.kind : "img") as FileKind,
-    })),
+    files: t.defaults.files
+      .map((f) => {
+        const kind = fileKindFor(f.name);
+        return kind ? { ...f, kind } : null;
+      })
+      .filter((f): f is FileEntry => f !== null),
     notes: "",
     consent: true,
   });
@@ -613,24 +628,40 @@ export function QuoteWizard({ t }: Props) {
                   id="q-files"
                   type="file"
                   multiple
+                  accept={ACCEPTED_EXTENSIONS.join(",")}
                   style={{ display: "none" }}
                   onChange={(e) => {
-                    const files = Array.from(e.target.files ?? []);
-                    if (files.length === 0) return;
-                    const newFiles: FileEntry[] = files.map((f) => ({
-                      name: f.name,
-                      size: `${(f.size / 1024 / 1024).toFixed(1)} MB ${t.step5.uploadedSuffix}`,
-                      tag: "upload",
-                      kind: f.name.toLowerCase().endsWith(".pdf")
-                        ? "pdf"
-                        : f.name.toLowerCase().endsWith(".zip")
-                        ? "zip"
-                        : "img",
-                    }));
-                    setForm((prev) => ({
-                      ...prev,
-                      files: [...prev.files, ...newFiles],
-                    }));
+                    const picked = Array.from(e.target.files ?? []);
+                    e.target.value = "";
+                    if (picked.length === 0) return;
+                    const rejected: string[] = [];
+                    const accepted: FileEntry[] = [];
+                    for (const f of picked) {
+                      const kind = fileKindFor(f.name);
+                      if (!kind) {
+                        rejected.push(`${f.name} — ${t.step5.rejectType}`);
+                        continue;
+                      }
+                      if (f.size > MAX_FILE_BYTES) {
+                        rejected.push(`${f.name} — ${t.step5.rejectSize}`);
+                        continue;
+                      }
+                      accepted.push({
+                        name: f.name,
+                        size: `${(f.size / 1024 / 1024).toFixed(1)} MB ${t.step5.uploadedSuffix}`,
+                        tag: "upload",
+                        kind,
+                      });
+                    }
+                    if (accepted.length > 0) {
+                      setForm((prev) => ({
+                        ...prev,
+                        files: [...prev.files, ...accepted],
+                      }));
+                    }
+                    if (rejected.length > 0) {
+                      alert(`${t.step5.rejectIntro}\n\n${rejected.join("\n")}`);
+                    }
                   }}
                 />
               </label>

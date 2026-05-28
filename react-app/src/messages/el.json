@@ -164,37 +164,44 @@
         [
           "01",
           "Super Markets",
-          "Heavy-use POS"
+          "Heavy-use POS",
+          "super-market"
         ],
         [
           "02",
           "Retail Stores",
-          "Design-led displays"
+          "Design-led displays",
+          "hairdresser"
         ],
         [
           "03",
           "Cosmetics",
-          "Premium φινίρισμα"
+          "Premium φινίρισμα",
+          "beauty-shop"
         ],
         [
           "04",
           "Pharmacy",
-          "Trust & ergonomics"
+          "Trust & ergonomics",
+          "pharma"
         ],
         [
           "05",
           "HORECA",
-          "Restaurants, café, bar"
+          "Restaurants, café, bar",
+          "horeca"
         ],
         [
           "06",
           "Hotels",
-          "Hospitality signage"
+          "Hospitality signage",
+          "convenience-stores"
         ],
         [
           "07",
           "Kiosk & Convenience",
-          "Compact, impulse"
+          "Compact, impulse",
+          "kiosk"
         ]
       ]
     },
@@ -841,7 +848,7 @@
     },
     "products": {
       "eyebrow": "01 · Catalog",
-      "h2": "Οι 8 standard κατηγορίες — και όλα τα υλικά τους.",
+      "h2": "Οι standard κατηγορίες — και όλα τα υλικά τους.",
       "metaLine1": "Κάθε κατηγορία έχει",
       "metaLine2": "cross-filtering ανά υλικό & κανάλι.",
       "items": [
@@ -2132,8 +2139,11 @@
       "dropzoneH6": "Σύρετε αρχεία εδώ",
       "dropzoneP": "ή κάντε browse από τον υπολογιστή σας",
       "browse": "Browse files",
-      "formats": "PDF · AI · PSD · JPG · PNG · DWG · ZIP · έως 50MB ανά αρχείο",
+      "formats": "PDF · DOC · DOCX · έως 10MB ανά αρχείο",
       "uploadedSuffix": "· μόλις ανέβηκε",
+      "rejectIntro": "Ορισμένα αρχεία δεν προστέθηκαν:",
+      "rejectType": "μη υποστηριζόμενος τύπος (μόνο PDF, DOC, DOCX)",
+      "rejectSize": "ξεπερνά τα 10MB",
       "notesLabel": "Σημειώσεις για το brief (προαιρ.)",
       "notesPh": "Πείτε μας ποιο είναι το main brief και ποια είναι απλά references. Είναι κάτι κρίσιμο που πρέπει να ξέρει πρώτα η ομάδα Engineering;",
       "consentPre": "Συμφωνώ με την",
@@ -2209,26 +2219,7 @@
       "onShelfDate": "2026-09-15",
       "delivery": "Παράδοση στο warehouse μας",
       "installation": "Yes — εγκατάσταση από εμάς",
-      "files": [
-        {
-          "name": "brand-launch-brief-Q3.pdf",
-          "size": "2.4 MB · μόλις ανέβηκε",
-          "tag": "brief",
-          "kind": "pdf"
-        },
-        {
-          "name": "competitor-display-reference.png",
-          "size": "876 KB · ~ 1 λεπτό",
-          "tag": "reference",
-          "kind": "img"
-        },
-        {
-          "name": "brand-guidelines-2026.zip",
-          "size": "14 MB · ~ 1 λεπτό",
-          "tag": "brand",
-          "kind": "zip"
-        }
-      ]
+      "files": []
     }
   },
   "sitemap": {

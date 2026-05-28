@@ -57,11 +57,8 @@ export default async function ChannelDetailPage({
             <span className="sep">/</span>
             <span>{channel.name[lang]}</span>
           </nav>
-          <div className="hero-grid">
-            <div>
-              <div className="eyebrow">{t.detailEyebrow}</div>
-              <h1>{channel.name[lang]}</h1>
-            </div>
+          <div className="hero-stack">
+            <h1>{channel.name[lang]}</h1>
             <p className="lede">{channel.blurb[lang]}</p>
           </div>
         </div>
@@ -81,14 +78,11 @@ export default async function ChannelDetailPage({
                 </div>
               </div>
               {channel.details.highlights[lang].length > 0 && (
-                <div>
-                  <div className="content-eyebrow">{t.highlightsHeading}</div>
-                  <ul className="highlights">
-                    {channel.details.highlights[lang].map((h, i) => (
-                      <li key={i}>{h}</li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="highlights">
+                  {channel.details.highlights[lang].map((h, i) => (
+                    <li key={i}>{h}</li>
+                  ))}
+                </ul>
               )}
             </div>
           </div>

@@ -31,20 +31,21 @@ section.hero {
 .channels .head h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); margin: 0; }
 .channels .head .right { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); letter-spacing: 0.12em; text-transform: uppercase; }
 .channels-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
-.channels-grid .ch { padding: 24px 14px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 8px; text-align: left; cursor: pointer; transition: background var(--duration) var(--ease); }
+.channels-grid .ch { position: relative; min-height: 220px; padding: 24px 14px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 8px; text-align: left; cursor: pointer; background-color: var(--color-gray-4); background-size: cover; background-position: center; background-repeat: no-repeat; isolation: isolate; overflow: hidden; }
+.channels-grid .ch::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.65) 100%); z-index: -1; transition: background var(--duration) var(--ease); }
+.channels-grid .ch:hover::before { background: linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.55) 100%); }
 .channels-grid .ch:last-child { border-right: 0; }
-.channels-grid .ch:hover { background: var(--color-gray-1); }
-.channels-grid .ch .num { font-family: var(--font-mono); font-weight: 700; font-size: 10px; color: var(--fg-tertiary); letter-spacing: 0.12em; }
-.channels-grid .ch .name { font-weight: 700; font-size: 14px; line-height: 1.2; }
-.channels-grid .ch .en { font-family: var(--font-mono); font-size: 10px; color: var(--fg-tertiary); letter-spacing: 0.06em; text-transform: uppercase; }
+.channels-grid .ch .num { font-family: var(--font-mono); font-weight: 700; font-size: 10px; color: rgba(255,255,255,0.85); letter-spacing: 0.12em; }
+.channels-grid .ch .name { margin-top: auto; font-weight: 700; font-size: 14px; line-height: 1.2; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.35); }
+.channels-grid .ch .en { font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.78); letter-spacing: 0.06em; text-transform: uppercase; }
 
 /* About excerpt strip */
 .about-strip { background: var(--color-gray-1); padding: 96px 0; }
 .about-strip .container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
 .about-strip .visual { aspect-ratio: 4/5; border-radius: var(--radius-lg); position: relative; overflow: hidden; background: var(--color-gray-4); }
-.about-strip .visual .ph-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 32px 32px; }
-.about-strip .visual .para { position: absolute; left: -30px; top: -30px; bottom: -30px; width: 120px; background: rgba(255,255,255,0.06); transform: skewX(-12deg); }
-.about-strip .visual .circle { position: absolute; right: -80px; bottom: 20%; width: 280px; height: 280px; border-radius: 50%; background: rgba(230, 92, 0, 0.18); filter: blur(2px); }
+.about-strip .visual .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.about-strip .visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.55) 100%); pointer-events: none; z-index: 1; }
+.about-strip .visual .circle { position: absolute; right: -80px; bottom: 20%; width: 280px; height: 280px; border-radius: 50%; background: rgba(230, 92, 0, 0.22); filter: blur(2px); mix-blend-mode: screen; z-index: 1; }
 .about-strip .visual .signature { position: absolute; left: 28px; bottom: 26px; right: 28px; color: #fff; z-index: 2; }
 .about-strip .visual .signature .marker { font-family: var(--font-sans); font-weight: 700; font-style: italic; font-size: 20px; line-height: 1.25; max-width: 240px; display: inline-block; }
 .about-strip .visual .signature .line { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 14px; }
