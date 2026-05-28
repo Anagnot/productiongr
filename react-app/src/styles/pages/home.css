@@ -16,7 +16,7 @@ section.hero {
 .hero-slider { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
 .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 900ms ease; }
 .hero-slide.active { opacity: 1; }
-.hero-slide-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(31,31,31,0.78) 0%, rgba(31,31,31,0.55) 100%); z-index: 2; }
+.hero-slide-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(31,31,31,0.93) 0%, rgba(31,31,31,0.70) 100%); z-index: 2; }
 .hero .container { z-index: 3; }
 .hero .ornament-circle, .hero .ornament-para { z-index: 2; }
 

@@ -9,11 +9,11 @@ import { pageMetadata } from "@/lib/seo";
 import "@/styles/pages/home.css";
 
 const HERO_SLIDES = [
-  "/uploads/pasted-1779174116570-0.png",
-  "/uploads/pasted-1779174450215-0.png",
-  "/uploads/pasted-1779174464775-0.png",
-  "/uploads/pasted-1779174550520-0.png",
-  "/uploads/pasted-1779174710698-0.png",
+  "/uploads/products/displays/C_01.jpg",
+  "/uploads/products/shelves/MMarket_02.jpg",
+  "/uploads/products/counter-stands/A1.jpg",
+  "/uploads/products/floor-stands/C03.png",
+  "/uploads/products/pallet-stands/3.jpg",
 ];
 
 export async function generateMetadata({
@@ -40,7 +40,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   return (
     <>
       <section className="hero">
-        <HeroSlider images={HERO_SLIDES} intervalMs={1700} />
+        <HeroSlider images={HERO_SLIDES} intervalMs={3400} />
         <div className="ornament-para"></div>
         <div className="ornament-circle"></div>
         <div className="container">
