@@ -136,7 +136,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               <div className="eyebrow bar">{t.services.eyebrow}</div>
               <h2>{t.services.h2}</h2>
             </div>
-            <div className="meta">{t.services.meta}</div>
           </div>
           <ServicesGrid
             featBig={t.services.featBig}

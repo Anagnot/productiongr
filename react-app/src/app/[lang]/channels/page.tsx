@@ -46,6 +46,7 @@ export default async function ChannelsPage({
               {t.hero.h1Pre} <em>{t.hero.h1Em}</em>
             </h1>
             <div className="hero-carousel">
+              <span className="hero-carousel-eyebrow">{t.carouselEyebrow}</span>
               <ChannelCarousel
                 images={heroCarouselImages}
                 alt={t.gridHeading}

@@ -3,6 +3,7 @@
 .page-hero .top-row { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: end; margin-top: 18px; }
 .page-hero .lede { font-size: 18px; line-height: 1.55; color: var(--fg-secondary); margin: 0; }
 .page-hero .hero-carousel { width: 100%; }
+.page-hero .hero-carousel-eyebrow { display: block; margin-bottom: 10px; font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
 .page-hero .hero-carousel .ch-carousel-viewport { aspect-ratio: 16/10; border-radius: var(--radius-lg); background: var(--color-white); }
 .page-hero .hero-carousel .ch-carousel-slide img { object-fit: contain; }
 
