@@ -182,59 +182,64 @@
       "cta": "Ξεκινήστε το project σας →"
     },
     "channels": {
-      "heading": "Ένας συνεργάτης — κάθε κανάλι.",
-      "eyebrow": "Channels · Αγορές που εξυπηρετούμε",
+      "heading": "Ένας συνεργάτης —",
+      "headingEm": "κάθε κανάλι.",
+      "eyebrow": "Channels",
+      "lede": "Από τα ράφια του super market μέχρι τα εκθεσιακά booths, το σωστό display για κάθε περιβάλλον.",
       "items": [
-        { "name": "Super Markets", "en": "End-caps & pallets", "slug": "super-market" },
-        { "name": "Retail & Beauty", "en": "Premium finish", "slug": "retail-beauty" },
+        { "name": "Super Markets", "en": "End-caps, pallets, shelf trays", "slug": "super-market" },
+        { "name": "Retail & Beauty", "en": "Design-led, premium finish", "slug": "retail-beauty" },
         { "name": "Φαρμακείο", "en": "Εμπιστοσύνη & εργονομία", "slug": "pharma" },
-        { "name": "HORECA", "en": "Εστιατόρια & ξενοδοχεία", "slug": "horeca" },
-        { "name": "Περίπτερο & Convenience", "en": "Compact, impulse", "slug": "kiosk" },
-        { "name": "Εκθέσεις", "en": "Booths & εκθέσεις", "slug": "exhibitions" },
-        { "name": "Events & Activations", "en": "Launches & pop-ups", "slug": "events" }
+        { "name": "HORECA", "en": "Εστιατόρια, bars, ξενοδοχεία", "slug": "horeca" },
+        { "name": "Περίπτερο & Convenience", "en": "Compact, υψηλό impulse", "slug": "kiosk" },
+        { "name": "Εκθέσεις", "en": "Booths, branded spaces", "slug": "exhibitions" },
+        { "name": "Events & Activations", "en": "Launches, pop-ups, promos", "slug": "events" }
       ],
       "yourTitle": "Το κανάλι σας",
-      "yourSub": "Πείτε μας τον χώρο σας"
+      "yourSub": "Πείτε μας — το σχεδιάζουμε εμείς",
+      "newLabel": "NEW",
+      "note": "Οι φωτογραφίες είναι ενδεικτικές (Unsplash). Στο τελικό site θα αντικατασταθούν με πραγματικές φωτογραφίες έργων της Production ανά κανάλι."
     },
     "aboutStrip": {
       "eyebrow": "Η εταιρία · Industrialized Craft",
       "h2Pre": "Όχι απλή αποτύπωση μελανιού —",
       "h2Em": "conversion tools.",
-      "body": "Σχεδιάζουμε συστήματα προβολής και branded περιβάλλοντα που προστατεύουν το margin σας, τηρούν το launch date, και κερδίζουν το βλέμμα — από την ιδέα ως την εγκατάσταση.",
-      "materials": ["Paper", "Metal", "Plastic", "Wood", "Plexi", "Premium"],
+      "body": "Καθετοποιημένη μονάδα παραγωγής στις Αχαρνές. Σχεδιάζουμε συστήματα προβολής και branded περιβάλλοντα που προστατεύουν το margin σας, τηρούν το launch date, και κερδίζουν το βλέμμα του καταναλωτή — από την ιδέα ως την εγκατάσταση.",
+      "materials": ["Paper & Cardboard", "Metal", "Plastic", "Wood / MDF", "Plexiglass", "Premium Mix"],
       "aboutLink": "Η εταιρία →"
     },
     "reasons": {
       "eyebrow": "02 · Γιατί εμάς",
       "h2": "Γιατί εμάς — σε αριθμούς.",
+      "seeAll": "Δείτε και τους 5 λόγους →",
       "items": [
         {
           "num": "01",
           "title": "Trust & Accountability",
-          "p": "Οικογενειακή, καθετοποιημένη. Ξέρετε πάντα ποιος σηκώνει το τηλέφωνο.",
+          "p": "Οικογενειακή, καθετοποιημένη. Ξέρετε πάντα ποιος σηκώνει το τηλέφωνο — και ποιος λογοδοτεί.",
           "v": "17 yrs",
-          "l": "από το 2008"
+          "l": "Οικογένεια Δημαρά"
         },
         {
           "num": "02",
           "title": "Zero-Risk Reliability",
-          "p": "OTIF — μηδέν εκπλήξεις σε χρόνο, κόστος ή ποιότητα.",
+          "p": "Μηδέν εκπλήξεις σε χρόνο, κόστος ή ποιότητα. Το launch date σας είναι η προθεσμία μας — χωρίς εξαιρέσεις.",
           "v": "OTIF",
-          "l": "on-time pledge"
+          "l": "On time in full"
         },
         {
           "num": "03",
           "title": "Value Engineering",
-          "p": "Έξυπνη σχεδίαση που μειώνει κόστος & φύρα.",
+          "p": "Έξυπνη σχεδίαση που μειώνει κόστος & φύρα — προστατεύοντας το margin σας από την πρώτη μέρα.",
           "v": "92%",
           "l": "Nesting efficiency"
         },
         {
           "num": "04",
           "title": "Eco-Innovation",
-          "p": "Ανακυκλώσιμα υλικά, flat-pack, Nesting.",
+          "p": "Ανακυκλώσιμα υλικά, flat-pack logistics, Nesting 92% για μειωμένο carbon footprint.",
           "v": "40–50%",
-          "l": "Recyclable"
+          "l": "Recyclable output"
         }
       ]
     },
@@ -365,32 +370,53 @@
       {
         "value": "40–50<em>%</em>",
         "label": "Recyclable"
+      },
+      {
+        "value": "178<em>k</em>",
+        "label": "Μονάδες ετησίως"
       }
     ],
     "sustain": {
       "noteLine1": "eco-innovation,",
       "noteLine2": "by engineering — not slogans",
-      "eyebrow": "05 · Eco-Innovation",
+      "eyebrow": "Eco-Innovation",
       "h2": "Βιωσιμότητα — μετρήσιμη, όχι δηλωτική.",
       "p": "Κάθε αριθμός σε αυτή τη σελίδα είναι ελέγξιμος. Σχεδιάζουμε τη βιωσιμότητα μέσα στο προϊόν — όχι ως ετικέτα, αλλά ως δομική απόφαση.",
-      "certs": "ISO 9001:2015 | ISO 14001:2015 | ISO 45001:2018",
       "ctaFactsheet": "Ζητήστε sustainability factsheet →",
       "ctaProject": "Ξεκινήστε το project σας →",
       "pillars": [
         {
-          "n": "01",
+          "n": "40–50%",
+          "sub": "της παραγωγής",
           "h6": "Recyclable materials",
-          "p": "PS, χαρτί, PET, plexiglass — 40–50% της παραγωγής."
+          "p": "PS, χαρτί, PET, plexiglass σε όλες τις σειρές."
         },
         {
-          "n": "02",
-          "h6": "Nesting 92%",
-          "p": "Έξυπνη σχεδίαση φύλλων — δραστική μείωση φύρας."
+          "n": "92%",
+          "sub": "efficiency",
+          "h6": "Nesting optimization",
+          "p": "Έξυπνη σχεδίαση φύλλων, δραστική μείωση φύρας."
         },
         {
-          "n": "03",
+          "n": "−30%",
+          "sub": "όγκος μεταφοράς",
           "h6": "Flat-pack logistics",
-          "p": "Χάρτινες κατασκευές — μειωμένο carbon footprint μεταφοράς."
+          "p": "Χάρτινες κατασκευές flat — μειωμένο carbon footprint."
+        }
+      ],
+      "certsTitle": "Πιστοποιημένα συστήματα διαχείρισης",
+      "certsItems": [
+        {
+          "standard": "ISO 9001:2015",
+          "label": "Διαχείριση Ποιότητας"
+        },
+        {
+          "standard": "ISO 14001:2015",
+          "label": "Περιβάλλον"
+        },
+        {
+          "standard": "ISO 45001:2018",
+          "label": "Υγεία & Ασφάλεια"
         }
       ]
     },

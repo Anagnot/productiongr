@@ -36,6 +36,20 @@ const PROCESS_ICONS = [
   </svg>,
 ];
 
+const CERT_ICONS = [
+  <svg key="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M20 6L9 17l-5-5" />
+  </svg>,
+  <svg key="1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M11 20A7 7 0 0 1 9 6c4-2 8-1 10 1 0 6-4 12-8 13z" />
+    <path d="M9 18c0-4 2-7 6-9" />
+  </svg>,
+  <svg key="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" />
+    <path d="M9.5 12l2 2 3.5-3.5" />
+  </svg>,
+];
+
 export async function generateMetadata({
   params,
 }: PageProps<"/[lang]">): Promise<Metadata> {
@@ -105,12 +119,16 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
           <div className="section-head">
             <div>
               <div className="eyebrow bar">{t.channels.eyebrow}</div>
-              <h2>{t.channels.heading}</h2>
+              <h2>
+                {t.channels.heading} <em>{t.channels.headingEm}</em>
+              </h2>
             </div>
           </div>
+          <p className="ch-lede">{t.channels.lede}</p>
           <div className="channels-grid">
             {t.channels.items.map((c) => {
               const cover = channelCoverBySlug.get(c.slug);
+              const isNew = c.slug === "exhibitions" || c.slug === "events";
               return (
                 <Link
                   key={c.slug}
@@ -118,16 +136,20 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                   className="ch"
                   style={cover ? { backgroundImage: `url(${cover})` } : undefined}
                 >
+                  {isNew && <span className="new-badge">{t.channels.newLabel}</span>}
+                  <span className="ch-arrow" aria-hidden="true">→</span>
                   <div className="name">{c.name}</div>
                   <div className="en">{c.en}</div>
                 </Link>
               );
             })}
             <Link href={href("/quote")} className="ch ch-cta">
+              <span className="ch-arrow" aria-hidden="true">→</span>
               <div className="name">{t.channels.yourTitle}</div>
               <div className="en">{t.channels.yourSub}</div>
             </Link>
           </div>
+          <p className="ch-note">{t.channels.note}</p>
         </div>
       </section>
 
@@ -174,16 +196,20 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
           </div>
           <div className="reasons-grid">
             {t.reasons.items.map((r) => (
-              <div key={r.num} className="r">
-                <div className="num">{r.num}</div>
-                <h4>{r.title}</h4>
-                <p>{r.p}</p>
+              <div key={r.title} className="r">
                 <div className="metric">
                   <span className="v">{r.v}</span>
                   <span className="l">{r.l}</span>
                 </div>
+                <h4>{r.title}</h4>
+                <p>{r.p}</p>
               </div>
             ))}
+          </div>
+          <div className="reasons-more">
+            <Link href={href("/how-we-work")} className="text-link">
+              {t.reasons.seeAll}
+            </Link>
           </div>
         </div>
       </section>
@@ -199,16 +225,10 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
           <div className="process-steps">
             {t.process.steps.map((s, i) => (
               <div key={s.n} className="process-step">
+                <div className="p-num">{(i + 1).toString().padStart(2, "0")}</div>
                 <div className="p-icon">{PROCESS_ICONS[i]}</div>
-                <div className="n">{s.n}</div>
                 <h6>{s.title}</h6>
-                <div className="en">{s.en}</div>
                 <p>{s.p}</p>
-                <ul className="bullets">
-                  {s.bullets.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>
@@ -222,65 +242,38 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
 
       <section className="sustain">
         <div className="container">
-          <div className="visual">
-            <div className="para"></div>
-            <svg
-              className="recycle"
-              viewBox="0 0 200 200"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.25"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <g transform="rotate(0 100 100)">
-                <path d="M 70 60 L 130 60" />
-                <path d="M 122 52 L 130 60 L 122 68" />
-              </g>
-              <g transform="rotate(120 100 100)">
-                <path d="M 70 60 L 130 60" />
-                <path d="M 122 52 L 130 60 L 122 68" />
-              </g>
-              <g transform="rotate(240 100 100)" className="accent">
-                <path d="M 70 60 L 130 60" />
-                <path d="M 122 52 L 130 60 L 122 68" />
-              </g>
-            </svg>
-            <div className="note">
-              {t.sustain.noteLine1}
-              <br />
-              {t.sustain.noteLine2}
-            </div>
+          <div className="eyebrow bar">{t.sustain.eyebrow}</div>
+          <h2>{t.sustain.h2}</h2>
+          <p className="sustain-lede">{t.sustain.p}</p>
+          <div className="sustain-pillars">
+            {t.sustain.pillars.map((p) => (
+              <div key={p.h6} className="s-card">
+                <div className="s-num">{p.n}</div>
+                <div className="s-sub">{p.sub}</div>
+                <h6>{p.h6}</h6>
+                <p>{p.p}</p>
+              </div>
+            ))}
           </div>
-          <div>
-            <div
-              className="section-head"
-              style={{ marginBottom: 0, display: "block" }}
-            >
-              <h2>{t.sustain.h2}</h2>
-            </div>
-            <p>{t.sustain.p}</p>
-            <div className="pillars">
-              {t.sustain.pillars.map((p) => (
-                <div key={p.n} className="pillar">
-                  <div className="n">{p.n}</div>
-                  <div>
-                    <h6>{p.h6}</h6>
-                    <p>{p.p}</p>
-                  </div>
+          <div className="certs-title">{t.sustain.certsTitle}</div>
+          <div className="certs-row">
+            {t.sustain.certsItems.map((c, i) => (
+              <div key={c.standard} className="cert">
+                <div className="cert-icon">{CERT_ICONS[i]}</div>
+                <div>
+                  <div className="cert-std">{c.standard}</div>
+                  <div className="cert-label">{c.label}</div>
                 </div>
-              ))}
-            </div>
-            <div className="certs">{t.sustain.certs}</div>
-            <div className="sustain-cta">
-              <Link href={href("/sustainability")} className="cta outline">
-                {t.sustain.ctaFactsheet}
-              </Link>
-              <Link href={href("/quote")} className="cta primary">
-                {t.sustain.ctaProject}
-              </Link>
-            </div>
+              </div>
+            ))}
+          </div>
+          <div className="sustain-cta">
+            <Link href={href("/sustainability")} className="cta primary">
+              {t.sustain.ctaFactsheet}
+            </Link>
+            <Link href={href("/quote")} className="text-link">
+              {t.sustain.ctaProject}
+            </Link>
           </div>
         </div>
       </section>

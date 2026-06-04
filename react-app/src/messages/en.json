@@ -182,59 +182,64 @@
       "cta": "Start your project →"
     },
     "channels": {
-      "heading": "One partner — every channel.",
-      "eyebrow": "Channels · Markets we serve",
+      "heading": "One partner —",
+      "headingEm": "every channel.",
+      "eyebrow": "Channels",
+      "lede": "From super market shelves to exhibition booths, the right display for every environment.",
       "items": [
-        { "name": "Super Markets", "en": "End-caps & pallets", "slug": "super-market" },
-        { "name": "Retail & Beauty", "en": "Premium finish", "slug": "retail-beauty" },
+        { "name": "Super Markets", "en": "End-caps, pallets, shelf trays", "slug": "super-market" },
+        { "name": "Retail & Beauty", "en": "Design-led, premium finish", "slug": "retail-beauty" },
         { "name": "Pharmacy", "en": "Trust & ergonomics", "slug": "pharma" },
-        { "name": "HORECA", "en": "Restaurants & hotels", "slug": "horeca" },
-        { "name": "Kiosk & Convenience", "en": "Compact, impulse", "slug": "kiosk" },
-        { "name": "Exhibitions", "en": "Booths & trade shows", "slug": "exhibitions" },
-        { "name": "Events & Activations", "en": "Launches & pop-ups", "slug": "events" }
+        { "name": "HORECA", "en": "Restaurants, bars, hotels", "slug": "horeca" },
+        { "name": "Kiosk & Convenience", "en": "Compact, high impulse", "slug": "kiosk" },
+        { "name": "Exhibitions", "en": "Booths, branded spaces", "slug": "exhibitions" },
+        { "name": "Events & Activations", "en": "Launches, pop-ups, promos", "slug": "events" }
       ],
       "yourTitle": "Your Channel",
-      "yourSub": "Tell us your space"
+      "yourSub": "Tell us — we'll engineer it",
+      "newLabel": "NEW",
+      "note": "Photos are indicative (Unsplash). On the final site they will be replaced with real Production project photos per channel."
     },
     "aboutStrip": {
       "eyebrow": "The company · Industrialized Craft",
       "h2Pre": "Not just ink on board —",
       "h2Em": "conversion tools.",
-      "body": "We engineer display solutions and branded environments that protect your margin, hit your launch date, and win the shopper's eye — from concept to installation.",
-      "materials": ["Paper", "Metal", "Plastic", "Wood", "Plexi", "Premium"],
+      "body": "A vertically integrated facility in Acharnes, Greece. We engineer display solutions and branded environments that protect your margin, hit your launch date, and win the shopper's eye — from concept to installation.",
+      "materials": ["Paper & Cardboard", "Metal", "Plastic", "Wood / MDF", "Plexiglass", "Premium Mix"],
       "aboutLink": "About the company →"
     },
     "reasons": {
       "eyebrow": "02 · Why us",
       "h2": "Why us — in numbers.",
+      "seeAll": "See all 5 reasons →",
       "items": [
         {
           "num": "01",
           "title": "Trust & Accountability",
-          "p": "Family-run, vertically integrated. You always know who picks up the phone.",
+          "p": "Family-run, vertically integrated. You always know who picks up the phone — and who's accountable.",
           "v": "17 yrs",
-          "l": "since 2008"
+          "l": "Dimaras family"
         },
         {
           "num": "02",
           "title": "Zero-Risk Reliability",
-          "p": "OTIF — zero surprises on time, cost or quality.",
+          "p": "Zero surprises on time, cost or quality. Your launch date is our deadline — no exceptions.",
           "v": "OTIF",
-          "l": "on-time pledge"
+          "l": "On time in full"
         },
         {
           "num": "03",
           "title": "Value Engineering",
-          "p": "Smart design that cuts cost & waste.",
+          "p": "Smart design that cuts production cost & waste — protecting your margin from day one.",
           "v": "92%",
           "l": "Nesting efficiency"
         },
         {
           "num": "04",
           "title": "Eco-Innovation",
-          "p": "Recyclable materials, flat-pack, Nesting.",
+          "p": "Recyclable materials, flat-pack logistics, Nesting 92% for reduced carbon footprint.",
           "v": "40–50%",
-          "l": "Recyclable"
+          "l": "Recyclable output"
         }
       ]
     },
@@ -365,32 +370,53 @@
       {
         "value": "40–50<em>%</em>",
         "label": "Recyclable"
+      },
+      {
+        "value": "178<em>k</em>",
+        "label": "Units produced annually"
       }
     ],
     "sustain": {
       "noteLine1": "eco-innovation,",
       "noteLine2": "by engineering — not slogans",
-      "eyebrow": "05 · Eco-Innovation",
+      "eyebrow": "Eco-Innovation",
       "h2": "Sustainability — measurable, not declarative.",
       "p": "Every number on this page is auditable. We engineer sustainability into the product — not as a label, but as a structural decision.",
-      "certs": "ISO 9001:2015 | ISO 14001:2015 | ISO 45001:2018",
       "ctaFactsheet": "Request sustainability factsheet →",
       "ctaProject": "Start your project →",
       "pillars": [
         {
-          "n": "01",
+          "n": "40–50%",
+          "sub": "of output",
           "h6": "Recyclable materials",
-          "p": "PS, paper, PET, plexiglass — 40–50% of output."
+          "p": "PS, paper, PET, plexiglass across all lines."
         },
         {
-          "n": "02",
-          "h6": "Nesting 92%",
-          "p": "Smart sheet layout — dramatic waste reduction."
+          "n": "92%",
+          "sub": "efficiency",
+          "h6": "Nesting optimization",
+          "p": "Smart sheet layout, dramatic waste reduction."
         },
         {
-          "n": "03",
+          "n": "−30%",
+          "sub": "transport volume",
           "h6": "Flat-pack logistics",
-          "p": "Cardboard builds — reduced transport carbon footprint."
+          "p": "Cardboard builds flat — reduced carbon footprint."
+        }
+      ],
+      "certsTitle": "Certified management systems",
+      "certsItems": [
+        {
+          "standard": "ISO 9001:2015",
+          "label": "Quality Management"
+        },
+        {
+          "standard": "ISO 14001:2015",
+          "label": "Environmental"
+        },
+        {
+          "standard": "ISO 45001:2018",
+          "label": "Health & Safety"
         }
       ]
     },
