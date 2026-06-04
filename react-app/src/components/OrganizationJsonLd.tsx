@@ -11,7 +11,7 @@ export function OrganizationJsonLd() {
     foundingDate: "2008",
     slogan: "Crafting Retail Conversion",
     description:
-      "Industrialized Craft — POP/POS συστήματα και ολοκληρωμένες λύσεις προβολής για retail.",
+      "Industrialized Craft — λύσεις προβολής & branded environments για retail.",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Τσαμαλή 63",

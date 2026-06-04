@@ -12,7 +12,7 @@
 .page-channels .channels-grid-wrap .head h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-secondary); margin: 0; }
 .page-channels .channels-grid-wrap .head .total { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); letter-spacing: 0.12em; text-transform: uppercase; }
 
-.page-channels .channels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.page-channels .channels-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 
 .page-channels .channel-card { display: flex; flex-direction: column; background: var(--color-white); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease), border-color var(--duration) var(--ease); cursor: pointer; }
 .page-channels .channel-card:hover { transform: translateY(-4px); box-shadow: 0 18px 60px -20px rgba(60,60,60,0.18); border-color: var(--border-default); }
@@ -32,12 +32,20 @@
 .page-channels .channel-card-meta .arrow { color: var(--color-orange); font-size: 16px; transition: transform var(--duration) var(--ease); }
 .page-channels .channel-card:hover .channel-card-meta .arrow { transform: translateX(4px); }
 
-@media (max-width: 900px) {
+/* "Your Channel" synthetic CTA tile */
+.page-channels .channel-card.channel-card-cta { border-color: var(--color-orange); }
+.page-channels .channel-card-cta .channel-card-photo .ph.orange { background: var(--color-orange); }
+.page-channels .channel-card-cta .channel-card-meta { color: var(--color-orange); }
+
+@media (max-width: 920px) {
   .page-channels .channels-grid { grid-template-columns: repeat(2, 1fr); }
   .page-channels .page-hero h1 { font-size: 64px; }
   .page-channels .page-hero .top-row { grid-template-columns: 1fr; gap: 24px; align-items: stretch; }
 }
 @media (max-width: 600px) {
+  .page-channels .channels-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
   .page-channels .channels-grid { grid-template-columns: 1fr; }
   .page-channels .page-hero h1 { font-size: 44px; }
 }

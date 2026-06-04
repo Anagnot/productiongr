@@ -220,37 +220,6 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         </div>
       </section>
 
-      <section className="testimonials">
-        <div className="container">
-          <div className="section-head head" style={{ marginBottom: 0 }}>
-            <div>
-              <div className="eyebrow bar">{t.testimonials.eyebrow}</div>
-              <h2>{t.testimonials.h2}</h2>
-            </div>
-            <div className="meta">
-              {t.testimonials.metaLine1}
-              <br />
-              {t.testimonials.metaLine2}
-            </div>
-          </div>
-          <div className="testimonials-grid">
-            {t.testimonials.items.map((it, i) => (
-              <div key={i} className="test">
-                <div className="quote-mark">&quot;</div>
-                <q>{it.quote}</q>
-                <div className="attr">
-                  <div className="who">
-                    <h6>{it.whoTitle}</h6>
-                    <div className="role">{it.whoRole}</div>
-                  </div>
-                  <span className="pending">{it.pendingLabel}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <CTABlock
         locale={lang}
         title={

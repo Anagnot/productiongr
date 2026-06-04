@@ -23,6 +23,9 @@
 @import "../styles/pages/contact.css";
 @import "../styles/pages/quote.css";
 @import "../styles/pages/sitemap.css";
+@import "../styles/pages/how-we-work.css";
+@import "../styles/pages/sustainability.css";
+@import "../styles/pages/special-projects.css";
 
 /* Responsive overrides — MUST stay last so they win the cascade
    over both site.css and per-page CSS files. */

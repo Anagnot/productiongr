@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LangSwitch } from "./LangSwitch";
-import { CHANNELS, PRODUCTS } from "@/lib/catalog-data";
 import {
   LOCALES,
   LOCALE_LABELS,
@@ -17,13 +16,32 @@ type NavStrings = {
   home: string;
   services: string;
   channels: string;
-  portfolio: string;
+  company: string;
   about: string;
   contact: string;
   ctaBrief: string;
+  phone: string;
+  howWeWork: string;
+  sustainability: string;
+  chSuperMarkets: string;
+  chRetailBeauty: string;
+  chPharmacy: string;
+  chHoreca: string;
+  chKiosk: string;
+  chExhibitions: string;
+  chEvents: string;
+  chYourChannel: string;
+  prodSpecialProjects: string;
+  prodFloorCounter: string;
+  prodDisplaySystems: string;
+  prodGondolaPallet: string;
+  prodWallShelves: string;
+  prodAllBuildTypes: string;
 };
 
-type SubLink = { href: string; label: string };
+const PHONE_HREF = "tel:+302102322750";
+
+type SubLink = { href: string; label: string; variant?: "premium" | "link" };
 type NavLink = { href: string; label: string; children?: SubLink[] };
 
 type Props = { locale: Locale; nav: NavStrings };
@@ -37,22 +55,44 @@ export function Header({ locale, nav }: Props) {
   const links: NavLink[] = [
     { href: "/", label: nav.home },
     {
-      href: "/services",
-      label: nav.services,
-      children: PRODUCTS.map((p) => ({
-        href: `/services/${p.slug}`,
-        label: p.name[locale],
-      })),
-    },
-    {
       href: "/channels",
       label: nav.channels,
-      children: CHANNELS.map((c) => ({
-        href: `/channels/${c.slug}`,
-        label: c.name[locale],
-      })),
+      children: [
+        { href: "/channels/super-market", label: nav.chSuperMarkets },
+        { href: "/channels/retail-beauty", label: nav.chRetailBeauty },
+        { href: "/channels/pharma", label: nav.chPharmacy },
+        { href: "/channels/horeca", label: nav.chHoreca },
+        { href: "/channels/kiosk", label: nav.chKiosk },
+        { href: "/channels/exhibitions", label: nav.chExhibitions },
+        { href: "/channels/events", label: nav.chEvents },
+        { href: "/quote", label: nav.chYourChannel, variant: "link" },
+      ],
     },
-    { href: "/about", label: nav.about },
+    {
+      href: "/services",
+      label: nav.services,
+      children: [
+        {
+          href: "/services/special-projects",
+          label: nav.prodSpecialProjects,
+          variant: "premium",
+        },
+        { href: "/services?group=floor-counter", label: nav.prodFloorCounter },
+        { href: "/services?group=display-systems", label: nav.prodDisplaySystems },
+        { href: "/services?group=gondola-pallet", label: nav.prodGondolaPallet },
+        { href: "/services?group=wall-shelves", label: nav.prodWallShelves },
+        { href: "/services", label: nav.prodAllBuildTypes, variant: "link" },
+      ],
+    },
+    {
+      href: "/about",
+      label: nav.company,
+      children: [
+        { href: "/about", label: nav.about },
+        { href: "/how-we-work", label: nav.howWeWork },
+        { href: "/sustainability", label: nav.sustainability },
+      ],
+    },
     { href: "/contact", label: nav.contact },
   ];
 
@@ -60,6 +100,17 @@ export function Header({ locale, nav }: Props) {
     if (localized === localizedHref("/", locale))
       return pathname === localized;
     return pathname === localized || pathname.startsWith(localized + "/");
+  }
+
+  function subClass(ch: string, variant?: SubLink["variant"]) {
+    return (
+      [
+        variant ? `dd-${variant}` : null,
+        pathname === ch && variant !== "link" ? "active" : null,
+      ]
+        .filter(Boolean)
+        .join(" ") || undefined
+    );
   }
 
   useEffect(() => {
@@ -115,7 +166,7 @@ export function Header({ locale, nav }: Props) {
                             key={c.href}
                             href={ch}
                             role="menuitem"
-                            className={pathname === ch ? "active" : undefined}
+                            className={subClass(ch, c.variant)}
                           >
                             {c.label}
                           </Link>
@@ -136,6 +187,9 @@ export function Header({ locale, nav }: Props) {
               );
             })}
             <LangSwitch locale={locale} />
+            <a href={PHONE_HREF} className="nav-phone">
+              {nav.phone}
+            </a>
             <Link href={localizedHref("/quote", locale)} className="cta primary">
               {nav.ctaBrief}
             </Link>
@@ -214,7 +268,7 @@ export function Header({ locale, nav }: Props) {
                           <Link
                             key={c.href}
                             href={ch}
-                            className={pathname === ch ? "active" : undefined}
+                            className={subClass(ch, c.variant)}
                             onClick={() => setDrawerOpen(false)}
                           >
                             {c.label}
@@ -239,6 +293,9 @@ export function Header({ locale, nav }: Props) {
           })}
         </div>
         <div className="drawer-foot">
+          <a href={PHONE_HREF} className="drawer-phone">
+            {nav.phone}
+          </a>
           <Link
             href={localizedHref("/quote", locale)}
             className="cta primary"

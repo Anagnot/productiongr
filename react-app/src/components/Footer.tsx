@@ -10,13 +10,16 @@ type FooterStrings = {
     floorCounter: string;
     displaySystems: string;
     gondolaPallet: string;
-    posAccessories: string;
+    exhibitions: string;
   };
   company: {
     title: string;
     about: string;
+    channels: string;
+    howWeWork: string;
+    sustainability: string;
     contact: string;
-    quote: string;
+    briefing: string;
   };
   contact: {
     title: string;
@@ -61,17 +64,20 @@ export function Footer({ locale, t }: Props) {
         </div>
         <div>
           <h6>{t.catalog.title}</h6>
-          <Link href={href("/services")}>{t.catalog.specialProjects}</Link>
+          <Link href={href("/services/special-projects")}>{t.catalog.specialProjects}</Link>
           <Link href={href("/services")}>{t.catalog.floorCounter}</Link>
           <Link href={href("/services")}>{t.catalog.displaySystems}</Link>
           <Link href={href("/services")}>{t.catalog.gondolaPallet}</Link>
-          <Link href={href("/services")}>{t.catalog.posAccessories}</Link>
+          <Link href={href("/channels/exhibitions")}>{t.catalog.exhibitions}</Link>
         </div>
         <div>
           <h6>{t.company.title}</h6>
           <Link href={href("/about")}>{t.company.about}</Link>
+          <Link href={href("/channels")}>{t.company.channels}</Link>
+          <Link href={href("/how-we-work")}>{t.company.howWeWork}</Link>
+          <Link href={href("/sustainability")}>{t.company.sustainability}</Link>
           <Link href={href("/contact")}>{t.company.contact}</Link>
-          <Link href={href("/quote")}>{t.company.quote}</Link>
+          <Link href={href("/quote")}>{t.company.briefing}</Link>
         </div>
         <div>
           <h6>{t.contact.title}</h6>

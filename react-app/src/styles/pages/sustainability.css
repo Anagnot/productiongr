@@ -1,0 +1,13 @@
+/* SUSTAINABILITY — the .sustain / .pillars / .page-hero blocks are global
+   (site.css); this file only adds the ISO certifications grid. */
+
+.page-sustainability .certs { background: var(--color-white); padding: 96px 0; }
+.page-sustainability .certs .section-head { margin-bottom: 48px; }
+.page-sustainability .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.page-sustainability .cert { border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 32px 28px; display: flex; flex-direction: column; gap: 8px; }
+.page-sustainability .cert .standard { font-family: var(--font-sans); font-weight: 800; font-size: 26px; letter-spacing: -0.02em; color: var(--color-gray-4); }
+.page-sustainability .cert .label { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-tertiary); }
+
+@media (max-width: 768px) {
+  .page-sustainability .certs-grid { grid-template-columns: 1fr; }
+}

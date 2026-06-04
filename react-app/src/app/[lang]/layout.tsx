@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AnimationsInit } from "@/components/AnimationsInit";
 import { BackToTop } from "@/components/BackToTop";
+import { MobileBottomBar } from "@/components/MobileBottomBar";
 import { CookieConsent } from "@/components/CookieConsent";
 import { OrganizationJsonLd } from "@/components/OrganizationJsonLd";
 import { getDictionary } from "@/lib/dictionaries";
@@ -64,8 +65,9 @@ export async function generateMetadata({
     authors: [{ name: SITE_NAME, url: SITE_URL }],
     generator: "Next.js",
     keywords: [
-      "POP",
-      "POS",
+      "display solutions",
+      "branded environments",
+      "λύσεις προβολής",
       "retail displays",
       "floor stands",
       "counter stands",
@@ -74,7 +76,6 @@ export async function generateMetadata({
       "Industrialized Craft",
       "Αχαρνές",
       "μεταξοτυπία",
-      "POP/POS συστήματα",
     ],
     category: "manufacturing",
     icons: {
@@ -132,6 +133,12 @@ export default async function RootLayout({
         <Header locale={lang as Locale} nav={dict.nav} />
         {children}
         <Footer locale={lang as Locale} t={dict.footer} />
+        <MobileBottomBar
+          locale={lang as Locale}
+          callLabel={dict.nav.callShort}
+          briefLabel={dict.nav.briefShort}
+          ariaLabel={dict.nav.mobileBarAria}
+        />
         <AnimationsInit />
         <BackToTop />
         <CookieConsent locale={lang as Locale} t={dict.cookieConsent} />

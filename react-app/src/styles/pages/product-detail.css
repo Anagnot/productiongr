@@ -8,6 +8,15 @@
 .page-product-detail .detail-hero h1 { font-size: 80px; font-weight: 800; line-height: 0.98; letter-spacing: -0.03em; margin: 0; }
 .page-product-detail .detail-hero .lede { font-size: 17px; line-height: 1.55; color: var(--fg-secondary); margin: 0; max-width: 720px; }
 
+/* Detail meta — materials pills + channel cross-links (brief §7.2) */
+.page-product-detail .detail-meta { padding: 40px 0; border-bottom: 1px solid var(--border-subtle); }
+.page-product-detail .detail-meta .container { display: flex; flex-wrap: wrap; gap: 48px; }
+.page-product-detail .detail-meta .detail-block h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-secondary); margin: 0 0 14px; }
+.page-product-detail .detail-meta .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.page-product-detail .detail-meta .chan-links { display: flex; flex-wrap: wrap; gap: 14px; }
+.page-product-detail .detail-meta .chan-link { font-family: var(--font-sans); font-weight: 700; font-size: 14px; color: var(--fg-primary); text-decoration: none; }
+.page-product-detail .detail-meta .chan-link:hover { color: var(--color-orange); }
+
 /* Gallery */
 .page-product-detail .gallery { padding: 56px 0 64px; }
 .page-product-detail .gallery .head { margin-bottom: 24px; }

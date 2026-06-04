@@ -95,3 +95,18 @@
 .page-services .product .product-visual.photo { background: var(--color-gray-1); }
 .page-services .product .product-visual.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform var(--duration) var(--ease); }
 .page-services .product:hover .product-visual.photo img { transform: scale(1.04); }
+.page-services .product .product-visual.photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 42%, rgba(0,0,0,0.5) 100%); pointer-events: none; }
+
+/* Premium Special Projects card (first in grid) */
+.page-services .product.special { background: var(--color-gray-4); color: #fff; }
+.page-services .product.special .product-body .num { color: var(--color-orange); }
+.page-services .product.special .product-body h3 { color: #fff; }
+.page-services .product.special .product-body p { color: rgba(255,255,255,0.78); }
+.page-services .product .product-visual.special-visual { background: linear-gradient(150deg, #2a2a2a 0%, #1f1f1f 55%, #E65C00 135%); }
+.page-services .product .product-visual.special-visual::after { content: none; }
+
+/* Functional filter chips + All build types link */
+.page-services .ia-bar a.chip { text-decoration: none; }
+.page-services .all-build { display: flex; justify-content: center; margin-top: 28px; }
+.page-services .all-build .link-arrow { font-family: var(--font-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-orange); text-decoration: none; }
+.page-services .all-build .link-arrow:hover { text-decoration: underline; }

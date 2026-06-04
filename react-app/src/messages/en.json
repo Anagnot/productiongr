@@ -1,17 +1,38 @@
 {
   "meta": {
     "siteTagline": "Crafting Retail Conversion",
-    "defaultDescription": "POP/POS systems that win the shopper's eye in the first 3 seconds. Industrialized Craft in Acharnes, Greece, since 2008.",
+    "defaultDescription": "Display solutions & branded environments that win the shopper's eye in the first 3 seconds. Industrialized Craft in Acharnes, Greece, since 2008.",
     "ogLocale": "en_US"
   },
   "nav": {
     "home": "Home",
     "services": "Products",
+    "channels": "Channels",
+    "company": "Company",
     "portfolio": "Work",
-    "about": "Company",
+    "about": "About",
     "contact": "Contact",
+    "howWeWork": "How We Work",
+    "sustainability": "Sustainability",
     "ctaBrief": "Strategic briefing →",
-    "channels": "Channels"
+    "phone": "+30 210 232 27 50",
+    "callShort": "Call",
+    "briefShort": "Briefing →",
+    "mobileBarAria": "Quick actions",
+    "chSuperMarkets": "Super Markets",
+    "chRetailBeauty": "Retail & Beauty",
+    "chPharmacy": "Pharmacy",
+    "chHoreca": "HORECA",
+    "chKiosk": "Kiosk & Convenience",
+    "chExhibitions": "Exhibitions",
+    "chEvents": "Events & Activations",
+    "chYourChannel": "Your Channel",
+    "prodSpecialProjects": "Special Projects",
+    "prodFloorCounter": "Floor & Counter Stands",
+    "prodDisplaySystems": "Display Systems",
+    "prodGondolaPallet": "Gondola & Pallet",
+    "prodWallShelves": "Wall Units & Shelves",
+    "prodAllBuildTypes": "All build types →"
   },
   "footer": {
     "tagline": "Crafting Retail Conversion. Industrialized Craft in Acharnes, Greece, since 2008.",
@@ -21,14 +42,16 @@
       "floorCounter": "Floor & Counter Stands",
       "displaySystems": "Display Systems",
       "gondolaPallet": "Gondola & Pallet",
-      "posAccessories": "POS Accessories"
+      "exhibitions": "Exhibitions & Events"
     },
     "company": {
       "title": "Company",
       "about": "About",
-      "portfolio": "Work",
+      "channels": "Channels",
+      "howWeWork": "How We Work",
+      "sustainability": "Sustainability",
       "contact": "Contact",
-      "quote": "Strategic briefing"
+      "briefing": "Briefing"
     },
     "contact": {
       "title": "Contact",
@@ -43,7 +66,7 @@
       "linkedin": "LinkedIn"
     },
     "legal": {
-      "copyright": "© Production LTD 2008–2025. All rights reserved.",
+      "copyright": "© Production LTD 2008–2026. All rights reserved.",
       "privacy": "Privacy",
       "cookies": "Cookies",
       "cookieSettings": "Cookie settings"
@@ -150,172 +173,68 @@
     "ctaBlockTitleAccent": "your next project."
   },
   "home": {
-    "metaTitle": "Production LTD — POP/POS systems since 2008",
-    "metaDescription": "Crafting Retail Conversion. POP/POS systems that turn the shelf into a choice — from an Industrialized Craft facility in Acharnes, Greece.",
+    "metaTitle": "Production LTD — display solutions & branded environments since 2008",
+    "metaDescription": "Crafting Retail Conversion. Display solutions & branded environments that turn the shelf into a choice — from an Industrialized Craft facility in Acharnes, Greece.",
     "hero": {
       "heading1": "Crafting",
       "heading2": "Retail Conversion.",
-      "lede": "Solutions that win the shopper's eye in the first 3 seconds."
+      "lede": "Solutions that win the shopper's eye in the first 3 seconds.",
+      "cta": "Start your project →"
     },
     "channels": {
+      "heading": "One partner — every channel.",
       "eyebrow": "Channels · Markets we serve",
-      "right": "7 retail channels",
       "items": [
-        [
-          "01",
-          "Super Markets",
-          "Heavy-use POS",
-          "super-market"
-        ],
-        [
-          "02",
-          "Retail Stores",
-          "Design-led displays",
-          "hairdresser"
-        ],
-        [
-          "03",
-          "Cosmetics",
-          "Premium finish",
-          "beauty-shop"
-        ],
-        [
-          "04",
-          "Pharmacy",
-          "Trust & ergonomics",
-          "pharma"
-        ],
-        [
-          "05",
-          "HORECA",
-          "Restaurants, café, bar",
-          "horeca"
-        ],
-        [
-          "06",
-          "Hotels",
-          "Hospitality signage",
-          "convenience-stores"
-        ],
-        [
-          "07",
-          "Kiosk & Convenience",
-          "Compact, impulse",
-          "kiosk"
-        ]
-      ]
+        { "name": "Super Markets", "en": "End-caps & pallets", "slug": "super-market" },
+        { "name": "Retail & Beauty", "en": "Premium finish", "slug": "retail-beauty" },
+        { "name": "Pharmacy", "en": "Trust & ergonomics", "slug": "pharma" },
+        { "name": "HORECA", "en": "Restaurants & hotels", "slug": "horeca" },
+        { "name": "Kiosk & Convenience", "en": "Compact, impulse", "slug": "kiosk" },
+        { "name": "Exhibitions", "en": "Booths & trade shows", "slug": "exhibitions" },
+        { "name": "Events & Activations", "en": "Launches & pop-ups", "slug": "events" }
+      ],
+      "yourTitle": "Your Channel",
+      "yourSub": "Tell us your space"
     },
     "aboutStrip": {
-      "signature": "silk legacy,\nindustrialized.",
       "eyebrow": "The company · Industrialized Craft",
       "h2Pre": "Not just ink on board —",
       "h2Em": "conversion tools.",
-      "p1Pre": "Production LTD was founded in 2008, rooted in the craft of silk-screen printing. Today we are a",
-      "p1Accent": "vertically integrated manufacturing facility",
-      "p1Post": "for end-to-end POP systems — under the strategic stewardship of the Dimaras family.",
-      "p2Pre": "We design and build display systems that turn raw materials into brand experience. We believe in",
-      "p2Accent": "Industrialized Craft",
-      "p2Post": "— the coexistence of our historical identity (Silk) with state-of-the-art technologies such as digital printing and CNC."
-    },
-    "services": {
-      "eyebrow": "01 · What we make",
-      "h2": "Build types.",
-      "meta": "Special Projects · Floor & Counter Stands · Display Systems · Gondola · Pallet · Wall Units · Shelf Trays · POS Accessories",
-      "featBig": {
-        "num": "00 · Premium",
-        "title": "Special Projects",
-        "desc": "Bespoke solutions combining materials (Metal+Wood, Plexi+MDF, Mix 3+) — for flagship campaigns and Key Accounts. \"Tell us what you want; we'll tell you which material and why.\""
-      },
-      "items": [
-        {
-          "num": "01 / 09",
-          "title": "Floor Stands",
-          "desc": "Floor units — Cardboard, Metal, Wood, Plastic, Plexiglass.",
-          "href": "/services/floor-stands"
-        },
-        {
-          "num": "02 / 09",
-          "title": "Counter Stands",
-          "desc": "Counter-top units — premium finish or mass-production volume.",
-          "href": "/services"
-        },
-        {
-          "num": "03 / 09",
-          "title": "Display Systems",
-          "desc": "End-to-end display systems — modular & expandable.",
-          "href": "/services"
-        },
-        {
-          "num": "04 / 09",
-          "title": "Gondola & Shelving",
-          "desc": "Gondola ends, shelving systems — metal, wood, mix.",
-          "href": "/services"
-        },
-        {
-          "num": "05 / 09",
-          "title": "Pallet & Half-Pallet",
-          "desc": "Large-format — cardboard, metal, mix for seasonal pushes.",
-          "href": "/services"
-        },
-        {
-          "num": "06 / 09",
-          "title": "Wall Units",
-          "desc": "Wall-mounted systems — Wood/MDF, Metal.",
-          "href": "/services"
-        },
-        {
-          "num": "07 / 09",
-          "title": "Shelf Trays & Vacuum",
-          "desc": "Trays & vacuum-formed in PS, PETG.",
-          "href": "/services"
-        },
-        {
-          "num": "08 / 09",
-          "title": "POS Accessories",
-          "desc": "Wobblers, clip strips, hanging displays, table tents, packaging.",
-          "href": "/services"
-        }
-      ],
-      "allLink": "See all build types"
+      "body": "We engineer display solutions and branded environments that protect your margin, hit your launch date, and win the shopper's eye — from concept to installation.",
+      "materials": ["Paper", "Metal", "Plastic", "Wood", "Plexi", "Premium"],
+      "aboutLink": "About the company →"
     },
     "reasons": {
       "eyebrow": "02 · Why us",
-      "h2": "5 strategic reasons — not \"passion for excellence.\"",
+      "h2": "Why us — in numbers.",
       "items": [
         {
-          "num": "01 / Sage",
+          "num": "01",
+          "title": "Trust & Accountability",
+          "p": "Family-run, vertically integrated. You always know who picks up the phone.",
+          "v": "17 yrs",
+          "l": "since 2008"
+        },
+        {
+          "num": "02",
+          "title": "Zero-Risk Reliability",
+          "p": "OTIF — zero surprises on time, cost or quality.",
+          "v": "OTIF",
+          "l": "on-time pledge"
+        },
+        {
+          "num": "03",
           "title": "Value Engineering",
-          "p": "Lower production cost and waste through smart design from minute one — protecting your margin.",
+          "p": "Smart design that cuts cost & waste.",
           "v": "92%",
           "l": "Nesting efficiency"
         },
         {
-          "num": "02 / Creator",
-          "title": "Rapid Response",
-          "p": "From concept to physical prototype in half the time. Vertically integrated — the whole team under one roof.",
-          "v": "½×",
-          "l": "Industry avg. lead time"
-        },
-        {
-          "num": "03 / Sage",
-          "title": "Zero-Risk Reliability",
-          "p": "OTIF — On Time In Full. We commit to zero surprises on time, cost or quality.",
-          "v": "OTIF",
-          "l": "100% on-time pledge"
-        },
-        {
-          "num": "04 / Creator",
-          "title": "B2B2C Expertise",
-          "p": "\"Silent salespeople\" — conversion tools that win the shopper's eye in the first 3 seconds.",
-          "v": "3″",
-          "l": "Attention threshold"
-        },
-        {
-          "num": "05 / Sage",
+          "num": "04",
           "title": "Eco-Innovation",
-          "p": "40–50% of output in recyclable materials (PS, paper, PET, plexiglass). Flat-pack on cardboard builds.",
+          "p": "Recyclable materials, flat-pack, Nesting.",
           "v": "40–50%",
-          "l": "Recyclable materials"
+          "l": "Recyclable"
         }
       ]
     },
@@ -378,8 +297,9 @@
       ]
     },
     "process": {
-      "eyebrow": "04 · From brief to shelf",
+      "eyebrow": "From concept to installation",
       "h2": "Four stages. One team. Zero surprises.",
+      "cta": "Start your project →",
       "metaLine1": "Engineering → Prototype → Production → OTIF",
       "metaLine2": "4–6 weeks on average",
       "steps": [
@@ -429,17 +349,6 @@
         }
       ]
     },
-    "materials": {
-      "title": "Materials · Level 1 · Our materials",
-      "items": [
-        "Paper & Cardboard",
-        "Metal",
-        "Plastic (PVC/Forex)",
-        "Wood / MDF",
-        "Plexiglass",
-        "Premium / Mix"
-      ]
-    },
     "stats": [
       {
         "value": "<em>17</em>yrs",
@@ -463,7 +372,10 @@
       "noteLine2": "by engineering — not slogans",
       "eyebrow": "05 · Eco-Innovation",
       "h2": "Sustainability — measurable, not declarative.",
-      "p": "40–50% of output in recyclable materials. Nesting 92% dramatically reduces waste and carbon footprint. Flat-pack solutions exclusively on cardboard builds to minimise transport.",
+      "p": "Every number on this page is auditable. We engineer sustainability into the product — not as a label, but as a structural decision.",
+      "certs": "ISO 9001:2015 | ISO 14001:2015 | ISO 45001:2018",
+      "ctaFactsheet": "Request sustainability factsheet →",
+      "ctaProject": "Start your project →",
       "pillars": [
         {
           "n": "01",
@@ -522,10 +434,10 @@
   },
   "about": {
     "metaTitle": "Company",
-    "metaDescription": "Production LTD — Industrialized Craft in Acharnes, Greece since 2008. A vertically integrated POP/POS manufacturer under the strategic stewardship of the Dimaras family.",
+    "metaDescription": "Production LTD — Industrialized Craft in Acharnes, Greece since 2008. A vertically integrated manufacturer of display solutions & branded environments under the strategic stewardship of the Dimaras family.",
     "metaKeywords": [
       "Production LTD history",
-      "POP/POS company",
+      "display solutions company",
       "Industrialized Craft",
       "silk-screen Acharnes",
       "Dimaras family"
@@ -533,7 +445,7 @@
     "hero": {
       "h1Pre": "Industrialized\nCraft — ",
       "h1Em": "since 2008.",
-      "lede1": "Production LTD is a vertically integrated facility for industrial excellence, manufacturing and POP Materials solutions in Acharnes, Attica.",
+      "lede1": "Production LTD is a vertically integrated facility for industrial excellence, manufacturing display solutions and branded environments in Acharnes, Attica — from concept to installation.",
       "lede2": "From the craft of silk-screen printing in 2008, to a model factory designing conversion tools for Europe's leading brands.",
       "stats": [
         {
@@ -570,7 +482,7 @@
       "h2Em": "to a vertically integrated facility.",
       "p1Pre": "Print Silk Production was founded in 2008, rooted in the craft of",
       "p1Accent": "silk-screen printing",
-      "p1Post": ". Today, the company has evolved into a model, vertically integrated facility for industrial excellence, manufacturing and POP Materials solutions, while keeping the personal commitment of the Dimaras family.",
+      "p1Post": ". Today, the company has evolved into a model, vertically integrated facility for industrial excellence, manufacturing display solutions and branded environments, while keeping the personal commitment of the Dimaras family.",
       "p2Pre": "Under the strategic stewardship of",
       "p2AccentA": "Yiannis",
       "p2Mid": "(Sales & Marketing) and",
@@ -578,12 +490,12 @@
       "p2Post": "(Operations & Production), the business combines decades of experience with the drive of a new generation.",
       "p3Pre": "We don't stop at ink on board. We design and build end-to-end display systems that turn raw materials into brand experience. We believe in",
       "p3Accent": "Industrialized Craft",
-      "p3Post": ": the coexistence of our historical identity (Silk) with state-of-the-art technologies such as digital printing and CNC.",
-      "pull": "\"Every solution of ours is a Conversion Tool, engineered to dominate the shopper's attention.\"",
+      "p3Post": ": the coexistence of our historical identity (Silk) with precision technologies: digital printing, CNC, and vacuum forming.",
+      "pull": "\"We don't ask 'what do you want us to build.' We ask 'what business result do you need' — and engineer backwards.\"",
       "p4Pre": "Our signature is",
-      "p4AccentA": "speed",
+      "p4AccentA": "precision",
       "p4Mid": "and",
-      "p4AccentB": "consistency",
+      "p4AccentB": "accountability",
       "p4Post": ". At our Acharnes facility, production is monitored at every stage, ensuring the fastest market response and project execution strictly on the agreed date. We offer our partners the safety and innovation that today's environmentally responsible retail context demands.",
       "sigs": [
         {
@@ -612,7 +524,7 @@
         {
           "label": "01 · Mission",
           "h3": "Give shape to innovation.",
-          "p": "Through solutions that grow the value of brands at the point of sale."
+          "p": "Through solutions that grow the value of brands wherever they meet the consumer."
         },
         {
           "label": "02 · Vision",
@@ -630,7 +542,7 @@
     },
     "values": {
       "eyebrow": "Values · The DNA",
-      "h2": "Four values — visible across the entire site.",
+      "h2": "Five values — visible across the entire site.",
       "metaLine1": "not buzzwords —",
       "metaLine2": "production principles",
       "items": [
@@ -653,6 +565,11 @@
           "num": "04",
           "h4": "Eco-Innovation",
           "p": "40–50% recyclable. Flat-pack on cardboard builds. Nesting 92% for reduced carbon footprint."
+        },
+        {
+          "num": "05",
+          "h4": "Trust & Accountability",
+          "p": "Family-run since 2008. You always know who picks up the phone — and who's accountable."
         }
       ]
     },
@@ -660,7 +577,7 @@
       "eyebrow": "Milestones",
       "h2": "17 years — from silk-screen to a vertically integrated facility.",
       "metaLine1": "Strong investment",
-      "metaLine2": "in cutting-edge technology",
+      "metaLine2": "in precision technology",
       "items": [
         {
           "y": "'08",
@@ -670,7 +587,7 @@
         {
           "y": "'14",
           "h6": "Vacuum forming",
-          "p": "Expansion into vacuum-formed POP — first volume runs for FMCG clients."
+          "p": "Expansion into vacuum-formed display builds — first volume runs for FMCG clients."
         },
         {
           "y": "'18",
@@ -683,15 +600,15 @@
           "p": "40–50% recyclable materials · Nesting 92% pipeline for waste reduction."
         },
         {
-          "y": "'25",
-          "h6": "Brand refresh",
-          "p": "New positioning: \"Crafting Retail Conversion\" — Special Projects flagship."
+          "y": "'26",
+          "h6": "Brand relaunch",
+          "p": "New website, Exhibitions & Events expansion."
         }
       ]
     },
     "clientsWall": {
       "eyebrow": "Strategic partners · Clients",
-      "h2": "Brands that trust us for OTIF launches.",
+      "h2": "Brands that trust us.",
       "metaLine1": "📌 List pending confirmation",
       "metaLine2": "per client",
       "items": [
@@ -744,31 +661,33 @@
           "style": "thin"
         }
       ]
-    },
-    "testimonials": {
-      "eyebrow": "Testimonials",
-      "h2": "\"We trust them because…\"",
-      "metaLine1": "📌 Placeholders to be replaced",
-      "metaLine2": "with attributed testimonials",
-      "items": [
-        {
-          "quote": "We choose Production LTD because they turn a demanding brief into an economically viable solution, without sacrificing our brand aesthetic.",
-          "whoTitle": "Marketing Manager",
-          "whoRole": "Retail Sector",
-          "pendingLabel": "Pending name"
-        },
-        {
-          "quote": "In a world where launches don't slip, the certainty that materials will be on the shelf the day we agreed is why we trust them.",
-          "whoTitle": "Procurement Director",
-          "whoRole": "FMCG Brand",
-          "pendingLabel": "Pending name"
-        }
-      ]
     }
   },
   "services": {
+    "specialProjects": {
+      "cardEyebrow": "Premium",
+      "cardTitle": "Special Projects",
+      "cardDesc": "Tell us what you need; we'll engineer the solution and explain why.",
+      "metaTitle": "Special Projects",
+      "metaDescription": "Bespoke premium retail builds — 3+ materials, craft finishing, engineered from concept to installation.",
+      "hero": {
+        "h1Pre": "Special Projects — ",
+        "h1Em": "bespoke, premium, engineered."
+      },
+      "lede": "When a brief needs more than a catalogue build: multi-material constructions, flagship brand environments and one-off installations — engineered from concept to installation.",
+      "introHeading": "Where engineering meets craft",
+      "intro": "We don't ask 'what do you want us to build.' We ask 'what business result do you need' — and engineer backwards, combining 3+ materials, precision technologies and hand finishing.",
+      "highlightsHeading": "What sets them apart",
+      "highlights": [
+        "3+ materials per build — paper, metal, wood, plexi, premium",
+        "Precision technologies: digital printing, CNC, vacuum forming",
+        "Flagship brand environments & one-off installations",
+        "From concept to installation, entirely in-house"
+      ],
+      "cta": "Start a Special Project →"
+    },
     "metaTitle": "Products",
-    "metaDescription": "9 build types of POP/POS: Special Projects, Floor & Counter Stands, Display Systems, Gondola, Pallet, Wall Units, Shelf Trays and POS Accessories — in paper, metal, wood, plexi and mix.",
+    "metaDescription": "9 build types of display solutions & branded environments: Special Projects, Floor & Counter Stands, Display Systems, Gondola, Pallet, Wall Units, Shelf Trays and POS Accessories — in paper, metal, wood, plexi and mix.",
     "metaKeywords": [
       "POP displays",
       "floor stands",
@@ -785,7 +704,7 @@
       "h1Pre": "Build types —",
       "h1Mid": "one ",
       "h1Em": "production floor.",
-      "p1": "From bespoke Special Projects with 3+ materials, to POS accessories in thousands of units. The whole taxonomy follows the client's logic:",
+      "p1": "From bespoke Special Projects with 3+ materials, to volume production in thousands — from concept to installation. The whole taxonomy follows the client's logic:",
       "p1Strong": "what you need → in which material → for which channel",
       "p1Post": ".",
       "stats": [
@@ -823,13 +742,24 @@
         "Premium"
       ],
       "channelChips": [
-        "SM",
+        "Super Markets",
+        "Retail & Beauty",
         "Pharmacy",
-        "Cosmetics",
         "HORECA",
-        "+3"
+        "Kiosk",
+        "Exhibitions",
+        "Events"
       ]
     },
+    "materialLabels": {
+      "paper": "Paper",
+      "metal": "Metal",
+      "plastic": "Plastic",
+      "wood": "Wood / MDF",
+      "plexi": "Plexi",
+      "premium": "Premium / Mix"
+    },
+    "allBuildTypes": "All build types →",
     "specialFeat": {
       "eyebrow": "00 · First category in the catalog",
       "h2Line1": "Special Projects.",
@@ -1067,12 +997,12 @@
         }
       ]
     },
-    "ctaTitlePre": "Got a brief?",
+    "ctaTitlePre": "Got a concept?",
     "ctaTitleEm": "Let's engineer it."
   },
   "floorStands": {
     "metaTitle": "Floor Stands",
-    "metaDescription": "Freestanding floor units in paper, metal, wood, plastic and plexiglass — value-engineered POP displays for super markets, pharmacies, HORECA and retail.",
+    "metaDescription": "Freestanding floor units in paper, metal, wood, plastic and plexiglass — value-engineered display solutions for super markets, pharmacies, HORECA and retail.",
     "metaKeywords": [
       "floor stand",
       "floor display",
@@ -1382,7 +1312,7 @@
   },
   "portfolio": {
     "metaTitle": "Work",
-    "metaDescription": "Selected POP/POS work by Production LTD — from the Coca-Cola summer end-cap across 240 stores to Johnnie Walker House and Vichy pharmacy walls.",
+    "metaDescription": "Selected display & branded-environment work by Production LTD — from the Coca-Cola summer end-cap across 240 stores to Johnnie Walker House and Vichy pharmacy walls.",
     "metaKeywords": [
       "POP case studies",
       "retail displays portfolio",
@@ -1394,7 +1324,7 @@
     "hero": {
       "h1Pre": "Conversion tools",
       "h1Em": "on the shelf.",
-      "lede": "Selected work — POP/POS, special projects, gondola, pallet, wall units. Filter by type, material or channel. All delivered OTIF."
+      "lede": "Selected work — display solutions & branded environments, special projects, gondola, pallet, wall units. Filter by type, material or channel. All delivered OTIF."
     },
     "filters": {
       "typeTitle": "Type",
@@ -1629,7 +1559,7 @@
     "hero": {
       "h1Line1": "Coca-Cola summer end-cap,",
       "h1Line2": "across 240 stores.",
-      "lede": "Vacuum-formed POS unit with integrated LED edge lighting — from concept to delivery in six weeks, entirely in-house.",
+      "lede": "Vacuum-formed display unit with integrated LED edge lighting — from concept to delivery in six weeks, entirely in-house.",
       "meta": [
         {
           "h6": "Client",
@@ -1673,7 +1603,7 @@
       "eyebrow": "Solution · Build solution",
       "h2": "Vacuum-formed body, LED edge, drop-and-shop logistics.",
       "p": "We chose vacuum forming for the main body — it lowers cost across 240 units without compromising quality. The LED strip is battery-powered and fits on-site in 30 seconds.",
-      "ctaLabel": "POP/POS services →",
+      "ctaLabel": "Display solutions →",
       "rows": [
         {
           "h6": "Dimensions",
@@ -1821,9 +1751,9 @@
     "metaDescription": "Get in touch with Production LTD — info@production.gr, +30 210 232 27 50, 63 Tsamali St., Acharnes 13671. Strategic briefing and pricing within 48 hours.",
     "metaKeywords": [
       "Production LTD contact",
-      "POP/POS Athens",
+      "display solutions Athens",
       "retail displays Greece contact",
-      "Acharnes POP builds"
+      "Acharnes display builds"
     ],
     "hero": {
       "h1Line1": "Tell us what you want.",
@@ -1867,7 +1797,7 @@
             "label": "Get directions →"
           },
           {
-            "label": "Book a facility tour →"
+            "label": "By appointment — contact us →"
           }
         ]
       },
@@ -1921,7 +1851,7 @@
   },
   "quote": {
     "metaTitle": "Strategic Briefing",
-    "metaDescription": "Strategic briefing for your next POP/POS project — a 5-step wizard that turns the brief into a quote. Channel, goals, materials, timeline and files.",
+    "metaDescription": "Strategic briefing for your next display & branded-environment project — a 5-step wizard that turns the brief into a quote. Channel, goals, materials, timeline and files.",
     "metaKeywords": [
       "POP quote",
       "POS quote",
@@ -2111,11 +2041,11 @@
     },
     "step4": {
       "eye": "04 / 05 · Estimated timing",
-      "h2": "When do you want the stand on the shelf?",
+      "h2": "When do you want the stand installed?",
       "pPre": "This date activates the",
       "pStrong": "OTIF",
       "pPost": " promise — On Time In Full. From here, our team works backwards.",
-      "dateLabel": "Desired on-shelf date",
+      "dateLabel": "Desired installation date",
       "urgencyLabel": "Lead time check:",
       "urgencyIndicator": "17 weeks · target achievable · OTIF active",
       "deliveryLabel": "Delivery",
@@ -2190,7 +2120,7 @@
           "field": "materials"
         },
         {
-          "k": "On-shelf date",
+          "k": "Installation date",
           "field": "onShelfDate"
         },
         {
@@ -2292,7 +2222,7 @@
           "badgeFeat": false,
           "num": "06 · Company",
           "h4": "About",
-          "desc": "Verbatim approved story, Dimaras family signature (3 generations), Mission/Vision/Promise, 4 values, Sage+Creator archetype, personas (Katerina/Markos), milestones, clients, testimonials.",
+          "desc": "Verbatim approved story, Dimaras family signature (3 generations), Mission/Vision/Promise, 4 values, personas (Katerina/Markos), milestones, clients, testimonials.",
           "path": "/about"
         },
         {
@@ -2346,7 +2276,7 @@
         },
         {
           "h6": "Approved verbatim copy",
-          "p": "The approved 'About Us' copy is used verbatim in About. Sage + Creator archetype, Mission/Vision/Promise, personas Katerina & Markos."
+          "p": "The approved 'About Us' copy is used verbatim in About. Mission/Vision/Promise, personas Katerina & Markos."
         },
         {
           "h6": "Next: aesthetic Direction B (editorial)",
@@ -2357,11 +2287,11 @@
     "legal": "PRODUCTION LTD · brand refresh v2 · brief alignment v2.2 · 8 pages · Direction A (Energetic/Industrial)"
   },
   "channels": {
-    "metaTitle": "Channels — POP/POS solutions per retail channel",
-    "metaDescription": "Custom POP & POS displays for super market, pharma, beauty, kiosk, HoReCa, toy stores, hairdressers and convenience stores.",
+    "metaTitle": "Channels — display solutions & branded environments per retail channel",
+    "metaDescription": "Custom display solutions & branded environments for super market, pharma, retail & beauty, HORECA, kiosk & convenience, exhibitions and events — one production floor per channel.",
     "metaKeywords": [
       "retail channels",
-      "POP channels",
+      "display channels",
       "super market displays",
       "pharma displays",
       "horeca",
@@ -2390,10 +2320,19 @@
     "carouselPrev": "Previous image",
     "carouselNext": "Next image",
     "prevLabel": "Previous",
-    "nextLabel": "Next"
+    "nextLabel": "Next",
+    "yourChannel": {
+      "title": "Your channel?",
+      "blurb": "Don't see your retail environment? We engineer custom display solutions for any channel — tell us your brief.",
+      "cta": "Start a briefing →"
+    },
+    "productsForChannel": "Products for this channel →"
   },
   "productDetail": {
     "metaTitleSuffix": "Products",
+    "materialsHeading": "Materials",
+    "channelsHeading": "Channels that use this build type",
+    "startWithType": "Start with this type →",
     "crumbBack": "← Back to products",
     "detailEyebrow": "Product Category",
     "galleryHeading": "Category samples",
@@ -2405,5 +2344,202 @@
     "lightboxPrev": "Previous image",
     "lightboxNext": "Next image",
     "lightboxOpen": "Open image"
+  },
+  "howWeWork": {
+    "metaTitle": "How We Work",
+    "metaDescription": "From concept to installation — trust, value engineering, OTIF reliability, eco-innovation and rapid response, under one roof in Acharnes.",
+    "metaKeywords": [
+      "how we work",
+      "value engineering",
+      "OTIF",
+      "rapid prototyping",
+      "from concept to installation"
+    ],
+    "hero": {
+      "h1Pre": "From concept to installation. This is how we work — and why it matters for your ",
+      "h1Em": "launch.",
+      "lede": "Trust, reliability, value engineering, eco-innovation and rapid response — engineered into every project."
+    },
+    "reasons": {
+      "eyebrow": "Why it matters",
+      "h2": "Five reasons brands stay with us.",
+      "items": [
+        {
+          "num": "01",
+          "title": "Trust & Accountability",
+          "p": "Family-run since 2008, vertically integrated. You always know who picks up the phone — and who's accountable.",
+          "v": "17 yrs",
+          "l": "since 2008"
+        },
+        {
+          "num": "02",
+          "title": "Zero-Risk Reliability",
+          "p": "OTIF — On Time In Full. We commit to zero surprises on time, cost or quality.",
+          "v": "OTIF",
+          "l": "100% on-time pledge"
+        },
+        {
+          "num": "03",
+          "title": "Value Engineering",
+          "p": "Lower production cost and waste through smart design from minute one — protecting your margin.",
+          "v": "92%",
+          "l": "Nesting efficiency"
+        },
+        {
+          "num": "04",
+          "title": "Eco-Innovation",
+          "p": "40–50% of output in recyclable materials (PS, paper, PET, plexiglass). Flat-pack on cardboard builds.",
+          "v": "40–50%",
+          "l": "Recyclable materials"
+        },
+        {
+          "num": "05",
+          "title": "Rapid Response",
+          "p": "From concept to physical prototype in half the time. Vertically integrated — the whole team under one roof.",
+          "v": "½×",
+          "l": "Industry avg. lead time"
+        }
+      ]
+    },
+    "process": {
+      "eyebrow": "From concept to installation",
+      "h2": "Four stages. One team. Zero surprises.",
+      "metaLine1": "Engineering → Prototype → Production → OTIF",
+      "metaLine2": "4–6 weeks on average",
+      "steps": [
+        {
+          "n": "Stage 01",
+          "title": "Strategic Analysis & Engineering",
+          "en": "Discovery + Value Engineering",
+          "p": "Brief analysis, selection of the ideal materials for maximum durability at the lowest cost.",
+          "bullets": [
+            "Value Engineering · cost optimization",
+            "Sustainability check · Nesting 92%",
+            "Material selection & rationale"
+          ]
+        },
+        {
+          "n": "Stage 02",
+          "title": "Rapid Prototyping",
+          "en": "Digital + Physical",
+          "p": "3D mockup in the retail context and a physical sample in record time — to test ergonomics and \"Wow Factor.\"",
+          "bullets": [
+            "Digital mockup in CAD",
+            "Physical sample 1:1",
+            "Client sign-off"
+          ]
+        },
+        {
+          "n": "Stage 03",
+          "title": "Industrialized Production",
+          "en": "Industrial + Craft",
+          "p": "CNC + digital printing at millimetre precision, alongside silk-screen and hand assembly.",
+          "bullets": [
+            "Precision manufacturing",
+            "Silk-screen & finishing",
+            "Assembly & per-unit QA"
+          ]
+        },
+        {
+          "n": "Stage 04",
+          "title": "Logistics & OTIF Delivery",
+          "en": "On Time In Full",
+          "p": "Quality control before packing and delivery strictly on the agreed date, across Greece.",
+          "bullets": [
+            "Final QA per unit",
+            "Flat-pack / palletized",
+            "OTIF · zero misses"
+          ]
+        }
+      ]
+    },
+    "caseStudies": {
+      "eyebrow": "Proof",
+      "h2": "From brief to result.",
+      "lede": "Selected projects — brand, brief, solution, result.",
+      "items": [
+        {
+          "brand": "Coca-Cola",
+          "brief": "240-store summer end-cap on a six-week deadline.",
+          "solution": "Vacuum-formed display with integrated LED edge lighting, value-engineered for flat-pack rollout.",
+          "result": "Delivered OTIF across 240 stores.",
+          "href": "/portfolio/coca-cola-summer-endcap"
+        },
+        {
+          "brand": "Diageo",
+          "brief": "Johnnie Walker House premium brand environment in Athens.",
+          "solution": "Bespoke special project — 3+ materials with craft finishing.",
+          "result": "A permanent flagship brand space.",
+          "href": "/portfolio"
+        },
+        {
+          "brand": "L'Oréal",
+          "brief": "Vichy dermocosmetic wall for pharmacy retail.",
+          "solution": "Modular wall unit with regulatory-friendly finishing.",
+          "result": "Consistent brand presence across pharmacy points.",
+          "href": "/portfolio"
+        }
+      ]
+    }
+  },
+  "sustainability": {
+    "metaTitle": "Sustainability",
+    "metaDescription": "Measurable, auditable sustainability: 40–50% recyclable materials, 92% nesting efficiency, flat-pack logistics, ISO 9001 / 14001 / 45001.",
+    "metaKeywords": [
+      "sustainability",
+      "recyclable displays",
+      "nesting efficiency",
+      "flat-pack",
+      "ISO 14001"
+    ],
+    "hero": {
+      "h1Pre": "Sustainability — ",
+      "h1Em": "measurable, not declarative."
+    },
+    "body": "Every number on this page is auditable. We engineer sustainability into the product — not as a label, but as a structural decision.",
+    "noteLine1": "eco-innovation,",
+    "noteLine2": "by engineering — not slogans",
+    "pillarsEyebrow": "Three structural decisions",
+    "pillarsH2": "Engineered in, not bolted on.",
+    "pillars": [
+      {
+        "n": "40–50%",
+        "h6": "Recyclable materials",
+        "p": "PS, paper, PET and plexiglass make up 40–50% of our output — chosen at the engineering stage, not added as an afterthought."
+      },
+      {
+        "n": "92%",
+        "h6": "Nesting efficiency",
+        "p": "Smart sheet layout (nesting) reaches 92% material utilisation — dramatically cutting waste and the carbon footprint of every run."
+      },
+      {
+        "n": "−30%",
+        "h6": "Flat-pack logistics",
+        "p": "Cardboard builds ship flat and palletised — up to ~30% fewer transport movements and lower delivery emissions."
+      }
+    ],
+    "certs": {
+      "eyebrow": "Certified",
+      "h2": "Audited to international standards.",
+      "items": [
+        {
+          "label": "Quality Management",
+          "standard": "ISO 9001:2015"
+        },
+        {
+          "label": "Environmental Management",
+          "standard": "ISO 14001:2015"
+        },
+        {
+          "label": "Occupational Health & Safety",
+          "standard": "ISO 45001:2018"
+        }
+      ]
+    },
+    "cta": {
+      "titlePre": "Want the",
+      "titleEm": "numbers behind this?",
+      "label": "Request sustainability factsheet →"
+    }
   }
 }

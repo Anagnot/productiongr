@@ -268,6 +268,16 @@ img, svg, video { max-width: 100%; height: auto; }
   text-transform: uppercase;
   color: var(--fg-tertiary);
 }
+.mobile-drawer .drawer-foot .drawer-phone {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  color: var(--color-gray-4);
+  text-decoration: none;
+  padding: 4px 0;
+}
+.mobile-drawer .drawer-foot .drawer-phone:hover { color: var(--color-orange); }
 
 /* lock scroll when drawer is open */
 body.no-scroll { overflow: hidden; }
@@ -873,14 +883,15 @@ body.no-scroll { overflow: hidden; }
   .cta.lg { padding: 14px 20px; font-size: 14px; }
   .cta-block h2 { font-size: 28px !important; }
 
-  /* Stats */
-  .stats-grid { grid-template-columns: 1fr !important; }
+  /* Stats — keep a 2×2 grid on phones (brief §3.2 / §11) */
+  .stats-grid { grid-template-columns: 1fr 1fr !important; }
   .stat {
-    border-right: 0 !important;
+    border-right: 1px solid var(--border-default) !important;
     border-bottom: 1px solid var(--border-default) !important;
   }
-  .stat:last-child { border-bottom: 0 !important; }
-  .stat .num { font-size: 40px !important; }
+  .stat:nth-child(2n) { border-right: 0 !important; }
+  .stat:nth-last-child(-n+2) { border-bottom: 0 !important; }
+  .stat .num { font-size: 36px !important; }
 
   /* Services */
   .service { padding: 22px; min-height: 160px; }
@@ -998,4 +1009,58 @@ body.no-scroll { overflow: hidden; }
   .hero .ornament-circle { width: 200px; height: 200px; bottom: -60px; left: -60px; }
   .hero .ornament-para { display: none; }
   .page-hero .ornament-p { display: none; }
+}
+
+/* ============================================================
+   MOBILE STICKY BOTTOM BAR (≤768px) — brief §11 / §2.1
+   ============================================================ */
+.mobile-bottom-bar { display: none; }
+@media (max-width: 768px) {
+  .mobile-bottom-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 10px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(255, 255, 255, 0.96);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border-subtle);
+    box-shadow: 0 -6px 24px -12px rgba(60, 60, 60, 0.25);
+  }
+  .mobile-bottom-bar .mbb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    line-height: 1;
+  }
+  .mobile-bottom-bar .mbb-call {
+    background: var(--color-gray-1);
+    color: var(--color-gray-4);
+    border: 1px solid var(--border-default);
+  }
+  .mobile-bottom-bar .mbb-call:active { transform: scale(0.98); }
+  .mobile-bottom-bar .mbb-brief {
+    background: var(--color-orange);
+    color: #fff;
+    box-shadow: 0 10px 30px -12px rgba(230, 92, 0, 0.5);
+  }
+  /* reserve space so the bar never covers the footer */
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  /* hide the bar while the full-screen drawer is open (drawer is z-100) */
+  body.no-scroll .mobile-bottom-bar { display: none; }
+  /* keep BackToTop clear of the bar */
+  .back-to-top { bottom: calc(76px + env(safe-area-inset-bottom, 0px)) !important; }
 }

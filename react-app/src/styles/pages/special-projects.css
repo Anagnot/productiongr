@@ -1,0 +1,16 @@
+/* SPECIAL PROJECTS — bespoke premium build type; reuses global .page-hero + CTABlock. */
+
+.page-special-projects .sp-intro { background: var(--color-gray-4); color: #fff; padding: 96px 0; }
+.page-special-projects .sp-intro .container { display: grid; grid-template-columns: 1.3fr 1fr; gap: 64px; align-items: start; }
+.page-special-projects .sp-intro .eyebrow.bar { color: var(--color-orange); }
+.page-special-projects .sp-intro h2 { font-size: 40px; line-height: 1.05; font-weight: 800; letter-spacing: -0.02em; margin: 14px 0 20px; color: #fff; }
+.page-special-projects .sp-intro p { font-size: 17px; line-height: 1.65; color: rgba(255,255,255,0.8); margin: 0; max-width: 560px; }
+.page-special-projects .sp-highlights h6 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin: 0 0 16px; }
+.page-special-projects .sp-highlights ul { list-style: none; padding: 0; margin: 0; }
+.page-special-projects .sp-highlights li { position: relative; padding: 14px 0 14px 22px; border-top: 1px solid rgba(255,255,255,0.12); font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.9); }
+.page-special-projects .sp-highlights li:first-child { border-top: 0; }
+.page-special-projects .sp-highlights li::before { content: ''; position: absolute; left: 0; top: 22px; width: 10px; height: 2px; background: var(--color-orange); }
+
+@media (max-width: 768px) {
+  .page-special-projects .sp-intro .container { grid-template-columns: 1fr; gap: 36px; }
+}

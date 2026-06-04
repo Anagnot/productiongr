@@ -37,6 +37,10 @@ img { display: block; max-width: 100%; }
 .site-nav .dropdown-menu a { display: block; padding: 9px 12px; font-size: 13.5px; font-weight: 500; color: var(--fg-primary); border-radius: 8px; line-height: 1.3; }
 .site-nav .dropdown-menu a:hover { background: var(--color-gray-1); color: var(--color-gray-4); }
 .site-nav .dropdown-menu a.active { color: var(--color-orange); background: var(--accent-tint-08); }
+.site-nav .nav-phone { font-family: var(--font-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.01em; white-space: nowrap; color: var(--fg-primary); text-decoration: none; }
+.site-nav .nav-phone:hover { color: var(--color-orange); }
+.site-nav .dropdown-menu a.dd-premium { font-weight: 700; color: var(--color-gray-4); }
+.site-nav .dropdown-menu a.dd-link { margin-top: 6px; padding-top: 12px; border-top: 1px solid var(--border-subtle); color: var(--color-orange); font-weight: 600; }
 
 /* Language dropdown */
 .lang-switch { position: relative; border-left: 1px solid var(--border-default); padding-left: 18px; }

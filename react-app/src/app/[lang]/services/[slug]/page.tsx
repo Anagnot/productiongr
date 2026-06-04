@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
 import { GalleryLightbox } from "@/components/GalleryLightbox";
-import { PRODUCTS, getProduct } from "@/lib/catalog";
+import { CHANNELS, PRODUCTS, getProduct } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, LOCALES, localizedHref, type Locale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
@@ -63,6 +63,44 @@ export default async function ProductDetailPage({
         </div>
       </section>
 
+      {product.materials?.length || product.channels?.length ? (
+        <section className="detail-meta">
+          <div className="container">
+            {product.materials && product.materials.length > 0 ? (
+              <div className="detail-block">
+                <h5>{t.materialsHeading}</h5>
+                <div className="pills">
+                  {product.materials.map((m) => (
+                    <span key={m} className="tag-pill">
+                      {dict.services.materialLabels[m]}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+            {product.channels && product.channels.length > 0 ? (
+              <div className="detail-block">
+                <h5>{t.channelsHeading}</h5>
+                <div className="chan-links">
+                  {product.channels.map((cs) => {
+                    const ch = CHANNELS.find((c) => c.slug === cs);
+                    return ch ? (
+                      <Link
+                        key={cs}
+                        href={href(`/channels/${cs}`)}
+                        className="chan-link"
+                      >
+                        {ch.name[lang]} →
+                      </Link>
+                    ) : null;
+                  })}
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
+
       {product.images.length > 0 ? (
         <section className="gallery">
           <div className="container">
@@ -119,7 +157,7 @@ export default async function ProductDetailPage({
             {t.ctaTitlePre} <em>{t.ctaTitleEm}</em>
           </>
         }
-        ctaLabel={dict.common.strategicBriefing}
+        ctaLabel={t.startWithType}
       />
     </div>
   );

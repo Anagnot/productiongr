@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
 import { HeroSlider } from "@/components/HeroSlider";
-import { ServicesGrid } from "@/components/ServicesGrid";
 import { getAllChannels } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
@@ -14,6 +14,26 @@ const HERO_SLIDES = [
   "/uploads/products/counter-stands/A1.jpg",
   "/uploads/products/floor-stands/C03.png",
   "/uploads/products/pallet-stands/3.jpg",
+];
+
+const PROCESS_ICONS = [
+  <svg key="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7v5l3 2" />
+  </svg>,
+  <svg key="1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
+    <path d="M4 7.5l8 4.5 8-4.5M12 12v9" />
+  </svg>,
+  <svg key="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="3" />
+    <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" />
+  </svg>,
+  <svg key="3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z" />
+    <circle cx="7" cy="18" r="1.6" />
+    <circle cx="17.5" cy="18" r="1.6" />
+  </svg>,
 ];
 
 export async function generateMetadata({
@@ -55,39 +75,58 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               {t.hero.heading2}
             </h1>
             <p className="lede">{t.hero.lede}</p>
+            <div className="actions">
+              <Link href={href("/quote")} className="cta primary">
+                {t.hero.cta}
+              </Link>
+            </div>
           </div>
-          <div className="stage">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="big-p" src="/assets/logomark-dark.svg" alt="" />
+        </div>
+      </section>
+
+      <section className="stats">
+        <div className="container">
+          <div className="stats-grid">
+            {t.stats.map((s, i) => (
+              <div key={i} className="stat">
+                <div
+                  className="num"
+                  dangerouslySetInnerHTML={{ __html: s.value }}
+                />
+                <div className="label">{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="channels">
         <div className="container">
-          <div className="head">
-            <h5>{t.channels.eyebrow}</h5>
-            <div className="right">{t.channels.right}</div>
+          <div className="section-head">
+            <div>
+              <div className="eyebrow bar">{t.channels.eyebrow}</div>
+              <h2>{t.channels.heading}</h2>
+            </div>
           </div>
           <div className="channels-grid">
-            {t.channels.items.map(([num, name, en, slug]) => {
-              const cover = channelCoverBySlug.get(slug);
+            {t.channels.items.map((c) => {
+              const cover = channelCoverBySlug.get(c.slug);
               return (
-                <div
-                  key={num}
+                <Link
+                  key={c.slug}
+                  href={href(`/channels/${c.slug}`)}
                   className="ch"
-                  style={
-                    cover
-                      ? { backgroundImage: `url(${cover})` }
-                      : undefined
-                  }
+                  style={cover ? { backgroundImage: `url(${cover})` } : undefined}
                 >
-                  <div className="num">{num}</div>
-                  <div className="name">{name}</div>
-                  <div className="en">{en}</div>
-                </div>
+                  <div className="name">{c.name}</div>
+                  <div className="en">{c.en}</div>
+                </Link>
               );
             })}
+            <Link href={href("/quote")} className="ch ch-cta">
+              <div className="name">{t.channels.yourTitle}</div>
+              <div className="en">{t.channels.yourSub}</div>
+            </Link>
           </div>
         </div>
       </section>
@@ -104,41 +143,24 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
             <div className="circle"></div>
           </div>
           <div>
+            <div className="eyebrow bar">{t.aboutStrip.eyebrow}</div>
             <h2>
               {t.aboutStrip.h2Pre}
               <br />
               <em>{t.aboutStrip.h2Em}</em>
             </h2>
-            <p>
-              {t.aboutStrip.p1Pre}{" "}
-              <span className="accent">{t.aboutStrip.p1Accent}</span>{" "}
-              {t.aboutStrip.p1Post}
-            </p>
-            <p>
-              {t.aboutStrip.p2Pre}{" "}
-              <span className="accent">{t.aboutStrip.p2Accent}</span>{" "}
-              {t.aboutStrip.p2Post}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="services">
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <div className="eyebrow bar">{t.services.eyebrow}</div>
-              <h2>{t.services.h2}</h2>
+            <p>{t.aboutStrip.body}</p>
+            <div className="materials-pills">
+              {t.aboutStrip.materials.map((m) => (
+                <span key={m} className="pill">
+                  {m}
+                </span>
+              ))}
             </div>
+            <Link href={href("/about")} className="text-link">
+              {t.aboutStrip.aboutLink}
+            </Link>
           </div>
-          <ServicesGrid
-            featBig={t.services.featBig}
-            featBigHref={href("/services")}
-            items={t.services.items.map((s) => ({ ...s, href: href(s.href) }))}
-            allHref={href("/services")}
-            allLabel={t.services.allLink}
-          />
-
         </div>
       </section>
 
@@ -167,22 +189,17 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       </section>
 
       <section className="process">
-        <div className="ornament"></div>
         <div className="container">
           <div className="section-head">
             <div>
-              <div
-                className="eyebrow bar"
-                style={{ color: "rgba(255,255,255,0.6)" }}
-              >
-                {t.process.eyebrow}
-              </div>
+              <div className="eyebrow bar">{t.process.eyebrow}</div>
               <h2>{t.process.h2}</h2>
             </div>
           </div>
           <div className="process-steps">
-            {t.process.steps.map((s) => (
+            {t.process.steps.map((s, i) => (
               <div key={s.n} className="process-step">
+                <div className="p-icon">{PROCESS_ICONS[i]}</div>
                 <div className="n">{s.n}</div>
                 <h6>{s.title}</h6>
                 <div className="en">{s.en}</div>
@@ -195,34 +212,10 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="materials">
-        <div className="container">
-          <h5>{t.materials.title}</h5>
-          <div className="materials-list">
-            {t.materials.items.map((m) => (
-              <span key={m} className="m">
-                {m}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="stats">
-        <div className="container">
-          <div className="stats-grid">
-            {t.stats.map((s, i) => (
-              <div key={i} className="stat">
-                <div
-                  className="num"
-                  dangerouslySetInnerHTML={{ __html: s.value }}
-                />
-                <div className="label">{s.label}</div>
-              </div>
-            ))}
+          <div className="process-cta">
+            <Link href={href("/quote")} className="cta primary">
+              {t.process.cta}
+            </Link>
           </div>
         </div>
       </section>
@@ -279,19 +272,24 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                 </div>
               ))}
             </div>
+            <div className="certs">{t.sustain.certs}</div>
+            <div className="sustain-cta">
+              <Link href={href("/sustainability")} className="cta outline">
+                {t.sustain.ctaFactsheet}
+              </Link>
+              <Link href={href("/quote")} className="cta primary">
+                {t.sustain.ctaProject}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="clients">
         <div className="container">
-          <h5>{t.clients.title}</h5>
           <div className="clients-row">
             {t.clients.items.map((c) => (
-              <div
-                key={c.name}
-                className={c.style ? `c ${c.style}` : "c"}
-              >
+              <div key={c.name} className={c.style ? `c ${c.style}` : "c"}>
                 {c.name}
               </div>
             ))}

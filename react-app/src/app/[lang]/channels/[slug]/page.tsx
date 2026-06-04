@@ -45,7 +45,11 @@ export default async function ChannelDetailPage({
   const t = dict.channels;
   const href = (p: string) => localizedHref(p, lang);
 
-  const other = CHANNELS.filter((c) => c.slug !== slug).slice(0, 4);
+  const other = CHANNELS.filter((c) => c.slug !== slug && c.inMenu).slice(0, 4);
+  const intro = channel.details?.intro[lang] ?? [channel.blurb[lang]];
+  const highlights =
+    channel.details?.highlights[lang] ?? channel.bullets?.[lang] ?? [];
+  const hasContent = Boolean(channel.details || channel.bullets);
 
   return (
     <div className="page-channel-detail">
@@ -63,7 +67,7 @@ export default async function ChannelDetailPage({
         </div>
       </section>
 
-      {channel.details && (
+      {hasContent && (
         <section className="channel-content">
           <div className="container">
             <div className="content-grid">
@@ -71,14 +75,20 @@ export default async function ChannelDetailPage({
                 <div className="content-eyebrow">{t.contentEyebrow}</div>
                 <h2>{t.contentHeading}</h2>
                 <div className="content-body">
-                  {channel.details.intro[lang].map((p, i) => (
+                  {intro.map((p, i) => (
                     <p key={i}>{p}</p>
                   ))}
                 </div>
+                <Link
+                  href={href(`/services?channel=${slug}`)}
+                  className="products-link"
+                >
+                  {t.productsForChannel}
+                </Link>
               </div>
-              {channel.details.highlights[lang].length > 0 && (
+              {highlights.length > 0 && (
                 <ul className="highlights">
-                  {channel.details.highlights[lang].map((h, i) => (
+                  {highlights.map((h, i) => (
                     <li key={i}>{h}</li>
                   ))}
                 </ul>

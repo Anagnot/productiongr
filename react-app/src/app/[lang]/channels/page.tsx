@@ -31,7 +31,7 @@ export default async function ChannelsPage({
   const dict = await getDictionary(lang);
   const t = dict.channels;
   const href = (p: string) => localizedHref(p, lang);
-  const channels = await getAllChannels();
+  const channels = (await getAllChannels()).filter((c) => c.inMenu);
   const heroCarouselImages = channels
     .map((c) => c.cover)
     .filter((src): src is string => Boolean(src));
@@ -95,6 +95,25 @@ export default async function ChannelsPage({
                 </div>
               </Link>
             ))}
+            <Link
+              href={href("/quote")}
+              className="channel-card channel-card-cta"
+            >
+              <div className="channel-card-photo">
+                <div className="ph orange">
+                  <div className="ph-grid" />
+                </div>
+                <div className="channel-card-overlay" />
+              </div>
+              <div className="channel-card-body">
+                <h3>{t.yourChannel.title}</h3>
+                <p>{t.yourChannel.blurb}</p>
+                <div className="channel-card-meta">
+                  <span className="count">{t.yourChannel.cta}</span>
+                  <span className="arrow">→</span>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>

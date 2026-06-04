@@ -28,15 +28,41 @@ function dotClass(c: string) {
   return "dot";
 }
 
+const PRODUCT_GROUPS: Record<string, string[]> = {
+  "floor-counter": ["floor-stands", "counter-stands"],
+  "display-systems": ["displays"],
+  "gondola-pallet": ["pallet-stands", "shelves"],
+  "wall-shelves": ["wall-units"],
+};
+const CHANNEL_CHIP_SLUGS = [
+  "super-market",
+  "retail-beauty",
+  "pharma",
+  "horeca",
+  "kiosk",
+  "exhibitions",
+  "events",
+];
+
 export default async function ServicesPage({
   params,
+  searchParams,
 }: PageProps<"/[lang]/services">) {
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
+  const sp = await searchParams;
+  const groupFilter = typeof sp.group === "string" ? sp.group : undefined;
+  const channelFilter = typeof sp.channel === "string" ? sp.channel : undefined;
   const dict = await getDictionary(lang);
   const t = dict.services;
   const href = (p: string) => localizedHref(p, lang);
-  const products = await getAllProducts();
+  const allProducts = await getAllProducts();
+  const groupSlugs = groupFilter ? PRODUCT_GROUPS[groupFilter] : undefined;
+  const products = groupSlugs
+    ? allProducts.filter((p) => groupSlugs.includes(p.slug))
+    : channelFilter
+      ? allProducts.filter((p) => p.channels?.includes(channelFilter))
+      : allProducts;
 
   return (
     <div className="page-services">
@@ -82,11 +108,24 @@ export default async function ServicesPage({
           </div>
           <div className="group">
             <h6>{t.iaBar.channelTitle}</h6>
-            {t.iaBar.channelChips.map((c) => (
-              <span key={c} className="chip">
-                {c}
-              </span>
-            ))}
+            <Link
+              href={href("/services")}
+              className={!channelFilter && !groupFilter ? "chip active" : "chip"}
+            >
+              {t.iaBar.all}
+            </Link>
+            {t.iaBar.channelChips.map((c, i) => {
+              const slug = CHANNEL_CHIP_SLUGS[i];
+              return (
+                <Link
+                  key={c}
+                  href={href(`/services?channel=${slug}`)}
+                  className={channelFilter === slug ? "chip active" : "chip"}
+                >
+                  {c}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -100,6 +139,20 @@ export default async function ServicesPage({
             </div>
           </div>
           <div className="product-grid">
+            <Link
+              href={href("/services/special-projects")}
+              className="product special"
+            >
+              <div className="product-visual photo special-visual">
+                <div className="ph-grid"></div>
+                <div className="circle"></div>
+              </div>
+              <div className="product-body">
+                <div className="num">{t.specialProjects.cardEyebrow}</div>
+                <h3>{t.specialProjects.cardTitle}</h3>
+                <p>{t.specialProjects.cardDesc}</p>
+              </div>
+            </Link>
             {products.map((p, i) => (
               <Link
                 href={href(`/services/${p.slug}`)}
@@ -123,9 +176,23 @@ export default async function ServicesPage({
                   </div>
                   <h3>{p.name[lang]}</h3>
                   <p>{p.blurb[lang]}</p>
+                  {p.materials && p.materials.length > 0 && (
+                    <div className="materials">
+                      {p.materials.map((m) => (
+                        <span key={m} className="tag-pill">
+                          {t.materialLabels[m]}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </Link>
             ))}
+          </div>
+          <div className="all-build">
+            <Link href={href("/services")} className="link-arrow">
+              {t.allBuildTypes}
+            </Link>
           </div>
         </div>
       </section>
