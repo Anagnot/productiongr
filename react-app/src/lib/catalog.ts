@@ -17,6 +17,7 @@ export type ResolvedPhoto = {
   displayType?: string;
   brand?: string;
   caption?: string;
+  portrait?: boolean;
   hero?: boolean;
 };
 
@@ -69,6 +70,7 @@ export async function getChannel(slug: string): Promise<CatalogEntryWithImages |
       displayType: p.displayType,
       brand: p.brand,
       caption: p.caption,
+      portrait: p.portrait,
       hero: p.hero,
     }));
     const hero = photos.find((p) => p.hero) ?? photos[0];

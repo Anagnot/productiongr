@@ -7,7 +7,15 @@ type Photo = {
   displayType?: string;
   brand?: string;
   caption?: string;
+  portrait?: boolean;
 };
+
+// Portrait images keep object-fit:contain (no harsh crop); everything else uses cover.
+function onImgLoad(e: React.SyntheticEvent<HTMLImageElement>) {
+  const img = e.currentTarget;
+  const media = img.closest(".ch-slide-media");
+  if (media) media.classList.toggle("is-portrait", img.naturalHeight > img.naturalWidth);
+}
 
 type Props = {
   photos: Photo[];
@@ -85,7 +93,7 @@ export function ChannelCarousel({
               aria-roledescription="slide"
               aria-label={`${i + 1} / ${total}`}
             >
-              <div className="ch-slide-media">
+              <div className={`ch-slide-media${p.portrait ? " is-portrait" : ""}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={p.src}
@@ -94,8 +102,9 @@ export function ChannelCarousel({
                       ? `${alt} — ${[p.displayType, p.brand].filter(Boolean).join(" · ")}`
                       : `${alt} — ${i + 1}`
                   }
-                  loading={i < 3 ? "eager" : "lazy"}
+                  loading={i < 2 ? "eager" : "lazy"}
                   draggable={false}
+                  onLoad={onImgLoad}
                 />
               </div>
               {hasCap && (

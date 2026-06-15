@@ -1,10 +1,12 @@
 // AUTO-GENERATED from the Channel Photo Carousel Guide (do not hand-edit order).
 // Captions are EN-only for now (EL translations to follow).
+// `portrait` marks vertical images (gallery uses object-fit:contain for these, cover otherwise).
 export type ChannelPhoto = {
   file: string;
   displayType?: string;
   brand?: string;
   caption?: string;
+  portrait?: boolean;
   hero?: boolean;
 };
 export type ChannelGallery = { tagline?: string; photos: ChannelPhoto[] };
@@ -48,7 +50,8 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "file": "06.jpg",
         "displayType": "Wall Integration",
         "brand": "Tesori d'Oriente",
-        "caption": "Illuminated wall unit, seamless aisle branding"
+        "caption": "Illuminated wall unit, seamless aisle branding",
+        "portrait": true
       },
       {
         "file": "07.jpg",
@@ -66,7 +69,8 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "file": "09.jpg",
         "displayType": "Brand Island",
         "brand": "NIVEA",
-        "caption": "360-degree standalone experience, 4-sided premium island"
+        "caption": "360-degree standalone experience, 4-sided premium island",
+        "portrait": true
       },
       {
         "file": "10.jpg"
@@ -98,13 +102,15 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "file": "04.jpg",
         "displayType": "Floor Stand",
         "brand": "Sudocrem",
-        "caption": "High visibility at checkout, color-coded branding"
+        "caption": "High visibility at checkout, color-coded branding",
+        "portrait": true
       },
       {
         "file": "05.jpg",
         "displayType": "Narrow Floor Unit",
         "brand": "Altion Tonovit",
-        "caption": "Designed for tight pharmacy spaces between counter and shelves"
+        "caption": "Designed for tight pharmacy spaces between counter and shelves",
+        "portrait": true
       },
       {
         "file": "06.jpg",
@@ -117,7 +123,8 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "file": "07.jpg",
         "displayType": "Shaped Display",
         "brand": "Neutrogena",
-        "caption": "Product-shaped cutout — memorable, shareable in-store moment"
+        "caption": "Product-shaped cutout — memorable, shareable in-store moment",
+        "portrait": true
       },
       {
         "file": "08.jpg",
@@ -135,7 +142,8 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "file": "10.jpg",
         "displayType": "Digital Integration",
         "brand": "Apivita",
-        "caption": "Screen + product shelving — premium storytelling meets commerce"
+        "caption": "Screen + product shelving — premium storytelling meets commerce",
+        "portrait": true
       }
     ]
   },
@@ -146,7 +154,8 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "file": "01.jpg",
         "displayType": "Table Caddy",
         "brand": "Vikos Cola",
-        "caption": "Daily brand touchpoint at every table — cutlery + menu holder"
+        "caption": "Daily brand touchpoint at every table — cutlery + menu holder",
+        "portrait": true
       },
       {
         "file": "02.jpg",
@@ -158,7 +167,8 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "file": "03.jpg",
         "displayType": "A-Board",
         "brand": "Coca-Cola",
-        "caption": "Street-level invitation, Cycladic island setting"
+        "caption": "Street-level invitation, Cycladic island setting",
+        "portrait": true
       },
       {
         "file": "04.jpg",
@@ -170,7 +180,8 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "file": "05.jpg",
         "displayType": "Menu Stand",
         "brand": "Coca-Cola",
-        "caption": "Branded menu lectern, Mykonos waterfront"
+        "caption": "Branded menu lectern, Mykonos waterfront",
+        "portrait": true
       },
       {
         "file": "06.jpg",
@@ -236,7 +247,8 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "file": "03.jpg",
         "displayType": "Floor Stands",
         "brand": "Oreo",
-        "caption": "Multi-format options — adapted to available space"
+        "caption": "Multi-format options — adapted to available space",
+        "portrait": true
       },
       {
         "file": "04.jpg",
@@ -264,7 +276,8 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "caption": "Secure, illuminated cabinet — premium in small format"
       },
       {
-        "file": "08.jpg"
+        "file": "08.jpg",
+        "portrait": true
       },
       {
         "file": "09.jpg"
@@ -279,7 +292,8 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "file": "12.jpg"
       },
       {
-        "file": "13.jpg"
+        "file": "13.jpg",
+        "portrait": true
       },
       {
         "file": "14.jpg"
@@ -291,10 +305,12 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "file": "16.jpg"
       },
       {
-        "file": "17.png"
+        "file": "17.png",
+        "portrait": true
       },
       {
-        "file": "18.jpg"
+        "file": "18.jpg",
+        "portrait": true
       }
     ]
   },
@@ -311,13 +327,15 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
         "file": "02.jpg",
         "displayType": "Seasonal Display",
         "brand": "Lacta",
-        "caption": "Valentine's themed — emotional connection through design"
+        "caption": "Valentine's themed — emotional connection through design",
+        "portrait": true
       },
       {
         "file": "03.jpg",
         "displayType": "In-Store Activation",
         "brand": "ION",
-        "caption": "Branded floor display with digital screen integration"
+        "caption": "Branded floor display with digital screen integration",
+        "portrait": true
       },
       {
         "file": "04.jpg",
