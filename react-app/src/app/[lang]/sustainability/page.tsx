@@ -106,10 +106,16 @@ export default async function SustainabilityPage({
           </div>
           <div className="certs-grid">
             {t.certs.items.map((c) => (
-              <div key={c.standard} className="cert">
+              <a
+                key={c.standard}
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cert"
+              >
                 <div className="standard">{c.standard}</div>
                 <div className="label">{c.label}</div>
-              </div>
+              </a>
             ))}
           </div>
         </div>

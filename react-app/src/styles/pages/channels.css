@@ -4,8 +4,10 @@
 .page-channels .page-hero .lede { font-size: 18px; line-height: 1.55; color: var(--fg-secondary); margin: 0; }
 .page-channels .page-hero .hero-carousel { width: 100%; }
 .page-channels .page-hero .hero-carousel-eyebrow { display: block; margin-bottom: 10px; font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
-.page-channels .page-hero .hero-carousel .ch-carousel-viewport { aspect-ratio: 16/10; border-radius: var(--radius-lg); background: var(--color-white); }
-.page-channels .page-hero .hero-carousel .ch-carousel-slide img { object-fit: contain; }
+/* Hero strip shows one channel cover at a time (single-up showcase). */
+.page-channels .page-hero .hero-carousel .ch-carousel { gap: 16px; }
+.page-channels .page-hero .hero-carousel .ch-slide { flex-basis: 100%; }
+.page-channels .page-hero .hero-carousel .ch-slide-media { aspect-ratio: 16/10; border-radius: var(--radius-lg); background: var(--color-white); }
 
 .page-channels .channels-grid-wrap { padding: 56px 0 96px; }
 .page-channels .channels-grid-wrap .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }

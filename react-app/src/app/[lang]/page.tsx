@@ -48,6 +48,12 @@ const CERT_ICONS = [
     <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" />
     <path d="M9.5 12l2 2 3.5-3.5" />
   </svg>,
+  <svg key="3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <circle cx="9.5" cy="7" r="4" />
+    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  </svg>,
 ];
 
 export async function generateMetadata({
@@ -258,13 +264,19 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
           <div className="certs-title">{t.sustain.certsTitle}</div>
           <div className="certs-row">
             {t.sustain.certsItems.map((c, i) => (
-              <div key={c.standard} className="cert">
+              <a
+                key={c.standard}
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cert"
+              >
                 <div className="cert-icon">{CERT_ICONS[i]}</div>
                 <div>
                   <div className="cert-std">{c.standard}</div>
                   <div className="cert-label">{c.label}</div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
           <div className="sustain-cta">

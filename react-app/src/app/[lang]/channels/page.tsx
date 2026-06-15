@@ -32,9 +32,10 @@ export default async function ChannelsPage({
   const t = dict.channels;
   const href = (p: string) => localizedHref(p, lang);
   const channels = (await getAllChannels()).filter((c) => c.inMenu);
-  const heroCarouselImages = channels
+  const heroCarouselPhotos = channels
     .map((c) => c.cover)
-    .filter((src): src is string => Boolean(src));
+    .filter((src): src is string => Boolean(src))
+    .map((src) => ({ src }));
 
   return (
     <div className="page-channels">
@@ -47,7 +48,7 @@ export default async function ChannelsPage({
             <div className="hero-carousel">
               <span className="hero-carousel-eyebrow">{t.carouselEyebrow}</span>
               <ChannelCarousel
-                images={heroCarouselImages}
+                photos={heroCarouselPhotos}
                 alt={t.gridHeading}
                 prevLabel={t.carouselPrev}
                 nextLabel={t.carouselNext}

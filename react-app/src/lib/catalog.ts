@@ -7,13 +7,24 @@ import {
   type CatalogDetails,
   type CatalogEntry,
 } from "./catalog-data";
+import { CHANNEL_GALLERIES } from "./channel-galleries";
 
 export { CHANNELS, PRODUCTS };
 export type { CatalogDetails, CatalogEntry };
 
+export type ResolvedPhoto = {
+  src: string;
+  displayType?: string;
+  brand?: string;
+  caption?: string;
+  hero?: boolean;
+};
+
 export type CatalogEntryWithImages = CatalogEntry & {
   images: string[];
+  photos: ResolvedPhoto[];
   cover: string | null;
+  tagline?: string;
 };
 
 const UPLOADS_ROOT = path.join(process.cwd(), "public", "uploads");
@@ -35,21 +46,51 @@ export async function getProduct(slug: string): Promise<CatalogEntryWithImages |
   const entry = PRODUCTS.find((p) => p.slug === slug);
   if (!entry) return null;
   const files = await listImages(path.join(UPLOADS_ROOT, "products", slug));
+  const photos: ResolvedPhoto[] = files.map((f) => ({
+    src: `/uploads/products/${slug}/${encodeURIComponent(f)}`,
+  }));
   return {
     ...entry,
-    images: files.map((f) => `/uploads/products/${slug}/${encodeURIComponent(f)}`),
-    cover: files[0] ? `/uploads/products/${slug}/${encodeURIComponent(files[0])}` : null,
+    photos,
+    images: photos.map((p) => p.src),
+    cover: photos[0]?.src ?? null,
   };
 }
 
 export async function getChannel(slug: string): Promise<CatalogEntryWithImages | null> {
   const entry = CHANNELS.find((c) => c.slug === slug);
   if (!entry) return null;
+
+  // Manifest-driven channels: explicit order, captions and a marked hero.
+  const gallery = CHANNEL_GALLERIES[slug];
+  if (gallery) {
+    const photos: ResolvedPhoto[] = gallery.photos.map((p) => ({
+      src: `/uploads/channels/${slug}/${encodeURIComponent(p.file)}`,
+      displayType: p.displayType,
+      brand: p.brand,
+      caption: p.caption,
+      hero: p.hero,
+    }));
+    const hero = photos.find((p) => p.hero) ?? photos[0];
+    return {
+      ...entry,
+      photos,
+      images: photos.map((p) => p.src),
+      cover: hero?.src ?? null,
+      tagline: gallery.tagline,
+    };
+  }
+
+  // Fallback: list the folder (channels without a curated manifest yet).
   const files = await listImages(path.join(UPLOADS_ROOT, "channels", slug));
+  const photos: ResolvedPhoto[] = files.map((f) => ({
+    src: `/uploads/channels/${slug}/${encodeURIComponent(f)}`,
+  }));
   return {
     ...entry,
-    images: files.map((f) => `/uploads/channels/${slug}/${encodeURIComponent(f)}`),
-    cover: files[0] ? `/uploads/channels/${slug}/${encodeURIComponent(files[0])}` : null,
+    photos,
+    images: photos.map((p) => p.src),
+    cover: photos[0]?.src ?? null,
   };
 }
 

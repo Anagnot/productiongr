@@ -408,15 +408,23 @@
       "certsItems": [
         {
           "standard": "ISO 9001:2015",
-          "label": "Quality Management"
+          "label": "Quality Management",
+          "href": "/certificates/iso-9001-14001-45001.pdf"
         },
         {
           "standard": "ISO 14001:2015",
-          "label": "Environmental"
+          "label": "Environmental",
+          "href": "/certificates/iso-9001-14001-45001.pdf"
         },
         {
           "standard": "ISO 45001:2018",
-          "label": "Health & Safety"
+          "label": "Health & Safety",
+          "href": "/certificates/iso-9001-14001-45001.pdf"
+        },
+        {
+          "standard": "ISO 26000:2010",
+          "label": "Social Responsibility",
+          "href": "/certificates/iso-26000-social-responsibility.pdf"
         }
       ]
     },
@@ -2550,15 +2558,23 @@
       "items": [
         {
           "label": "Quality Management",
-          "standard": "ISO 9001:2015"
+          "standard": "ISO 9001:2015",
+          "href": "/certificates/iso-9001-14001-45001.pdf"
         },
         {
           "label": "Environmental Management",
-          "standard": "ISO 14001:2015"
+          "standard": "ISO 14001:2015",
+          "href": "/certificates/iso-9001-14001-45001.pdf"
         },
         {
           "label": "Occupational Health & Safety",
-          "standard": "ISO 45001:2018"
+          "standard": "ISO 45001:2018",
+          "href": "/certificates/iso-9001-14001-45001.pdf"
+        },
+        {
+          "label": "Social Responsibility",
+          "standard": "ISO 26000:2010",
+          "href": "/certificates/iso-26000-social-responsibility.pdf"
         }
       ]
     },

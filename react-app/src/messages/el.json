@@ -408,15 +408,23 @@
       "certsItems": [
         {
           "standard": "ISO 9001:2015",
-          "label": "Διαχείριση Ποιότητας"
+          "label": "Διαχείριση Ποιότητας",
+          "href": "/certificates/iso-9001-14001-45001.pdf"
         },
         {
           "standard": "ISO 14001:2015",
-          "label": "Περιβάλλον"
+          "label": "Περιβάλλον",
+          "href": "/certificates/iso-9001-14001-45001.pdf"
         },
         {
           "standard": "ISO 45001:2018",
-          "label": "Υγεία & Ασφάλεια"
+          "label": "Υγεία & Ασφάλεια",
+          "href": "/certificates/iso-9001-14001-45001.pdf"
+        },
+        {
+          "standard": "ISO 26000:2010",
+          "label": "Κοινωνική Ευθύνη",
+          "href": "/certificates/iso-26000-social-responsibility.pdf"
         }
       ]
     },
@@ -2550,15 +2558,23 @@
       "items": [
         {
           "label": "Διαχείριση Ποιότητας",
-          "standard": "ISO 9001:2015"
+          "standard": "ISO 9001:2015",
+          "href": "/certificates/iso-9001-14001-45001.pdf"
         },
         {
           "label": "Περιβαλλοντική Διαχείριση",
-          "standard": "ISO 14001:2015"
+          "standard": "ISO 14001:2015",
+          "href": "/certificates/iso-9001-14001-45001.pdf"
         },
         {
           "label": "Υγεία & Ασφάλεια στην Εργασία",
-          "standard": "ISO 45001:2018"
+          "standard": "ISO 45001:2018",
+          "href": "/certificates/iso-9001-14001-45001.pdf"
+        },
+        {
+          "label": "Εταιρική Κοινωνική Ευθύνη",
+          "standard": "ISO 26000:2010",
+          "href": "/certificates/iso-26000-social-responsibility.pdf"
         }
       ]
     },

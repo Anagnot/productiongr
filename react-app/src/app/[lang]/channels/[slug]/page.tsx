@@ -53,7 +53,14 @@ export default async function ChannelDetailPage({
 
   return (
     <div className="page-channel-detail">
-      <section className="page-hero detail-hero">
+      <section
+        className={`page-hero detail-hero${channel.cover ? " has-banner" : ""}`}
+        style={
+          channel.cover
+            ? { backgroundImage: `url(${channel.cover})` }
+            : undefined
+        }
+      >
         <div className="container">
           <nav className="crumbs">
             <Link href={href("/channels")}>{t.crumbBack}</Link>
@@ -62,6 +69,7 @@ export default async function ChannelDetailPage({
           </nav>
           <div className="hero-stack">
             <h1>{channel.name[lang]}</h1>
+            {channel.tagline && <p className="tagline">{channel.tagline}</p>}
             <p className="lede">{channel.blurb[lang]}</p>
           </div>
         </div>
@@ -108,7 +116,7 @@ export default async function ChannelDetailPage({
               </h5>
             </div>
             <ChannelCarousel
-              images={channel.images}
+              photos={channel.photos}
               alt={channel.name[lang]}
               prevLabel={t.carouselPrev}
               nextLabel={t.carouselNext}
