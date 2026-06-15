@@ -90,8 +90,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <div className="container">
           <div>
             <h1>
-              {t.hero.heading1}
-              <br />
+              {t.hero.heading1}{" "}
               {t.hero.heading2}
             </h1>
             <p className="lede">{t.hero.lede}</p>
