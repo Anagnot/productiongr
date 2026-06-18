@@ -199,6 +199,19 @@ export function ChannelCarousel({
                 aria-roledescription="slide"
                 aria-label={`${i + 1} / ${total}`}
               >
+                {hasCap && (
+                  <figcaption className="ch-slide-cap">
+                    {(p.displayType || p.brand) && (
+                      <div className="ch-slide-head">
+                        {p.displayType && (
+                          <span className="ch-slide-type">{p.displayType}</span>
+                        )}
+                        {p.brand && <span className="ch-slide-brand">{p.brand}</span>}
+                      </div>
+                    )}
+                    {p.caption && <p className="ch-slide-text">{p.caption}</p>}
+                  </figcaption>
+                )}
                 <button
                   type="button"
                   className="ch-slide-trigger"
@@ -220,19 +233,6 @@ export function ChannelCarousel({
                     />
                   </div>
                 </button>
-                {hasCap && (
-                  <figcaption className="ch-slide-cap">
-                    {(p.displayType || p.brand) && (
-                      <div className="ch-slide-head">
-                        {p.displayType && (
-                          <span className="ch-slide-type">{p.displayType}</span>
-                        )}
-                        {p.brand && <span className="ch-slide-brand">{p.brand}</span>}
-                      </div>
-                    )}
-                    {p.caption && <p className="ch-slide-text">{p.caption}</p>}
-                  </figcaption>
-                )}
               </figure>
             );
           })}

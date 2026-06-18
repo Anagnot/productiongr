@@ -90,6 +90,7 @@ export function Header({ locale, nav }: Props) {
       children: [
         { href: "/about", label: nav.about },
         { href: "/how-we-work", label: nav.howWeWork },
+        { href: "/sustainability", label: nav.sustainability },
       ],
     },
     { href: "/contact", label: nav.contact },

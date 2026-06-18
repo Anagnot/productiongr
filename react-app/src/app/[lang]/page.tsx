@@ -12,7 +12,7 @@ const HERO_SLIDES = [
   "/uploads/products/displays/C_01.jpg",
   "/uploads/products/shelves/MMarket_02.jpg",
   "/uploads/products/counter-stands/A1.jpg",
-  "/uploads/products/floor-stands/C03.png",
+  "/uploads/products/floor-stands/C01.jpg",
   "/uploads/products/pallet-stands/3.jpg",
 ];
 
@@ -90,11 +90,16 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <div className="container">
           <div>
             <h1>
-              {`${t.hero.heading1} ${t.hero.heading2}`
-                .split(" ")
-                .map((word, i) => (
-                  <span key={i}>{word}</span>
-                ))}
+              {lang === "el" ? (
+                <>
+                  <span>{t.hero.heading1}</span>
+                  <span>{t.hero.heading2}</span>
+                </>
+              ) : (
+                `${t.hero.heading1} ${t.hero.heading2}`
+                  .split(" ")
+                  .map((word, i) => <span key={i}>{word}</span>)
+              )}
             </h1>
             <p className="lede">{t.hero.lede}</p>
             <div className="actions">

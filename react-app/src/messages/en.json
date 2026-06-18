@@ -1845,7 +1845,9 @@
     "map": {
       "pinLabel": "Production LTD · Acharnes",
       "corner1": "38°05′N · 23°44′E",
-      "corner2": "Map · Acharnes, Attica"
+      "corner2": "Map · Acharnes, Attica",
+      "open": "Open in Maps ↗",
+      "directions": "Get directions →"
     },
     "ctaTitlePre": "Ready for the next step?",
     "ctaTitleEm": "Strategic briefing.",

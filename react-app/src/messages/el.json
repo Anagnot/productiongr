@@ -1845,7 +1845,9 @@
     "map": {
       "pinLabel": "Production LTD · Αχαρνές",
       "corner1": "38°05′N · 23°44′E",
-      "corner2": "Map · Αχαρνές, Αττική"
+      "corner2": "Map · Αχαρνές, Αττική",
+      "open": "Άνοιγμα στον χάρτη ↗",
+      "directions": "Οδηγίες πρόσβασης →"
     },
     "ctaTitlePre": "Έτοιμοι για το επόμενο βήμα;",
     "ctaTitleEm": "Strategic briefing.",

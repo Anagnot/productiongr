@@ -75,6 +75,7 @@ export function Footer({ locale, t }: Props) {
           <Link href={href("/about")}>{t.company.about}</Link>
           <Link href={href("/channels")}>{t.company.channels}</Link>
           <Link href={href("/how-we-work")}>{t.company.howWeWork}</Link>
+          <Link href={href("/sustainability")}>{t.company.sustainability}</Link>
           <Link href={href("/contact")}>{t.company.contact}</Link>
           <Link href={href("/quote")}>{t.company.briefing}</Link>
         </div>

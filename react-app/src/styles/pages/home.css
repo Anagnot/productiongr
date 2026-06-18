@@ -36,17 +36,16 @@
 .page-home .channels .section-head h2 em { font-style: italic; font-weight: 300; color: var(--color-orange); }
 .page-home .channels .ch-lede { color: rgba(255,255,255,0.6); font-size: 16px; line-height: 1.5; max-width: 600px; margin: 0 0 34px; }
 .page-home .channels-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.page-home .channels-grid .ch { position: relative; min-height: 210px; padding: 22px; border: 1px solid transparent; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 6px; text-align: left; cursor: pointer; text-decoration: none; background-color: #2a2a2a; background-size: cover; background-position: center; background-repeat: no-repeat; isolation: isolate; overflow: hidden; transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease); }
+.page-home .channels-grid .ch { position: relative; min-height: 210px; padding: 22px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 6px; text-align: left; cursor: pointer; text-decoration: none; background-color: #2a2a2a; background-size: cover; background-position: center; background-repeat: no-repeat; isolation: isolate; overflow: hidden; transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease); }
 .page-home .channels-grid .ch::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.55); z-index: -1; transition: background var(--duration) var(--ease); }
-/* Subtle hairline keeps cards defined against the dark section. Uniform on all edges — no vignette. Excludes the dashed CTA card. */
-.page-home .channels-grid .ch:not(.ch-cta)::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius-lg); box-shadow: inset 0 0 0 1px rgba(0,0,0,0.55); z-index: -1; pointer-events: none; }
+/* No border on the image cards — the border is kept only on the dashed "Your Channel" CTA card (.ch-cta below). */
 .page-home .channels-grid .ch:hover { transform: translateY(-3px); }
 .page-home .channels-grid .ch:hover::before { background: rgba(0,0,0,0.42); }
 .page-home .channels-grid .ch .name { margin-top: auto; font-weight: 700; font-size: 16px; line-height: 1.2; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.4); }
 .page-home .channels-grid .ch .en { font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,0.65); letter-spacing: 0.06em; text-transform: uppercase; }
 .page-home .channels-grid .ch .ch-arrow { position: absolute; top: 18px; right: 18px; color: rgba(255,255,255,0.7); font-size: 15px; }
 .page-home .channels-grid .ch .new-badge { position: absolute; top: 16px; left: 16px; background: var(--color-orange); color: #fff; font-family: var(--font-mono); font-weight: 700; font-size: 9px; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 4px; }
-.page-home .channels-grid .ch.ch-cta { background-color: transparent; border-style: dashed; border-color: rgba(255,255,255,0.28); }
+.page-home .channels-grid .ch.ch-cta { background-color: transparent; border: 1px dashed rgba(255,255,255,0.28); }
 .page-home .channels-grid .ch.ch-cta::before { background: none; }
 .page-home .channels-grid .ch.ch-cta .name { color: rgba(255,255,255,0.85); }
 .page-home .channels-grid .ch.ch-cta .en { color: rgba(255,255,255,0.45); }
@@ -101,11 +100,14 @@
 .page-home .reasons-more .text-link { font-family: var(--font-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-orange); text-decoration: none; }
 .page-home .reasons-more .text-link:hover { text-decoration: underline; }
 
-/* 4-stage process */
-.page-home .process { background: var(--color-gray-1); color: var(--fg-primary); padding: 96px 0; position: relative; overflow: hidden; }
+/* 4-stage process — dark band (white cards float on top), distinct from the light .sustain section that follows */
+.page-home .process { background: var(--color-gray-4); color: #fff; padding: 96px 0; position: relative; overflow: hidden; }
+.page-home .process::before { content: ''; position: absolute; left: -140px; top: -140px; width: 420px; height: 420px; border-radius: 50%; background: var(--color-orange); opacity: 0.16; filter: blur(70px); pointer-events: none; z-index: 0; }
 .page-home .process .container { position: relative; z-index: 2; }
 .page-home .process .section-head { margin-bottom: 40px; }
-.page-home .process .section-head h2 { color: var(--fg-primary); }
+.page-home .process .section-head .eyebrow.bar { color: rgba(255,255,255,0.55); }
+.page-home .process .section-head .eyebrow.bar::before { background: rgba(255,255,255,0.4); }
+.page-home .process .section-head h2 { color: #fff; }
 .page-home .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 16px; }
 .page-home .process-step { background: var(--color-white); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 32px 24px 28px; position: relative; min-height: 260px; }
 .page-home .process-step .p-num { font-family: var(--font-sans); font-weight: 800; font-size: 46px; line-height: 1; letter-spacing: -0.02em; color: rgba(230,92,0,0.5); margin-bottom: 14px; }
@@ -141,8 +143,8 @@
 .page-home .stats .stat .num { font-size: 48px; white-space: nowrap; }
 
 /* About snippet — materials pills + text link (folds in the old Materials section) */
-.page-home .about-strip .materials-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 20px; }
-.page-home .about-strip .materials-pills .pill { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 14px; border: 1px solid var(--border-default); border-radius: var(--radius-pill); color: var(--fg-secondary); }
+.page-home .about-strip .materials-pills { display: flex; flex-wrap: nowrap; gap: 6px; margin: 24px 0 20px; }
+.page-home .about-strip .materials-pills .pill { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; padding: 7px 10px; border: 1px solid var(--border-default); border-radius: var(--radius-pill); color: var(--fg-secondary); }
 .page-home .about-strip .text-link { display: inline-flex; align-items: center; font-family: var(--font-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-orange); text-decoration: none; }
 .page-home .about-strip .text-link:hover { text-decoration: underline; }
 

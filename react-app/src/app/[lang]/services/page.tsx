@@ -34,16 +34,6 @@ const PRODUCT_GROUPS: Record<string, string[]> = {
   "gondola-pallet": ["pallet-stands", "shelves"],
   "wall-shelves": ["wall-units"],
 };
-const CHANNEL_CHIP_SLUGS = [
-  "super-market",
-  "retail-beauty",
-  "pharma",
-  "horeca",
-  "kiosk",
-  "exhibitions",
-  "events",
-];
-
 export default async function ServicesPage({
   params,
   searchParams,
@@ -86,49 +76,6 @@ export default async function ServicesPage({
           </div>
         </div>
       </section>
-
-      <div className="ia-bar">
-        <div className="container">
-          <div className="group">
-            <h6>{t.iaBar.typeTitle}</h6>
-            <span className="chip active">{t.iaBar.all}</span>
-            {t.iaBar.typeChips.map((c) => (
-              <span key={c} className="chip">
-                {c}
-              </span>
-            ))}
-          </div>
-          <div className="group">
-            <h6>{t.iaBar.materialTitle}</h6>
-            {t.iaBar.materialChips.map((c) => (
-              <span key={c} className="chip">
-                {c}
-              </span>
-            ))}
-          </div>
-          <div className="group">
-            <h6>{t.iaBar.channelTitle}</h6>
-            <Link
-              href={href("/services")}
-              className={!channelFilter && !groupFilter ? "chip active" : "chip"}
-            >
-              {t.iaBar.all}
-            </Link>
-            {t.iaBar.channelChips.map((c, i) => {
-              const slug = CHANNEL_CHIP_SLUGS[i];
-              return (
-                <Link
-                  key={c}
-                  href={href(`/services?channel=${slug}`)}
-                  className={channelFilter === slug ? "chip active" : "chip"}
-                >
-                  {c}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </div>
 
       <section className="products">
         <div className="container">
@@ -176,23 +123,9 @@ export default async function ServicesPage({
                   </div>
                   <h3>{p.name[lang]}</h3>
                   <p>{p.blurb[lang]}</p>
-                  {p.materials && p.materials.length > 0 && (
-                    <div className="materials">
-                      {p.materials.map((m) => (
-                        <span key={m} className="tag-pill">
-                          {t.materialLabels[m]}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </Link>
             ))}
-          </div>
-          <div className="all-build">
-            <Link href={href("/services")} className="link-arrow">
-              {t.allBuildTypes}
-            </Link>
           </div>
         </div>
       </section>

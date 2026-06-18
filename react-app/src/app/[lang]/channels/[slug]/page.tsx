@@ -109,12 +109,6 @@ export default async function ChannelDetailPage({
       {channel.images.length > 0 ? (
         <section className="gallery">
           <div className="container">
-            <div className="head">
-              <h5>
-                {t.galleryHeading} ·{" "}
-                {channel.images.length.toString().padStart(2, "0")}
-              </h5>
-            </div>
             <ChannelCarousel
               photos={channel.photos}
               alt={channel.name[lang]}
