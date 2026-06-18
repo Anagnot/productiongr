@@ -90,8 +90,11 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <div className="container">
           <div>
             <h1>
-              {t.hero.heading1}{" "}
-              {t.hero.heading2}
+              {`${t.hero.heading1} ${t.hero.heading2}`
+                .split(" ")
+                .map((word, i) => (
+                  <span key={i}>{word}</span>
+                ))}
             </h1>
             <p className="lede">{t.hero.lede}</p>
             <div className="actions">
@@ -279,10 +282,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
             ))}
           </div>
           <div className="sustain-cta">
-            <Link href={href("/sustainability")} className="cta primary">
-              {t.sustain.ctaFactsheet}
-            </Link>
-            <Link href={href("/quote")} className="text-link">
+            <Link href={href("/quote")} className="cta primary">
               {t.sustain.ctaProject}
             </Link>
           </div>
