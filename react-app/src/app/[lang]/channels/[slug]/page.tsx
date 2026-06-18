@@ -120,6 +120,10 @@ export default async function ChannelDetailPage({
               alt={channel.name[lang]}
               prevLabel={t.carouselPrev}
               nextLabel={t.carouselNext}
+              pauseLabel={t.carouselPause}
+              playLabel={t.carouselPlay}
+              openLabel={t.lightboxOpen}
+              closeLabel={t.lightboxClose}
             />
           </div>
         </section>

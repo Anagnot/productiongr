@@ -2353,6 +2353,10 @@
     "carouselEyebrow": "on the spot",
     "carouselPrev": "Προηγούμενη εικόνα",
     "carouselNext": "Επόμενη εικόνα",
+    "carouselPause": "Παύση αυτόματης εναλλαγής",
+    "carouselPlay": "Αυτόματη εναλλαγή",
+    "lightboxOpen": "Άνοιγμα εικόνας",
+    "lightboxClose": "Κλείσιμο",
     "prevLabel": "Προηγούμενο",
     "nextLabel": "Επόμενο",
     "yourChannel": {

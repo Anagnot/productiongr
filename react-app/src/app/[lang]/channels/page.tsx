@@ -52,6 +52,10 @@ export default async function ChannelsPage({
                 alt={t.gridHeading}
                 prevLabel={t.carouselPrev}
                 nextLabel={t.carouselNext}
+                pauseLabel={t.carouselPause}
+                playLabel={t.carouselPlay}
+                openLabel={t.lightboxOpen}
+                closeLabel={t.lightboxClose}
               />
             </div>
           </div>

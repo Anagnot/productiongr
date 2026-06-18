@@ -8,6 +8,8 @@
 .page-channels .page-hero .hero-carousel .ch-carousel { gap: 16px; }
 .page-channels .page-hero .hero-carousel .ch-slide { flex-basis: 100%; }
 .page-channels .page-hero .hero-carousel .ch-slide-media { aspect-ratio: 16/10; border-radius: var(--radius-lg); background: var(--color-white); }
+/* Keep the controls overlay aligned to the taller hero media box. */
+.page-channels .page-hero .hero-carousel .ch-carousel-overlay { aspect-ratio: 16/10; }
 
 .page-channels .channels-grid-wrap { padding: 56px 0 96px; }
 .page-channels .channels-grid-wrap .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }

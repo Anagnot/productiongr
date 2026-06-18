@@ -2353,6 +2353,10 @@
     "carouselEyebrow": "on the spot",
     "carouselPrev": "Previous image",
     "carouselNext": "Next image",
+    "carouselPause": "Pause autoplay",
+    "carouselPlay": "Play autoplay",
+    "lightboxOpen": "Open image",
+    "lightboxClose": "Close",
     "prevLabel": "Previous",
     "nextLabel": "Next",
     "yourChannel": {
