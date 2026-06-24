@@ -522,10 +522,6 @@ body.no-scroll { overflow: hidden; }
   /* ABOUT-STRIP (home) */
   .about-strip .container { grid-template-columns: 1fr !important; gap: 40px !important; }
   .about-strip .visual { max-width: 480px; margin: 0 auto; aspect-ratio: 4/5; }
-
-  /* SPECIAL-FEAT (services) */
-  .special-feat .container { grid-template-columns: 1fr !important; gap: 40px !important; }
-  .special-feat .visual { max-width: 480px; margin: 0 auto; }
 }
 
 /* ============================================================
@@ -662,11 +658,6 @@ body.no-scroll { overflow: hidden; }
 
   /* SERVICES cap grid */
   .cap-grid { grid-template-columns: 1fr !important; }
-
-  /* SERVICES special feat */
-  .special-feat { padding: 56px 0; }
-  .special-feat h2 { font-size: 36px !important; }
-  .special-feat .pull { font-size: 18px !important; padding: 16px 0 !important; margin: 18px 0 !important; }
 
   /* ABOUT — story */
   .story .container { grid-template-columns: 1fr !important; gap: 24px !important; }
@@ -997,9 +988,7 @@ body.no-scroll { overflow: hidden; }
   .hero .ornament-para,
   .page-hero .ornament-c,
   .page-hero .ornament-p,
-  .process .ornament,
-  .special-feat .ornament,
-  .special-feat .ornament2 { opacity: 0.5; }
+  .process .ornament { opacity: 0.5; }
 }
 
 @media (max-width: 480px) {

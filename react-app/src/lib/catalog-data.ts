@@ -77,6 +77,16 @@ export const PRODUCTS: CatalogEntry[] = [
     channels: ["exhibitions", "events", "super-market"],
   },
   {
+    slug: "promo-materials",
+    name: { el: "Promo Materials", en: "Promo Materials" },
+    blurb: {
+      el: "Promostands, totems, portable setups και φωτιζόμενες κατασκευές για in-store campaigns, sampling και brand activations.",
+      en: "Promostands, totems, portable setups and illuminated builds for in-store campaigns, sampling and brand activations.",
+    },
+    materials: ["paper", "metal", "plastic", "plexi"],
+    channels: ["events", "exhibitions", "super-market", "retail-beauty"],
+  },
+  {
     slug: "shelves",
     name: { el: "Shelves", en: "Shelves" },
     blurb: {
@@ -95,6 +105,16 @@ export const PRODUCTS: CatalogEntry[] = [
     },
     materials: ["metal", "wood", "plexi", "premium"],
     channels: ["retail-beauty", "pharma", "super-market"],
+  },
+  {
+    slug: "wall-unit-tet",
+    name: { el: "Wall Unit TET", en: "Wall Unit TET" },
+    blurb: {
+      el: "Premium επίτοιχα brand units με ενσωματωμένο φωτισμό — υψηλής αισθητικής κατασκευές για spirits, coffee και flagship brand corners.",
+      en: "Premium wall-mounted brand units with integrated lighting — high-end builds for spirits, coffee and flagship brand corners.",
+    },
+    materials: ["metal", "wood", "plexi", "premium"],
+    channels: ["retail-beauty", "horeca", "super-market"],
   },
 ];
 

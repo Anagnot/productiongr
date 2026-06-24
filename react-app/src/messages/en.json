@@ -27,7 +27,6 @@
     "chExhibitions": "Exhibitions",
     "chEvents": "Events & Activations",
     "chYourChannel": "Your Channel",
-    "prodSpecialProjects": "Special Projects",
     "prodFloorCounter": "Floor & Counter Stands",
     "prodDisplaySystems": "Display Systems",
     "prodGondolaPallet": "Gondola & Pallet",
@@ -38,7 +37,6 @@
     "tagline": "Crafting Retail Conversion. Industrialized Craft in Acharnes, Greece, since 2008.",
     "catalog": {
       "title": "Catalog",
-      "specialProjects": "Special Projects",
       "floorCounter": "Floor & Counter Stands",
       "displaySystems": "Display Systems",
       "gondolaPallet": "Gondola & Pallet",
@@ -217,7 +215,7 @@
           "num": "01",
           "title": "Trust & Accountability",
           "p": "Family-run, vertically integrated. You always know who picks up the phone — and who's accountable.",
-          "v": "17 yrs",
+          "v": "18 yrs",
           "l": "Dimaras family"
         },
         {
@@ -262,7 +260,7 @@
           ]
         },
         {
-          "eyebrow": "Special Project · Diageo",
+          "eyebrow": "Branded Environment · Diageo",
           "h4": "Johnnie Walker House, Athens",
           "href": "/portfolio",
           "bg": "t2",
@@ -356,7 +354,7 @@
     },
     "stats": [
       {
-        "value": "<em>17</em>yrs",
+        "value": "<em>18</em>yrs",
         "label": "since 2008"
       },
       {
@@ -483,7 +481,7 @@
       "lede2": "From the craft of silk-screen printing in 2008, to a model factory designing conversion tools for Europe's leading brands.",
       "stats": [
         {
-          "v": "<em>17</em> yrs",
+          "v": "<em>18</em> yrs",
           "l": "since 2008"
         },
         {
@@ -609,7 +607,7 @@
     },
     "milestones": {
       "eyebrow": "Milestones",
-      "h2": "17 years — from silk-screen to a vertically integrated facility.",
+      "h2": "18 years — from silk-screen to a vertically integrated facility.",
       "metaLine1": "Strong investment",
       "metaLine2": "in precision technology",
       "items": [
@@ -698,30 +696,8 @@
     }
   },
   "services": {
-    "specialProjects": {
-      "cardEyebrow": "Premium",
-      "cardTitle": "Special Projects",
-      "cardDesc": "Tell us what you need; we'll engineer the solution and explain why.",
-      "metaTitle": "Special Projects",
-      "metaDescription": "Bespoke premium retail builds — 3+ materials, craft finishing, engineered from concept to installation.",
-      "hero": {
-        "h1Pre": "Special Projects — ",
-        "h1Em": "bespoke, premium, engineered."
-      },
-      "lede": "When a brief needs more than a catalogue build: multi-material constructions, flagship brand environments and one-off installations — engineered from concept to installation.",
-      "introHeading": "Where engineering meets craft",
-      "intro": "We don't ask 'what do you want us to build.' We ask 'what business result do you need' — and engineer backwards, combining 3+ materials, precision technologies and hand finishing.",
-      "highlightsHeading": "What sets them apart",
-      "highlights": [
-        "3+ materials per build — paper, metal, wood, plexi, premium",
-        "Precision technologies: digital printing, CNC, vacuum forming",
-        "Flagship brand environments & one-off installations",
-        "From concept to installation, entirely in-house"
-      ],
-      "cta": "Start a Special Project →"
-    },
     "metaTitle": "Products",
-    "metaDescription": "9 build types of display solutions & branded environments: Special Projects, Floor & Counter Stands, Display Systems, Gondola, Pallet, Wall Units, Shelf Trays and POS Accessories — in paper, metal, wood, plexi and mix.",
+    "metaDescription": "8 build types of display solutions & branded environments: Floor & Counter Stands, Display Systems, Gondola, Pallet, Wall Units, Shelf Trays and POS Accessories — in paper, metal, wood, plexi and mix.",
     "metaKeywords": [
       "POP displays",
       "floor stands",
@@ -731,19 +707,18 @@
       "pallet displays",
       "wall units",
       "shelf trays",
-      "POS accessories",
-      "Special Projects retail"
+      "POS accessories"
     ],
     "hero": {
       "h1Pre": "Build types —",
       "h1Mid": "one ",
       "h1Em": "production floor.",
-      "p1": "From bespoke Special Projects with 3+ materials, to volume production in thousands — from concept to installation. The whole taxonomy follows the client's logic:",
+      "p1": "From bespoke multi-material builds, to volume production in thousands — from concept to installation. The whole taxonomy follows the client's logic:",
       "p1Strong": "what you need → in which material → for which channel",
       "p1Post": ".",
       "stats": [
         {
-          "v": "9",
+          "v": "8",
           "l": "Product types"
         },
         {
@@ -762,7 +737,6 @@
       "channelTitle": "Channel",
       "all": "All",
       "typeChips": [
-        "Special Projects",
         "Floor",
         "Counter",
         "Display Systems",
@@ -794,21 +768,6 @@
       "premium": "Premium / Mix"
     },
     "allBuildTypes": "All build types →",
-    "specialFeat": {
-      "eyebrow": "00 · First category in the catalog",
-      "h2Line1": "Special Projects.",
-      "h2Em": "Strategic advisor.",
-      "p": "Bespoke solutions combining 3+ materials — for Key Accounts, flagship campaigns and installations that must function as conversion tools from day one.",
-      "tags": [
-        "Metal + Wood",
-        "Melamine + Plexi",
-        "Metal + Alu Cladding",
-        "Mix 3+ materials",
-        "Premium finish"
-      ],
-      "tagLine1": "where the brief",
-      "tagLine2": "becomes a brand"
-    },
     "products": {
       "eyebrow": "01 · Catalog",
       "h2": "The standard categories — and all their materials.",
@@ -876,8 +835,8 @@
     "matrix": {
       "eyebrow": "02 · Cross-reference",
       "h2": "Material × Product type matrix.",
-      "pPre": "Not every material fits every product. This grid shows the combinations we do best. For combinations not shown here, see",
-      "pStrong": "Special Projects",
+      "pPre": "Not every material fits every product. This grid shows the combinations we do best. For combinations not shown here,",
+      "pStrong": "talk to our team",
       "pPost": ".",
       "th": [
         "Product type",
@@ -985,7 +944,7 @@
         },
         {
           "cls": "dot weak",
-          "label": "On request / Special"
+          "label": "On request"
         },
         {
           "cls": "dot no",
@@ -1188,7 +1147,7 @@
         "en": "PMMA · Acrylic · Premium",
         "phTag": "Photo · Plexiglass premium floor display, laser-cut, LED-edge",
         "phCaption": "the Wow Factor — laser cut, LED edge, premium translucency",
-        "p": "Transparency, laser cut, light diffusion — the sacred material for the \"Wow Factor.\" Premium retail, cosmetics flagship, and Special Projects.",
+        "p": "Transparency, laser cut, light diffusion — the sacred material for the \"Wow Factor.\" Premium retail and cosmetics flagship.",
         "tags": [
           "Premium · Wow Factor",
           "Laser cut",
@@ -1210,7 +1169,7 @@
           },
           {
             "k": "Combo",
-            "v": "With Metal/MDF = Special"
+            "v": "With Metal/MDF = Premium mix"
           }
         ]
       }
@@ -1358,7 +1317,7 @@
     "hero": {
       "h1Pre": "Conversion tools",
       "h1Em": "on the shelf.",
-      "lede": "Selected work — display solutions & branded environments, special projects, gondola, pallet, wall units. Filter by type, material or channel. All delivered OTIF."
+      "lede": "Selected work — display solutions & branded environments, gondola, pallet, wall units. Filter by type, material or channel. All delivered OTIF."
     },
     "filters": {
       "typeTitle": "Type",
@@ -1368,10 +1327,6 @@
         {
           "label": "All",
           "count": "· 24"
-        },
-        {
-          "label": "Special",
-          "count": "· 5"
         },
         {
           "label": "Floor",
@@ -1868,7 +1823,6 @@
       "projectType": "Project type",
       "projectTypePh": "Choose…",
       "projectOptions": [
-        "Special Project (Premium / Mix)",
         "Floor Stand",
         "Counter Stand",
         "Display System",
@@ -2007,7 +1961,7 @@
       {
         "code": "M06",
         "name": "Premium / Mixed materials",
-        "desc": "Special Projects — strategic advisor approach.",
+        "desc": "Premium mixed-material builds — strategic advisor approach.",
         "feat": true
       }
     ],
@@ -2049,7 +2003,6 @@
       "goalLabel": "Project goal",
       "productTypeLabel": "Product type",
       "productOptions": [
-        "Special Project (Mix)",
         "Floor Stand",
         "Counter Stand",
         "Display System",
@@ -2179,7 +2132,7 @@
       "industry": "FMCG",
       "email": "katerina@brandhellas.gr",
       "phone": "+30 210 555 0123",
-      "productType": "Special Project (Mix)",
+      "productType": "Floor Stand",
       "quantity": "200–500 units",
       "onShelfDate": "2026-09-15",
       "delivery": "Delivery to our warehouse",
@@ -2195,7 +2148,7 @@
       "h1Em": "v2 · brief-aligned",
       "ledePre": "Hi-fi static mocks for the new production.gr — version 2, aligned with brief v2.2.",
       "ledeStrong": "Crafting Retail Conversion",
-      "ledePost": "tagline, new taxonomy (9 product types · 6 materials · 7 channels), 5 Strategic Reasons, 4-stage process, Industrialized Craft positioning, Dimaras family, Acharnes.",
+      "ledePost": "tagline, new taxonomy (8 product types · 6 materials · 7 channels), 5 Strategic Reasons, 4-stage process, Industrialized Craft positioning, Dimaras family, Acharnes.",
       "summary": [
         {
           "v": "8",
@@ -2225,16 +2178,16 @@
           "badgeFeat": true,
           "num": "01 · Home",
           "h4": "Home",
-          "desc": "Crafting Retail Conversion hero, channels strip, Industrialized Craft excerpt, 9-type product grid, 5 strategic reasons, 4-stage process, materials, OTIF stats, eco-innovation.",
+          "desc": "Crafting Retail Conversion hero, channels strip, Industrialized Craft excerpt, 8-type product grid, 5 strategic reasons, 4-stage process, materials, OTIF stats, eco-innovation.",
           "path": "/"
         },
         {
           "href": "/services",
-          "badge": "9 types · 6 materials · 7 channels",
+          "badge": "8 types · 6 materials · 7 channels",
           "badgeFeat": false,
           "num": "02 · Products",
           "h4": "Product catalog",
-          "desc": "Special Projects flagship + 8 standard categories + Material × Product matrix + Capabilities.",
+          "desc": "8 standard categories + Material × Product matrix + Capabilities.",
           "path": "/products"
         },
         {
@@ -2299,8 +2252,8 @@
           "p": "Yiannis (Sales/Marketing), Vangelis (Operations/Production), Konstantinos (Operations). Map & address updated to Acharnes."
         },
         {
-          "h6": "New taxonomy · 9 × 6 × 7",
-          "p": "9 product types (Special Projects flagship) · 6 materials · 7 retail channels — with Material × Product matrix for cross-filtering."
+          "h6": "New taxonomy · 8 × 6 × 7",
+          "p": "8 product types · 6 materials · 7 retail channels — with Material × Product matrix for cross-filtering."
         },
         {
           "h6": "5 Strategic Reasons · 4-stage process",
@@ -2408,7 +2361,7 @@
           "num": "01",
           "title": "Trust & Accountability",
           "p": "Family-run since 2008, vertically integrated. You always know who picks up the phone — and who's accountable.",
-          "v": "17 yrs",
+          "v": "18 yrs",
           "l": "since 2008"
         },
         {
@@ -2508,7 +2461,7 @@
         {
           "brand": "Diageo",
           "brief": "Johnnie Walker House premium brand environment in Athens.",
-          "solution": "Bespoke special project — 3+ materials with craft finishing.",
+          "solution": "Bespoke branded environment — 3+ materials with craft finishing.",
           "result": "A permanent flagship brand space.",
           "href": "/portfolio"
         },

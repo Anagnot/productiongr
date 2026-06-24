@@ -63,15 +63,6 @@ export function ContactForm({ quoteHref, t }: Props) {
   return (
     <form className="quick-form" onSubmit={handleSubmit}>
       <div className="ornament"></div>
-      <div
-        className="eyebrow bar"
-        style={{
-          color: "rgba(255,255,255,0.6)",
-          marginBottom: 10,
-        }}
-      >
-        {t.eyebrow}
-      </div>
       <h2>{t.h2}</h2>
       <p className="sub">
         {t.subPre}{" "}

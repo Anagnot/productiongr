@@ -46,7 +46,6 @@ export default async function HowWeWorkPage({
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.reasons.eyebrow}</div>
               <h2>{t.reasons.h2}</h2>
             </div>
           </div>
@@ -71,12 +70,6 @@ export default async function HowWeWorkPage({
         <div className="container">
           <div className="section-head">
             <div>
-              <div
-                className="eyebrow bar"
-                style={{ color: "rgba(255,255,255,0.6)" }}
-              >
-                {t.process.eyebrow}
-              </div>
               <h2>{t.process.h2}</h2>
             </div>
           </div>
@@ -102,7 +95,6 @@ export default async function HowWeWorkPage({
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.caseStudies.eyebrow}</div>
               <h2>{t.caseStudies.h2}</h2>
             </div>
             <div className="meta">{t.caseStudies.lede}</div>

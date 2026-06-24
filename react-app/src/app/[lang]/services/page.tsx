@@ -32,7 +32,7 @@ const PRODUCT_GROUPS: Record<string, string[]> = {
   "floor-counter": ["floor-stands", "counter-stands"],
   "display-systems": ["displays"],
   "gondola-pallet": ["pallet-stands", "shelves"],
-  "wall-shelves": ["wall-units"],
+  "wall-shelves": ["wall-units", "wall-unit-tet"],
 };
 export default async function ServicesPage({
   params,
@@ -81,25 +81,10 @@ export default async function ServicesPage({
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.products.eyebrow}</div>
               <h2>{t.products.h2}</h2>
             </div>
           </div>
           <div className="product-grid">
-            <Link
-              href={href("/services/special-projects")}
-              className="product special"
-            >
-              <div className="product-visual photo special-visual">
-                <div className="ph-grid"></div>
-                <div className="circle"></div>
-              </div>
-              <div className="product-body">
-                <div className="num">{t.specialProjects.cardEyebrow}</div>
-                <h3>{t.specialProjects.cardTitle}</h3>
-                <p>{t.specialProjects.cardDesc}</p>
-              </div>
-            </Link>
             {products.map((p, i) => (
               <Link
                 href={href(`/services/${p.slug}`)}
@@ -130,44 +115,10 @@ export default async function ServicesPage({
         </div>
       </section>
 
-      <section className="special-feat">
-        <div className="ornament"></div>
-        <div className="ornament2"></div>
-        <div className="container">
-          <div>
-            <div className="eyebrow">{t.specialFeat.eyebrow}</div>
-            <h2>
-              {t.specialFeat.h2Line1}
-              <br />
-              <em>{t.specialFeat.h2Em}</em>
-            </h2>
-            <p>{t.specialFeat.p}</p>
-            <div className="tag-line">
-              {t.specialFeat.tags.map((tag) => (
-                <span key={tag} className="tag-pill">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="visual">
-            <div className="para"></div>
-            <div className="ph-grid"></div>
-            <div className="circle"></div>
-            <div className="tag">
-              {t.specialFeat.tagLine1}
-              <br />
-              {t.specialFeat.tagLine2}
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="matrix-band">
         <div className="container">
           <div className="head">
             <div>
-              <div className="eyebrow bar">{t.matrix.eyebrow}</div>
               <h2>{t.matrix.h2}</h2>
             </div>
             <p>
@@ -211,9 +162,6 @@ export default async function ServicesPage({
       <section className="cap-band">
         <div className="container">
           <div>
-            <div className="eyebrow bar" style={{ marginBottom: 14 }}>
-              {t.cap.eyebrow}
-            </div>
             <h2>{t.cap.h2}</h2>
             <p>{t.cap.p}</p>
             <Link href={href("/about")} className="cta primary">

@@ -69,7 +69,7 @@
 .page-home .about-strip .signature-line .sep { color: var(--fg-tertiary); }
 .page-home .about-strip .signature-line .name { color: var(--fg-primary); }
 
-/* Product catalog (services grid) — 9 types but featuring 5 + special */
+/* Product catalog (services grid) — 8 types, featuring 5 */
 .page-home .home-services-grid { grid-template-columns: 1.5fr 1fr 1fr; grid-auto-rows: 240px; gap: 12px; }
 .page-home .home-services-grid .service.feat-big { grid-row: span 2; min-height: 0; background: var(--color-gray-4); color: #fff; padding: 36px; }
 .page-home .home-services-grid .service.feat-big h3 { font-size: 36px; line-height: 1.05; }

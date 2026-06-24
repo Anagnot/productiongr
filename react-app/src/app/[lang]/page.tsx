@@ -8,14 +8,6 @@ import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 
-const HERO_SLIDES = [
-  "/uploads/products/displays/C_01.jpg",
-  "/uploads/products/shelves/MMarket_02.jpg",
-  "/uploads/products/counter-stands/A1.jpg",
-  "/uploads/products/floor-stands/C01.jpg",
-  "/uploads/products/pallet-stands/3.jpg",
-];
-
 const PROCESS_ICONS = [
   <svg key="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <circle cx="12" cy="12" r="9" />
@@ -80,11 +72,16 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const channelCoverBySlug = new Map(
     channels.map((c) => [c.slug, c.cover] as const),
   );
+  // Hero carousel = the first photo from each featured channel (in strip order).
+  const heroSlides = channels
+    .filter((c) => c.featured)
+    .map((c) => c.images[0])
+    .filter(Boolean);
 
   return (
     <div className="page-home">
       <section className="hero">
-        <HeroSlider images={HERO_SLIDES} intervalMs={3400} />
+        <HeroSlider images={heroSlides} intervalMs={3400} />
         <div className="ornament-para"></div>
         <div className="ornament-circle"></div>
         <div className="container">
@@ -131,7 +128,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.channels.eyebrow}</div>
               <h2>
                 {t.channels.heading} <em>{t.channels.headingEm}</em>
               </h2>
@@ -162,7 +158,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               <div className="en">{t.channels.yourSub}</div>
             </Link>
           </div>
-          <p className="ch-note">{t.channels.note}</p>
         </div>
       </section>
 
@@ -178,7 +173,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
             <div className="circle"></div>
           </div>
           <div>
-            <div className="eyebrow bar">{t.aboutStrip.eyebrow}</div>
             <h2>
               {t.aboutStrip.h2Pre}
               <br />
@@ -203,7 +197,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.reasons.eyebrow}</div>
               <h2>{t.reasons.h2}</h2>
             </div>
           </div>
@@ -231,7 +224,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.process.eyebrow}</div>
               <h2>{t.process.h2}</h2>
             </div>
           </div>
@@ -255,7 +247,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
 
       <section className="sustain">
         <div className="container">
-          <div className="eyebrow bar">{t.sustain.eyebrow}</div>
           <h2>{t.sustain.h2}</h2>
           <p className="sustain-lede">{t.sustain.p}</p>
           <div className="sustain-pillars">

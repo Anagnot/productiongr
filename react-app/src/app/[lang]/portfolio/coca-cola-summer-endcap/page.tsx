@@ -108,9 +108,6 @@ export default async function CocaColaSummerEndcapPage({
       <section className="specs-block">
         <div className="container">
           <div>
-            <div className="eyebrow bar" style={{ marginBottom: "14px" }}>
-              {t.specs.eyebrow}
-            </div>
             <h2>{t.specs.h2}</h2>
             <p>{t.specs.p}</p>
             <Link href={href("/services")} className="cta outline">
@@ -184,7 +181,6 @@ export default async function CocaColaSummerEndcapPage({
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.timeline.eyebrow}</div>
               <h2>{t.timeline.h2}</h2>
             </div>
             <div className="meta">
@@ -223,12 +219,6 @@ export default async function CocaColaSummerEndcapPage({
         <div className="container">
           <div className="head">
             <div>
-              <div
-                className="eyebrow bar"
-                style={{ color: "rgba(255,255,255,0.6)" }}
-              >
-                {t.results.eyebrow}
-              </div>
               <h2>
                 {t.results.h2Line1}
                 <br />

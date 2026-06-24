@@ -53,7 +53,6 @@ export default async function SustainabilityPage({
     <div className="page-sustainability">
       <section className="sustain">
         <div className="container">
-          <div className="eyebrow bar">{t.eyebrow}</div>
           <h1>{t.h2}</h1>
           <p className="sustain-lede">{t.p}</p>
           <div className="sustain-pillars">

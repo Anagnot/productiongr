@@ -27,7 +27,6 @@
     "chExhibitions": "Εκθέσεις",
     "chEvents": "Events & Activations",
     "chYourChannel": "Το Κανάλι σας",
-    "prodSpecialProjects": "Special Projects",
     "prodFloorCounter": "Floor & Counter Stands",
     "prodDisplaySystems": "Display Systems",
     "prodGondolaPallet": "Gondola & Pallet",
@@ -38,7 +37,6 @@
     "tagline": "Crafting Retail Conversion. Industrialized Craft στις Αχαρνές, από το 2008.",
     "catalog": {
       "title": "Catalog",
-      "specialProjects": "Special Projects",
       "floorCounter": "Floor & Counter Stands",
       "displaySystems": "Display Systems",
       "gondolaPallet": "Gondola & Pallet",
@@ -217,7 +215,7 @@
           "num": "01",
           "title": "Trust & Accountability",
           "p": "Οικογενειακή, καθετοποιημένη. Ξέρετε πάντα ποιος σηκώνει το τηλέφωνο — και ποιος λογοδοτεί.",
-          "v": "17 yrs",
+          "v": "18 yrs",
           "l": "Οικογένεια Δημαρά"
         },
         {
@@ -262,7 +260,7 @@
           ]
         },
         {
-          "eyebrow": "Special Project · Diageo",
+          "eyebrow": "Branded Environment · Diageo",
           "h4": "Johnnie Walker House, Athens",
           "href": "/portfolio",
           "bg": "t2",
@@ -356,7 +354,7 @@
     },
     "stats": [
       {
-        "value": "<em>17</em>yrs",
+        "value": "<em>18</em>yrs",
         "label": "από το 2008"
       },
       {
@@ -483,7 +481,7 @@
       "lede2": "Από την τέχνη της μεταξοτυπίας του 2008, σε ένα πρότυπο εργοστάσιο που σχεδιάζει conversion tools για τα κορυφαία brands της Ευρώπης.",
       "stats": [
         {
-          "v": "<em>17</em> yrs",
+          "v": "<em>18</em> yrs",
           "l": "από το 2008"
         },
         {
@@ -609,7 +607,7 @@
     },
     "milestones": {
       "eyebrow": "Milestones · Σταθμοί",
-      "h2": "17 χρόνια — από μεταξοτυπία σε καθετοποιημένη μονάδα.",
+      "h2": "18 χρόνια — από μεταξοτυπία σε καθετοποιημένη μονάδα.",
       "metaLine1": "Έντονη επένδυση",
       "metaLine2": "σε τεχνολογίες ακριβείας",
       "items": [
@@ -698,30 +696,8 @@
     }
   },
   "services": {
-    "specialProjects": {
-      "cardEyebrow": "Premium",
-      "cardTitle": "Special Projects",
-      "cardDesc": "Πείτε μας τι χρειάζεστε· εμείς θα σχεδιάσουμε τη λύση και θα εξηγήσουμε γιατί.",
-      "metaTitle": "Special Projects",
-      "metaDescription": "Bespoke premium κατασκευές retail — 3+ υλικά, craft finishing, σχεδιασμένα από την ιδέα ως την εγκατάσταση.",
-      "hero": {
-        "h1Pre": "Special Projects — ",
-        "h1Em": "bespoke, premium, μηχανικά σχεδιασμένα."
-      },
-      "lede": "Όταν ένα brief χρειάζεται κάτι παραπάνω από κατασκευή καταλόγου: multi-material constructions, flagship brand environments και one-off installations — από την ιδέα ως την εγκατάσταση.",
-      "introHeading": "Εκεί που το engineering συναντά το craft",
-      "intro": "Δεν ρωτάμε «τι θέλετε να κατασκευάσουμε». Ρωτάμε «ποιο επιχειρηματικό αποτέλεσμα χρειάζεστε» — και σχεδιάζουμε ανάποδα, συνδυάζοντας 3+ υλικά, precision technologies και χειρωνακτικό finishing.",
-      "highlightsHeading": "Τι τα ξεχωρίζει",
-      "highlights": [
-        "3+ υλικά ανά κατασκευή — χαρτί, μέταλλο, ξύλο, plexi, premium",
-        "Precision technologies: ψηφιακή εκτύπωση, CNC, vacuum forming",
-        "Flagship brand environments & one-off installations",
-        "Από την ιδέα ως την εγκατάσταση, εξ ολοκλήρου in-house"
-      ],
-      "cta": "Ξεκινήστε ένα Special Project →"
-    },
     "metaTitle": "Προϊόντα",
-    "metaDescription": "9 τύποι κατασκευών — λύσεις προβολής & branded environments: Special Projects, Floor & Counter Stands, Display Systems, Gondola, Pallet, Wall Units, Shelf Trays και POS Accessories — από χαρτί, μέταλλο, ξύλο, plexi και mix.",
+    "metaDescription": "8 τύποι κατασκευών — λύσεις προβολής & branded environments: Floor & Counter Stands, Display Systems, Gondola, Pallet, Wall Units, Shelf Trays και POS Accessories — από χαρτί, μέταλλο, ξύλο, plexi και mix.",
     "metaKeywords": [
       "POP displays",
       "floor stands",
@@ -731,19 +707,18 @@
       "pallet displays",
       "wall units",
       "shelf trays",
-      "POS accessories",
-      "Special Projects retail"
+      "POS accessories"
     ],
     "hero": {
       "h1Pre": "Τύποι κατασκευών —",
       "h1Mid": "ένας ",
       "h1Em": "χώρος παραγωγής.",
-      "p1": "Από bespoke Special Projects με 3+ υλικά, μέχρι παραγωγή σε χιλιάδες μονάδες — από την ιδέα ως την εγκατάσταση. Όλη η ταξινόμηση ακολουθεί τη λογική του πελάτη:",
+      "p1": "Από bespoke multi-material κατασκευές, μέχρι παραγωγή σε χιλιάδες μονάδες — από την ιδέα ως την εγκατάσταση. Όλη η ταξινόμηση ακολουθεί τη λογική του πελάτη:",
       "p1Strong": "τι χρειάζεστε → σε ποιο υλικό → για ποιο κανάλι",
       "p1Post": ".",
       "stats": [
         {
-          "v": "9",
+          "v": "8",
           "l": "Product types"
         },
         {
@@ -762,7 +737,6 @@
       "channelTitle": "Κανάλι",
       "all": "Όλα",
       "typeChips": [
-        "Special Projects",
         "Floor",
         "Counter",
         "Display Systems",
@@ -794,21 +768,6 @@
       "premium": "Premium / Mix"
     },
     "allBuildTypes": "Όλοι οι τύποι κατασκευών →",
-    "specialFeat": {
-      "eyebrow": "00 · Πρώτη κατηγορία στον κατάλογο",
-      "h2Line1": "Special Projects.",
-      "h2Em": "Strategic advisor.",
-      "p": "Bespoke λύσεις με συνδυασμό 3+ υλικών — για Key Accounts, flagship campaigns και installations που πρέπει να λειτουργήσουν ως conversion tools από την πρώτη μέρα.",
-      "tags": [
-        "Metal + Wood",
-        "Melamine + Plexi",
-        "Metal + Alu Cladding",
-        "Mix 3+ υλικών",
-        "Premium φινίρισμα"
-      ],
-      "tagLine1": "where the brief",
-      "tagLine2": "becomes a brand"
-    },
     "products": {
       "eyebrow": "01 · Catalog",
       "h2": "Οι standard κατηγορίες — και όλα τα υλικά τους.",
@@ -876,8 +835,8 @@
     "matrix": {
       "eyebrow": "02 · Cross-reference",
       "h2": "Material × Product type matrix.",
-      "pPre": "Όχι κάθε υλικό ταιριάζει σε κάθε προϊόν. Αυτός ο πίνακας δείχνει σε ποιους συνδυασμούς δουλεύουμε καλύτερα. Για συνδυασμούς που δεν εμφανίζονται εδώ, βλέπε",
-      "pStrong": "Special Projects",
+      "pPre": "Όχι κάθε υλικό ταιριάζει σε κάθε προϊόν. Αυτός ο πίνακας δείχνει σε ποιους συνδυασμούς δουλεύουμε καλύτερα. Για συνδυασμούς που δεν εμφανίζονται εδώ,",
+      "pStrong": "μιλήστε με την ομάδα μας",
       "pPost": ".",
       "th": [
         "Product type",
@@ -985,7 +944,7 @@
         },
         {
           "cls": "dot weak",
-          "label": "On request / Special"
+          "label": "On request"
         },
         {
           "cls": "dot no",
@@ -1188,7 +1147,7 @@
         "en": "PMMA · Acrylic · Premium",
         "phTag": "Photo · Plexiglass premium floor display, laser-cut, LED-edge",
         "phCaption": "the Wow Factor — laser cut, LED edge, premium translucency",
-        "p": "Διαφάνεια, laser cut, διάχυση φωτός — το ιερό υλικό για το «Wow Factor». Premium retail, cosmetics flagship, και Special Projects.",
+        "p": "Διαφάνεια, laser cut, διάχυση φωτός — το ιερό υλικό για το «Wow Factor». Premium retail και cosmetics flagship.",
         "tags": [
           "Premium · Wow Factor",
           "Laser cut",
@@ -1210,7 +1169,7 @@
           },
           {
             "k": "Combo",
-            "v": "Με Metal/MDF = Special"
+            "v": "Με Metal/MDF = Premium mix"
           }
         ]
       }
@@ -1358,7 +1317,7 @@
     "hero": {
       "h1Pre": "Conversion tools",
       "h1Em": "στο ράφι.",
-      "lede": "Επιλεγμένα έργα — λύσεις προβολής & branded environments, special projects, gondola, pallet, wall units. Φιλτράρετε ανά τύπο, υλικό, ή κανάλι. Όλα παραδομένα OTIF."
+      "lede": "Επιλεγμένα έργα — λύσεις προβολής & branded environments, gondola, pallet, wall units. Φιλτράρετε ανά τύπο, υλικό, ή κανάλι. Όλα παραδομένα OTIF."
     },
     "filters": {
       "typeTitle": "Τύπος",
@@ -1368,10 +1327,6 @@
         {
           "label": "Όλα",
           "count": "· 24"
-        },
-        {
-          "label": "Special",
-          "count": "· 5"
         },
         {
           "label": "Floor",
@@ -1868,7 +1823,6 @@
       "projectType": "Είδος έργου",
       "projectTypePh": "Διαλέξτε…",
       "projectOptions": [
-        "Special Project (Premium / Mix)",
         "Floor Stand",
         "Counter Stand",
         "Display System",
@@ -2007,7 +1961,7 @@
       {
         "code": "M06",
         "name": "Premium / Mix υλικών",
-        "desc": "Special Projects — strategic advisor approach.",
+        "desc": "Premium mixed-material builds — strategic advisor approach.",
         "feat": true
       }
     ],
@@ -2049,7 +2003,6 @@
       "goalLabel": "Στόχος έργου (Project goal)",
       "productTypeLabel": "Τύπος προϊόντος",
       "productOptions": [
-        "Special Project (Mix)",
         "Floor Stand",
         "Counter Stand",
         "Display System",
@@ -2179,7 +2132,7 @@
       "industry": "FMCG",
       "email": "katerina@brandhellas.gr",
       "phone": "+30 210 555 0123",
-      "productType": "Special Project (Mix)",
+      "productType": "Floor Stand",
       "quantity": "200–500 units",
       "onShelfDate": "2026-09-15",
       "delivery": "Παράδοση στο warehouse μας",
@@ -2195,7 +2148,7 @@
       "h1Em": "v2 · brief-aligned",
       "ledePre": "Hi-fi static mocks για το νέο production.gr — version 2, ευθυγραμμισμένο με το brief v2.2.",
       "ledeStrong": "Crafting Retail Conversion",
-      "ledePost": "tagline, νέα taxonomy (9 product types · 6 materials · 7 channels), 5 Strategic Reasons, 4-stage process, Industrialized Craft positioning, οικογένεια Δημαρά, Αχαρνές.",
+      "ledePost": "tagline, νέα taxonomy (8 product types · 6 materials · 7 channels), 5 Strategic Reasons, 4-stage process, Industrialized Craft positioning, οικογένεια Δημαρά, Αχαρνές.",
       "summary": [
         {
           "v": "8",
@@ -2225,16 +2178,16 @@
           "badgeFeat": true,
           "num": "01 · Αρχική",
           "h4": "Home",
-          "desc": "Crafting Retail Conversion hero, channels strip, Industrialized Craft excerpt, 9-type product grid, 5 strategic reasons, 4-stage process, materials, OTIF stats, eco-innovation.",
+          "desc": "Crafting Retail Conversion hero, channels strip, Industrialized Craft excerpt, 8-type product grid, 5 strategic reasons, 4-stage process, materials, OTIF stats, eco-innovation.",
           "path": "/"
         },
         {
           "href": "/services",
-          "badge": "9 types · 6 materials · 7 channels",
+          "badge": "8 types · 6 materials · 7 channels",
           "badgeFeat": false,
           "num": "02 · Προϊόντα",
           "h4": "Product catalog",
-          "desc": "Special Projects flagship + 8 standard κατηγορίες + Material × Product matrix + Capabilities.",
+          "desc": "8 standard κατηγορίες + Material × Product matrix + Capabilities.",
           "path": "/products"
         },
         {
@@ -2299,8 +2252,8 @@
           "p": "Γιάννης (Sales/Marketing), Βαγγέλης (Operations/Production), Κωνσταντίνος (Operations). Map & address ενημερωμένα στις Αχαρνές."
         },
         {
-          "h6": "Νέα taxonomy · 9 × 6 × 7",
-          "p": "9 product types (Special Projects flagship) · 6 materials · 7 retail channels — με Material × Product matrix για cross-filtering."
+          "h6": "Νέα taxonomy · 8 × 6 × 7",
+          "p": "8 product types · 6 materials · 7 retail channels — με Material × Product matrix για cross-filtering."
         },
         {
           "h6": "5 Strategic Reasons · 4-stage process",
@@ -2408,7 +2361,7 @@
           "num": "01",
           "title": "Trust & Accountability",
           "p": "Οικογενειακή επιχείρηση από το 2008, καθετοποιημένη. Ξέρετε πάντα ποιος σηκώνει το τηλέφωνο — και ποιος λογοδοτεί.",
-          "v": "17 yrs",
+          "v": "18 yrs",
           "l": "από το 2008"
         },
         {
@@ -2508,7 +2461,7 @@
         {
           "brand": "Diageo",
           "brief": "Premium brand environment Johnnie Walker House, στην Αθήνα.",
-          "solution": "Bespoke special project — 3+ υλικά με craft finishing.",
+          "solution": "Bespoke branded environment — 3+ υλικά με craft finishing.",
           "result": "Ένας μόνιμος flagship brand χώρος.",
           "href": "/portfolio"
         },

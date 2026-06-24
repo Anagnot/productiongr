@@ -14,24 +14,6 @@
 .page-services .chip.active { background: var(--color-gray-4); border-color: var(--color-gray-4); color: #fff; }
 .page-services .ia-bar .count-pill { margin-left: auto; font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); }
 
-/* Special Projects feature */
-.page-services .special-feat { padding: 80px 0; background: var(--color-gray-4); color: #fff; position: relative; overflow: hidden; }
-.page-services .special-feat .ornament { position: absolute; right: -140px; top: -120px; width: 380px; height: 380px; border-radius: 50%; background: var(--color-orange); opacity: 0.18; filter: blur(60px); pointer-events: none; }
-.page-services .special-feat .ornament2 { position: absolute; left: 30%; bottom: -200px; width: 280px; height: 280px; border-radius: 50%; background: var(--color-orange); opacity: 0.12; filter: blur(70px); pointer-events: none; }
-.page-services .special-feat .container { position: relative; z-index: 2; display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
-.page-services .special-feat .eyebrow { color: rgba(255,255,255,0.55); font-family: var(--font-mono); font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
-.page-services .special-feat h2 { font-size: 56px; font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; margin: 16px 0 18px; color: #fff; }
-.page-services .special-feat h2 em { font-style: italic; font-weight: 300; color: rgba(255,255,255,0.85); font-size: 0.85em; }
-.page-services .special-feat p { font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.85); margin: 0 0 28px; max-width: 540px; }
-.page-services .special-feat .pull { font-family: var(--font-sans); font-weight: 300; font-style: italic; font-size: 26px; line-height: 1.3; color: #fff; margin: 28px 0; padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(255,255,255,0.15); max-width: 560px; }
-.page-services .special-feat .visual { aspect-ratio: 4/5; border-radius: var(--radius-lg); position: relative; overflow: hidden; background: var(--gradient-dark); }
-.page-services .special-feat .visual .ph-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 32px 32px; }
-.page-services .special-feat .visual .circle { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 60%; aspect-ratio: 1; border-radius: 50%; background: rgba(230, 92, 0, 0.16); filter: blur(2px); }
-.page-services .special-feat .visual .para { position: absolute; left: -30px; top: -30px; bottom: -30px; width: 100px; background: rgba(255,255,255,0.06); transform: skewX(-12deg); }
-.page-services .special-feat .visual .tag { position: absolute; right: 24px; bottom: 24px; font-family: var(--font-sans); font-weight: 700; font-style: italic; font-size: 18px; color: #fff; }
-.page-services .special-feat .tag-line { display: flex; flex-wrap: wrap; gap: 6px; }
-.page-services .special-feat .tag-line .tag-pill { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.9); }
-
 /* Products grid */
 .page-services .products { padding: 96px 0; background: var(--color-white); }
 .page-services .products .section-head { margin-bottom: 48px; }
@@ -95,14 +77,6 @@
 .page-services .product .product-visual.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform var(--duration) var(--ease); }
 .page-services .product:hover .product-visual.photo img { transform: scale(1.04); }
 .page-services .product .product-visual.photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 42%, rgba(0,0,0,0.5) 100%); pointer-events: none; }
-
-/* Premium Special Projects card (first in grid) */
-.page-services .product.special { background: var(--color-gray-4); color: #fff; }
-.page-services .product.special .product-body .num { color: var(--color-orange); }
-.page-services .product.special .product-body h3 { color: #fff; }
-.page-services .product.special .product-body p { color: rgba(255,255,255,0.78); }
-.page-services .product .product-visual.special-visual { background: linear-gradient(150deg, #2a2a2a 0%, #1f1f1f 55%, #E65C00 135%); }
-.page-services .product .product-visual.special-visual::after { content: none; }
 
 /* Functional filter chips + All build types link */
 .page-services .ia-bar a.chip { text-decoration: none; }

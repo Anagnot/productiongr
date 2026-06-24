@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChannelCarousel } from "@/components/ChannelCarousel";
 import { CTABlock } from "@/components/CTABlock";
 import { getAllChannels } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
@@ -32,33 +31,14 @@ export default async function ChannelsPage({
   const t = dict.channels;
   const href = (p: string) => localizedHref(p, lang);
   const channels = (await getAllChannels()).filter((c) => c.inMenu);
-  const heroCarouselPhotos = channels
-    .map((c) => c.cover)
-    .filter((src): src is string => Boolean(src))
-    .map((src) => ({ src }));
 
   return (
     <div className="page-channels">
       <section className="page-hero">
         <div className="container">
-          <div className="top-row">
-            <h1>
-              {t.hero.h1Pre} <em>{t.hero.h1Em}</em>
-            </h1>
-            <div className="hero-carousel">
-              <span className="hero-carousel-eyebrow">{t.carouselEyebrow}</span>
-              <ChannelCarousel
-                photos={heroCarouselPhotos}
-                alt={t.gridHeading}
-                prevLabel={t.carouselPrev}
-                nextLabel={t.carouselNext}
-                pauseLabel={t.carouselPause}
-                playLabel={t.carouselPlay}
-                openLabel={t.lightboxOpen}
-                closeLabel={t.lightboxClose}
-              />
-            </div>
-          </div>
+          <h1>
+            {t.hero.h1Pre} {t.hero.h1Em}
+          </h1>
         </div>
       </section>
 
