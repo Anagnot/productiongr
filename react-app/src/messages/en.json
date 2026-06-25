@@ -28,7 +28,6 @@
     "chEvents": "Events & Activations",
     "chYourChannel": "Your Channel",
     "prodFloorCounter": "Floor & Counter Stands",
-    "prodDisplaySystems": "Display Systems",
     "prodGondolaPallet": "Gondola & Pallet",
     "prodWallShelves": "Wall Units & Shelves",
     "prodGlorifiers": "Glorifiers",
@@ -41,7 +40,6 @@
     "catalog": {
       "title": "Catalog",
       "floorCounter": "Floor & Counter Stands",
-      "displaySystems": "Display Systems",
       "gondolaPallet": "Gondola & Pallet",
       "exhibitions": "Exhibitions & Events"
     },
@@ -696,12 +694,11 @@
   },
   "services": {
     "metaTitle": "Products",
-    "metaDescription": "8 build types of display solutions & branded environments: Floor & Counter Stands, Display Systems, Gondola, Pallet, Wall Units, Shelf Trays and POS Accessories — in paper, metal, wood, plexi and mix.",
+    "metaDescription": "7 build types of display solutions & branded environments: Floor & Counter Stands, Gondola, Pallet, Wall Units, Shelf Trays and POS Accessories — in paper, metal, wood, plexi and mix.",
     "metaKeywords": [
       "POP displays",
       "floor stands",
       "counter stands",
-      "display systems",
       "gondola",
       "pallet displays",
       "wall units",
@@ -717,7 +714,7 @@
       "p1Post": ".",
       "stats": [
         {
-          "v": "8",
+          "v": "7",
           "l": "Product types"
         },
         {
@@ -738,7 +735,6 @@
       "typeChips": [
         "Floor",
         "Counter",
-        "Display Systems",
         "+5"
       ],
       "materialChips": [
@@ -774,56 +770,49 @@
       "metaLine2": "cross-filtering by material & channel.",
       "items": [
         {
-          "num": "01 / 08 · Featured",
+          "num": "01 / 07 · Featured",
           "visual": "warm",
           "title": "Floor Stands",
           "en": "Freestanding floor units",
           "desc": "Aisle-end & freestanding units. Paper, Metal, Wood, Plastic, Plexiglass — from flat-pack seasonal to permanent industrial builds."
         },
         {
-          "num": "02 / 08",
+          "num": "02 / 07",
           "visual": "cool",
           "title": "Counter Stands",
           "en": "Counter-top units",
           "desc": "Compact displays at tills, windows, vitrines. Premium MDF & Plexi for cosmetics/pharmacy or mass-production volume for SM impulse."
         },
         {
-          "num": "03 / 08",
-          "visual": "gradient",
-          "title": "Display Systems",
-          "en": "Display systems",
-          "desc": "End-to-end modular systems — expandable, repeatable across store rollouts with consistent brand presence."
-        },
-        {
-          "num": "04 / 08",
+          "num": "03 / 07",
           "visual": "dark",
           "title": "Gondola & Shelving",
           "en": "Gondola Ends & Shelving",
           "desc": "Shelving systems and gondola ends — industrial durability for supermarkets, premium finish for cosmetics & pharmacy."
         },
         {
-          "num": "05 / 08",
+          "num": "04 / 07",
           "visual": "orange",
           "title": "Pallet & Half-Pallet",
           "en": "Pallet Displays",
           "desc": "Drop-and-shop units on Euro pallets — ideal for seasonal pushes and hypermarket campaigns with high visibility."
         },
         {
-          "num": "06 / 08",
+          "num": "05 / 07",
           "visual": "yellow",
           "title": "Wall Units",
           "en": "Wall-mounted systems",
           "desc": "Wall systems — premium MDF for pharmacy/beauty, or industrial metal for heavy-use environments."
         },
         {
-          "num": "07 / 08",
+          "num": "06 / 07",
           "visual": "cool",
           "title": "Shelf Trays & Vacuum",
           "en": "Trays & Vacuum-formed",
           "desc": "Vacuum-formed trays in PS and PETG. Lightweight & volume-friendly — ideal for supermarket shelf-organization."
         },
         {
-          "num": "08 / 08",
+          "num": "07 / 07",
           "visual": "warm",
           "title": "POS Accessories",
           "en": "Wobblers, Clips, Tents, Packaging",
@@ -867,17 +856,6 @@
             "yes",
             "yes",
             "weak"
-          ]
-        },
-        {
-          "name": "Display Systems",
-          "cells": [
-            "no",
-            "weak",
-            "yes",
-            "yes",
-            "yes",
-            "yes"
           ]
         },
         {

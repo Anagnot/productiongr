@@ -7,7 +7,6 @@ type FooterStrings = {
   catalog: {
     title: string;
     floorCounter: string;
-    displaySystems: string;
     gondolaPallet: string;
     exhibitions: string;
   };
@@ -64,7 +63,6 @@ export function Footer({ locale, t }: Props) {
         <div>
           <h6>{t.catalog.title}</h6>
           <Link href={href("/services")}>{t.catalog.floorCounter}</Link>
-          <Link href={href("/services")}>{t.catalog.displaySystems}</Link>
           <Link href={href("/services")}>{t.catalog.gondolaPallet}</Link>
           <Link href={href("/channels/exhibitions")}>{t.catalog.exhibitions}</Link>
         </div>

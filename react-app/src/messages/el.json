@@ -28,7 +28,6 @@
     "chEvents": "Events & Activations",
     "chYourChannel": "Το Κανάλι σας",
     "prodFloorCounter": "Floor & Counter Stands",
-    "prodDisplaySystems": "Display Systems",
     "prodGondolaPallet": "Gondola & Pallet",
     "prodWallShelves": "Wall Units & Shelves",
     "prodGlorifiers": "Glorifiers",
@@ -41,7 +40,6 @@
     "catalog": {
       "title": "Catalog",
       "floorCounter": "Floor & Counter Stands",
-      "displaySystems": "Display Systems",
       "gondolaPallet": "Gondola & Pallet",
       "exhibitions": "Εκθέσεις & Events"
     },
@@ -696,12 +694,11 @@
   },
   "services": {
     "metaTitle": "Προϊόντα",
-    "metaDescription": "8 τύποι κατασκευών — λύσεις προβολής & branded environments: Floor & Counter Stands, Display Systems, Gondola, Pallet, Wall Units, Shelf Trays και POS Accessories — από χαρτί, μέταλλο, ξύλο, plexi και mix.",
+    "metaDescription": "7 τύποι κατασκευών — λύσεις προβολής & branded environments: Floor & Counter Stands, Gondola, Pallet, Wall Units, Shelf Trays και POS Accessories — από χαρτί, μέταλλο, ξύλο, plexi και mix.",
     "metaKeywords": [
       "POP displays",
       "floor stands",
       "counter stands",
-      "display systems",
       "gondola",
       "pallet displays",
       "wall units",
@@ -717,7 +714,7 @@
       "p1Post": ".",
       "stats": [
         {
-          "v": "8",
+          "v": "7",
           "l": "Product types"
         },
         {
@@ -738,7 +735,6 @@
       "typeChips": [
         "Floor",
         "Counter",
-        "Display Systems",
         "+5"
       ],
       "materialChips": [
@@ -774,56 +770,49 @@
       "metaLine2": "cross-filtering ανά υλικό & κανάλι.",
       "items": [
         {
-          "num": "01 / 08 · Featured",
+          "num": "01 / 07 · Featured",
           "visual": "warm",
           "title": "Floor Stands",
           "en": "Σταντ Εδάφους",
           "desc": "Aisle-end & freestanding units. Χαρτί, Μέταλλο, Ξύλο, Πλαστικό, Plexiglass — από flat-pack seasonal σε μόνιμες βιομηχανικές κατασκευές."
         },
         {
-          "num": "02 / 08",
+          "num": "02 / 07",
           "visual": "cool",
           "title": "Counter Stands",
           "en": "Επιτραπέζια",
           "desc": "Compact displays σε ταμεία, βιτρίνες, vitrines. Premium MDF & Plexi για cosmetics/pharmacy ή mass-production volume για SM impulse."
         },
         {
-          "num": "03 / 08",
-          "visual": "gradient",
-          "title": "Display Systems",
-          "en": "Συστήματα Προβολής",
-          "desc": "Ολοκληρωμένα modular συστήματα — επεκτάσιμα, επαναλαμβανόμενα σε rollouts καταστημάτων με συνεπή brand presence."
-        },
-        {
-          "num": "04 / 08",
+          "num": "03 / 07",
           "visual": "dark",
           "title": "Gondola & Ράφια",
           "en": "Gondola Ends & Shelving",
           "desc": "Συστήματα ραφιών και gondola ends — βιομηχανική αντοχή για supermarkets, premium φινίρισμα για cosmetics & pharmacy."
         },
         {
-          "num": "05 / 08",
+          "num": "04 / 07",
           "visual": "orange",
           "title": "Pallet & Half-Pallet",
           "en": "Pallet Displays",
           "desc": "Drop-and-shop μονάδες πάνω σε Euro pallet — ιδανικά για seasonal pushes και hypermarket κάμπιγκν με υψηλή ορατότητα."
         },
         {
-          "num": "06 / 08",
+          "num": "05 / 07",
           "visual": "yellow",
           "title": "Wall Units",
           "en": "Επίτοιχα Συστήματα",
           "desc": "Συστήματα τοίχου — premium MDF για pharmacy/beauty, ή βιομηχανικό μέταλλο για heavy-use περιβάλλοντα."
         },
         {
-          "num": "07 / 08",
+          "num": "06 / 07",
           "visual": "cool",
           "title": "Shelf Trays & Vacuum",
           "en": "Σκαφάκια & Vacuum-formed",
           "desc": "Vacuum-formed σκαφάκια σε PS και PETG. Lightweight & volume-friendly — ιδανικά για supermarket shelf-organization."
         },
         {
-          "num": "08 / 08",
+          "num": "07 / 07",
           "visual": "warm",
           "title": "POS Accessories",
           "en": "Wobblers, Clips, Tents, Packaging",
@@ -867,17 +856,6 @@
             "yes",
             "yes",
             "weak"
-          ]
-        },
-        {
-          "name": "Display Systems",
-          "cells": [
-            "no",
-            "weak",
-            "yes",
-            "yes",
-            "yes",
-            "yes"
           ]
         },
         {

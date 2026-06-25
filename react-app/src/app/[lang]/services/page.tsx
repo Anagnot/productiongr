@@ -30,7 +30,6 @@ function dotClass(c: string) {
 
 const PRODUCT_GROUPS: Record<string, string[]> = {
   "floor-counter": ["floor-stands", "counter-stands"],
-  "display-systems": ["displays"],
   "glorifiers": ["glorifiers"],
   "gondola-pallet": ["pallet-stands", "shelves"],
   "wall-shelves": ["wall-units", "wall-unit-tet"],

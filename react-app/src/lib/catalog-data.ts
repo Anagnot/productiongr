@@ -37,16 +37,6 @@ export const PRODUCTS: CatalogEntry[] = [
     channels: ["retail-beauty", "pharma", "kiosk", "horeca", "super-market"],
   },
   {
-    slug: "displays",
-    name: { el: "Display Systems", en: "Display Systems" },
-    blurb: {
-      el: "Συστήματα προβολής για προϊοντική ανάδειξη — από bottle presenters έως πολυεπίπεδα retail concepts.",
-      en: "Product showcasing systems — from bottle presenters to multi-tier retail concepts.",
-    },
-    materials: ["plastic", "wood", "plexi", "premium"],
-    channels: ["retail-beauty", "pharma", "super-market", "exhibitions"],
-  },
-  {
     slug: "glorifiers",
     name: { el: "Glorifiers", en: "Glorifiers" },
     blurb: {

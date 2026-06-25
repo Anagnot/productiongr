@@ -32,7 +32,6 @@ type NavStrings = {
   chEvents: string;
   chYourChannel: string;
   prodFloorCounter: string;
-  prodDisplaySystems: string;
   prodGondolaPallet: string;
   prodWallShelves: string;
   prodGlorifiers: string;
@@ -75,7 +74,6 @@ export function Header({ locale, nav }: Props) {
       label: nav.services,
       children: [
         { href: "/services?group=floor-counter", label: nav.prodFloorCounter },
-        { href: "/services?group=display-systems", label: nav.prodDisplaySystems },
         { href: "/services?group=glorifiers", label: nav.prodGlorifiers },
         { href: "/services?group=gondola-pallet", label: nav.prodGondolaPallet },
         { href: "/services?group=wall-shelves", label: nav.prodWallShelves },
