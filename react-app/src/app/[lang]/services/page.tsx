@@ -35,6 +35,7 @@ const PRODUCT_GROUPS: Record<string, string[]> = {
   "gondola-pallet": ["pallet-stands", "shelves"],
   "wall-shelves": ["wall-units", "wall-unit-tet"],
   "horeca-materials": ["horeca-materials"],
+  "promo": ["promo-materials", "promo-constructions"],
 };
 export default async function ServicesPage({
   params,
