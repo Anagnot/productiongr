@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CTABlock } from "@/components/CTABlock";
 import { getDictionary } from "@/lib/dictionaries";
-import { hasLocale, localizedHref } from "@/lib/i18n";
+import { hasLocale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 
 const CERT_ICONS = [
@@ -46,28 +46,52 @@ export default async function SustainabilityPage({
   const { lang } = await params;
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang);
-  const t = dict.home.sustain;
-  const href = (p: string) => localizedHref(p, lang);
+  const t = dict.sustainability;
 
   return (
     <div className="page-sustainability">
-      <section className="sustain">
+      <section className="page-hero">
+        <div className="ornament-c"></div>
+        <div className="ornament-p"></div>
         <div className="container">
-          <h1>{t.h2}</h1>
-          <p className="sustain-lede">{t.p}</p>
-          <div className="sustain-pillars">
+          <h1>
+            {t.hero.h1Pre}
+            <em>{t.hero.h1Em}</em>
+          </h1>
+          <p className="lede">{t.body}</p>
+        </div>
+      </section>
+
+      <section className="pillars">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <div className="eyebrow bar">{t.pillarsEyebrow}</div>
+              <h2>{t.pillarsH2}</h2>
+            </div>
+          </div>
+          <div className="pillars-grid">
             {t.pillars.map((p) => (
               <div key={p.h6} className="s-card">
                 <div className="s-num">{p.n}</div>
-                <div className="s-sub">{p.sub}</div>
                 <h6>{p.h6}</h6>
                 <p>{p.p}</p>
               </div>
             ))}
           </div>
-          <div className="certs-title">{t.certsTitle}</div>
+        </div>
+      </section>
+
+      <section className="certs">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <div className="eyebrow bar">{t.certs.eyebrow}</div>
+              <h2>{t.certs.h2}</h2>
+            </div>
+          </div>
           <div className="certs-row">
-            {t.certsItems.map((c, i) => (
+            {t.certs.items.map((c, i) => (
               <a
                 key={c.standard}
                 href={c.href}
@@ -83,13 +107,18 @@ export default async function SustainabilityPage({
               </a>
             ))}
           </div>
-          <div className="sustain-cta">
-            <Link href={href("/quote")} className="cta primary">
-              {t.ctaProject}
-            </Link>
-          </div>
         </div>
       </section>
+
+      <CTABlock
+        locale={lang}
+        title={
+          <>
+            {t.cta.titlePre} <em>{t.cta.titleEm}</em>
+          </>
+        }
+        ctaLabel={t.cta.label}
+      />
     </div>
   );
 }

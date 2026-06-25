@@ -194,6 +194,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         </div>
       </section>
 
+      {/* TEMP: client logos wall hidden per request — restore by un-commenting this block
       <section className="clients-wall">
         <div className="container">
           <div className="section-head head" style={{ marginBottom: 32 }}>
@@ -215,6 +216,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
           </div>
         </div>
       </section>
+      */}
 
       <CTABlock
         locale={lang}

@@ -12,6 +12,44 @@ export type ChannelPhoto = {
 export type ChannelGallery = { tagline?: string; photos: ChannelPhoto[] };
 
 export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
+  "super-market": {
+    "photos": [
+      {
+        "file": "1.png",
+        "hero": true
+      },
+      {
+        "file": "2.png"
+      },
+      {
+        "file": "3.png"
+      },
+      {
+        "file": "4.png"
+      },
+      {
+        "file": "5.png"
+      },
+      {
+        "file": "6.png"
+      },
+      {
+        "file": "7.png"
+      },
+      {
+        "file": "8.png"
+      },
+      {
+        "file": "9.png"
+      },
+      {
+        "file": "10.png"
+      },
+      {
+        "file": "11.png"
+      }
+    ]
+  },
   "retail-beauty": {
     "tagline": "Design-led displays for design-led brands.",
     "photos": [

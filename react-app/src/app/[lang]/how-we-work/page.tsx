@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
 import { getDictionary } from "@/lib/dictionaries";
-import { hasLocale, localizedHref } from "@/lib/i18n";
+import { hasLocale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -28,7 +27,6 @@ export default async function HowWeWorkPage({
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang);
   const t = dict.howWeWork;
-  const href = (p: string) => localizedHref(p, lang);
 
   return (
     <div className="page-how-we-work">
@@ -86,36 +84,6 @@ export default async function HowWeWorkPage({
                   ))}
                 </ul>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="case-studies">
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <h2>{t.caseStudies.h2}</h2>
-            </div>
-            <div className="meta">{t.caseStudies.lede}</div>
-          </div>
-          <div className="case-grid">
-            {t.caseStudies.items.map((c) => (
-              <Link key={c.brand} href={href(c.href)} className="case-card">
-                <div className="brand">{c.brand}</div>
-                <div className="row">
-                  <span className="k">Brief</span>
-                  <p>{c.brief}</p>
-                </div>
-                <div className="row">
-                  <span className="k">Solution</span>
-                  <p>{c.solution}</p>
-                </div>
-                <div className="row">
-                  <span className="k">Result</span>
-                  <p>{c.result}</p>
-                </div>
-              </Link>
             ))}
           </div>
         </div>

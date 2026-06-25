@@ -47,6 +47,16 @@ export const PRODUCTS: CatalogEntry[] = [
     channels: ["retail-beauty", "pharma", "super-market", "exhibitions"],
   },
   {
+    slug: "glorifiers",
+    name: { el: "Glorifiers", en: "Glorifiers" },
+    blurb: {
+      el: "Φωτιζόμενα bottle & product presenters που αναδεικνύουν ένα προϊόν ως ήρωα. LED bases, premium plexi & metal για spirits, αναψυκτικά, καλλυντικά και brand corners.",
+      en: "Illuminated bottle & product presenters that turn a single product into the hero. LED bases, premium plexi & metal for spirits, soft drinks, cosmetics and brand corners.",
+    },
+    materials: ["plexi", "plastic", "metal", "premium"],
+    channels: ["retail-beauty", "pharma", "horeca", "super-market", "kiosk"],
+  },
+  {
     slug: "floor-stands",
     name: { el: "Floor Stands", en: "Floor Stands" },
     blurb: {
@@ -115,6 +125,16 @@ export const PRODUCTS: CatalogEntry[] = [
     },
     materials: ["metal", "wood", "plexi", "premium"],
     channels: ["retail-beauty", "horeca", "super-market"],
+  },
+  {
+    slug: "horeca-materials",
+    name: { el: "HORECA Materials", en: "HORECA Materials" },
+    blurb: {
+      el: "Επιτραπέζια & εξωτερικά υλικά εστίασης — menu holders, menu lecterns, A-stands, table caddies (αλατοπίπερο, χαρτοπετσέτες, οδοντογλυφίδες) και wine coolers, brand-customized για εστιατόρια, μπαρ & καφέ.",
+      en: "Table-top & outdoor hospitality materials — menu holders, menu lecterns, A-stands, table caddies (salt & pepper, napkins, toothpicks) and wine coolers, brand-customized for restaurants, bars & cafés.",
+    },
+    materials: ["wood", "metal", "plexi", "paper", "plastic"],
+    channels: ["horeca", "events"],
   },
 ];
 

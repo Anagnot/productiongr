@@ -285,6 +285,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
+      {/* TEMP: client logos strip hidden per request — restore by un-commenting this block
       <section className="clients">
         <div className="container">
           <div className="clients-row">
@@ -296,6 +297,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
           </div>
         </div>
       </section>
+      */}
 
       <CTABlock
         locale={lang}

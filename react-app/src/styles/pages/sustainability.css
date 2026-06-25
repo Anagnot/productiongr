@@ -1,33 +1,32 @@
-/* SUSTAINABILITY — mirrors the home page .sustain card layout (dark stat cards
-   + ISO cards + CTA). Scoped to .page-sustainability so it overrides the older
-   global .sustain visual/recycle block in site.css. */
+/* SUSTAINABILITY — full page: shared .page-hero + 3 pillar stat-cards + ISO
+   cert cards + .cta-block. Section visuals are scoped under .page-sustainability
+   so the dark cards / cert rows don't leak into the global .sustain block. */
 
-.page-sustainability .sustain { background: var(--color-gray-1); }
-.page-sustainability .sustain .container { display: block; }
-.page-sustainability .sustain .eyebrow.bar { color: var(--color-orange); }
-.page-sustainability .sustain h1 { font-size: 44px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin: 12px 0 14px; }
-.page-sustainability .sustain .sustain-lede { font-size: 17px; line-height: 1.6; color: var(--fg-secondary); max-width: 720px; margin: 0 0 36px; }
-.page-sustainability .sustain-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
-.page-sustainability .sustain .s-card { background: var(--color-gray-4); color: #fff; border-radius: var(--radius-lg); padding: 32px 28px; }
-.page-sustainability .sustain .s-card .s-num { font-family: var(--font-sans); font-weight: 800; font-size: 54px; line-height: 1; letter-spacing: -0.02em; color: var(--color-orange); }
-.page-sustainability .sustain .s-card .s-sub { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin: 8px 0 18px; }
-.page-sustainability .sustain .s-card h6 { font-size: 18px; font-weight: 800; color: #fff; margin: 0 0 8px; }
-.page-sustainability .sustain .s-card p { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.7); margin: 0; }
-.page-sustainability .sustain .certs-title { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin: 0 0 16px; }
-.page-sustainability .sustain .certs-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 36px; }
-.page-sustainability .sustain .cert { background: var(--color-white); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 20px 22px; display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; cursor: pointer; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
-.page-sustainability .sustain .cert:hover { border-color: var(--color-orange); box-shadow: 0 6px 20px rgba(0,0,0,0.07); transform: translateY(-2px); }
-.page-sustainability .sustain .cert:hover .cert-icon { background: var(--color-orange); }
-.page-sustainability .sustain .cert .cert-icon { width: 40px; height: 40px; flex: none; border-radius: 50%; background: var(--color-gray-4); color: #fff; display: flex; align-items: center; justify-content: center; }
-.page-sustainability .sustain .cert .cert-icon svg { width: 20px; height: 20px; }
-.page-sustainability .sustain .cert .cert-std { font-family: var(--font-sans); font-weight: 800; font-size: 15px; color: var(--color-gray-4); }
-.page-sustainability .sustain .cert .cert-label { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-tertiary); margin-top: 3px; }
-.page-sustainability .sustain-cta { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+/* Pillars — dark stat cards on white, mirrors the home eco block. */
+.page-sustainability .pillars { background: var(--color-white); padding: 96px 0; }
+.page-sustainability .pillars .section-head { margin-bottom: 48px; }
+.page-sustainability .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.page-sustainability .s-card { background: var(--color-gray-4); color: #fff; border-radius: var(--radius-lg); padding: 36px 30px; display: flex; flex-direction: column; }
+.page-sustainability .s-card .s-num { font-family: var(--font-sans); font-weight: 800; font-size: 56px; line-height: 1; letter-spacing: -0.02em; color: var(--color-orange); margin-bottom: 18px; }
+.page-sustainability .s-card h6 { font-size: 19px; font-weight: 800; color: #fff; margin: 0 0 10px; }
+.page-sustainability .s-card p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; }
+
+/* Certifications — light cert cards on gray, each links to its PDF. */
+.page-sustainability .certs { background: var(--color-gray-1); padding: 96px 0; }
+.page-sustainability .certs .section-head { margin-bottom: 48px; }
+.page-sustainability .certs-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.page-sustainability .cert { background: var(--color-white); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 22px; display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; cursor: pointer; transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+.page-sustainability .cert:hover { border-color: var(--color-orange); box-shadow: 0 6px 20px rgba(0,0,0,0.07); transform: translateY(-2px); }
+.page-sustainability .cert:hover .cert-icon { background: var(--color-orange); }
+.page-sustainability .cert .cert-icon { width: 42px; height: 42px; flex: none; border-radius: 50%; background: var(--color-gray-4); color: #fff; display: flex; align-items: center; justify-content: center; transition: background 0.2s ease; }
+.page-sustainability .cert .cert-icon svg { width: 21px; height: 21px; }
+.page-sustainability .cert .cert-std { font-family: var(--font-sans); font-weight: 800; font-size: 15px; color: var(--color-gray-4); }
+.page-sustainability .cert .cert-label { font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-tertiary); margin-top: 3px; }
 
 @media (max-width: 980px) {
-  .page-sustainability .sustain-pillars { grid-template-columns: 1fr; }
-  .page-sustainability .sustain .certs-row { grid-template-columns: repeat(2, 1fr); }
+  .page-sustainability .pillars-grid { grid-template-columns: 1fr; }
+  .page-sustainability .certs-row { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 560px) {
-  .page-sustainability .sustain .certs-row { grid-template-columns: 1fr; }
+  .page-sustainability .certs-row { grid-template-columns: 1fr; }
 }

@@ -13,7 +13,7 @@
     "about": "Η Εταιρία",
     "contact": "Επικοινωνία",
     "howWeWork": "Πώς Δουλεύουμε",
-    "sustainability": "Βιωσιμότητα",
+    "sustainability": "Βιωσιμότητα - ISO",
     "ctaBrief": "Strategic briefing →",
     "phone": "+30 210 232 27 50",
     "callShort": "Καλέστε",
@@ -47,7 +47,7 @@
       "about": "Η εταιρία",
       "channels": "Κανάλια",
       "howWeWork": "Πώς δουλεύουμε",
-      "sustainability": "Βιωσιμότητα",
+      "sustainability": "Βιωσιμότητα - ISO",
       "contact": "Επικοινωνία",
       "briefing": "Briefing"
     },
@@ -495,10 +495,6 @@
         {
           "v": "OTIF",
           "l": "on-time pledge"
-        },
-        {
-          "v": "3",
-          "l": "γενιά Δημαρά"
         }
       ]
     },
