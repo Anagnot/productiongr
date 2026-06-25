@@ -35,6 +35,8 @@ type NavStrings = {
   prodDisplaySystems: string;
   prodGondolaPallet: string;
   prodWallShelves: string;
+  prodGlorifiers: string;
+  prodHorecaMaterials: string;
   prodAllBuildTypes: string;
 };
 
@@ -73,8 +75,10 @@ export function Header({ locale, nav }: Props) {
       children: [
         { href: "/services?group=floor-counter", label: nav.prodFloorCounter },
         { href: "/services?group=display-systems", label: nav.prodDisplaySystems },
+        { href: "/services?group=glorifiers", label: nav.prodGlorifiers },
         { href: "/services?group=gondola-pallet", label: nav.prodGondolaPallet },
         { href: "/services?group=wall-shelves", label: nav.prodWallShelves },
+        { href: "/services?group=horeca-materials", label: nav.prodHorecaMaterials },
         { href: "/services", label: nav.prodAllBuildTypes, variant: "link" },
       ],
     },
