@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
@@ -59,6 +60,7 @@ export async function generateMetadata({
     title: dict.home.metaTitle,
     description: dict.home.metaDescription,
     path: "/",
+    titleAbsolute: true,
   });
 }
 
@@ -77,9 +79,15 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
     .filter((c) => c.featured)
     .map((c) => c.images[0])
     .filter(Boolean);
+  const lcpHero = heroSlides[0];
 
   return (
     <div className="page-home">
+      {lcpHero && (
+        // The hero LCP frame is a CSS background-image; preload it so the
+        // browser can start fetching the largest paint before paint.
+        <link rel="preload" as="image" href={lcpHero} fetchPriority="high" />
+      )}
       <section className="hero">
         <HeroSlider images={heroSlides} intervalMs={3400} />
         <div className="ornament-para"></div>
@@ -164,11 +172,16 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <section className="about-strip">
         <div className="container">
           <div className="visual">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               className="photo"
               src="/uploads/home/about-laser.jpg"
-              alt=""
+              alt={
+                lang === "el"
+                  ? "Κοπή laser στις ιδιόκτητες εγκαταστάσεις της Production στις Αχαρνές"
+                  : "Laser cutting at Production’s in-house facility in Acharnes, Greece"
+              }
+              fill
+              sizes="(max-width: 980px) 100vw, 45vw"
             />
             <div className="circle"></div>
           </div>

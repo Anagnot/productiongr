@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
+import { JsonLd } from "@/components/JsonLd";
 import { getAllChannels } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
+import { itemListSchema } from "@/lib/structured-data";
 
 export async function generateMetadata({
   params,
@@ -31,9 +34,15 @@ export default async function ChannelsPage({
   const t = dict.channels;
   const href = (p: string) => localizedHref(p, lang);
   const channels = (await getAllChannels()).filter((c) => c.inMenu);
+  const channelListSchema = itemListSchema(
+    lang,
+    lang === "el" ? "Retail κανάλια" : "Retail channels",
+    channels.map((c) => ({ name: c.name[lang], path: `/channels/${c.slug}` })),
+  );
 
   return (
     <div className="page-channels">
+      <JsonLd data={channelListSchema} />
       <section className="page-hero">
         <div className="container">
           <h1>
@@ -59,8 +68,16 @@ export default async function ChannelsPage({
               >
                 <div className="channel-card-photo">
                   {c.cover ? (
-                    /* eslint-disable-next-line @next/next/no-img-element */
-                    <img src={c.cover} alt={c.name[lang]} loading="lazy" />
+                    <Image
+                      src={c.cover}
+                      alt={
+                        lang === "el"
+                          ? `Displays για ${c.name[lang]} από την Production`
+                          : `${c.name[lang]} retail displays by Production`
+                      }
+                      fill
+                      sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                    />
                   ) : (
                     <div className="ph orange">
                       <div className="ph-grid" />

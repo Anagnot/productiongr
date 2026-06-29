@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { CHANNELS, PRODUCTS } from "@/lib/catalog";
 import { SITE_URL } from "@/lib/seo";
-import { LOCALES, localizedHref, type Locale } from "@/lib/i18n";
+import { DEFAULT_LOCALE, LOCALES, localizedHref, type Locale } from "@/lib/i18n";
 import { HREFLANG_MAP } from "@/lib/seo";
 
 const ROUTES: {
@@ -11,6 +11,7 @@ const ROUTES: {
 }[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
   { path: "/about", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/how-we-work", priority: 0.7, changeFrequency: "monthly" },
   { path: "/sustainability", priority: 0.7, changeFrequency: "monthly" },
   { path: "/services", priority: 0.9, changeFrequency: "monthly" },
   ...PRODUCTS.map((p) => ({
@@ -43,6 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       for (const alt of LOCALES as readonly Locale[]) {
         languages[HREFLANG_MAP[alt]] = `${SITE_URL}${localizedHref(route.path, alt)}`;
       }
+      languages["x-default"] = `${SITE_URL}${localizedHref(route.path, DEFAULT_LOCALE)}`;
       entries.push({
         url,
         lastModified,

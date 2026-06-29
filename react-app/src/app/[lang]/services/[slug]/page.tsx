@@ -3,10 +3,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
 import { GalleryLightbox } from "@/components/GalleryLightbox";
+import { JsonLd } from "@/components/JsonLd";
 import { CHANNELS, PRODUCTS, getProduct } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, LOCALES, localizedHref, type Locale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
+import { breadcrumbSchema, productSchema } from "@/lib/structured-data";
 
 export async function generateStaticParams() {
   const params: { lang: Locale; slug: string }[] = [];
@@ -47,11 +49,28 @@ export default async function ProductDetailPage({
 
   const other = PRODUCTS.filter((p) => p.slug !== slug).slice(0, 4);
 
+  const breadcrumb = breadcrumbSchema(lang, [
+    { name: lang === "el" ? "Αρχική" : "Home", path: "/" },
+    { name: dict.services.metaTitle, path: "/services" },
+    { name: product.name[lang], path: `/services/${slug}` },
+  ]);
+  const product_ = productSchema(lang, {
+    name: product.name[lang],
+    description: product.blurb[lang],
+    path: `/services/${slug}`,
+    images: product.images,
+  });
+
   return (
     <div className="page-product-detail">
+      <JsonLd data={breadcrumb} />
+      <JsonLd data={product_} />
       <section className="page-hero detail-hero">
         <div className="container">
-          <nav className="crumbs">
+          <nav
+            className="crumbs"
+            aria-label={lang === "el" ? "Διαδρομή" : "Breadcrumb"}
+          >
             <Link href={href("/services")}>{t.crumbBack}</Link>
             <span className="sep">/</span>
             <span>{product.name[lang]}</span>

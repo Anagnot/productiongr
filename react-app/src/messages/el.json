@@ -101,7 +101,7 @@
     "managePrompt": "Μπορείτε ανά πάσα στιγμή να αλλάξετε τις επιλογές σας."
   },
   "privacy": {
-    "metaTitle": "Πολιτική Απορρήτου — Production LTD",
+    "metaTitle": "Πολιτική Απορρήτου",
     "metaDescription": "Πώς συλλέγουμε, χρησιμοποιούμε και προστατεύουμε τα προσωπικά σας δεδομένα στο production.gr.",
     "h1": "Πολιτική Απορρήτου",
     "updated": "Τελευταία ενημέρωση: 26 Μαΐου 2026",
@@ -141,7 +141,7 @@
     ]
   },
   "cookies": {
-    "metaTitle": "Πολιτική Cookies — Production LTD",
+    "metaTitle": "Πολιτική Cookies",
     "metaDescription": "Ποια cookies χρησιμοποιεί το production.gr και πώς μπορείτε να τα διαχειριστείτε.",
     "h1": "Πολιτική Cookies",
     "updated": "Τελευταία ενημέρωση: 26 Μαΐου 2026",
@@ -2286,7 +2286,7 @@
     "legal": "PRODUCTION LTD · brand refresh v2 · brief alignment v2.2 · 8 pages · Direction A (Energetic/Industrial)"
   },
   "channels": {
-    "metaTitle": "Κανάλια — λύσεις προβολής & branded environments ανά retail κανάλι",
+    "metaTitle": "Λύσεις Προβολής ανά Κανάλι",
     "metaDescription": "Custom λύσεις προβολής & branded environments για super market, pharma, retail & beauty, HORECA, kiosk & convenience, εκθέσεις και events — ένα production floor ανά κανάλι.",
     "metaKeywords": [
       "κανάλια retail",

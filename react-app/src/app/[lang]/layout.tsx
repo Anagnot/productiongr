@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Manrope, Roboto_Mono, Caveat } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
@@ -17,9 +17,11 @@ import {
   type Locale,
 } from "@/lib/i18n";
 import {
-  DEFAULT_OG_IMAGE,
+  OG_IMAGE,
+  OG_IMAGE_DIMENSIONS,
   SITE_NAME,
   SITE_URL,
+  alternateOgLocales,
   buildLanguageAlternates,
 } from "@/lib/seo";
 
@@ -27,12 +29,14 @@ const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin", "latin-ext", "greek"],
   weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+  display: "swap",
 });
 
 const caveat = Caveat({
@@ -45,6 +49,16 @@ const caveat = Caveat({
 export async function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));
 }
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#141414" },
+  ],
+  colorScheme: "light",
+};
 
 export async function generateMetadata({
   params,
@@ -78,9 +92,14 @@ export async function generateMetadata({
       "μεταξοτυπία",
     ],
     category: "manufacturing",
+    manifest: "/manifest.webmanifest",
     icons: {
-      icon: "/assets/favicon-transparent.png",
-      apple: "/assets/favicon-transparent.png",
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/assets/favicon-transparent.png", type: "image/png" },
+      ],
+      apple: [{ url: "/assets/favicon-transparent.png" }],
+      shortcut: ["/favicon.ico"],
     },
     alternates: {
       canonical,
@@ -90,16 +109,17 @@ export async function generateMetadata({
       type: "website",
       siteName: SITE_NAME,
       locale: dict.meta.ogLocale,
+      alternateLocale: alternateOgLocales(lang),
       url: canonical,
       title: `${SITE_NAME} — ${dict.meta.siteTagline}`,
       description: dict.meta.defaultDescription,
-      images: [{ url: DEFAULT_OG_IMAGE }],
+      images: [{ url: OG_IMAGE, ...OG_IMAGE_DIMENSIONS, alt: SITE_NAME }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${SITE_NAME} — ${dict.meta.siteTagline}`,
       description: dict.meta.defaultDescription,
-      images: [DEFAULT_OG_IMAGE],
+      images: [OG_IMAGE],
     },
     robots: {
       index: true,

@@ -52,7 +52,7 @@ export function Footer({ locale, t }: Props) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/logo-horizontal-white.svg"
-              alt=""
+              alt="Production LTD"
               style={{ height: 26, marginBottom: 16 }}
             />
           </div>

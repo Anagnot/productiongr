@@ -3,10 +3,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChannelCarousel } from "@/components/ChannelCarousel";
 import { CTABlock } from "@/components/CTABlock";
+import { JsonLd } from "@/components/JsonLd";
 import { CHANNELS, getChannel } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, LOCALES, localizedHref, type Locale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
+import { breadcrumbSchema, serviceSchema } from "@/lib/structured-data";
 
 export async function generateStaticParams() {
   const params: { lang: Locale; slug: string }[] = [];
@@ -51,8 +53,22 @@ export default async function ChannelDetailPage({
     channel.details?.highlights[lang] ?? channel.bullets?.[lang] ?? [];
   const hasContent = Boolean(channel.details || channel.bullets);
 
+  const breadcrumb = breadcrumbSchema(lang, [
+    { name: lang === "el" ? "Αρχική" : "Home", path: "/" },
+    { name: dict.channels.metaTitleSuffix, path: "/channels" },
+    { name: channel.name[lang], path: `/channels/${slug}` },
+  ]);
+  const service = serviceSchema(lang, {
+    name: channel.name[lang],
+    description: channel.blurb[lang],
+    path: `/channels/${slug}`,
+    images: channel.images,
+  });
+
   return (
     <div className="page-channel-detail">
+      <JsonLd data={breadcrumb} />
+      <JsonLd data={service} />
       <section
         className={`page-hero detail-hero${channel.cover ? " has-banner" : ""}`}
         style={
@@ -62,7 +78,10 @@ export default async function ChannelDetailPage({
         }
       >
         <div className="container">
-          <nav className="crumbs">
+          <nav
+            className="crumbs"
+            aria-label={lang === "el" ? "Διαδρομή" : "Breadcrumb"}
+          >
             <Link href={href("/channels")}>{t.crumbBack}</Link>
             <span className="sep">/</span>
             <span>{channel.name[lang]}</span>
