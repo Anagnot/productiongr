@@ -29,11 +29,13 @@ function dotClass(c: string) {
 }
 
 const PRODUCT_GROUPS: Record<string, string[]> = {
-  "floor-counter": ["floor-stands", "counter-stands"],
+  "counter-stands": ["counter-stands"],
+  "floor-stands": ["floor-stands"],
+  "shelves": ["shelves"],
+  "pallet-stands": ["pallet-stands"],
   "glorifiers": ["glorifiers"],
-  "gondola-pallet": ["pallet-stands", "shelves"],
-  "wall-shelves": ["wall-units", "wall-unit-tet"],
   "horeca-materials": ["horeca-materials"],
+  "wall-units": ["wall-units", "wall-unit-tet"],
   "promo": ["promo-materials", "promo-constructions"],
 };
 export default async function ServicesPage({

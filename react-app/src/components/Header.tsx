@@ -31,11 +31,13 @@ type NavStrings = {
   chExhibitions: string;
   chEvents: string;
   chYourChannel: string;
-  prodFloorCounter: string;
-  prodGondolaPallet: string;
-  prodWallShelves: string;
+  prodCounterStands: string;
+  prodFloorStands: string;
+  prodShelves: string;
+  prodPalletStands: string;
   prodGlorifiers: string;
   prodHorecaMaterials: string;
+  prodWallTets: string;
   prodPromo: string;
   prodAllBuildTypes: string;
 };
@@ -73,11 +75,13 @@ export function Header({ locale, nav }: Props) {
       href: "/services",
       label: nav.services,
       children: [
-        { href: "/services?group=floor-counter", label: nav.prodFloorCounter },
+        { href: "/services?group=counter-stands", label: nav.prodCounterStands },
+        { href: "/services?group=floor-stands", label: nav.prodFloorStands },
+        { href: "/services?group=shelves", label: nav.prodShelves },
+        { href: "/services?group=pallet-stands", label: nav.prodPalletStands },
         { href: "/services?group=glorifiers", label: nav.prodGlorifiers },
-        { href: "/services?group=gondola-pallet", label: nav.prodGondolaPallet },
-        { href: "/services?group=wall-shelves", label: nav.prodWallShelves },
         { href: "/services?group=horeca-materials", label: nav.prodHorecaMaterials },
+        { href: "/services?group=wall-units", label: nav.prodWallTets },
         { href: "/services?group=promo", label: nav.prodPromo },
         { href: "/services", label: nav.prodAllBuildTypes, variant: "link" },
       ],
@@ -141,7 +145,7 @@ export function Header({ locale, nav }: Props) {
         <div className="container">
           <Link href={localizedHref("/", locale)} className="logo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/logo-horizontal-black.svg" alt="Production LTD" />
+            <img src="/assets/logo-horizontal-dark.svg" alt="Production LTD" />
           </Link>
           <nav className="site-nav">
             {links.map((l) => {
@@ -224,7 +228,7 @@ export function Header({ locale, nav }: Props) {
             onClick={() => setDrawerOpen(false)}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/logo-horizontal-black.svg" alt="Production LTD" />
+            <img src="/assets/logo-horizontal-dark.svg" alt="Production LTD" />
           </Link>
           <button
             type="button"

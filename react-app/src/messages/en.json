@@ -27,12 +27,14 @@
     "chExhibitions": "Exhibitions",
     "chEvents": "Events & Activations",
     "chYourChannel": "Your Channel",
-    "prodFloorCounter": "Floor & Counter Stands",
-    "prodGondolaPallet": "Gondola & Pallet",
-    "prodWallShelves": "Wall Units & Shelves",
-    "prodGlorifiers": "Glorifiers",
-    "prodHorecaMaterials": "HORECA Materials",
-    "prodPromo": "Promo Constructions & Materials",
+    "prodCounterStands": "Counter Stands",
+    "prodFloorStands": "Floor stands",
+    "prodShelves": "Shelves",
+    "prodPalletStands": "Pallet stands",
+    "prodGlorifiers": "Glory Fire",
+    "prodHorecaMaterials": "HO.RE.CA. materials",
+    "prodWallTets": "Wall units - TETs",
+    "prodPromo": "Promo Materials",
     "prodAllBuildTypes": "All build types →"
   },
   "footer": {
@@ -1849,9 +1851,9 @@
         "desc": "Heavy-use, mass FMCG."
       },
       {
-        "code": "RT",
-        "name": "Retail Stores",
-        "desc": "Design-led brands."
+        "code": "RB",
+        "name": "Retail & Beauty",
+        "desc": "Design-led retail & cosmetics."
       },
       {
         "code": "PH",
@@ -1859,29 +1861,29 @@
         "desc": "Trust & ergonomics."
       },
       {
-        "code": "CO",
-        "name": "Cosmetics",
-        "desc": "Premium finish."
-      },
-      {
         "code": "HR",
         "name": "HORECA",
-        "desc": "Restaurants, café, bar."
+        "desc": "Hotels, restaurants, café, bar."
       },
       {
-        "code": "HT",
-        "name": "Hotels",
-        "desc": "Hospitality & signage."
+        "code": "KC",
+        "name": "Kiosk & Convenience",
+        "desc": "Compact, impulse, small-format."
       },
       {
-        "code": "KS",
-        "name": "Kiosk",
-        "desc": "Compact, impulse."
+        "code": "EX",
+        "name": "Exhibitions",
+        "desc": "Booths & trade shows."
       },
       {
-        "code": "CV",
-        "name": "Convenience",
-        "desc": "Small-format retail."
+        "code": "EA",
+        "name": "Events & Activations",
+        "desc": "Brand experiences & sampling."
+      },
+      {
+        "code": "YC",
+        "name": "Your Channel",
+        "desc": "Tell us your space."
       }
     ],
     "goals": [
@@ -1955,14 +1957,14 @@
       "companyPh": "Company name",
       "industry": "Industry",
       "industryOptions": [
-        "FMCG",
-        "Cosmetics",
-        "Pharmacy",
-        "HORECA",
-        "Hotels",
-        "Retail",
+        "Food & Beverage",
+        "Spirits & Wine",
+        "Personal Care & Beauty",
+        "Health & Pharma",
         "Tobacco",
-        "Beverages",
+        "Home Care",
+        "Electronics & Tech",
+        "Pet Care",
         "Other"
       ],
       "email": "Email *",
@@ -1977,6 +1979,7 @@
       "pStrong": "Value Engineering",
       "pPost": "analysis — they tell us where the stand will live and what life-cycle your campaign has.",
       "channelLabel": "Application channel",
+      "customChannelPh": "e.g. Airports, Cinemas, Stadiums…",
       "goalLabel": "Project goal",
       "productTypeLabel": "Product type",
       "productOptions": [
@@ -1991,11 +1994,21 @@
       ],
       "quantityLabel": "Estimated quantity",
       "quantityOptions": [
-        "200–500 units",
-        "50–200 units",
-        "500–2,000 units",
-        "2,000–10,000 units",
-        "10,000+ units"
+        "Prototype (1–5 units)",
+        "Pilot (5–50 units)",
+        "Regional rollout (50–200 units)",
+        "National rollout (200–1,000 units)",
+        "Large scale (1,000–3,000 units)",
+        "Multi-market (3,000+ units)"
+      ],
+      "budgetLabel": "Budget range (per unit)",
+      "budgetOptions": [
+        "Under €15",
+        "€15 – €35",
+        "€35 – €75",
+        "€75 – €150",
+        "€150+",
+        "Not sure yet"
       ]
     },
     "step3": {
@@ -2013,7 +2026,12 @@
       "pPost": " promise — On Time In Full. From here, our team works backwards.",
       "dateLabel": "Desired installation date",
       "urgencyLabel": "Lead time check:",
-      "urgencyIndicator": "17 weeks · target achievable · OTIF active",
+      "urgency": {
+        "ontrack": "On track · OTIF active",
+        "tight": "Tight but feasible",
+        "rush": "Rush order — let's talk",
+        "none": "Select a date"
+      },
       "deliveryLabel": "Delivery",
       "deliveryOptions": [
         "Delivery to our warehouse",
@@ -2097,20 +2115,35 @@
       "pending": "— pending —",
       "filesCountSuffix": "files",
       "filesSingle": "file",
-      "otifEye": "OTIF analysis",
-      "otifV": "~ 17 weeks · target achievable",
-      "otifHint": "Initial lead-time analysis. Final quote after the Engineering team reviews the brief.",
+      "timeline": {
+        "title": "Delivery timeline",
+        "onTrack": "On track for {date}",
+        "tight": "Tight but feasible · {date}",
+        "rush": "Rush order — contact us directly",
+        "noDate": "Pick a date to see your timeline",
+        "subtext": "Your target date is within our production window. Final timeline confirmed after engineering review.",
+        "subtextTight": "Your date is close to our limit but still feasible. Final timeline confirmed after engineering review.",
+        "subtextRush": "Your date is inside our minimum window. Let's talk directly so we can fast-track engineering.",
+        "subtextNone": "Pick your installation date and we'll map it against our production window in real time.",
+        "breakdown": [
+          { "k": "Design & Engineering", "v": "2–3 wks" },
+          { "k": "Production", "v": "4–6 wks" },
+          { "k": "QA & Delivery", "v": "1 wk" }
+        ],
+        "tagline": "No surprises — from the very first message."
+      },
       "marker": "\"peace of mind — from the very first message\""
     },
     "defaults": {
       "name": "Katerina Papadimitriou",
       "role": "Trade Marketing Manager",
       "company": "Brand Hellas SA",
-      "industry": "FMCG",
+      "industry": "Food & Beverage",
       "email": "katerina@brandhellas.gr",
       "phone": "+30 210 555 0123",
       "productType": "Floor Stand",
-      "quantity": "200–500 units",
+      "quantity": "National rollout (200–1,000 units)",
+      "budget": "Not sure yet",
       "onShelfDate": "2026-09-15",
       "delivery": "Delivery to our warehouse",
       "installation": "Yes — install by us",
