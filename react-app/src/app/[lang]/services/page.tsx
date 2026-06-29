@@ -53,7 +53,15 @@ export default async function ServicesPage({
   const dict = await getDictionary(lang);
   const t = dict.services;
   const href = (p: string) => localizedHref(p, lang);
-  const allProducts = await getAllProducts();
+  // Order the grid to match the header menu (PRODUCT_GROUPS mirrors that order).
+  const menuOrder = Object.values(PRODUCT_GROUPS).flat();
+  const rank = (slug: string) => {
+    const i = menuOrder.indexOf(slug);
+    return i === -1 ? menuOrder.length : i;
+  };
+  const allProducts = (await getAllProducts()).sort(
+    (a, b) => rank(a.slug) - rank(b.slug),
+  );
   const groupSlugs = groupFilter ? PRODUCT_GROUPS[groupFilter] : undefined;
   const products = groupSlugs
     ? allProducts.filter((p) => groupSlugs.includes(p.slug))
@@ -102,7 +110,7 @@ export default async function ServicesPage({
             </div>
           </div>
           <div className="product-grid">
-            {products.map((p, i) => (
+            {products.map((p) => (
               <Link
                 href={href(`/services/${p.slug}`)}
                 className="product"
@@ -128,9 +136,6 @@ export default async function ServicesPage({
                   )}
                 </div>
                 <div className="product-body">
-                  <div className="num">
-                    {(i + 1).toString().padStart(2, "0")} / {products.length.toString().padStart(2, "0")}
-                  </div>
                   <h3>{p.name[lang]}</h3>
                   <p>{p.blurb[lang]}</p>
                 </div>
