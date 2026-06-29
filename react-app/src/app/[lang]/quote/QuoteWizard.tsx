@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 
 type FileKind = "pdf" | "doc";
 
@@ -36,9 +36,11 @@ type FormState = {
   email: string;
   phone: string;
   channel: string;
+  customChannel: string;
   goal: string;
   productType: string;
   quantity: string;
+  budget: string;
   materials: string[];
   sustainability: string;
   onShelfDate: string;
@@ -92,11 +94,14 @@ type QuoteStrings = {
     pStrong: string;
     pPost: string;
     channelLabel: string;
+    customChannelPh: string;
     goalLabel: string;
     productTypeLabel: string;
     productOptions: string[];
     quantityLabel: string;
     quantityOptions: string[];
+    budgetLabel: string;
+    budgetOptions: string[];
   };
   step3: {
     eye: string;
@@ -113,7 +118,12 @@ type QuoteStrings = {
     pPost: string;
     dateLabel: string;
     urgencyLabel: string;
-    urgencyIndicator: string;
+    urgency: {
+      ontrack: string;
+      tight: string;
+      rush: string;
+      none: string;
+    };
     deliveryLabel: string;
     deliveryOptions: string[];
     installationLabel: string;
@@ -152,9 +162,19 @@ type QuoteStrings = {
     pending: string;
     filesCountSuffix: string;
     filesSingle: string;
-    otifEye: string;
-    otifV: string;
-    otifHint: string;
+    timeline: {
+      title: string;
+      onTrack: string;
+      tight: string;
+      rush: string;
+      noDate: string;
+      subtext: string;
+      subtextTight: string;
+      subtextRush: string;
+      subtextNone: string;
+      breakdown: { k: string; v: string }[];
+      tagline: string;
+    };
     marker: string;
   };
   defaults: {
@@ -166,6 +186,7 @@ type QuoteStrings = {
     phone: string;
     productType: string;
     quantity: string;
+    budget: string;
     onShelfDate: string;
     delivery: string;
     installation: string;
@@ -179,6 +200,12 @@ type Props = {
 
 const STEP_EST_MINS = [4, 2, 2, 1, 1];
 
+// Client-only flag (SSR snapshot = false) — gates the date-driven delivery
+// timeline so its "now"-relative output never causes a hydration mismatch.
+const subscribeNoop = () => () => {};
+const getClientTrue = () => true;
+const getServerFalse = () => false;
+
 export function QuoteWizard({ t }: Props) {
   const [step, setStep] = useState(2);
   const [form, setForm] = useState<FormState>({
@@ -189,9 +216,11 @@ export function QuoteWizard({ t }: Props) {
     email: t.defaults.email,
     phone: t.defaults.phone,
     channel: "SM",
+    customChannel: "",
     goal: "NEW",
     productType: t.defaults.productType,
     quantity: t.defaults.quantity,
+    budget: t.defaults.budget,
     materials: ["M01", "M04"],
     sustainability: "",
     onShelfDate: t.defaults.onShelfDate,
@@ -206,6 +235,12 @@ export function QuoteWizard({ t }: Props) {
     notes: "",
     consent: true,
   });
+
+  const isClient = useSyncExternalStore(
+    subscribeNoop,
+    getClientTrue,
+    getServerFalse,
+  );
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -249,10 +284,16 @@ export function QuoteWizard({ t }: Props) {
     () => t.goals.find((g) => g.code === form.goal)?.title ?? "—",
     [form.goal, t.goals],
   );
-  const channelLabel = useMemo(
-    () => t.channels.find((c) => c.code === form.channel)?.name ?? "—",
-    [form.channel, t.channels],
-  );
+  const channelLabel = useMemo(() => {
+    if (form.channel === "YC") {
+      return (
+        form.customChannel.trim() ||
+        t.channels.find((c) => c.code === "YC")?.name ||
+        "—"
+      );
+    }
+    return t.channels.find((c) => c.code === form.channel)?.name ?? "—";
+  }, [form.channel, form.customChannel, t.channels]);
   const materialsLabel = useMemo(() => {
     if (form.materials.length === 0) return null;
     return form.materials
@@ -274,6 +315,52 @@ export function QuoteWizard({ t }: Props) {
       return form.onShelfDate;
     }
   }, [form.onShelfDate, t.dateLocale]);
+
+  // Traffic-light delivery timeline, computed backward from the chosen
+  // installation date: >=10 wks → on track, 7–10 wks → tight, <7 wks → rush.
+  const timeline = useMemo(() => {
+    const tl = t.summary.timeline;
+    const target = form.onShelfDate ? new Date(form.onShelfDate) : null;
+    if (!isClient || !target || Number.isNaN(target.getTime())) {
+      return {
+        status: "none" as const,
+        headline: tl.noDate,
+        subtext: tl.subtextNone,
+        urgency: t.step4.urgency.none,
+      };
+    }
+    const weeks =
+      (target.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24 * 7);
+    const dateStr = onShelfDateLabel ?? form.onShelfDate;
+    if (weeks >= 10) {
+      return {
+        status: "ontrack" as const,
+        headline: tl.onTrack.replace("{date}", dateStr),
+        subtext: tl.subtext,
+        urgency: t.step4.urgency.ontrack,
+      };
+    }
+    if (weeks >= 7) {
+      return {
+        status: "tight" as const,
+        headline: tl.tight.replace("{date}", dateStr),
+        subtext: tl.subtextTight,
+        urgency: t.step4.urgency.tight,
+      };
+    }
+    return {
+      status: "rush" as const,
+      headline: tl.rush,
+      subtext: tl.subtextRush,
+      urgency: t.step4.urgency.rush,
+    };
+  }, [
+    isClient,
+    form.onShelfDate,
+    onShelfDateLabel,
+    t.summary.timeline,
+    t.step4.urgency,
+  ]);
 
   const summaryValues: Record<string, string | null> = {
     company: form.company || null,
@@ -445,6 +532,18 @@ export function QuoteWizard({ t }: Props) {
                     </div>
                   ))}
                 </div>
+                {form.channel === "YC" && (
+                  <div className="field custom-channel">
+                    <input
+                      type="text"
+                      placeholder={t.step2.customChannelPh}
+                      value={form.customChannel}
+                      onChange={(e) =>
+                        update("customChannel", e.target.value)
+                      }
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="fg">
@@ -493,6 +592,20 @@ export function QuoteWizard({ t }: Props) {
                       ))}
                     </select>
                   </div>
+                </div>
+              </div>
+
+              <div className="fg">
+                <div className="fg-label">{t.step2.budgetLabel}</div>
+                <div className="field">
+                  <select
+                    value={form.budget}
+                    onChange={(e) => update("budget", e.target.value)}
+                  >
+                    {t.step2.budgetOptions.map((opt) => (
+                      <option key={opt}>{opt}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>
@@ -578,7 +691,9 @@ export function QuoteWizard({ t }: Props) {
                 </div>
                 <div className="urgency-bar">
                   <span className="label">{t.step4.urgencyLabel}</span>
-                  <span className="indicator">{t.step4.urgencyIndicator}</span>
+                  <span className={`indicator status-${timeline.status}`}>
+                    {timeline.urgency}
+                  </span>
                 </div>
               </div>
               <div className="row-2 fg" style={{ marginTop: 28 }}>
@@ -800,10 +915,19 @@ export function QuoteWizard({ t }: Props) {
               );
             })}
 
-            <div className="otif">
-              <div className="eye">{t.summary.otifEye}</div>
-              <div className="v">{t.summary.otifV}</div>
-              <div className="hint">{t.summary.otifHint}</div>
+            <div className={`timeline status-${timeline.status}`}>
+              <div className="tl-title">{t.summary.timeline.title}</div>
+              <div className="tl-headline">{timeline.headline}</div>
+              <div className="tl-sub">{timeline.subtext}</div>
+              <div className="tl-breakdown">
+                {t.summary.timeline.breakdown.map((b) => (
+                  <div key={b.k} className="tl-row">
+                    <span className="tl-k">{b.k}</span>
+                    <span className="tl-v">{b.v}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="tl-tagline">{t.summary.timeline.tagline}</div>
             </div>
 
             <div className="marker-note">{t.summary.marker}</div>
