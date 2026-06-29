@@ -335,7 +335,7 @@ export const CHANNELS: CatalogEntry[] = [
   },
   {
     slug: "events",
-    name: { el: "Events", en: "Events" },
+    name: { el: "Events & Activations", en: "Events & Activations" },
     inMenu: true,
     featured: true,
     blurb: {
