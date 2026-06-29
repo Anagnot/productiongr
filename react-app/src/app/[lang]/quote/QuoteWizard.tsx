@@ -57,6 +57,7 @@ type Material = { code: string; name: string; desc: string; feat: boolean };
 
 type QuoteStrings = {
   dateLocale: string;
+  selectPlaceholder: string;
   h1Line1: string;
   h1Line2: string;
   ledePre: string;
@@ -207,33 +208,28 @@ const getClientTrue = () => true;
 const getServerFalse = () => false;
 
 export function QuoteWizard({ t }: Props) {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormState>({
-    name: t.defaults.name,
-    role: t.defaults.role,
-    company: t.defaults.company,
-    industry: t.defaults.industry,
-    email: t.defaults.email,
-    phone: t.defaults.phone,
-    channel: "SM",
+    name: "",
+    role: "",
+    company: "",
+    industry: "",
+    email: "",
+    phone: "",
+    channel: "",
     customChannel: "",
-    goal: "NEW",
-    productType: t.defaults.productType,
-    quantity: t.defaults.quantity,
-    budget: t.defaults.budget,
-    materials: ["M01", "M04"],
+    goal: "",
+    productType: "",
+    quantity: "",
+    budget: "",
+    materials: [],
     sustainability: "",
-    onShelfDate: t.defaults.onShelfDate,
-    delivery: t.defaults.delivery,
-    installation: t.defaults.installation,
-    files: t.defaults.files
-      .map((f) => {
-        const kind = fileKindFor(f.name);
-        return kind ? { ...f, kind } : null;
-      })
-      .filter((f): f is FileEntry => f !== null),
+    onShelfDate: "",
+    delivery: "",
+    installation: "",
+    files: [],
     notes: "",
-    consent: true,
+    consent: false,
   });
 
   const isClient = useSyncExternalStore(
@@ -474,6 +470,7 @@ export function QuoteWizard({ t }: Props) {
                     value={form.industry}
                     onChange={(e) => update("industry", e.target.value)}
                   >
+                    <option value="">{t.selectPlaceholder}</option>
                     {t.step1.industryOptions.map((opt) => (
                       <option key={opt}>{opt}</option>
                     ))}
@@ -574,6 +571,7 @@ export function QuoteWizard({ t }: Props) {
                       value={form.productType}
                       onChange={(e) => update("productType", e.target.value)}
                     >
+                      <option value="">{t.selectPlaceholder}</option>
                       {t.step2.productOptions.map((opt) => (
                         <option key={opt}>{opt}</option>
                       ))}
@@ -587,6 +585,7 @@ export function QuoteWizard({ t }: Props) {
                       value={form.quantity}
                       onChange={(e) => update("quantity", e.target.value)}
                     >
+                      <option value="">{t.selectPlaceholder}</option>
                       {t.step2.quantityOptions.map((opt) => (
                         <option key={opt}>{opt}</option>
                       ))}
@@ -602,6 +601,7 @@ export function QuoteWizard({ t }: Props) {
                     value={form.budget}
                     onChange={(e) => update("budget", e.target.value)}
                   >
+                    <option value="">{t.selectPlaceholder}</option>
                     {t.step2.budgetOptions.map((opt) => (
                       <option key={opt}>{opt}</option>
                     ))}
@@ -704,6 +704,7 @@ export function QuoteWizard({ t }: Props) {
                       value={form.delivery}
                       onChange={(e) => update("delivery", e.target.value)}
                     >
+                      <option value="">{t.selectPlaceholder}</option>
                       {t.step4.deliveryOptions.map((opt) => (
                         <option key={opt}>{opt}</option>
                       ))}
@@ -717,6 +718,7 @@ export function QuoteWizard({ t }: Props) {
                       value={form.installation}
                       onChange={(e) => update("installation", e.target.value)}
                     >
+                      <option value="">{t.selectPlaceholder}</option>
                       {t.step4.installationOptions.map((opt) => (
                         <option key={opt}>{opt}</option>
                       ))}
