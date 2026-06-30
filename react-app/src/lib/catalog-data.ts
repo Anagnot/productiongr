@@ -67,16 +67,6 @@ export const PRODUCTS: CatalogEntry[] = [
     channels: ["super-market", "exhibitions", "events"],
   },
   {
-    slug: "promo-constructions",
-    name: { el: "Promo Constructions", en: "Promo Constructions" },
-    blurb: {
-      el: "Custom κατασκευές για in-store activations, shop-in-shop concepts και portable promo setups.",
-      en: "Custom constructions for in-store activations, shop-in-shop concepts and portable promo setups.",
-    },
-    materials: ["paper", "metal", "plastic", "plexi"],
-    channels: ["exhibitions", "events", "super-market"],
-  },
-  {
     slug: "promo-materials",
     name: { el: "Promo Materials", en: "Promo Materials" },
     blurb: {
