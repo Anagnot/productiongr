@@ -87,16 +87,6 @@ export const PRODUCTS: CatalogEntry[] = [
     channels: ["super-market", "pharma"],
   },
   {
-    slug: "wall-units",
-    name: { el: "Wall Units", en: "Wall Units" },
-    blurb: {
-      el: "Επίτοιχα συστήματα προβολής — modular, σταθερές βάσεις, premium finishes για flagship stores και brand corners.",
-      en: "Wall-mounted display systems — modular, fixed bases, premium finishes for flagship stores and brand corners.",
-    },
-    materials: ["metal", "wood", "plexi", "premium"],
-    channels: ["retail-beauty", "pharma", "super-market"],
-  },
-  {
     slug: "wall-unit-tet",
     name: { el: "Wall Unit TET", en: "Wall Unit TET" },
     blurb: {
