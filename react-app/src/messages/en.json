@@ -1815,7 +1815,9 @@
       "messagePh": "Tell us a bit about the brief, quantities and timeline…",
       "submit": "Send message →",
       "altLink": "or start a Strategic Briefing →",
-      "successAlert": "Thank you! We'll be in touch shortly."
+      "successAlert": "Thank you! We'll be in touch shortly.",
+      "sending": "Sending…",
+      "errorAlert": "Something went wrong and your message wasn't sent. Please try again or email us at info@production.gr."
     }
   },
   "quote": {
@@ -2073,6 +2075,9 @@
       "submit": "Send Briefing →"
     },
     "submitAlert": "Thank you! Your brief has been sent.",
+    "sending": "Sending…",
+    "errorAlert": "Something went wrong and your brief wasn't sent. Please try again or email us at info@production.gr.",
+    "missingAlert": "Please add your name and a valid email in Step 01 so we can send your brief.",
     "summary": {
       "h5": "Your brief · summary",
       "items": [

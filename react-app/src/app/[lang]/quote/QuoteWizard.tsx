@@ -157,6 +157,9 @@ type QuoteStrings = {
     submit: string;
   };
   submitAlert: string;
+  sending: string;
+  errorAlert: string;
+  missingAlert: string;
   summary: {
     h5: string;
     items: { k: string; field: string }[];
@@ -231,6 +234,9 @@ export function QuoteWizard({ t }: Props) {
     notes: "",
     consent: false,
   });
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error" | "missing"
+  >("idle");
 
   const isClient = useSyncExternalStore(
     subscribeNoop,
@@ -260,16 +266,12 @@ export function QuoteWizard({ t }: Props) {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    console.log("Quote wizard submitted:", form);
-    alert(t.submitAlert);
+    if (step === 5) void submitBrief();
   }
 
   function next() {
     if (step < 5) setStep(step + 1);
-    else {
-      console.log("Quote wizard submitted:", form);
-      alert(t.submitAlert);
-    }
+    else void submitBrief();
   }
 
   function back() {
@@ -311,6 +313,59 @@ export function QuoteWizard({ t }: Props) {
       return form.onShelfDate;
     }
   }, [form.onShelfDate, t.dateLocale]);
+
+  async function submitBrief() {
+    if (status === "sending" || status === "success") return;
+    if (
+      form.name.trim() === "" ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim())
+    ) {
+      setStatus("missing");
+      setStep(1);
+      return;
+    }
+    setStatus("sending");
+    const summaryLabel = (field: string) =>
+      t.summary.items.find((it) => it.field === field)?.k ?? field;
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          form: "quote",
+          name: form.name,
+          email: form.email,
+          fields: [
+            [t.step1.name, form.name],
+            [t.step1.role, form.role],
+            [t.step1.company, form.company],
+            [t.step1.industry, form.industry],
+            [t.step1.email, form.email],
+            [t.step1.phone, form.phone],
+            [t.step2.channelLabel, channelLabel === "—" ? "" : channelLabel],
+            [t.step2.goalLabel, goalLabel === "—" ? "" : goalLabel],
+            [t.step2.productTypeLabel, form.productType],
+            [t.step2.quantityLabel, form.quantity],
+            [t.step2.budgetLabel, form.budget],
+            [summaryLabel("materials"), materialsLabel ?? ""],
+            [t.step3.sustainabilityLabel, form.sustainability],
+            [t.step4.dateLabel, onShelfDateLabel ?? ""],
+            [t.step4.deliveryLabel, form.delivery],
+            [t.step4.installationLabel, form.installation],
+            [
+              summaryLabel("files"),
+              form.files.map((f) => `${f.name} (${f.size})`).join(", "),
+            ],
+            [t.step5.notesLabel, form.notes],
+          ],
+        }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
+  }
 
   // Traffic-light delivery timeline, computed backward from the chosen
   // installation date: >=10 wks → on track, 7–10 wks → tight, <7 wks → rush.
@@ -892,15 +947,38 @@ export function QuoteWizard({ t }: Props) {
                 <button
                   type="button"
                   className={`cta primary${step === 5 ? " lg" : ""}`}
-                  style={
-                    step === 5 ? { background: "var(--color-orange)" } : undefined
-                  }
+                  disabled={step === 5 && status === "sending"}
+                  style={{
+                    ...(step === 5
+                      ? { background: "var(--color-orange)" }
+                      : undefined),
+                    opacity: step === 5 && status === "sending" ? 0.6 : 1,
+                  }}
                   onClick={next}
                 >
-                  {step === 5 ? t.footer.submit : t.footer.next}
+                  {step === 5 && status === "sending"
+                    ? t.sending
+                    : step === 5
+                      ? t.footer.submit
+                      : t.footer.next}
                 </button>
               </div>
             </div>
+            {step === 5 && status === "success" && (
+              <p role="status" style={{ marginTop: 12, color: "#1a7f37" }}>
+                {t.submitAlert}
+              </p>
+            )}
+            {step === 5 && status === "error" && (
+              <p role="alert" style={{ marginTop: 12, color: "#b42318" }}>
+                {t.errorAlert}
+              </p>
+            )}
+            {status === "missing" && (
+              <p role="alert" style={{ marginTop: 12, color: "#b42318" }}>
+                {t.missingAlert}
+              </p>
+            )}
           </form>
 
           <aside className="summary">
