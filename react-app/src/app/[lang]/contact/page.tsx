@@ -6,6 +6,13 @@ import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 
+// Exact factory pin (place feature-id from Google Maps) + turn-by-turn directions.
+const FACTORY_MAPS_URL =
+  "https://www.google.com/maps/place//data=!4m2!3m1!1s0x14a1a1f700000001:0x3963c5781c3d1686";
+const FACTORY_DIRECTIONS_URL =
+  "https://www.google.com/maps/dir/?api=1&destination=" +
+  encodeURIComponent("Production LTD, Τσαμαλή 63, Αχαρναί 13671");
+
 export async function generateMetadata({
   params,
 }: PageProps<"/[lang]/contact">): Promise<Metadata> {
@@ -101,11 +108,7 @@ export default async function ContactPage({
                   {t.info.address.actions.map((a, i) => (
                     <a
                       key={a.label}
-                      href={
-                        i === 0
-                          ? "https://www.google.com/maps/search/?api=1&query=Τσαμαλή+63+Αχαρναί+13671"
-                          : href("/contact")
-                      }
+                      href={i === 0 ? FACTORY_DIRECTIONS_URL : href("/contact")}
                       target={i === 0 ? "_blank" : undefined}
                       rel={i === 0 ? "noopener noreferrer" : undefined}
                     >
@@ -131,7 +134,13 @@ export default async function ContactPage({
 
       <section className="map-band">
         <div className="container">
-          <div className="map-frame">
+          <a
+            className="map-frame"
+            href={FACTORY_MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t.map.open}
+          >
             <div className="map-bg"></div>
             <div className="map-roads">
               <svg viewBox="0 0 100 40" preserveAspectRatio="none">
@@ -178,6 +187,19 @@ export default async function ContactPage({
             </div>
             <div className="corner">{t.map.corner1}</div>
             <div className="corner r">{t.map.corner2}</div>
+            <span className="map-open" aria-hidden="true">
+              {t.map.open}
+            </span>
+          </a>
+          <div className="map-actions">
+            <a
+              className="cta primary"
+              href={FACTORY_DIRECTIONS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.map.directions}
+            </a>
           </div>
         </div>
       </section>

@@ -37,8 +37,6 @@
 
 /* Carousel / Gallery */
 .page-channel-detail .gallery { padding: 24px 0 64px; }
-.page-channel-detail .gallery .head { margin-bottom: 24px; display: flex; align-items: baseline; gap: 16px; }
-.page-channel-detail .gallery .head h5 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-secondary); margin: 0; }
 
 /* Empty state */
 .page-channel-detail .empty-state { padding: 72px 0; text-align: center; background: var(--color-gray-1); }

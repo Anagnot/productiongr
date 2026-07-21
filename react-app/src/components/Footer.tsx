@@ -6,9 +6,7 @@ type FooterStrings = {
   tagline: string;
   catalog: {
     title: string;
-    specialProjects: string;
     floorCounter: string;
-    displaySystems: string;
     gondolaPallet: string;
     exhibitions: string;
   };
@@ -54,7 +52,7 @@ export function Footer({ locale, t }: Props) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/logo-horizontal-white.svg"
-              alt=""
+              alt="Production LTD"
               style={{ height: 26, marginBottom: 16 }}
             />
           </div>
@@ -64,9 +62,7 @@ export function Footer({ locale, t }: Props) {
         </div>
         <div>
           <h6>{t.catalog.title}</h6>
-          <Link href={href("/services/special-projects")}>{t.catalog.specialProjects}</Link>
           <Link href={href("/services")}>{t.catalog.floorCounter}</Link>
-          <Link href={href("/services")}>{t.catalog.displaySystems}</Link>
           <Link href={href("/services")}>{t.catalog.gondolaPallet}</Link>
           <Link href={href("/channels/exhibitions")}>{t.catalog.exhibitions}</Link>
         </div>
@@ -75,6 +71,7 @@ export function Footer({ locale, t }: Props) {
           <Link href={href("/about")}>{t.company.about}</Link>
           <Link href={href("/channels")}>{t.company.channels}</Link>
           <Link href={href("/how-we-work")}>{t.company.howWeWork}</Link>
+          <Link href={href("/sustainability")}>{t.company.sustainability}</Link>
           <Link href={href("/contact")}>{t.company.contact}</Link>
           <Link href={href("/quote")}>{t.company.briefing}</Link>
         </div>

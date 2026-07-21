@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 
 type FileKind = "pdf" | "doc";
 
@@ -36,9 +36,11 @@ type FormState = {
   email: string;
   phone: string;
   channel: string;
+  customChannel: string;
   goal: string;
   productType: string;
   quantity: string;
+  budget: string;
   materials: string[];
   sustainability: string;
   onShelfDate: string;
@@ -55,6 +57,7 @@ type Material = { code: string; name: string; desc: string; feat: boolean };
 
 type QuoteStrings = {
   dateLocale: string;
+  selectPlaceholder: string;
   h1Line1: string;
   h1Line2: string;
   ledePre: string;
@@ -92,11 +95,14 @@ type QuoteStrings = {
     pStrong: string;
     pPost: string;
     channelLabel: string;
+    customChannelPh: string;
     goalLabel: string;
     productTypeLabel: string;
     productOptions: string[];
     quantityLabel: string;
     quantityOptions: string[];
+    budgetLabel: string;
+    budgetOptions: string[];
   };
   step3: {
     eye: string;
@@ -113,7 +119,12 @@ type QuoteStrings = {
     pPost: string;
     dateLabel: string;
     urgencyLabel: string;
-    urgencyIndicator: string;
+    urgency: {
+      ontrack: string;
+      tight: string;
+      rush: string;
+      none: string;
+    };
     deliveryLabel: string;
     deliveryOptions: string[];
     installationLabel: string;
@@ -146,15 +157,28 @@ type QuoteStrings = {
     submit: string;
   };
   submitAlert: string;
+  sending: string;
+  errorAlert: string;
+  missingAlert: string;
   summary: {
     h5: string;
     items: { k: string; field: string }[];
     pending: string;
     filesCountSuffix: string;
     filesSingle: string;
-    otifEye: string;
-    otifV: string;
-    otifHint: string;
+    timeline: {
+      title: string;
+      onTrack: string;
+      tight: string;
+      rush: string;
+      noDate: string;
+      subtext: string;
+      subtextTight: string;
+      subtextRush: string;
+      subtextNone: string;
+      breakdown: { k: string; v: string }[];
+      tagline: string;
+    };
     marker: string;
   };
   defaults: {
@@ -166,6 +190,7 @@ type QuoteStrings = {
     phone: string;
     productType: string;
     quantity: string;
+    budget: string;
     onShelfDate: string;
     delivery: string;
     installation: string;
@@ -179,33 +204,45 @@ type Props = {
 
 const STEP_EST_MINS = [4, 2, 2, 1, 1];
 
+// Client-only flag (SSR snapshot = false) — gates the date-driven delivery
+// timeline so its "now"-relative output never causes a hydration mismatch.
+const subscribeNoop = () => () => {};
+const getClientTrue = () => true;
+const getServerFalse = () => false;
+
 export function QuoteWizard({ t }: Props) {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormState>({
-    name: t.defaults.name,
-    role: t.defaults.role,
-    company: t.defaults.company,
-    industry: t.defaults.industry,
-    email: t.defaults.email,
-    phone: t.defaults.phone,
-    channel: "SM",
-    goal: "NEW",
-    productType: t.defaults.productType,
-    quantity: t.defaults.quantity,
-    materials: ["M01", "M04"],
+    name: "",
+    role: "",
+    company: "",
+    industry: "",
+    email: "",
+    phone: "",
+    channel: "",
+    customChannel: "",
+    goal: "",
+    productType: "",
+    quantity: "",
+    budget: "",
+    materials: [],
     sustainability: "",
-    onShelfDate: t.defaults.onShelfDate,
-    delivery: t.defaults.delivery,
-    installation: t.defaults.installation,
-    files: t.defaults.files
-      .map((f) => {
-        const kind = fileKindFor(f.name);
-        return kind ? { ...f, kind } : null;
-      })
-      .filter((f): f is FileEntry => f !== null),
+    onShelfDate: "",
+    delivery: "",
+    installation: "",
+    files: [],
     notes: "",
-    consent: true,
+    consent: false,
   });
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error" | "missing"
+  >("idle");
+
+  const isClient = useSyncExternalStore(
+    subscribeNoop,
+    getClientTrue,
+    getServerFalse,
+  );
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -229,16 +266,12 @@ export function QuoteWizard({ t }: Props) {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    console.log("Quote wizard submitted:", form);
-    alert(t.submitAlert);
+    if (step === 5) void submitBrief();
   }
 
   function next() {
     if (step < 5) setStep(step + 1);
-    else {
-      console.log("Quote wizard submitted:", form);
-      alert(t.submitAlert);
-    }
+    else void submitBrief();
   }
 
   function back() {
@@ -249,10 +282,16 @@ export function QuoteWizard({ t }: Props) {
     () => t.goals.find((g) => g.code === form.goal)?.title ?? "—",
     [form.goal, t.goals],
   );
-  const channelLabel = useMemo(
-    () => t.channels.find((c) => c.code === form.channel)?.name ?? "—",
-    [form.channel, t.channels],
-  );
+  const channelLabel = useMemo(() => {
+    if (form.channel === "YC") {
+      return (
+        form.customChannel.trim() ||
+        t.channels.find((c) => c.code === "YC")?.name ||
+        "—"
+      );
+    }
+    return t.channels.find((c) => c.code === form.channel)?.name ?? "—";
+  }, [form.channel, form.customChannel, t.channels]);
   const materialsLabel = useMemo(() => {
     if (form.materials.length === 0) return null;
     return form.materials
@@ -274,6 +313,105 @@ export function QuoteWizard({ t }: Props) {
       return form.onShelfDate;
     }
   }, [form.onShelfDate, t.dateLocale]);
+
+  async function submitBrief() {
+    if (status === "sending" || status === "success") return;
+    if (
+      form.name.trim() === "" ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim())
+    ) {
+      setStatus("missing");
+      setStep(1);
+      return;
+    }
+    setStatus("sending");
+    const summaryLabel = (field: string) =>
+      t.summary.items.find((it) => it.field === field)?.k ?? field;
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          form: "quote",
+          name: form.name,
+          email: form.email,
+          fields: [
+            [t.step1.name, form.name],
+            [t.step1.role, form.role],
+            [t.step1.company, form.company],
+            [t.step1.industry, form.industry],
+            [t.step1.email, form.email],
+            [t.step1.phone, form.phone],
+            [t.step2.channelLabel, channelLabel === "—" ? "" : channelLabel],
+            [t.step2.goalLabel, goalLabel === "—" ? "" : goalLabel],
+            [t.step2.productTypeLabel, form.productType],
+            [t.step2.quantityLabel, form.quantity],
+            [t.step2.budgetLabel, form.budget],
+            [summaryLabel("materials"), materialsLabel ?? ""],
+            [t.step3.sustainabilityLabel, form.sustainability],
+            [t.step4.dateLabel, onShelfDateLabel ?? ""],
+            [t.step4.deliveryLabel, form.delivery],
+            [t.step4.installationLabel, form.installation],
+            [
+              summaryLabel("files"),
+              form.files.map((f) => `${f.name} (${f.size})`).join(", "),
+            ],
+            [t.step5.notesLabel, form.notes],
+          ],
+        }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  // Traffic-light delivery timeline, computed backward from the chosen
+  // installation date: >=10 wks → on track, 7–10 wks → tight, <7 wks → rush.
+  const timeline = useMemo(() => {
+    const tl = t.summary.timeline;
+    const target = form.onShelfDate ? new Date(form.onShelfDate) : null;
+    if (!isClient || !target || Number.isNaN(target.getTime())) {
+      return {
+        status: "none" as const,
+        headline: tl.noDate,
+        subtext: tl.subtextNone,
+        urgency: t.step4.urgency.none,
+      };
+    }
+    const weeks =
+      (target.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24 * 7);
+    const dateStr = onShelfDateLabel ?? form.onShelfDate;
+    if (weeks >= 10) {
+      return {
+        status: "ontrack" as const,
+        headline: tl.onTrack.replace("{date}", dateStr),
+        subtext: tl.subtext,
+        urgency: t.step4.urgency.ontrack,
+      };
+    }
+    if (weeks >= 7) {
+      return {
+        status: "tight" as const,
+        headline: tl.tight.replace("{date}", dateStr),
+        subtext: tl.subtextTight,
+        urgency: t.step4.urgency.tight,
+      };
+    }
+    return {
+      status: "rush" as const,
+      headline: tl.rush,
+      subtext: tl.subtextRush,
+      urgency: t.step4.urgency.rush,
+    };
+  }, [
+    isClient,
+    form.onShelfDate,
+    onShelfDateLabel,
+    t.summary.timeline,
+    t.step4.urgency,
+  ]);
 
   const summaryValues: Record<string, string | null> = {
     company: form.company || null,
@@ -387,6 +525,7 @@ export function QuoteWizard({ t }: Props) {
                     value={form.industry}
                     onChange={(e) => update("industry", e.target.value)}
                   >
+                    <option value="">{t.selectPlaceholder}</option>
                     {t.step1.industryOptions.map((opt) => (
                       <option key={opt}>{opt}</option>
                     ))}
@@ -445,6 +584,18 @@ export function QuoteWizard({ t }: Props) {
                     </div>
                   ))}
                 </div>
+                {form.channel === "YC" && (
+                  <div className="field custom-channel">
+                    <input
+                      type="text"
+                      placeholder={t.step2.customChannelPh}
+                      value={form.customChannel}
+                      onChange={(e) =>
+                        update("customChannel", e.target.value)
+                      }
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="fg">
@@ -475,6 +626,7 @@ export function QuoteWizard({ t }: Props) {
                       value={form.productType}
                       onChange={(e) => update("productType", e.target.value)}
                     >
+                      <option value="">{t.selectPlaceholder}</option>
                       {t.step2.productOptions.map((opt) => (
                         <option key={opt}>{opt}</option>
                       ))}
@@ -488,11 +640,27 @@ export function QuoteWizard({ t }: Props) {
                       value={form.quantity}
                       onChange={(e) => update("quantity", e.target.value)}
                     >
+                      <option value="">{t.selectPlaceholder}</option>
                       {t.step2.quantityOptions.map((opt) => (
                         <option key={opt}>{opt}</option>
                       ))}
                     </select>
                   </div>
+                </div>
+              </div>
+
+              <div className="fg">
+                <div className="fg-label">{t.step2.budgetLabel}</div>
+                <div className="field">
+                  <select
+                    value={form.budget}
+                    onChange={(e) => update("budget", e.target.value)}
+                  >
+                    <option value="">{t.selectPlaceholder}</option>
+                    {t.step2.budgetOptions.map((opt) => (
+                      <option key={opt}>{opt}</option>
+                    ))}
+                  </select>
                 </div>
               </div>
             </div>
@@ -578,7 +746,9 @@ export function QuoteWizard({ t }: Props) {
                 </div>
                 <div className="urgency-bar">
                   <span className="label">{t.step4.urgencyLabel}</span>
-                  <span className="indicator">{t.step4.urgencyIndicator}</span>
+                  <span className={`indicator status-${timeline.status}`}>
+                    {timeline.urgency}
+                  </span>
                 </div>
               </div>
               <div className="row-2 fg" style={{ marginTop: 28 }}>
@@ -589,6 +759,7 @@ export function QuoteWizard({ t }: Props) {
                       value={form.delivery}
                       onChange={(e) => update("delivery", e.target.value)}
                     >
+                      <option value="">{t.selectPlaceholder}</option>
                       {t.step4.deliveryOptions.map((opt) => (
                         <option key={opt}>{opt}</option>
                       ))}
@@ -602,6 +773,7 @@ export function QuoteWizard({ t }: Props) {
                       value={form.installation}
                       onChange={(e) => update("installation", e.target.value)}
                     >
+                      <option value="">{t.selectPlaceholder}</option>
                       {t.step4.installationOptions.map((opt) => (
                         <option key={opt}>{opt}</option>
                       ))}
@@ -775,15 +947,38 @@ export function QuoteWizard({ t }: Props) {
                 <button
                   type="button"
                   className={`cta primary${step === 5 ? " lg" : ""}`}
-                  style={
-                    step === 5 ? { background: "var(--color-orange)" } : undefined
-                  }
+                  disabled={step === 5 && status === "sending"}
+                  style={{
+                    ...(step === 5
+                      ? { background: "var(--color-orange)" }
+                      : undefined),
+                    opacity: step === 5 && status === "sending" ? 0.6 : 1,
+                  }}
                   onClick={next}
                 >
-                  {step === 5 ? t.footer.submit : t.footer.next}
+                  {step === 5 && status === "sending"
+                    ? t.sending
+                    : step === 5
+                      ? t.footer.submit
+                      : t.footer.next}
                 </button>
               </div>
             </div>
+            {step === 5 && status === "success" && (
+              <p role="status" style={{ marginTop: 12, color: "#1a7f37" }}>
+                {t.submitAlert}
+              </p>
+            )}
+            {step === 5 && status === "error" && (
+              <p role="alert" style={{ marginTop: 12, color: "#b42318" }}>
+                {t.errorAlert}
+              </p>
+            )}
+            {status === "missing" && (
+              <p role="alert" style={{ marginTop: 12, color: "#b42318" }}>
+                {t.missingAlert}
+              </p>
+            )}
           </form>
 
           <aside className="summary">
@@ -800,10 +995,19 @@ export function QuoteWizard({ t }: Props) {
               );
             })}
 
-            <div className="otif">
-              <div className="eye">{t.summary.otifEye}</div>
-              <div className="v">{t.summary.otifV}</div>
-              <div className="hint">{t.summary.otifHint}</div>
+            <div className={`timeline status-${timeline.status}`}>
+              <div className="tl-title">{t.summary.timeline.title}</div>
+              <div className="tl-headline">{timeline.headline}</div>
+              <div className="tl-sub">{timeline.subtext}</div>
+              <div className="tl-breakdown">
+                {t.summary.timeline.breakdown.map((b) => (
+                  <div key={b.k} className="tl-row">
+                    <span className="tl-k">{b.k}</span>
+                    <span className="tl-v">{b.v}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="tl-tagline">{t.summary.timeline.tagline}</div>
             </div>
 
             <div className="marker-note">{t.summary.marker}</div>

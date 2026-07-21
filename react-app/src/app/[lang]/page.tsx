@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
@@ -7,14 +8,6 @@ import { getAllChannels } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
-
-const HERO_SLIDES = [
-  "/uploads/products/displays/C_01.jpg",
-  "/uploads/products/shelves/MMarket_02.jpg",
-  "/uploads/products/counter-stands/A1.jpg",
-  "/uploads/products/floor-stands/C03.png",
-  "/uploads/products/pallet-stands/3.jpg",
-];
 
 const PROCESS_ICONS = [
   <svg key="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -67,6 +60,7 @@ export async function generateMetadata({
     title: dict.home.metaTitle,
     description: dict.home.metaDescription,
     path: "/",
+    titleAbsolute: true,
   });
 }
 
@@ -80,21 +74,37 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const channelCoverBySlug = new Map(
     channels.map((c) => [c.slug, c.cover] as const),
   );
+  // Hero carousel = the first photo from each featured channel (in strip order).
+  const heroSlides = channels
+    .filter((c) => c.featured)
+    .map((c) => c.images[0])
+    .filter(Boolean);
+  const lcpHero = heroSlides[0];
 
   return (
     <div className="page-home">
+      {lcpHero && (
+        // The hero LCP frame is a CSS background-image; preload it so the
+        // browser can start fetching the largest paint before paint.
+        <link rel="preload" as="image" href={lcpHero} fetchPriority="high" />
+      )}
       <section className="hero">
-        <HeroSlider images={HERO_SLIDES} intervalMs={3400} />
+        <HeroSlider images={heroSlides} intervalMs={3400} />
         <div className="ornament-para"></div>
         <div className="ornament-circle"></div>
         <div className="container">
           <div>
             <h1>
-              {`${t.hero.heading1} ${t.hero.heading2}`
-                .split(" ")
-                .map((word, i) => (
-                  <span key={i}>{word}</span>
-                ))}
+              {lang === "el" ? (
+                <>
+                  <span>{t.hero.heading1}</span>
+                  <span>{t.hero.heading2}</span>
+                </>
+              ) : (
+                `${t.hero.heading1} ${t.hero.heading2}`
+                  .split(" ")
+                  .map((word, i) => <span key={i}>{word}</span>)
+              )}
             </h1>
             <p className="lede">{t.hero.lede}</p>
             <div className="actions">
@@ -126,7 +136,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.channels.eyebrow}</div>
               <h2>
                 {t.channels.heading} <em>{t.channels.headingEm}</em>
               </h2>
@@ -157,23 +166,26 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               <div className="en">{t.channels.yourSub}</div>
             </Link>
           </div>
-          <p className="ch-note">{t.channels.note}</p>
         </div>
       </section>
 
       <section className="about-strip">
         <div className="container">
           <div className="visual">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               className="photo"
               src="/uploads/home/about-laser.jpg"
-              alt=""
+              alt={
+                lang === "el"
+                  ? "Κοπή laser στις ιδιόκτητες εγκαταστάσεις της Production στις Αχαρνές"
+                  : "Laser cutting at Production’s in-house facility in Acharnes, Greece"
+              }
+              fill
+              sizes="(max-width: 980px) 100vw, 45vw"
             />
             <div className="circle"></div>
           </div>
           <div>
-            <div className="eyebrow bar">{t.aboutStrip.eyebrow}</div>
             <h2>
               {t.aboutStrip.h2Pre}
               <br />
@@ -198,7 +210,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.reasons.eyebrow}</div>
               <h2>{t.reasons.h2}</h2>
             </div>
           </div>
@@ -226,7 +237,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.process.eyebrow}</div>
               <h2>{t.process.h2}</h2>
             </div>
           </div>
@@ -250,7 +260,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
 
       <section className="sustain">
         <div className="container">
-          <div className="eyebrow bar">{t.sustain.eyebrow}</div>
           <h2>{t.sustain.h2}</h2>
           <p className="sustain-lede">{t.sustain.p}</p>
           <div className="sustain-pillars">
@@ -289,6 +298,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
+      {/* TEMP: client logos strip hidden per request — restore by un-commenting this block
       <section className="clients">
         <div className="container">
           <div className="clients-row">
@@ -300,6 +310,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
           </div>
         </div>
       </section>
+      */}
 
       <CTABlock
         locale={lang}

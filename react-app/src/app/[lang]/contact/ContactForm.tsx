@@ -33,6 +33,8 @@ type FormStrings = {
   submit: string;
   altLink: string;
   successAlert: string;
+  sending: string;
+  errorAlert: string;
 };
 
 type Props = {
@@ -49,29 +51,56 @@ export function ContactForm({ quoteHref, t }: Props) {
     projectType: "",
     message: "",
   });
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+  const [honeypot, setHoneypot] = useState("");
 
   function update<K extends keyof FormData>(key: K, value: FormData[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    console.log("Contact form submitted:", form);
-    alert(t.successAlert);
+    if (status === "sending") return;
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          form: "contact",
+          name: form.name,
+          email: form.email,
+          website: honeypot,
+          fields: [
+            [t.name, form.name],
+            [t.company, form.company],
+            [t.email, form.email],
+            [t.phone, form.phone],
+            [t.projectType, form.projectType],
+            [t.message, form.message],
+          ],
+        }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setStatus("success");
+      setForm({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        projectType: "",
+        message: "",
+      });
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
     <form className="quick-form" onSubmit={handleSubmit}>
       <div className="ornament"></div>
-      <div
-        className="eyebrow bar"
-        style={{
-          color: "rgba(255,255,255,0.6)",
-          marginBottom: 10,
-        }}
-      >
-        {t.eyebrow}
-      </div>
       <h2>{t.h2}</h2>
       <p className="sub">
         {t.subPre}{" "}
@@ -111,6 +140,7 @@ export function ContactForm({ quoteHref, t }: Props) {
               placeholder={t.namePh}
               value={form.name}
               onChange={(e) => update("name", e.target.value)}
+              required
             />
           </div>
           <div className="field">
@@ -131,6 +161,7 @@ export function ContactForm({ quoteHref, t }: Props) {
               placeholder={t.emailPh}
               value={form.email}
               onChange={(e) => update("email", e.target.value)}
+              required
             />
           </div>
           <div className="field">
@@ -145,15 +176,40 @@ export function ContactForm({ quoteHref, t }: Props) {
           </div>
         </div>
       </div>
+      {/* Honeypot — hidden from real visitors, catches naive bots. */}
+      <input
+        type="text"
+        name="website"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", height: 0, width: 0 }}
+      />
       <div className="actions">
         <button
           type="submit"
           className="cta primary lg"
-          style={{ background: "var(--color-orange)" }}
+          disabled={status === "sending"}
+          style={{
+            background: "var(--color-orange)",
+            opacity: status === "sending" ? 0.6 : 1,
+          }}
         >
-          {t.submit}
+          {status === "sending" ? t.sending : t.submit}
         </button>
       </div>
+      {status === "success" && (
+        <p role="status" style={{ marginTop: 12, color: "#1a7f37" }}>
+          {t.successAlert}
+        </p>
+      )}
+      {status === "error" && (
+        <p role="alert" style={{ marginTop: 12, color: "#b42318" }}>
+          {t.errorAlert}
+        </p>
+      )}
       <Link href={quoteHref} className="briefing-link">
         {t.altLink}
       </Link>

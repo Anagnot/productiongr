@@ -65,3 +65,9 @@
   .page-contact .map-frame .pin .ripple { position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 8px; height: 4px; border-radius: 50%; background: rgba(230, 92, 0,0.3); }
   .page-contact .map-frame .corner { position: absolute; bottom: 18px; left: 18px; font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
   .page-contact .map-frame .corner.r { left: auto; right: 18px; text-align: right; }
+  /* Clickable map → opens the exact Google Maps pin */
+  .page-contact a.map-frame { display: block; cursor: pointer; text-decoration: none; transition: box-shadow var(--duration) var(--ease); }
+  .page-contact a.map-frame:hover { box-shadow: var(--shadow-md); text-decoration: none; }
+  .page-contact a.map-frame:hover .marker { transform: scale(1.08); transition: transform var(--duration) var(--ease); }
+  .page-contact .map-frame .map-open { position: absolute; top: 18px; right: 18px; z-index: 3; background: var(--color-white); padding: 8px 12px; border-radius: var(--radius-sm); box-shadow: var(--shadow-md); font-family: var(--font-mono); font-weight: 700; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-gray-4); }
+  .page-contact .map-actions { margin-top: 20px; display: flex; justify-content: center; }

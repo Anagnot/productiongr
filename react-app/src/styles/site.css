@@ -177,7 +177,7 @@ footer h6 { font-family: var(--font-mono); font-weight: 700; font-size: 11px; le
 footer a { color: rgba(255,255,255,0.7); display: block; padding: 4px 0; font-size: 14px; }
 footer a:hover { color: #fff; text-decoration: none; }
 footer .logo img { height: 24px; margin-bottom: 16px; }
-footer .legal { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.35); border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 20px; display: flex; justify-content: space-between; }
+footer .legal { grid-column: 1 / -1; font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; padding-top: 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; }
 
 
 /* ===== CROSS-PAGE UTILITIES =================================== */
@@ -422,9 +422,10 @@ footer .legal { font-family: var(--font-mono); font-size: 11px; color: rgba(255,
 }
 
 /* Footer legal links + cookie-settings button */
+footer .legal-links { white-space: nowrap; }
 footer .legal-links a,
 footer .legal-link-btn {
-  display: inline; padding: 0; color: rgba(255,255,255,0.55);
+  display: inline; padding: 0; font-size: inherit; line-height: inherit; color: rgba(255,255,255,0.55);
 }
 footer .legal-link-btn {
   background: transparent; border: 0; cursor: pointer;

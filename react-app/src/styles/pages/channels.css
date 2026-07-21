@@ -1,15 +1,5 @@
 .page-channels .page-hero { padding: 64px 0 56px; border-bottom: 0; }
 .page-channels .page-hero h1 { font-size: 96px; line-height: 0.96; font-weight: 800; letter-spacing: -0.03em; margin: 0; }
-.page-channels .page-hero .top-row { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: end; margin-top: 18px; }
-.page-channels .page-hero .lede { font-size: 18px; line-height: 1.55; color: var(--fg-secondary); margin: 0; }
-.page-channels .page-hero .hero-carousel { width: 100%; }
-.page-channels .page-hero .hero-carousel-eyebrow { display: block; margin-bottom: 10px; font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
-/* Hero strip shows one channel cover at a time (single-up showcase). */
-.page-channels .page-hero .hero-carousel .ch-carousel { gap: 16px; }
-.page-channels .page-hero .hero-carousel .ch-slide { flex-basis: 100%; }
-.page-channels .page-hero .hero-carousel .ch-slide-media { aspect-ratio: 16/10; border-radius: var(--radius-lg); background: var(--color-white); }
-/* Keep the controls overlay aligned to the taller hero media box. */
-.page-channels .page-hero .hero-carousel .ch-carousel-overlay { aspect-ratio: 16/10; }
 
 .page-channels .channels-grid-wrap { padding: 56px 0 96px; }
 .page-channels .channels-grid-wrap .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; }
@@ -44,7 +34,6 @@
 @media (max-width: 920px) {
   .page-channels .channels-grid { grid-template-columns: repeat(2, 1fr); }
   .page-channels .page-hero h1 { font-size: 64px; }
-  .page-channels .page-hero .top-row { grid-template-columns: 1fr; gap: 24px; align-items: stretch; }
 }
 @media (max-width: 600px) {
   .page-channels .channels-grid { grid-template-columns: repeat(2, 1fr); }

@@ -125,7 +125,6 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.mvp.eyebrow}</div>
               <h2>{t.mvp.h2}</h2>
             </div>
             <div className="meta">
@@ -151,7 +150,6 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         <div className="container">
           <div className="section-head head">
             <div>
-              <div className="eyebrow bar">{t.values.eyebrow}</div>
               <h2>{t.values.h2}</h2>
             </div>
             <div className="meta">
@@ -176,7 +174,6 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         <div className="container">
           <div className="section-head head" style={{ marginBottom: 0 }}>
             <div>
-              <div className="eyebrow bar">{t.milestones.eyebrow}</div>
               <h2>{t.milestones.h2}</h2>
             </div>
             <div className="meta">
@@ -197,11 +194,11 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         </div>
       </section>
 
+      {/* TEMP: client logos wall hidden per request — restore by un-commenting this block
       <section className="clients-wall">
         <div className="container">
           <div className="section-head head" style={{ marginBottom: 32 }}>
             <div>
-              <div className="eyebrow bar">{t.clientsWall.eyebrow}</div>
               <h2>{t.clientsWall.h2}</h2>
             </div>
             <div className="meta">
@@ -219,6 +216,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
           </div>
         </div>
       </section>
+      */}
 
       <CTABlock
         locale={lang}

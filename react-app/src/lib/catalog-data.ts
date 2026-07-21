@@ -37,14 +37,14 @@ export const PRODUCTS: CatalogEntry[] = [
     channels: ["retail-beauty", "pharma", "kiosk", "horeca", "super-market"],
   },
   {
-    slug: "displays",
-    name: { el: "Display Systems", en: "Display Systems" },
+    slug: "glorifiers",
+    name: { el: "Glorifiers", en: "Glorifiers" },
     blurb: {
-      el: "Συστήματα προβολής για προϊοντική ανάδειξη — από bottle presenters έως πολυεπίπεδα retail concepts.",
-      en: "Product showcasing systems — from bottle presenters to multi-tier retail concepts.",
+      el: "Φωτιζόμενα bottle & product presenters που αναδεικνύουν ένα προϊόν ως ήρωα. LED bases, premium plexi & metal για spirits, αναψυκτικά, καλλυντικά και brand corners.",
+      en: "Illuminated bottle & product presenters that turn a single product into the hero. LED bases, premium plexi & metal for spirits, soft drinks, cosmetics and brand corners.",
     },
-    materials: ["plastic", "wood", "plexi", "premium"],
-    channels: ["retail-beauty", "pharma", "super-market", "exhibitions"],
+    materials: ["plexi", "plastic", "metal", "premium"],
+    channels: ["retail-beauty", "pharma", "horeca", "super-market", "kiosk"],
   },
   {
     slug: "floor-stands",
@@ -67,14 +67,14 @@ export const PRODUCTS: CatalogEntry[] = [
     channels: ["super-market", "exhibitions", "events"],
   },
   {
-    slug: "promo-constructions",
-    name: { el: "Promo Constructions", en: "Promo Constructions" },
+    slug: "promo-materials",
+    name: { el: "Promo Materials", en: "Promo Materials" },
     blurb: {
-      el: "Custom κατασκευές για in-store activations, shop-in-shop concepts και portable promo setups.",
-      en: "Custom constructions for in-store activations, shop-in-shop concepts and portable promo setups.",
+      el: "Promostands, totems, portable setups και φωτιζόμενες κατασκευές για in-store campaigns, sampling και brand activations.",
+      en: "Promostands, totems, portable setups and illuminated builds for in-store campaigns, sampling and brand activations.",
     },
     materials: ["paper", "metal", "plastic", "plexi"],
-    channels: ["exhibitions", "events", "super-market"],
+    channels: ["events", "exhibitions", "super-market", "retail-beauty"],
   },
   {
     slug: "shelves",
@@ -87,14 +87,24 @@ export const PRODUCTS: CatalogEntry[] = [
     channels: ["super-market", "pharma"],
   },
   {
-    slug: "wall-units",
-    name: { el: "Wall Units", en: "Wall Units" },
+    slug: "wall-unit-tet",
+    name: { el: "Wall Unit TET", en: "Wall Unit TET" },
     blurb: {
-      el: "Επίτοιχα συστήματα προβολής — modular, σταθερές βάσεις, premium finishes για flagship stores και brand corners.",
-      en: "Wall-mounted display systems — modular, fixed bases, premium finishes for flagship stores and brand corners.",
+      el: "Premium επίτοιχα brand units με ενσωματωμένο φωτισμό — υψηλής αισθητικής κατασκευές για spirits, coffee και flagship brand corners.",
+      en: "Premium wall-mounted brand units with integrated lighting — high-end builds for spirits, coffee and flagship brand corners.",
     },
     materials: ["metal", "wood", "plexi", "premium"],
-    channels: ["retail-beauty", "pharma", "super-market"],
+    channels: ["retail-beauty", "horeca", "super-market"],
+  },
+  {
+    slug: "horeca-materials",
+    name: { el: "HORECA Materials", en: "HORECA Materials" },
+    blurb: {
+      el: "Επιτραπέζια & εξωτερικά υλικά εστίασης — menu holders, menu lecterns, A-stands, table caddies (αλατοπίπερο, χαρτοπετσέτες, οδοντογλυφίδες) και wine coolers, brand-customized για εστιατόρια, μπαρ & καφέ.",
+      en: "Table-top & outdoor hospitality materials — menu holders, menu lecterns, A-stands, table caddies (salt & pepper, napkins, toothpicks) and wine coolers, brand-customized for restaurants, bars & cafés.",
+    },
+    materials: ["wood", "metal", "plexi", "paper", "plastic"],
+    channels: ["horeca", "events"],
   },
 ];
 
@@ -305,7 +315,7 @@ export const CHANNELS: CatalogEntry[] = [
   },
   {
     slug: "events",
-    name: { el: "Events", en: "Events" },
+    name: { el: "Events & Activations", en: "Events & Activations" },
     inMenu: true,
     featured: true,
     blurb: {

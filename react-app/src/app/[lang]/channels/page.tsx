@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChannelCarousel } from "@/components/ChannelCarousel";
 import { CTABlock } from "@/components/CTABlock";
+import { JsonLd } from "@/components/JsonLd";
 import { getAllChannels } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
+import { itemListSchema } from "@/lib/structured-data";
 
 export async function generateMetadata({
   params,
@@ -32,33 +34,20 @@ export default async function ChannelsPage({
   const t = dict.channels;
   const href = (p: string) => localizedHref(p, lang);
   const channels = (await getAllChannels()).filter((c) => c.inMenu);
-  const heroCarouselPhotos = channels
-    .map((c) => c.cover)
-    .filter((src): src is string => Boolean(src))
-    .map((src) => ({ src }));
+  const channelListSchema = itemListSchema(
+    lang,
+    lang === "el" ? "Retail κανάλια" : "Retail channels",
+    channels.map((c) => ({ name: c.name[lang], path: `/channels/${c.slug}` })),
+  );
 
   return (
     <div className="page-channels">
+      <JsonLd data={channelListSchema} />
       <section className="page-hero">
         <div className="container">
-          <div className="top-row">
-            <h1>
-              {t.hero.h1Pre} <em>{t.hero.h1Em}</em>
-            </h1>
-            <div className="hero-carousel">
-              <span className="hero-carousel-eyebrow">{t.carouselEyebrow}</span>
-              <ChannelCarousel
-                photos={heroCarouselPhotos}
-                alt={t.gridHeading}
-                prevLabel={t.carouselPrev}
-                nextLabel={t.carouselNext}
-                pauseLabel={t.carouselPause}
-                playLabel={t.carouselPlay}
-                openLabel={t.lightboxOpen}
-                closeLabel={t.lightboxClose}
-              />
-            </div>
-          </div>
+          <h1>
+            {t.hero.h1Pre} {t.hero.h1Em}
+          </h1>
         </div>
       </section>
 
@@ -79,8 +68,16 @@ export default async function ChannelsPage({
               >
                 <div className="channel-card-photo">
                   {c.cover ? (
-                    /* eslint-disable-next-line @next/next/no-img-element */
-                    <img src={c.cover} alt={c.name[lang]} loading="lazy" />
+                    <Image
+                      src={c.cover}
+                      alt={
+                        lang === "el"
+                          ? `Displays για ${c.name[lang]} από την Production`
+                          : `${c.name[lang]} retail displays by Production`
+                      }
+                      fill
+                      sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                    />
                   ) : (
                     <div className="ph orange">
                       <div className="ph-grid" />
@@ -100,25 +97,6 @@ export default async function ChannelsPage({
                 </div>
               </Link>
             ))}
-            <Link
-              href={href("/quote")}
-              className="channel-card channel-card-cta"
-            >
-              <div className="channel-card-photo">
-                <div className="ph orange">
-                  <div className="ph-grid" />
-                </div>
-                <div className="channel-card-overlay" />
-              </div>
-              <div className="channel-card-body">
-                <h3>{t.yourChannel.title}</h3>
-                <p>{t.yourChannel.blurb}</p>
-                <div className="channel-card-meta">
-                  <span className="count">{t.yourChannel.cta}</span>
-                  <span className="arrow">→</span>
-                </div>
-              </div>
-            </Link>
           </div>
         </div>
       </section>

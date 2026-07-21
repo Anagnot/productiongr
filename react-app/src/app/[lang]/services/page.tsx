@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
+import { JsonLd } from "@/components/JsonLd";
 import { getAllProducts } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
+import { itemListSchema } from "@/lib/structured-data";
 
 export async function generateMetadata({
   params,
@@ -29,21 +32,15 @@ function dotClass(c: string) {
 }
 
 const PRODUCT_GROUPS: Record<string, string[]> = {
-  "floor-counter": ["floor-stands", "counter-stands"],
-  "display-systems": ["displays"],
-  "gondola-pallet": ["pallet-stands", "shelves"],
-  "wall-shelves": ["wall-units"],
+  "counter-stands": ["counter-stands"],
+  "floor-stands": ["floor-stands"],
+  "shelves": ["shelves"],
+  "pallet-stands": ["pallet-stands"],
+  "glorifiers": ["glorifiers"],
+  "horeca-materials": ["horeca-materials"],
+  "wall-units": ["wall-unit-tet"],
+  "promo": ["promo-materials"],
 };
-const CHANNEL_CHIP_SLUGS = [
-  "super-market",
-  "retail-beauty",
-  "pharma",
-  "horeca",
-  "kiosk",
-  "exhibitions",
-  "events",
-];
-
 export default async function ServicesPage({
   params,
   searchParams,
@@ -56,7 +53,15 @@ export default async function ServicesPage({
   const dict = await getDictionary(lang);
   const t = dict.services;
   const href = (p: string) => localizedHref(p, lang);
-  const allProducts = await getAllProducts();
+  // Order the grid to match the header menu (PRODUCT_GROUPS mirrors that order).
+  const menuOrder = Object.values(PRODUCT_GROUPS).flat();
+  const rank = (slug: string) => {
+    const i = menuOrder.indexOf(slug);
+    return i === -1 ? menuOrder.length : i;
+  };
+  const allProducts = (await getAllProducts()).sort(
+    (a, b) => rank(a.slug) - rank(b.slug),
+  );
   const groupSlugs = groupFilter ? PRODUCT_GROUPS[groupFilter] : undefined;
   const products = groupSlugs
     ? allProducts.filter((p) => groupSlugs.includes(p.slug))
@@ -64,8 +69,18 @@ export default async function ServicesPage({
       ? allProducts.filter((p) => p.channels?.includes(channelFilter))
       : allProducts;
 
+  const productListSchema = itemListSchema(
+    lang,
+    lang === "el" ? "Τύποι κατασκευών display" : "Display solution build types",
+    allProducts.map((p) => ({
+      name: p.name[lang],
+      path: `/services/${p.slug}`,
+    })),
+  );
+
   return (
     <div className="page-services">
+      <JsonLd data={productListSchema} />
       <section className="page-hero">
         <div className="ornament-c"></div>
         <div className="container">
@@ -87,73 +102,15 @@ export default async function ServicesPage({
         </div>
       </section>
 
-      <div className="ia-bar">
-        <div className="container">
-          <div className="group">
-            <h6>{t.iaBar.typeTitle}</h6>
-            <span className="chip active">{t.iaBar.all}</span>
-            {t.iaBar.typeChips.map((c) => (
-              <span key={c} className="chip">
-                {c}
-              </span>
-            ))}
-          </div>
-          <div className="group">
-            <h6>{t.iaBar.materialTitle}</h6>
-            {t.iaBar.materialChips.map((c) => (
-              <span key={c} className="chip">
-                {c}
-              </span>
-            ))}
-          </div>
-          <div className="group">
-            <h6>{t.iaBar.channelTitle}</h6>
-            <Link
-              href={href("/services")}
-              className={!channelFilter && !groupFilter ? "chip active" : "chip"}
-            >
-              {t.iaBar.all}
-            </Link>
-            {t.iaBar.channelChips.map((c, i) => {
-              const slug = CHANNEL_CHIP_SLUGS[i];
-              return (
-                <Link
-                  key={c}
-                  href={href(`/services?channel=${slug}`)}
-                  className={channelFilter === slug ? "chip active" : "chip"}
-                >
-                  {c}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
       <section className="products">
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.products.eyebrow}</div>
               <h2>{t.products.h2}</h2>
             </div>
           </div>
           <div className="product-grid">
-            <Link
-              href={href("/services/special-projects")}
-              className="product special"
-            >
-              <div className="product-visual photo special-visual">
-                <div className="ph-grid"></div>
-                <div className="circle"></div>
-              </div>
-              <div className="product-body">
-                <div className="num">{t.specialProjects.cardEyebrow}</div>
-                <h3>{t.specialProjects.cardTitle}</h3>
-                <p>{t.specialProjects.cardDesc}</p>
-              </div>
-            </Link>
-            {products.map((p, i) => (
+            {products.map((p) => (
               <Link
                 href={href(`/services/${p.slug}`)}
                 className="product"
@@ -161,8 +118,16 @@ export default async function ServicesPage({
               >
                 <div className="product-visual photo">
                   {p.cover ? (
-                    /* eslint-disable-next-line @next/next/no-img-element */
-                    <img src={p.cover} alt={p.name[lang]} loading="lazy" />
+                    <Image
+                      src={p.cover}
+                      alt={
+                        lang === "el"
+                          ? `${p.name[lang]} — κατασκευή display από την Production`
+                          : `${p.name[lang]} — retail display built by Production`
+                      }
+                      fill
+                      sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                    />
                   ) : (
                     <>
                       <div className="ph-grid"></div>
@@ -171,61 +136,11 @@ export default async function ServicesPage({
                   )}
                 </div>
                 <div className="product-body">
-                  <div className="num">
-                    {(i + 1).toString().padStart(2, "0")} / {products.length.toString().padStart(2, "0")}
-                  </div>
                   <h3>{p.name[lang]}</h3>
                   <p>{p.blurb[lang]}</p>
-                  {p.materials && p.materials.length > 0 && (
-                    <div className="materials">
-                      {p.materials.map((m) => (
-                        <span key={m} className="tag-pill">
-                          {t.materialLabels[m]}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </Link>
             ))}
-          </div>
-          <div className="all-build">
-            <Link href={href("/services")} className="link-arrow">
-              {t.allBuildTypes}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="special-feat">
-        <div className="ornament"></div>
-        <div className="ornament2"></div>
-        <div className="container">
-          <div>
-            <div className="eyebrow">{t.specialFeat.eyebrow}</div>
-            <h2>
-              {t.specialFeat.h2Line1}
-              <br />
-              <em>{t.specialFeat.h2Em}</em>
-            </h2>
-            <p>{t.specialFeat.p}</p>
-            <div className="tag-line">
-              {t.specialFeat.tags.map((tag) => (
-                <span key={tag} className="tag-pill">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="visual">
-            <div className="para"></div>
-            <div className="ph-grid"></div>
-            <div className="circle"></div>
-            <div className="tag">
-              {t.specialFeat.tagLine1}
-              <br />
-              {t.specialFeat.tagLine2}
-            </div>
           </div>
         </div>
       </section>
@@ -234,7 +149,6 @@ export default async function ServicesPage({
         <div className="container">
           <div className="head">
             <div>
-              <div className="eyebrow bar">{t.matrix.eyebrow}</div>
               <h2>{t.matrix.h2}</h2>
             </div>
             <p>
@@ -278,9 +192,6 @@ export default async function ServicesPage({
       <section className="cap-band">
         <div className="container">
           <div>
-            <div className="eyebrow bar" style={{ marginBottom: 14 }}>
-              {t.cap.eyebrow}
-            </div>
             <h2>{t.cap.h2}</h2>
             <p>{t.cap.p}</p>
             <Link href={href("/about")} className="cta primary">

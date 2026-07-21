@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { JsonLd } from "@/components/JsonLd";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
+import { breadcrumbSchema, caseStudySchema } from "@/lib/structured-data";
 
 export async function generateMetadata({
   params,
@@ -29,8 +31,22 @@ export default async function CocaColaSummerEndcapPage({
   const t = dict.cocaCola;
   const href = (p: string) => localizedHref(p, lang);
 
+  const breadcrumb = breadcrumbSchema(lang, [
+    { name: lang === "el" ? "Αρχική" : "Home", path: "/" },
+    { name: dict.portfolio.metaTitle, path: "/portfolio" },
+    { name: t.metaTitle, path: "/portfolio/coca-cola-summer-endcap" },
+  ]);
+  const caseStudy = caseStudySchema(lang, {
+    name: t.metaTitle,
+    description: t.metaDescription,
+    path: "/portfolio/coca-cola-summer-endcap",
+    keywords: t.metaKeywords,
+  });
+
   return (
     <div className="page-case-coca-cola">
+      <JsonLd data={breadcrumb} />
+      <JsonLd data={caseStudy} />
       <section className="case-hero">
         <div className="container">
           <h1>
@@ -108,9 +124,6 @@ export default async function CocaColaSummerEndcapPage({
       <section className="specs-block">
         <div className="container">
           <div>
-            <div className="eyebrow bar" style={{ marginBottom: "14px" }}>
-              {t.specs.eyebrow}
-            </div>
             <h2>{t.specs.h2}</h2>
             <p>{t.specs.p}</p>
             <Link href={href("/services")} className="cta outline">
@@ -184,7 +197,6 @@ export default async function CocaColaSummerEndcapPage({
         <div className="container">
           <div className="section-head">
             <div>
-              <div className="eyebrow bar">{t.timeline.eyebrow}</div>
               <h2>{t.timeline.h2}</h2>
             </div>
             <div className="meta">
@@ -223,12 +235,6 @@ export default async function CocaColaSummerEndcapPage({
         <div className="container">
           <div className="head">
             <div>
-              <div
-                className="eyebrow bar"
-                style={{ color: "rgba(255,255,255,0.6)" }}
-              >
-                {t.results.eyebrow}
-              </div>
               <h2>
                 {t.results.h2Line1}
                 <br />
