@@ -233,84 +233,61 @@ export const CHANNEL_GALLERIES: Record<string, ChannelGallery> = {
     "photos": [
       {
         "file": "01.jpg",
-        "displayType": "Counter Tray",
-        "brand": "Chupa Chups",
-        "caption": "Impulse purchase at checkout, minimal space required"
+        "displayType": "Illuminated Display Stand",
+        "brand": "blu bar",
+        "caption": "Backlit three-tier unit, bold brand block for high-impulse vape"
       },
       {
         "file": "02.jpg",
-        "displayType": "Counter Display",
-        "brand": "Custom",
-        "caption": "Compact, compliant counter presence"
+        "displayType": "Illuminated Shelf Units",
+        "brand": "glo Hyper X2",
+        "caption": "Backlit wall-mounted cabinets, modular repetition across the fixture"
       },
       {
         "file": "03.jpg",
-        "displayType": "Floor Stands",
-        "brand": "Oreo",
-        "caption": "Multi-format options — adapted to available space",
-        "portrait": true
-      },
-      {
-        "file": "04.jpg",
-        "displayType": "Mobile Floor Unit",
-        "brand": "7Days / Molto",
-        "caption": "Wheeled for flexible placement, high-impulse categories",
+        "displayType": "Illuminated Counter Cabinet",
+        "brand": "glo · Vuse · Velo",
+        "caption": "Multi-brand lit counter unit — maximum SKU visibility in minimal width",
         "hero": true
       },
       {
+        "file": "04.jpg",
+        "displayType": "Floor Stand",
+        "brand": "Mentos",
+        "caption": "Full-height branded tower, tiered shelves for the whole range",
+        "portrait": true
+      },
+      {
         "file": "05.jpg",
-        "displayType": "In-Store Unit",
-        "brand": "Custom",
-        "caption": "Contextual placement in convenience store environment"
+        "displayType": "Counter Display",
+        "brand": "Oral-B · Trident",
+        "caption": "Two-tier acrylic counter unit at the point of sale",
+        "portrait": true
       },
       {
         "file": "06.jpg",
-        "displayType": "Illuminated Cabinet",
-        "brand": "GLO / Vuse / Velo",
-        "caption": "LED backlit, tiered — maximum SKU visibility in minimal width"
+        "displayType": "Counter Tray",
+        "brand": "Smint",
+        "caption": "Compact impulse tray, minimal footprint at the register"
       },
       {
         "file": "07.jpg",
-        "displayType": "Wall Unit",
-        "brand": "GLO / Vuse",
-        "caption": "Secure, illuminated cabinet — premium in small format"
+        "displayType": "Counter Display Box",
+        "brand": "Chupa Chups",
+        "caption": "Open-front counter box, easy grab-and-go at checkout"
       },
       {
         "file": "08.jpg",
+        "displayType": "Floor Stand",
+        "brand": "Chupa Chups",
+        "caption": "Freestanding branded rack, angled shelves for street-side kiosks",
         "portrait": true
       },
       {
-        "file": "09.jpg"
-      },
-      {
-        "file": "10.jpg"
-      },
-      {
-        "file": "11.jpg"
-      },
-      {
-        "file": "12.jpg"
-      },
-      {
-        "file": "13.jpg",
-        "portrait": true
-      },
-      {
-        "file": "14.jpg"
-      },
-      {
-        "file": "15.jpg"
-      },
-      {
-        "file": "16.jpg"
-      },
-      {
-        "file": "17.png",
-        "portrait": true
-      },
-      {
-        "file": "18.jpg",
-        "portrait": true
+        "file": "09.jpg",
+        "displayType": "Counter Tray",
+        "brand": "Chupa Chups",
+        "caption": "Multi-compartment counter tray mixing formats in one unit"
       }
     ]
   },

@@ -64,11 +64,16 @@ export function ChannelCarousel({
   const scrollerRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<SVGCircleElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const restoreFocusRef = useRef<HTMLElement | null>(null);
   const activeRef = useRef(0);
   const accumRef = useRef(0); // ms elapsed toward the next auto-advance
+  const interactingRef = useRef(false); // true while the user is touching/swiping the scroller
+  const idleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(true);
+  const [userToggled, setUserToggled] = useState(false); // user explicitly opted into autoplay
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const reducedMotion = useSyncExternalStore(subscribeRM, getRM, serverFalse);
@@ -76,8 +81,8 @@ export function ChannelCarousel({
 
   const total = photos.length;
   const isOpen = openIndex !== null;
-  // Reduced-motion users never get auto-advance; the control reflects that.
-  const autoplayOn = playing && !reducedMotion;
+  // Reduced-motion users start paused, but can still opt in via the control.
+  const autoplayOn = playing && (!reducedMotion || userToggled);
 
   const setRing = useCallback((p: number) => {
     const c = ringRef.current;
@@ -106,13 +111,45 @@ export function ChannelCarousel({
     const el = scrollerRef.current;
     if (!el) return;
     update();
-    el.addEventListener("scroll", update, { passive: true });
+
+    // While the user is touching/dragging the scroller, suspend auto-advance so a
+    // programmatic smooth-scroll never fights a manual swipe. Resume shortly after
+    // scrolling settles, with the countdown reset to a fresh slide.
+    const settleSoon = () => {
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+      idleTimerRef.current = setTimeout(() => {
+        interactingRef.current = false;
+        accumRef.current = 0;
+        setRing(0);
+      }, 600);
+    };
+    const onPointerDown = () => {
+      interactingRef.current = true;
+      accumRef.current = 0;
+      setRing(0);
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    };
+    const onScroll = () => {
+      update();
+      if (interactingRef.current) settleSoon();
+    };
+
+    el.addEventListener("scroll", onScroll, { passive: true });
+    el.addEventListener("pointerdown", onPointerDown, { passive: true });
+    el.addEventListener("touchstart", onPointerDown, { passive: true });
+    el.addEventListener("pointerup", settleSoon, { passive: true });
+    el.addEventListener("touchend", settleSoon, { passive: true });
     window.addEventListener("resize", update);
     return () => {
-      el.removeEventListener("scroll", update);
+      el.removeEventListener("scroll", onScroll);
+      el.removeEventListener("pointerdown", onPointerDown);
+      el.removeEventListener("touchstart", onPointerDown);
+      el.removeEventListener("pointerup", settleSoon);
+      el.removeEventListener("touchend", settleSoon);
       window.removeEventListener("resize", update);
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
     };
-  }, [update]);
+  }, [update, setRing]);
 
   // Loop-aware navigation. Always resets the auto-advance progress.
   const goTo = useCallback(
@@ -137,8 +174,16 @@ export function ChannelCarousel({
     let last = performance.now();
     let raf = 0;
     const tick = (now: number) => {
-      accumRef.current += now - last;
+      const delta = now - last;
       last = now;
+      // Hold the countdown at zero while the user is actively swiping.
+      if (interactingRef.current) {
+        accumRef.current = 0;
+        setRing(0);
+        raf = requestAnimationFrame(tick);
+        return;
+      }
+      accumRef.current += delta;
       if (accumRef.current >= autoPlayMs) {
         accumRef.current = 0;
         next(); // advances + resets ring
@@ -152,7 +197,10 @@ export function ChannelCarousel({
   }, [running, next, setRing, autoPlayMs]);
 
   // ---- Lightbox ----
-  const open = useCallback((i: number) => setOpenIndex(i), []);
+  const open = useCallback((i: number) => {
+    restoreFocusRef.current = document.activeElement as HTMLElement | null;
+    setOpenIndex(i);
+  }, []);
   const close = useCallback(() => setOpenIndex(null), []);
   const lbNext = useCallback(
     () => setOpenIndex((i) => (i === null ? null : (i + 1) % total)),
@@ -165,18 +213,39 @@ export function ChannelCarousel({
 
   useEffect(() => {
     if (!isOpen) return;
+    const dialog = dialogRef.current;
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") close();
-      else if (e.key === "ArrowRight") lbNext();
-      else if (e.key === "ArrowLeft") lbPrev();
+      if (e.key === "Escape") {
+        close();
+      } else if (e.key === "ArrowRight") {
+        lbNext();
+      } else if (e.key === "ArrowLeft") {
+        lbPrev();
+      } else if (e.key === "Tab" && dialog) {
+        // Keep focus inside the dialog.
+        const focusable = dialog.querySelectorAll<HTMLElement>("button");
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     }
     window.addEventListener("keydown", onKey);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    dialogRef.current?.focus();
+    closeBtnRef.current?.focus();
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
+      // Return focus to whatever opened the lightbox.
+      restoreFocusRef.current?.focus();
+      restoreFocusRef.current = null;
     };
   }, [isOpen, close, lbNext, lbPrev]);
 
@@ -203,7 +272,13 @@ export function ChannelCarousel({
                   type="button"
                   className="ch-slide-trigger"
                   onClick={() => open(i)}
-                  aria-label={`${openLabel} ${i + 1}`}
+                  aria-label={
+                    hasCap
+                      ? `${openLabel}: ${[p.displayType, p.brand, p.caption]
+                          .filter(Boolean)
+                          .join(", ")}`
+                      : `${openLabel} ${i + 1}`
+                  }
                 >
                   <div className={`ch-slide-media${p.portrait ? " is-portrait" : ""}`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -265,7 +340,10 @@ export function ChannelCarousel({
             <button
               type="button"
               className="ch-autoplay"
-              onClick={() => setPlaying((v) => !v)}
+              onClick={() => {
+                setUserToggled(true);
+                setPlaying(!autoplayOn);
+              }}
               aria-label={autoplayOn ? pauseLabel : playLabel}
               aria-pressed={!autoplayOn}
             >
@@ -301,14 +379,13 @@ export function ChannelCarousel({
       </div>
 
       {total > 1 && (
-        <div className="ch-carousel-dots" role="tablist">
+        <div className="ch-carousel-dots" role="group" aria-label={alt}>
           {photos.map((p, i) => (
             <button
               key={p.src}
               type="button"
-              role="tab"
-              aria-selected={i === active}
-              aria-label={`${i + 1}`}
+              aria-current={i === active ? "true" : undefined}
+              aria-label={`${i + 1} / ${total}`}
               className={`ch-carousel-dot${i === active ? " is-active" : ""}`}
               onClick={() => goTo(i)}
             />
@@ -316,13 +393,20 @@ export function ChannelCarousel({
         </div>
       )}
 
+      {/* Slide-change announcements for assistive tech (silenced during autoplay per ARIA APG). */}
+      <span className="ch-sr-only" aria-live={running ? "off" : "polite"}>
+        {`${active + 1} / ${total}`}
+      </span>
+
       {isOpen && lb &&
         createPortal(
           <div
             className="ch-lightbox"
             role="dialog"
             aria-modal="true"
-            aria-label={alt}
+            aria-label={`${alt} — ${
+              [lb.displayType, lb.brand].filter(Boolean).join(" · ") || openIndex + 1
+            } (${openIndex + 1} / ${total})`}
             ref={dialogRef}
             tabIndex={-1}
             onClick={close}
@@ -330,6 +414,7 @@ export function ChannelCarousel({
             <button
               type="button"
               className="ch-lightbox-close"
+              ref={closeBtnRef}
               onClick={close}
               aria-label={closeLabel}
             >
