@@ -7,6 +7,7 @@
 
 /* Shared component styles (used by more than one page). */
 @import "../styles/components/channel-carousel.css";
+@import "../styles/components/logo-marquee.css";
 
 /* Per-page styles bundled here instead of imported per-route. Each file
    is scoped under its own .page-* class so selectors don't collide. This

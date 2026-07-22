@@ -1,0 +1,79 @@
+/* ===== TRUSTED-BY LOGO MARQUEE ============================= */
+/* Seamless, auto-scrolling strip of client logos. The track holds two
+   identical copies and slides -50%, so the wrap is invisible. Logos rest in
+   muted grayscale and lift to full colour on hover; hovering the strip pauses
+   the scroll. Rendered on the home page (above the footer) and the about page. */
+
+.logo-marquee {
+  background: var(--color-white);
+  padding: 72px 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.logo-marquee-title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-secondary);
+  margin: 0 0 32px;
+  text-align: center;
+}
+
+.logo-marquee-wrap {
+  position: relative;
+  overflow: hidden;
+  /* Fade the strip in/out at both edges. */
+  mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+}
+
+.logo-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: logo-marquee-scroll 80s linear infinite;
+}
+
+.logo-marquee-wrap:hover .logo-marquee-track,
+.logo-marquee-wrap:focus-within .logo-marquee-track {
+  animation-play-state: paused;
+}
+
+.logo-marquee-item {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-marquee-item img {
+  height: 44px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.55;
+  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.logo-marquee-item img:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+@keyframes logo-marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track { animation: none !important; transform: none; }
+  .logo-marquee-item img { transition: none; }
+}
