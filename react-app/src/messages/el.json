@@ -171,7 +171,9 @@
   "common": {
     "strategicBriefing": "Strategic briefing →",
     "ctaBlockTitlePre": "Ας σχεδιάσουμε μαζί",
-    "ctaBlockTitleAccent": "το επόμενο project σας."
+    "ctaBlockTitleAccent": "το επόμενο project σας.",
+    "trustedByTitle": "Οι μάρκες που μας εμπιστεύονται",
+    "trustedByLogoAlt": "Λογότυπο {brand}"
   },
   "home": {
     "metaTitle": "Production LTD — λύσεις προβολής & branded environments από το 2008",

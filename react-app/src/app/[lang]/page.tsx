@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
 import { HeroSlider } from "@/components/HeroSlider";
+import { LogoMarquee } from "@/components/LogoMarquee";
 import { getAllChannels } from "@/lib/catalog";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale, localizedHref } from "@/lib/i18n";
@@ -298,19 +299,10 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         </div>
       </section>
 
-      {/* TEMP: client logos strip hidden per request — restore by un-commenting this block
-      <section className="clients">
-        <div className="container">
-          <div className="clients-row">
-            {t.clients.items.map((c) => (
-              <div key={c.name} className={c.style ? `c ${c.style}` : "c"}>
-                {c.name}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      */}
+      <LogoMarquee
+        title={dict.common.trustedByTitle}
+        logoAltTemplate={dict.common.trustedByLogoAlt}
+      />
 
       <CTABlock
         locale={lang}

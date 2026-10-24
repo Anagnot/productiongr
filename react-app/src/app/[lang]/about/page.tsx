@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CTABlock } from "@/components/CTABlock";
+import { LogoMarquee } from "@/components/LogoMarquee";
 import { getDictionary } from "@/lib/dictionaries";
 import { hasLocale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
@@ -194,29 +195,10 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         </div>
       </section>
 
-      {/* TEMP: client logos wall hidden per request — restore by un-commenting this block
-      <section className="clients-wall">
-        <div className="container">
-          <div className="section-head head" style={{ marginBottom: 32 }}>
-            <div>
-              <h2>{t.clientsWall.h2}</h2>
-            </div>
-            <div className="meta">
-              {t.clientsWall.metaLine1}
-              <br />
-              {t.clientsWall.metaLine2}
-            </div>
-          </div>
-          <div className="clients-wall-grid">
-            {t.clientsWall.items.map((c) => (
-              <div key={c.name} className={c.style ? `c ${c.style}` : "c"}>
-                {c.name}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      */}
+      <LogoMarquee
+        title={dict.common.trustedByTitle}
+        logoAltTemplate={dict.common.trustedByLogoAlt}
+      />
 
       <CTABlock
         locale={lang}

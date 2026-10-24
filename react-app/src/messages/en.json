@@ -171,7 +171,9 @@
   "common": {
     "strategicBriefing": "Strategic briefing →",
     "ctaBlockTitlePre": "Let's shape",
-    "ctaBlockTitleAccent": "your next project."
+    "ctaBlockTitleAccent": "your next project.",
+    "trustedByTitle": "The brands that trust us",
+    "trustedByLogoAlt": "{brand} logo"
   },
   "home": {
     "metaTitle": "Production LTD — display solutions & branded environments since 2008",
