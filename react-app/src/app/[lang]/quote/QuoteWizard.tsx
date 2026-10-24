@@ -1,24 +1,57 @@
 "use client";
 
-import { useMemo, useState, useSyncExternalStore } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
+import { upload } from "@vercel/blob/client";
+import {
+  BRIEF_CONTENT_TYPES,
+  BRIEF_UPLOAD_PREFIX,
+  MAX_BRIEF_FILES,
+  MAX_BRIEF_FILE_BYTES,
+  MAX_BRIEF_TOTAL_BYTES,
+  briefExtension,
+} from "@/lib/brief-uploads";
 
 type FileKind = "pdf" | "doc";
 
-const MAX_FILE_BYTES = 10 * 1024 * 1024;
-const ACCEPTED_EXTENSIONS = [".pdf", ".doc", ".docx"];
+const ACCEPTED_EXTENSIONS = Object.keys(BRIEF_CONTENT_TYPES);
 
 function fileKindFor(name: string): FileKind | null {
-  const lower = name.toLowerCase();
-  if (lower.endsWith(".pdf")) return "pdf";
-  if (lower.endsWith(".doc") || lower.endsWith(".docx")) return "doc";
-  return null;
+  const ext = briefExtension(name);
+  if (!ext) return null;
+  return ext === ".pdf" ? "pdf" : "doc";
+}
+
+// Blob pathnames stay ASCII; the original filename travels with the brief and
+// names the email attachment.
+function uploadPathname(name: string, ext: string): string {
+  const base = name
+    .slice(0, -ext.length)
+    .normalize("NFKD")
+    .replace(/[^\w.-]+/g, "-")
+    .replace(/^[-.]+|[-.]+$/g, "")
+    .slice(0, 60);
+  return `${BRIEF_UPLOAD_PREFIX}${base || "brief"}${ext}`;
+}
+
+function formatMB(bytes: number): string {
+  return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 }
 
 type FileEntry = {
+  id: string;
   name: string;
-  size: string;
-  tag: string;
+  bytes: number;
   kind: FileKind;
+  status: "uploading" | "done" | "error";
+  progress: number;
+  // Set once the upload finishes; /api/contact attaches the file from here.
+  pathname?: string;
 };
 
 type DefaultFileEntry = {
@@ -138,10 +171,14 @@ type QuoteStrings = {
     dropzoneP: string;
     browse: string;
     formats: string;
-    uploadedSuffix: string;
+    uploading: string;
+    uploaded: string;
+    uploadFailed: string;
     rejectIntro: string;
     rejectType: string;
     rejectSize: string;
+    rejectCount: string;
+    rejectTotal: string;
     notesLabel: string;
     notesPh: string;
     consentPre: string;
@@ -160,6 +197,8 @@ type QuoteStrings = {
   sending: string;
   errorAlert: string;
   missingAlert: string;
+  uploadingFiles: string;
+  fileErrorAlert: string;
   summary: {
     h5: string;
     items: { k: string; field: string }[];
@@ -235,14 +274,30 @@ export function QuoteWizard({ t }: Props) {
     consent: false,
   });
   const [status, setStatus] = useState<
-    "idle" | "sending" | "success" | "error" | "missing"
+    "idle" | "sending" | "success" | "error" | "missing" | "fileError"
   >("idle");
+  const [dragActive, setDragActive] = useState(false);
+  const uploadControllers = useRef(new Map<string, AbortController>());
 
   const isClient = useSyncExternalStore(
     subscribeNoop,
     getClientTrue,
     getServerFalse,
   );
+
+  // A file dropped outside the dropzone would make the browser open it and
+  // discard the half-filled brief.
+  useEffect(() => {
+    const guard = (e: DragEvent) => {
+      if (e.dataTransfer?.types.includes("Files")) e.preventDefault();
+    };
+    window.addEventListener("dragover", guard);
+    window.addEventListener("drop", guard);
+    return () => {
+      window.removeEventListener("dragover", guard);
+      window.removeEventListener("drop", guard);
+    };
+  }, []);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -257,11 +312,94 @@ export function QuoteWizard({ t }: Props) {
     }));
   }
 
-  function removeFile(name: string) {
+  function removeFile(id: string) {
+    uploadControllers.current.get(id)?.abort();
     setForm((prev) => ({
       ...prev,
-      files: prev.files.filter((f) => f.name !== name),
+      files: prev.files.filter((f) => f.id !== id),
     }));
+  }
+
+  function patchFile(id: string, patch: Partial<FileEntry>) {
+    setForm((prev) => ({
+      ...prev,
+      files: prev.files.map((f) => (f.id === id ? { ...f, ...patch } : f)),
+    }));
+  }
+
+  // Uploads straight from the browser to the private Blob store, so files are
+  // not limited by the serverless function body size.
+  async function uploadFile(id: string, file: File) {
+    const ext = briefExtension(file.name);
+    if (!ext) return;
+    const controller = new AbortController();
+    uploadControllers.current.set(id, controller);
+    try {
+      const blob = await upload(uploadPathname(file.name, ext), file, {
+        access: "private",
+        handleUploadUrl: "/api/quote-upload",
+        contentType: BRIEF_CONTENT_TYPES[ext],
+        abortSignal: controller.signal,
+        onUploadProgress: ({ percentage }) =>
+          patchFile(id, { progress: percentage }),
+      });
+      patchFile(id, { status: "done", progress: 100, pathname: blob.pathname });
+    } catch (error) {
+      if (!controller.signal.aborted) {
+        console.error("Brief upload failed", error);
+        patchFile(id, { status: "error" });
+      }
+    } finally {
+      uploadControllers.current.delete(id);
+    }
+  }
+
+  function addFiles(picked: File[]) {
+    if (picked.length === 0) return;
+    const kept = form.files.filter((f) => f.status !== "error");
+    let count = kept.length;
+    let totalBytes = kept.reduce((sum, f) => sum + f.bytes, 0);
+    const rejected: string[] = [];
+    const accepted: { entry: FileEntry; file: File }[] = [];
+    for (const file of picked) {
+      const kind = fileKindFor(file.name);
+      const reason = !kind
+        ? t.step5.rejectType
+        : file.size > MAX_BRIEF_FILE_BYTES
+          ? t.step5.rejectSize
+          : count >= MAX_BRIEF_FILES
+            ? t.step5.rejectCount
+            : totalBytes + file.size > MAX_BRIEF_TOTAL_BYTES
+              ? t.step5.rejectTotal
+              : null;
+      if (!kind || reason) {
+        rejected.push(`${file.name} — ${reason}`);
+        continue;
+      }
+      count += 1;
+      totalBytes += file.size;
+      accepted.push({
+        entry: {
+          id: crypto.randomUUID(),
+          name: file.name,
+          bytes: file.size,
+          kind,
+          status: "uploading",
+          progress: 0,
+        },
+        file,
+      });
+    }
+    if (accepted.length > 0) {
+      setForm((prev) => ({
+        ...prev,
+        files: [...prev.files, ...accepted.map((a) => a.entry)],
+      }));
+      for (const { entry, file } of accepted) void uploadFile(entry.id, file);
+    }
+    if (rejected.length > 0) {
+      alert(`${t.step5.rejectIntro}\n\n${rejected.join("\n")}`);
+    }
   }
 
   function handleSubmit(e: React.FormEvent) {
@@ -324,6 +462,11 @@ export function QuoteWizard({ t }: Props) {
       setStep(1);
       return;
     }
+    if (form.files.some((f) => f.status === "uploading")) return;
+    if (form.files.some((f) => f.status === "error")) {
+      setStatus("fileError");
+      return;
+    }
     setStatus("sending");
     const summaryLabel = (field: string) =>
       t.summary.items.find((it) => it.field === field)?.k ?? field;
@@ -354,10 +497,15 @@ export function QuoteWizard({ t }: Props) {
             [t.step4.installationLabel, form.installation],
             [
               summaryLabel("files"),
-              form.files.map((f) => `${f.name} (${f.size})`).join(", "),
+              form.files
+                .map((f) => `${f.name} (${formatMB(f.bytes)})`)
+                .join(", "),
             ],
             [t.step5.notesLabel, form.notes],
           ],
+          attachments: form.files.flatMap((f) =>
+            f.pathname ? [{ pathname: f.pathname, name: f.name }] : [],
+          ),
         }),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -412,6 +560,9 @@ export function QuoteWizard({ t }: Props) {
     t.summary.timeline,
     t.step4.urgency,
   ]);
+
+  const isUploading = form.files.some((f) => f.status === "uploading");
+  const submitBusy = step === 5 && (status === "sending" || isUploading);
 
   const summaryValues: Record<string, string | null> = {
     company: form.company || null,
@@ -790,7 +941,24 @@ export function QuoteWizard({ t }: Props) {
                 <h2>{t.step5.h2}</h2>
                 <p>{t.step5.p}</p>
               </div>
-              <label htmlFor="q-files" className="dropzone">
+              <label
+                htmlFor="q-files"
+                className={`dropzone${dragActive ? " dragover" : ""}`}
+                onDragOver={(e) => {
+                  e.preventDefault();
+                  setDragActive(true);
+                }}
+                onDragLeave={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                    setDragActive(false);
+                  }
+                }}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  setDragActive(false);
+                  addFiles(Array.from(e.dataTransfer.files));
+                }}
+              >
                 <div className="glyph-box"></div>
                 <h6>{t.step5.dropzoneH6}</h6>
                 <p>{t.step5.dropzoneP}</p>
@@ -805,50 +973,37 @@ export function QuoteWizard({ t }: Props) {
                   onChange={(e) => {
                     const picked = Array.from(e.target.files ?? []);
                     e.target.value = "";
-                    if (picked.length === 0) return;
-                    const rejected: string[] = [];
-                    const accepted: FileEntry[] = [];
-                    for (const f of picked) {
-                      const kind = fileKindFor(f.name);
-                      if (!kind) {
-                        rejected.push(`${f.name} — ${t.step5.rejectType}`);
-                        continue;
-                      }
-                      if (f.size > MAX_FILE_BYTES) {
-                        rejected.push(`${f.name} — ${t.step5.rejectSize}`);
-                        continue;
-                      }
-                      accepted.push({
-                        name: f.name,
-                        size: `${(f.size / 1024 / 1024).toFixed(1)} MB ${t.step5.uploadedSuffix}`,
-                        tag: "upload",
-                        kind,
-                      });
-                    }
-                    if (accepted.length > 0) {
-                      setForm((prev) => ({
-                        ...prev,
-                        files: [...prev.files, ...accepted],
-                      }));
-                    }
-                    if (rejected.length > 0) {
-                      alert(`${t.step5.rejectIntro}\n\n${rejected.join("\n")}`);
-                    }
+                    addFiles(picked);
                   }}
                 />
               </label>
               <div className="files-list">
                 {form.files.map((f) => (
-                  <div key={f.name} className="file-row">
+                  <div key={f.id} className="file-row">
                     <div className={`icon ${f.kind}`}>
                       {f.kind.toUpperCase()}
                     </div>
                     <div>
                       <div className="name">{f.name}</div>
-                      <div className="meta-text">{f.size}</div>
+                      <div className="meta-text">{formatMB(f.bytes)}</div>
+                      {f.status === "uploading" && (
+                        <div className="upload-bar">
+                          <span style={{ width: `${f.progress}%` }} />
+                        </div>
+                      )}
                     </div>
-                    <div className="meta-text">{f.tag}</div>
-                    <div className="remove" onClick={() => removeFile(f.name)}>
+                    <div
+                      className={`meta-text${
+                        f.status === "error" ? " error" : ""
+                      }`}
+                    >
+                      {f.status === "uploading"
+                        ? `${t.step5.uploading} ${Math.round(f.progress)}%`
+                        : f.status === "done"
+                          ? t.step5.uploaded
+                          : t.step5.uploadFailed}
+                    </div>
+                    <div className="remove" onClick={() => removeFile(f.id)}>
                       ×
                     </div>
                   </div>
@@ -947,20 +1102,22 @@ export function QuoteWizard({ t }: Props) {
                 <button
                   type="button"
                   className={`cta primary${step === 5 ? " lg" : ""}`}
-                  disabled={step === 5 && status === "sending"}
+                  disabled={submitBusy}
                   style={{
                     ...(step === 5
                       ? { background: "var(--color-orange)" }
                       : undefined),
-                    opacity: step === 5 && status === "sending" ? 0.6 : 1,
+                    opacity: submitBusy ? 0.6 : 1,
                   }}
                   onClick={next}
                 >
                   {step === 5 && status === "sending"
                     ? t.sending
-                    : step === 5
-                      ? t.footer.submit
-                      : t.footer.next}
+                    : step === 5 && isUploading
+                      ? t.uploadingFiles
+                      : step === 5
+                        ? t.footer.submit
+                        : t.footer.next}
                 </button>
               </div>
             </div>
@@ -972,6 +1129,11 @@ export function QuoteWizard({ t }: Props) {
             {step === 5 && status === "error" && (
               <p role="alert" style={{ marginTop: 12, color: "#b42318" }}>
                 {t.errorAlert}
+              </p>
+            )}
+            {step === 5 && status === "fileError" && (
+              <p role="alert" style={{ marginTop: 12, color: "#b42318" }}>
+                {t.fileErrorAlert}
               </p>
             )}
             {status === "missing" && (

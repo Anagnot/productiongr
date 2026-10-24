@@ -86,6 +86,7 @@
   /* Files dropzone */
   .page-quote .dropzone { display: block; border: 1.5px dashed var(--border-default); border-radius: var(--radius-lg); padding: 48px 32px; text-align: center; background: var(--color-gray-1); cursor: pointer; }
   .page-quote .dropzone:hover { border-color: var(--color-gray-4); background: rgba(60,60,60,0.04); }
+  .page-quote .dropzone.dragover { border-color: var(--color-orange); background: rgba(230,92,0,0.05); }
   .page-quote .dropzone .glyph-box { width: 72px; height: 72px; border-radius: var(--radius-lg); background: var(--color-white); margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); position: relative; }
   .page-quote .dropzone .glyph-box::before,
 .page-quote .dropzone .glyph-box::after { content: ''; position: absolute; background: var(--color-gray-4); border-radius: 2px; }
@@ -104,6 +105,9 @@
   .page-quote .file-row .name { font-size: 14px; font-weight: 700; }
   .page-quote .file-row .meta-text { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); letter-spacing: 0.05em; }
   .page-quote .file-row .remove { width: 24px; height: 24px; border-radius: 50%; background: var(--color-white); border: 1px solid var(--border-default); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--fg-tertiary); }
+  .page-quote .file-row .meta-text.error { color: #b42318; }
+  .page-quote .file-row .upload-bar { height: 3px; margin-top: 6px; border-radius: 2px; background: var(--border-default); overflow: hidden; }
+  .page-quote .file-row .upload-bar span { display: block; height: 100%; background: var(--color-orange); transition: width 0.2s ease; }
 
   /* Wizard footer */
   .page-quote .wizard-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; margin-top: 40px; border-top: 1px solid var(--border-default); }

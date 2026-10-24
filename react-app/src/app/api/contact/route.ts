@@ -1,8 +1,17 @@
+import { del, get } from "@vercel/blob";
 import { Resend } from "resend";
+import {
+  BRIEF_UPLOAD_PREFIX,
+  MAX_BRIEF_FILES,
+  MAX_BRIEF_TOTAL_BYTES,
+  briefExtension,
+  isBriefPathname,
+} from "@/lib/brief-uploads";
 
 // Emails are sent through Resend from the verified production.gr domain.
 // RESEND_API_KEY / CONTACT_FROM_EMAIL / CONTACT_TO_EMAIL live in .env.local
-// (and in Vercel env vars for production).
+// (and in Vercel env vars for production). Quote brief files are read from
+// the private Vercel Blob store (BLOB_READ_WRITE_TOKEN) and attached.
 
 const FORM_SUBJECTS: Record<string, string> = {
   contact: "Νέο μήνυμα επικοινωνίας",
@@ -12,6 +21,13 @@ const FORM_SUBJECTS: Record<string, string> = {
 const MAX_FIELDS = 40;
 const MAX_VALUE_LENGTH = 5000;
 
+type BriefAttachment = {
+  // Blob pathname returned by the client upload.
+  pathname: string;
+  // Original filename, used for the email attachment.
+  name: string;
+};
+
 type SubmissionBody = {
   form: string;
   name: string;
@@ -20,6 +36,7 @@ type SubmissionBody = {
   website?: string;
   // Pre-localized [label, value] rows, rendered in order.
   fields: [string, string][];
+  attachments: BriefAttachment[];
 };
 
 function escapeHtml(value: string): string {
@@ -32,6 +49,34 @@ function escapeHtml(value: string): string {
 
 function isValidEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+}
+
+// Keeps the visitor's filename when it is safe and matches the stored file's
+// extension; falls back to the blob's own name otherwise.
+function attachmentFilename(name: string, pathname: string): string {
+  const cleaned = name.replace(/[\p{Cc}\\/]/gu, "").trim().slice(-150);
+  return briefExtension(cleaned) === briefExtension(pathname)
+    ? cleaned
+    : pathname.slice(BRIEF_UPLOAD_PREFIX.length);
+}
+
+function parseAttachments(raw: unknown): BriefAttachment[] | null {
+  if (raw === undefined) return [];
+  if (!Array.isArray(raw) || raw.length > MAX_BRIEF_FILES) return null;
+  const attachments: BriefAttachment[] = [];
+  for (const item of raw) {
+    if (typeof item !== "object" || item === null) return null;
+    const { pathname, name } = item as Record<string, unknown>;
+    if (
+      typeof pathname !== "string" ||
+      typeof name !== "string" ||
+      !isBriefPathname(pathname)
+    ) {
+      return null;
+    }
+    attachments.push({ pathname, name: attachmentFilename(name, pathname) });
+  }
+  return attachments;
 }
 
 function parseBody(raw: unknown): SubmissionBody | null {
@@ -62,13 +107,42 @@ function parseBody(raw: unknown): SubmissionBody | null {
       row[1].slice(0, MAX_VALUE_LENGTH),
     ]);
   }
+  const attachments = parseAttachments(body.attachments);
+  if (!attachments || (attachments.length > 0 && body.form !== "quote")) {
+    return null;
+  }
   return {
     form: body.form,
     name: body.name.trim().slice(0, 200),
     email: body.email.trim().slice(0, 320),
     website: typeof body.website === "string" ? body.website : "",
     fields,
+    attachments,
   };
+}
+
+async function loadAttachments(files: BriefAttachment[]) {
+  let totalBytes = 0;
+  const loaded: { filename: string; content: Buffer }[] = [];
+  for (const file of files) {
+    const result = await get(file.pathname, {
+      access: "private",
+      useCache: false,
+    });
+    if (!result || result.statusCode !== 200) {
+      throw new Error(`Brief file not found: ${file.pathname}`);
+    }
+    totalBytes += result.blob.size;
+    if (totalBytes > MAX_BRIEF_TOTAL_BYTES) {
+      await result.stream.cancel();
+      throw new Error("Brief files exceed the total size limit");
+    }
+    loaded.push({
+      filename: file.name,
+      content: Buffer.from(await new Response(result.stream).arrayBuffer()),
+    });
+  }
+  return loaded;
 }
 
 function renderHtml(submission: SubmissionBody): string {
@@ -126,6 +200,17 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: "server-config" }, { status: 500 });
   }
 
+  let attachments: Awaited<ReturnType<typeof loadAttachments>>;
+  try {
+    attachments = await loadAttachments(submission.attachments);
+  } catch (error) {
+    console.error("Contact API: attachment error", error);
+    return Response.json(
+      { ok: false, error: "attachment-failed" },
+      { status: 400 },
+    );
+  }
+
   const resend = new Resend(apiKey);
   const { error } = await resend.emails.send({
     from,
@@ -134,11 +219,22 @@ export async function POST(request: Request) {
     subject: `${FORM_SUBJECTS[submission.form]} — ${submission.name}`,
     html: renderHtml(submission),
     text: renderText(submission),
+    attachments: attachments.length > 0 ? attachments : undefined,
   });
 
   if (error) {
     console.error("Contact API: Resend error", error);
     return Response.json({ ok: false, error: "send-failed" }, { status: 502 });
+  }
+
+  // The email now carries the files; drop them from storage. Anything left
+  // behind is removed by the daily cleanup cron.
+  if (submission.attachments.length > 0) {
+    try {
+      await del(submission.attachments.map((file) => file.pathname));
+    } catch (error) {
+      console.error("Contact API: blob cleanup failed", error);
+    }
   }
 
   return Response.json({ ok: true });
