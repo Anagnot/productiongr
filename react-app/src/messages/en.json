@@ -144,7 +144,7 @@
     "metaTitle": "Cookie Policy",
     "metaDescription": "Which cookies production.gr uses and how you can manage them.",
     "h1": "Cookie Policy",
-    "updated": "Last updated: 26 May 2026",
+    "updated": "Last updated: 29 October 2026",
     "intro": "Cookies are small files stored on your device. We use them for core functionality and — with your consent — for usage analytics.",
     "tableHeads": ["Category", "Description", "Duration"],
     "rows": [
@@ -155,7 +155,7 @@
       },
       {
         "cat": "Analytics (opt-in)",
-        "desc": "Anonymous measurement of visits and behaviour. Active only with your consent.",
+        "desc": "Google Analytics (cookies _ga, _ga_*): anonymous measurement of visits and behaviour. Active only with your consent.",
         "dur": "up to 14 months"
       },
       {

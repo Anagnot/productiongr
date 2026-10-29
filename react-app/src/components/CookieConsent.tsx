@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import {
-  CONSENT_EVENT,
   DEFAULT_CATEGORIES,
   OPEN_SETTINGS_EVENT,
   acceptAll,
@@ -210,21 +209,6 @@ export function CookieConsent({ locale, t }: Props) {
           )}
         </div>
       </div>
-      <ConsentBeacon />
     </>
   );
-}
-
-function ConsentBeacon() {
-  useEffect(() => {
-    const handler = (e: Event) => {
-      const detail = (e as CustomEvent).detail;
-      if (detail?.categories?.analytics) {
-        // Hook point: initialise analytics scripts here when consented.
-      }
-    };
-    window.addEventListener(CONSENT_EVENT, handler);
-    return () => window.removeEventListener(CONSENT_EVENT, handler);
-  }, []);
-  return null;
 }

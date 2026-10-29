@@ -8,6 +8,7 @@ import { AnimationsInit } from "@/components/AnimationsInit";
 import { BackToTop } from "@/components/BackToTop";
 import { MobileBottomBar } from "@/components/MobileBottomBar";
 import { CookieConsent } from "@/components/CookieConsent";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { OrganizationJsonLd } from "@/components/OrganizationJsonLd";
 import { getDictionary } from "@/lib/dictionaries";
 import {
@@ -162,6 +163,7 @@ export default async function RootLayout({
         <AnimationsInit />
         <BackToTop />
         <CookieConsent locale={lang as Locale} t={dict.cookieConsent} />
+        <GoogleAnalytics />
       </body>
     </html>
   );
